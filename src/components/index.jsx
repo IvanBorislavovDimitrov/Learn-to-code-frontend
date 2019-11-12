@@ -3,34 +3,31 @@ import axios from "axios";
 
 class Index extends Component {
   state = {
-    content: "NEMA"
+    content: ""
   };
   render() {
     return (
       <React.Fragment>
         <h1>User Index page</h1>
-        <h2>The content is {this.state.content["message"]}</h2>
+        <h2>The content is {this.state.content}</h2>
       </React.Fragment>
     );
   }
 
   componentDidMount() {
-    var config = {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
-        "Access-Control-Allow-Headers":
-          "content-type, authorization, x-requested-with"
-      }
-    };
+    this.getData();
+  }
 
-    let req = axios.get("http://localhost:8080", config); 
-    console.log(req);
-    req.then(res => {
-      const content = res.data;
-      console.log(content);
-      this.setState({ content });
-    });
+  getData() {
+    axios
+      .get("http://localhost:8080")
+      .then(response => {
+        console.log("Data: " + response.data["message"]);
+        this.setState({content: response.data["message"]});
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 }
 
