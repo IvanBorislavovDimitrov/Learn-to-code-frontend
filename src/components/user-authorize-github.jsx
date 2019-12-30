@@ -9,7 +9,7 @@ class UserAuthorize extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>GOTOVO MAINA</h1>
+        <h1>Access token added</h1>
       </React.Fragment>
     );
   }
@@ -19,17 +19,18 @@ class UserAuthorize extends Component {
   }
 
   authorizeUser() {
-    const values = queryString.parse(this.props.location.search)
-    axios
-      .post("http://localhost:8080/github/users/authorize", null, { params: {
-        code: values.code,
-      }})
-      .then(response => {
-        console.log("Token: " + response);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    const values = queryString.parse(this.props.location.search);
+    const authorizeGithubUserRequst = new XMLHttpRequest();
+    const authorizeGithubUser = "http://localhost:8080/github/users/authorize?code=" + values.code;
+    authorizeGithubUserRequst.open("POST", authorizeGithubUser);
+    authorizeGithubUserRequst.withCredentials = true;
+    authorizeGithubUserRequst.onreadystatechange = function () {
+      if (this.readyState === XMLHttpRequest.DONE) {
+        console.log(this);
+        console.log("Done");
+      }
+    }
+    authorizeGithubUserRequst.send();
   }
 }
 

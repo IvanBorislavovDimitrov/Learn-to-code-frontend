@@ -5,14 +5,17 @@ import { BrowserRouter, Route, Switch, Link, Redirect } from "react-router-dom";
 import Index from "./components/index";
 import UserRegister from "./components/user-register";
 import UserAuthorize from "./components/user-authorize-github";
-
+import UserLogin from "./components/user-login";
+import Navbar from "./components/navbar";
 
 function App() {
   return (
     <BrowserRouter>
+    <Navbar/>
       <Switch>
         <Route exact path="/" component={Index} />
         <Route exact path="/users/authorize" component={UserAuthorize} />
+        <Route exact path="/users/login" component={UserLogin} />
         <Route exact path="/users/register" component={UserRegister} />
       </Switch>
     </BrowserRouter>
