@@ -122,7 +122,7 @@ class UserRegister extends Component {
       );
       return;
     }
-
+    let currentThis = this;
     axios
       .post(
         "http://localhost:8080/users/register",
@@ -146,6 +146,7 @@ class UserRegister extends Component {
       )
       .then(response => {
         console.log(response);
+        currentThis.props.history.push('/users/login');
       })
       .catch(error => {
         console.log(error.response);

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import qs from 'qs'
 
@@ -59,9 +59,14 @@ class UserLogin extends Component {
     let currentThis = this;
     httpLoginRequest.onreadystatechange = function () {
       if (this.readyState === XMLHttpRequest.DONE) {
-        console.log(this);
-        console.log("Done");
-        currentThis.props.history.push('/');
+        console.log("Status: ", this.status);
+        if (this.status === 200) {
+          sessionStorage.setItem('loggedUser', currentThis.state.username);
+          currentThis.props.history.push('/');
+          window.location.reload();
+        } else {
+          alert("Invalid username and/or password");
+        }
       }
     }
     httpLoginRequest.send(qs.stringify({

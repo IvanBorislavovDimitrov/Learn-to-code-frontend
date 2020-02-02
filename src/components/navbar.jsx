@@ -1,10 +1,13 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Navbar extends Component {
     state = {};
     render() {
-        const user = React.createContext();
-        console.log(user);
+        let loggedUser = sessionStorage.getItem('loggedUser');
+        console.log(loggedUser);
+        let isLoggedIn = loggedUser !== null;
+
 
         return (
             <React.Fragment>
@@ -15,20 +18,43 @@ class Navbar extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
+
                             <li className="nav-item active">
                                 <a className="nav-link" href="/">Home</a>
                             </li>
-                            <li className="nav-item">
+
+                            <li hidden={isLoggedIn} className="nav-item active">
                                 <a className="nav-link" href="/users/login">Log in</a>
                             </li>
-                            <li className="nav-item">
+
+                            <li hidden={isLoggedIn} className="nav-item active">
                                 <a className="nav-link" href="/users/register">Register</a>
                             </li>
+
+                            <li hidden={!isLoggedIn} className="nav-item active">
+                                <button onClick={this.logout} className="btn btn-link nav-link">Logout</button>
+                            </li>
+
                         </ul>
                     </div>
                 </nav>
             </React.Fragment>
         );
+    }
+
+    logout = function () {
+        sessionStorage.removeItem("loggedUser");
+        fetch("http://localhost:8080/users/logout", {
+            method: 'POST',
+            credentials: 'include',
+        })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        window.location.reload();
     }
 }
 
