@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 
 class Navbar extends Component {
     state = {};
@@ -7,7 +6,6 @@ class Navbar extends Component {
         let loggedUser = sessionStorage.getItem('loggedUser');
         console.log(loggedUser);
         let isLoggedIn = loggedUser !== null;
-
 
         return (
             <React.Fragment>

@@ -51,29 +51,34 @@ class UserLogin extends Component {
   loginUser = event => {
     event.preventDefault();
 
-    const httpLoginRequest = new XMLHttpRequest();
-    const loginUrl = "http://localhost:8080/users/login";
-    httpLoginRequest.open("POST", loginUrl);
-    httpLoginRequest.withCredentials = true;
-    httpLoginRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    let currentThis = this;
-    httpLoginRequest.onreadystatechange = function () {
-      if (this.readyState === XMLHttpRequest.DONE) {
-        console.log("Status: ", this.status);
-        if (this.status === 200) {
-          sessionStorage.setItem('loggedUser', currentThis.state.username);
-          currentThis.props.history.push('/');
-          window.location.reload();
-        } else {
-          alert("Invalid username and/or password");
-        }
-      }
-    }
-    httpLoginRequest.send(qs.stringify({
-      username: this.state.username,
-      password: this.state.password
-    }));
+    const currentThis = this;
 
+    async function doLogin() {
+      const logginResponse = await fetch('http://localhost:8080/users/login', {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: qs.stringify({
+          username: currentThis.state.username,
+          password: currentThis.state.password
+        })
+      });
+      return logginResponse;
+    }
+
+    doLogin().then(respone => {
+      if (respone.status === 200) {
+        sessionStorage.setItem('loggedUser', this.state.username);
+        this.props.history.push('/');
+        window.location.reload();
+      } else {
+        alert("Invalid username and/or password");
+      }
+    });
   };
 
   usernameInputChange = event => {
