@@ -6,11 +6,14 @@ class Index extends Component {
     content: ""
   };
   render() {
+    let loggedUser = sessionStorage.getItem('loggedUser');
+    let isLoggedIn = loggedUser !== null;
+
     return (
       <React.Fragment>
-        <h1>User Index page</h1>
+        <h1 className="center">User Index page</h1>
         <h2>The content is: {this.state.content}</h2>
-        <h3>Authorize with github: <a href="https://github.com/login/oauth/authorize?client_id=5b2f3c2f8bb2f09aa59d">Authorize</a></h3>
+        <h3 hidden={!isLoggedIn}>Authorize with github: <a href="https://github.com/login/oauth/authorize?client_id=5b2f3c2f8bb2f09aa59d">Authorize</a></h3>
       </React.Fragment>
     );
   }
