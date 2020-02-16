@@ -12,7 +12,8 @@ class UserRegister extends Component {
       firstName: null,
       lastName: null,
       username: null,
-      phoneNumber: null
+      phoneNumber: null,
+      birthDate: null
     };
   }
 
@@ -23,21 +24,21 @@ class UserRegister extends Component {
         <div className="col-md-4 mt-4 container">
           <form onSubmit={this.registerUser}>
             <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Email address</label>
+              <label htmlFor="inputEmailField">Email address</label>
               <input
-                onChange={this.emailInputChange}
+                onChange={this.changeInputField}
                 name="email"
                 type="text"
                 className="form-control"
-                id="exampleInputEmail1"
+                id="inputEmailField"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="exampleInputEmail1">First name</label>
+              <label htmlFor="firstNameInputField">First name</label>
               <input
-                onChange={this.firstNameInputChange}
+                onChange={this.changeInputField}
                 name="firstName"
                 type="text"
                 className="form-control"
@@ -46,9 +47,9 @@ class UserRegister extends Component {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Last name</label>
+              <label htmlFor="lastNameInputField">Last name</label>
               <input
-                onChange={this.lastNameInputChange}
+                onChange={this.changeInputField}
                 name="lastName"
                 type="text"
                 className="form-control"
@@ -57,9 +58,9 @@ class UserRegister extends Component {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Username</label>
+              <label htmlFor="usernameInputField">Username</label>
               <input
-                onChange={this.usernameInputChange}
+                onChange={this.changeInputField}
                 name="username"
                 type="text"
                 className="form-control"
@@ -68,9 +69,9 @@ class UserRegister extends Component {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Phone number</label>
+              <label htmlFor="phoneNumberInputField">Phone number</label>
               <input
-                onChange={this.phoneNumberInputChange}
+                onChange={this.changeInputField}
                 name="phoneNumber"
                 type="text"
                 className="form-control"
@@ -78,10 +79,21 @@ class UserRegister extends Component {
                 placeholder="Enter your phone number"
               />
             </div>
-            <div id="passwordField" className="form-group">
-              <label htmlFor="exampleInputPassword">Password</label>
+            <div className="form-group">
+              <label htmlFor="birthDateInputField">Date of birth</label>
               <input
-                onChange={this.passwordInputChange}
+                onChange={this.changeInputField}
+                name="birthDate"
+                type="date"
+                className="form-control"
+                id="birthDateInputField"
+                placeholder="Enter you birth date"
+              />
+            </div>
+            <div id="passwordField" className="form-group">
+              <label htmlFor="passwordInputField">Password</label>
+              <input
+                onChange={this.changeInputField}
                 name="password"
                 type="text"
                 className="form-control"
@@ -90,9 +102,9 @@ class UserRegister extends Component {
               />
             </div>
             <div id="confirmPasswordField" className="form-group">
-              <label htmlFor="exampleInputPassword">Confirm password</label>
+              <label htmlFor="confirmPasswordInputField">Confirm password</label>
               <input
-                onChange={this.confirmPasswordInputChange}
+                onChange={this.changeInputField}
                 name="confirmPassword"
                 type="text"
                 className="form-control"
@@ -133,7 +145,8 @@ class UserRegister extends Component {
           phoneNumber: this.state.phoneNumber,
           password: this.state.password,
           confirmPassword: this.state.confirmPassword,
-          email: this.state.email
+          email: this.state.email,
+          birthDate: this.state.birthDate
         },
         {
           headers: {
@@ -161,43 +174,7 @@ class UserRegister extends Component {
     return invalidFeedbackDiv;
   };
 
-  emailInputChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
-  passwordInputChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
-  firstNameInputChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
-  lastNameInputChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
-  usernameInputChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
-  phoneNumberInputChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
-  confirmPasswordInputChange = event => {
+  changeInputField = event => {
     this.setState({
       [event.target.name]: event.target.value
     });

@@ -5,7 +5,11 @@ class Navbar extends Component {
     render() {
         let loggedUser = sessionStorage.getItem('loggedUser');
         let isLoggedIn = loggedUser !== null;
-        let isAdmin = true;
+        let isAdmin = false;
+        const userRoles = sessionStorage.getItem('userRoles');
+        if (userRoles !== undefined && userRoles !== null) {
+            isAdmin = sessionStorage.getItem('userRoles').includes('ADMIN');
+        }
 
         return (
             <React.Fragment>
@@ -18,26 +22,26 @@ class Navbar extends Component {
                         <ul className="navbar-nav nav ml-auto">
 
                             <li className="nav-item active">
-                                <a className="nav-link" href="/">Home</a>
+                                <a className="btn btn-info mr-3" href="/">Home</a>
                             </li>
 
                             <li hidden={isLoggedIn} className="nav-item active">
-                                <a className="nav-link" href="/users/login">Log in</a>
+                                <a className="btn btn-info mr-3" href="/users/login">Log in</a>
                             </li>
 
                             <li hidden={isLoggedIn} className="nav-item active">
-                                <a className="nav-link" href="/users/register">Register</a>
+                                <a className="btn btn-info" href="/users/register">Register</a>
                             </li>
 
                             <li hidden={!isLoggedIn} className="nav-item active">
-                                <button onClick={this.logout} className="btn btn-link nav-link">Logout</button>
+                                <button onClick={this.logout} className="btn btn-danger">Logout</button>
                             </li>
 
                         </ul>
                     </div>
                 </nav>
                 <nav hidden={!isAdmin} className="navbar navbar-expand-lg navbar-dark bg-danger">
-                <a className="navbar-brand" href="/">Admin Panel</a>
+                    <a className="navbar-brand" href="/">Admin Panel</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -64,7 +68,8 @@ class Navbar extends Component {
     }
 
     logout = function () {
-        sessionStorage.removeItem("loggedUser");
+        sessionStorage.removeItem('loggedUser');
+        sessionStorage.removeItem('userRoles');
         fetch("http://localhost:8080/users/logout", {
             method: 'POST',
             credentials: 'include',

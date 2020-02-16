@@ -20,7 +20,7 @@ class UserLogin extends Component {
             <div className="form-group">
               <label htmlFor="exampleInputEmail1">Username</label>
               <input
-                onChange={this.usernameInputChange}
+                onChange={this.changeInputField}
                 name="username"
                 type="text"
                 className="form-control"
@@ -31,7 +31,7 @@ class UserLogin extends Component {
             <div id="passwordField" className="form-group">
               <label htmlFor="exampleInputPassword">Password</label>
               <input
-                onChange={this.passwordInputChange}
+                onChange={this.changeInputField}
                 name="password"
                 type="text"
                 className="form-control"
@@ -70,9 +70,11 @@ class UserLogin extends Component {
       return logginResponse;
     }
 
-    doLogin().then(respone => {
+    doLogin().then(async respone => {
       if (respone.status === 200) {
         sessionStorage.setItem('loggedUser', this.state.username);
+        const loginResponseBody = await respone.json();
+        sessionStorage.setItem('userRoles', loginResponseBody['roles']);
         this.props.history.push('/');
         window.location.reload();
       } else {
@@ -81,13 +83,7 @@ class UserLogin extends Component {
     });
   };
 
-  usernameInputChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
-  passwordInputChange = event => {
+  changeInputField = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
