@@ -3,7 +3,8 @@ import axios from "axios";
 
 class Index extends Component {
   state = {
-    content: ""
+    content: "",
+    githubUsername: null
   };
   render() {
     let loggedUser = sessionStorage.getItem('loggedUser');
@@ -15,10 +16,15 @@ class Index extends Component {
           <h1 className="center">User Index page</h1>
         </div>
         <div className="d-flex justify-content-center">
-          <h2>The content is: {this.state.content}</h2>
+          <h2>Ping: {this.state.content}</h2>
         </div>
         <div className="d-flex justify-content-center">
-          <h3 hidden={!isLoggedIn}>Authorize with github: <a href="https://github.com/login/oauth/authorize?client_id=5b2f3c2f8bb2f09aa59d">Authorize</a></h3>
+          <h3 hidden={!isLoggedIn && this.state.githubUsername}>
+            Authorize with github: <a href="https://github.com/login/oauth/authorize?client_id=5b2f3c2f8bb2f09aa59d">Authorize</a>
+          </h3>
+        </div>
+        <div className="d-flex justify-content-center">
+          <h3 hidden={!isLoggedIn && this.state.githubUsername !== null}>Your GitHub username is: {this.state.githubUsername}</h3>
         </div>
       </React.Fragment>
     );
@@ -26,6 +32,7 @@ class Index extends Component {
 
   componentDidMount() {
     this.getData();
+    this.checkUserGithubAccessAvailable();
   }
 
   getData() {
@@ -37,6 +44,22 @@ class Index extends Component {
       .catch(err => {
         console.log(err);
       });
+  }
+
+  checkUserGithubAccessAvailable = () => {
+    fetch("http://localhost:8080/github/user", {
+      method: 'GET',
+      credentials: 'include',
+    }).then(async (res) => {
+      const jsonResponse = await res.json();
+      this.setState({
+        content: this.state.content,
+        githubUsername: jsonResponse['login']
+      });
+
+    }).catch((err) => {
+      console.log(err);
+    });
   }
 }
 

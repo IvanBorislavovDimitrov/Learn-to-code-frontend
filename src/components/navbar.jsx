@@ -73,13 +73,11 @@ class Navbar extends Component {
         fetch("http://localhost:8080/users/logout", {
             method: 'POST',
             credentials: 'include',
-        })
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        }).then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.log(err);
+        });
         window.location.reload();
     }
 }
