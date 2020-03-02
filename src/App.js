@@ -10,6 +10,7 @@ import Navbar from "./components/navbar";
 import AddCourseCategory from "./components/course-category-add";
 
 function App() {
+  setTimeout(function() { sessionStorage.clear(); }, (10 * 1000));
   return (
     <BrowserRouter>
       <Navbar />
