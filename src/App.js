@@ -12,6 +12,7 @@ import Footer from "./components/footer";
 import AdminUI from './components/admin-ui'
 import FirstEnter from './components/first-enter'
 import ChangeUserRole from "./components/change-user-role";
+import DeleteUser from './components/delete-user'
 
 function App() {
   setTimeout(function () { sessionStorage.clear(); }, (10 * 30 * 1000));
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/admin/index" component={AdminUI} />
         <Route exact path="/first/enter" component={FirstEnter} />
         <Route exact path="/admin/change-user-role" component={ChangeUserRole} />
+        <Route exact path="/admin/delete-user" component={DeleteUser} />
       </Switch>
       <Footer />
     </BrowserRouter>

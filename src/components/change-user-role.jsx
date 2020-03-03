@@ -70,7 +70,6 @@ class ChangeUserRole extends Component {
                             />
                         </div>
                         <button type="submit" className="btn btn-primary">Update roles</button>
-
                     </form>
                 </div>
             </React.Fragment>
