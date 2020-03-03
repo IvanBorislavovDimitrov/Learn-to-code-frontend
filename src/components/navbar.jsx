@@ -37,10 +37,14 @@ class Navbar extends Component {
                                 <button onClick={this.logout} className="btn btn-danger">Logout</button>
                             </li>
 
+                            <li hidden={!isAdmin} className="ml-3 nav-item active">
+                                <a className="btn btn-info" href="/admin/index">Open Admin UI</a>
+                            </li>
+
                         </ul>
                     </div>
                 </nav>
-                <nav hidden={!isAdmin} className="navbar navbar-expand-lg navbar-dark bg-danger">
+                {/* <nav hidden={!isAdmin} className="navbar navbar-expand-lg navbar-dark bg-danger">
                     <a className="navbar-brand" href="/">Admin Panel</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -62,7 +66,7 @@ class Navbar extends Component {
 
                         </ul>
                     </div>
-                </nav>
+                </nav> */}
             </React.Fragment>
         );
     }

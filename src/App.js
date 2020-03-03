@@ -8,9 +8,12 @@ import UserAuthorize from "./components/user-authorize-github";
 import UserLogin from "./components/user-login";
 import Navbar from "./components/navbar";
 import AddCourseCategory from "./components/course-category-add";
+import Footer from "./components/footer";
+import AdminUI from './components/admin-ui'
+import FirstEnter from './components/first-enter'
 
 function App() {
-  setTimeout(function() { sessionStorage.clear(); }, (10 * 1000));
+  setTimeout(function () { sessionStorage.clear(); }, (10 * 30 * 1000));
   return (
     <BrowserRouter>
       <Navbar />
@@ -20,7 +23,10 @@ function App() {
         <Route exact path="/users/login" component={UserLogin} />
         <Route exact path="/users/register" component={UserRegister} />
         <Route exact path="/course-categories/add" component={AddCourseCategory} />
+        <Route exact path="/admin/index" component={AdminUI} />
+        <Route exact path="/first/enter" component={FirstEnter} />
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }
