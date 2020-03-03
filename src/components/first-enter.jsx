@@ -7,27 +7,6 @@ class FirstEnter extends Component {
         sessionStorage.setItem('firstEnterSeen', true);
         return (
             <React.Fragment>
-                <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-                <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
-                <link href="/assets/vendor/icofont/icofont.min.css" rel="stylesheet" />
-                <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-                <link href="/assets/vendor/venobox/venobox.css" rel="stylesheet" />
-                <link href="/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet" />
-                <link href="/assets/vendor/aos/aos.css" rel="stylesheet" />
-                <link href="/assets/css/style.css" rel="stylesheet" />
-                <link href="/assets/img/favicon.png" rel="icon" />
-                <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
-                <script src="/assets/vendor/jquery/jquery.min.js"></script>
-                <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-                <script src="/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-                <script src="/assets/vendor/php-email-form/validate.js"></script>
-                <script src="/assets/vendor/venobox/venobox.min.js"></script>
-                <script src="/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-                <script src="/assets/vendor/counterup/counterup.min.js"></script>
-                <script src="/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-                <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-                <script src="/assets/vendor/aos/aos.js"></script>
-                <script src="/assets/js/main.js"></script>
 
                 <section id="hero" className="d-flex justify-cntent-center align-items-center">
                     <div id="heroCarousel" className="container carousel carousel-fade" data-ride="carousel">
@@ -68,6 +47,64 @@ class FirstEnter extends Component {
 
                     </div>
                 </section>
+
+                <section class="service-details">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col-md-6 d-flex align-items-stretch">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="/assets/img/service-details-1.jpg" alt="..." />
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="#">Our Mission</a></h5>
+                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                                        <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 d-flex align-items-stretch">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="/assets/img/service-details-2.jpg" alt="..." />
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="#">Our Plan</a></h5>
+                                        <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</p>
+                                        <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 d-flex align-items-stretch">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="/assets/img/service-details-3.jpg" alt="..." />
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="#">Our Vision</a></h5>
+                                        <p class="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet</p>
+                                        <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 d-flex align-items-stretch">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="/assets/img/service-details-4.jpg" alt="..." />
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="#">Our Care</a></h5>
+                                        <p class="card-text">Nostrum eum sed et autem dolorum perspiciatis. Magni porro quisquam laudantium voluptatem. In molestiae earum ab sit esse voluptatem. Eos ipsam cumque ipsum officiis qui nihil aut incidunt aut</p>
+                                        <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <section class="pricing section-bg">
                     <div class="container">
 
