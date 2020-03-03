@@ -4,6 +4,7 @@ import $ from 'jquery';
 class FirstEnter extends Component {
 
     render() {
+        sessionStorage.setItem('firstEnterSeen', true);
         return (
             <React.Fragment>
                 <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -35,7 +36,7 @@ class FirstEnter extends Component {
                             <div className="carousel-container">
                                 <h2 className="animated fadeInDown">Welcome to Learn-To-Code Platform</h2>
                                 <p className="animated fadeInUp">1 Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                                <a href="" className="btn-get-started animated fadeInUp">Proceed to the Webapp</a>
+                                <a href="/" className="btn-get-started animated fadeInUp">Proceed to the Webapp</a>
                             </div>
                         </div>
 
@@ -43,7 +44,7 @@ class FirstEnter extends Component {
                             <div className="carousel-container">
                                 <h2 className="animated fadeInDown">Lorem Ipsum Dolor</h2>
                                 <p className="animated fadeInUp">2 Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                                <a href="" className="btn-get-started animated fadeInUp">Proceed to the Webapp</a>
+                                <a href="/" className="btn-get-started animated fadeInUp">Proceed to the Webapp</a>
                             </div>
                         </div>
 
@@ -51,7 +52,7 @@ class FirstEnter extends Component {
                             <div className="carousel-container">
                                 <h2 className="animated fadeInDown">Sequi ea ut et est quaerat</h2>
                                 <p className="animated fadeInUp"> 3 Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                                <a href="" className="btn-get-started animated fadeInUp">Proceed to the Webapp</a>
+                                <a href="/" className="btn-get-started animated fadeInUp">Proceed to the Webapp</a>
                             </div>
                         </div>
 

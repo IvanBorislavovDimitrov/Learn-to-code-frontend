@@ -8,6 +8,11 @@ class Index extends Component {
   };
   render() {
 
+    if (!sessionStorage.getItem('firstEnterSeen')) {
+      this.props.history.push('/first/enter');
+      return null;
+    }
+
     let loggedUser = sessionStorage.getItem('loggedUser');
     let isLoggedIn = loggedUser !== null;
 
