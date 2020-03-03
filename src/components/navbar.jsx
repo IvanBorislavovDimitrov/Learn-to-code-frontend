@@ -12,7 +12,8 @@ class Navbar extends Component {
         }
 
         return (
-            <React.Fragment>
+            <React.Fragment> 
+                
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <a className="navbar-brand" href="/">Learn To Code</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,12 +39,13 @@ class Navbar extends Component {
                             </li>
 
                             <li hidden={!isAdmin} className="ml-3 nav-item active">
-                                <a className="btn btn-info" href="/admin/index">Open Admin UI</a>
+                                <a className="btn btn-danger" href="/admin/index">Open Admin UI</a>
                             </li>
 
                         </ul>
                     </div>
                 </nav>
+                
                 {/* <nav hidden={!isAdmin} className="navbar navbar-expand-lg navbar-dark bg-danger">
                     <a className="navbar-brand" href="/">Admin Panel</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
