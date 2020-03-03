@@ -11,6 +11,7 @@ import AddCourseCategory from "./components/course-category-add";
 import Footer from "./components/footer";
 import AdminUI from './components/admin-ui'
 import FirstEnter from './components/first-enter'
+import ChangeUserRole from "./components/change-user-role";
 
 function App() {
   setTimeout(function () { sessionStorage.clear(); }, (10 * 30 * 1000));
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/course-categories/add" component={AddCourseCategory} />
         <Route exact path="/admin/index" component={AdminUI} />
         <Route exact path="/first/enter" component={FirstEnter} />
+        <Route exact path="/admin/change-user-role" component={ChangeUserRole} />
       </Switch>
       <Footer />
     </BrowserRouter>
