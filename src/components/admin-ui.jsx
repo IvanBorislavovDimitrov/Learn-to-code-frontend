@@ -7,7 +7,7 @@ class AdminUI extends Component {
             <React.Fragment>
                 <div>
                     <img src="/assets/img/about.jpg" alt=""/>
-                </div>                  
+                </div>      
             </React.Fragment>
         )
     }
