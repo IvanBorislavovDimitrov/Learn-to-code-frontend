@@ -15,7 +15,7 @@ class UserAuthorize extends Component {
   }
 
   componentDidMount() {
-    let loggedUser = sessionStorage.getItem('loggedUser');
+    let loggedUser = localStorage.getItem('loggedUser');
     let isLoggedIn = loggedUser !== null;
     if (isLoggedIn) {
       this.authorizeUser();
@@ -26,7 +26,7 @@ class UserAuthorize extends Component {
     let currentThis = this;
     const values = queryString.parse(this.props.location.search);
     const authorizeGithubUserRequst = new XMLHttpRequest();
-    const authorizeGithubUser = "http://localhost:8080/github/authorize?code=" + values.code;
+    const authorizeGithubUser = process.env.REACT_APP_URL + "/github/authorize?code=" + values.code;
     authorizeGithubUserRequst.open("POST", authorizeGithubUser);
     authorizeGithubUserRequst.withCredentials = true;
     authorizeGithubUserRequst.onreadystatechange = function () {

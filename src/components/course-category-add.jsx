@@ -37,7 +37,7 @@ class AddCourseCategory extends Component {
         const currentThis = this;
 
         async function add() {
-            const addCourseCategoryResponse = await fetch('http://localhost:8080/course-categories/add', {
+            const addCourseCategoryResponse = await fetch(process.env.REACT_APP_URL + '/course-categories/add', {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',

@@ -137,7 +137,7 @@ class UserRegister extends Component {
     let currentThis = this;
     axios
       .post(
-        "http://localhost:8080/users/register",
+        process.env.REACT_APP_URL + "/users/register",
         {
           firstName: this.state.firstName,
           lastName: this.state.lastName,

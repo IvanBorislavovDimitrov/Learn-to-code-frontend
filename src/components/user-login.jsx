@@ -54,7 +54,7 @@ class UserLogin extends Component {
     const currentThis = this;
 
     async function doLogin() {
-      const logginResponse = await fetch('http://localhost:8080/users/login', {
+      const logginResponse = await fetch(process.env.REACT_APP_URL + '/users/login', {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
@@ -72,9 +72,9 @@ class UserLogin extends Component {
 
     doLogin().then(async respone => {
       if (respone.status === 200) {
-        sessionStorage.setItem('loggedUser', this.state.username);
+        localStorage.setItem('loggedUser', this.state.username);
         const loginResponseBody = await respone.json();
-        sessionStorage.setItem('userRoles', loginResponseBody['roles']);
+        localStorage.setItem('userRoles', loginResponseBody['roles']);
         this.props.history.push('/');
         window.location.reload();
       } else {

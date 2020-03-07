@@ -8,12 +8,12 @@ class Index extends Component {
   };
   render() {
 
-    if (!sessionStorage.getItem('firstEnterSeen')) {
+    if (!localStorage.getItem('firstEnterSeen')) {
       this.props.history.push('/first/enter');
       return null;
     }
 
-    let loggedUser = sessionStorage.getItem('loggedUser');
+    let loggedUser = localStorage.getItem('loggedUser');
     let isLoggedIn = loggedUser !== null;
 
     return (
@@ -67,7 +67,7 @@ class Index extends Component {
                   <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
                 </div>
                 <div className="card-footer">
-                  <a href="#" class="btn btn-primary">Find Out More!</a>
+                  <a href="#" className="btn btn-primary">Find Out More!</a>
                 </div>
               </div>
             </div>
@@ -97,6 +97,8 @@ class Index extends Component {
             </div>
           </div>
         </div>
+
+      
 
         <div className="d-flex justify-content-center">
           <h1 className="center">User Index page</h1>
@@ -129,7 +131,7 @@ class Index extends Component {
 
   getData() {
     axios
-      .get("http://localhost:8080")
+      .get(process.env.REACT_APP_URL)
       .then(response => {
         this.setState({ content: response.data });
       })
@@ -139,7 +141,7 @@ class Index extends Component {
   }
 
   checkUserGithubAccessAvailable = () => {
-    fetch("http://localhost:8080/github/user", {
+    fetch(process.env.REACT_APP_URL + "/github/user", {
       method: 'GET',
       credentials: 'include',
     }).then(async (res) => {

@@ -15,7 +15,7 @@ import ChangeUserRole from "./components/change-user-role";
 import DeleteUser from './components/delete-user'
 
 function App() {
-  setTimeout(function () { sessionStorage.clear(); }, (10 * 30 * 1000));
+  setTimeout(function () { localStorage.clear(); }, (10 * 30 * 1000));
   return (
     <BrowserRouter>
       <Navbar />
