@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import { Modal, Button } from 'react-bootstrap';
 
 class ChangeUserRole extends Component {
+    state = {
+        seen: false,
+        username: null
+    };
 
     render() {
         return (
             <React.Fragment>
+
                 <div id="rolesTable" className="container mt-4">
                     <table className="table">
                         <thead>
@@ -34,6 +40,7 @@ class ChangeUserRole extends Component {
                         <div className="form-group">
                             <label htmlFor="exampleInputEmail1">Username</label>
                             <input
+                                onChange={this.changeInputField}
                                 name="username"
                                 type="text"
                                 className="form-control"
@@ -41,7 +48,7 @@ class ChangeUserRole extends Component {
                                 placeholder="Enter a username"
                             />
                         </div>
-                        <button type="submit" className="btn btn-primary">Check user</button>
+                        {this.checkUser()}
                     </form>
                 </div>
 
@@ -83,6 +90,76 @@ class ChangeUserRole extends Component {
             rolesField.value = rolesField.value + " " + role;
         }
     }
+
+    checkUser = () => {
+        return (
+            <React.Fragment>
+                <Button variant="primary" onClick={this.showPopAndFetchUsers}>
+                    Check user
+                </Button>
+
+                <Modal show={this.state.seen} animation={true}>
+                    <Modal.Header>
+                        <Modal.Title>Users</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body id="users"></Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={this.hidePop}>
+                            Close
+                </Button>
+                        <Button variant="primary" onClick={this.hidePop}>
+                            Save Changes
+                </Button>
+                    </Modal.Footer>
+                </Modal>
+            </React.Fragment>
+        );
+    }
+
+    showPopAndFetchUsers = () => {
+        this.setState({
+            seen: true
+        });
+        this.getUsersByUsernameInput();
+    };
+
+    hidePop = () => {
+        this.setState({
+            seen: false
+        });
+    };
+
+    getUsersByUsernameInput = () => {
+        let currentThis = this;
+        async function getUsersByUsername() {
+            const usersResponse = await fetch(process.env.REACT_APP_URL + '/users/filter/username?username=' + currentThis.state.username, {
+                method: 'GET',
+                mode: 'cors',
+                cache: 'no-cache',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+            return usersResponse;
+        }
+
+        getUsersByUsername().then(async respone => {
+            if (respone.status === 200) {
+                const users = await respone.json();
+                const usersModel = document.getElementById('users');
+                usersModel.textContent = users.map(user => user['username']);
+            } else {
+                alert('Error while fetching users!');
+            }
+        });
+    }
+
+    changeInputField = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    };
 
 }
 
