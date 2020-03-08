@@ -4,7 +4,9 @@ import { Modal, Button } from 'react-bootstrap';
 class ChangeUserRole extends Component {
     state = {
         seen: false,
-        username: null
+        username: null,
+        usernameRoleChange: null,
+        roles: null
     };
 
     render() {
@@ -24,12 +26,12 @@ class ChangeUserRole extends Component {
                             <tr id="adminTR">
                                 <th scope="row">1</th>
                                 <td>Moderator</td>
-                                <td><button onClick={() => this.addRole('MODERATOR')} className="btn btn-primary">Add role</button></td>
+                                <td><button onClick={() => this.addRole('ROLE_MODERATOR')} className="btn btn-primary">Add role</button></td>
                             </tr>
                             <tr id="moderatorTR">
                                 <th scope="row">2</th>
                                 <td>Admin</td>
-                                <td><button onClick={() => this.addRole('ADMIN')} className="btn btn-primary">Add role</button></td>
+                                <td><button onClick={() => this.addRole('ROLE_ADMIN')} className="btn btn-primary">Add role</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -53,11 +55,12 @@ class ChangeUserRole extends Component {
                 </div>
 
                 <div className="col-md-7 mt-4 container">
-                    <form>
+                    <form onSubmit={this.updateRoles}>
                         <div className="form-group">
                             <label htmlFor="exampleInputEmail1">Username</label>
                             <input
-                                name="username"
+                                onChange={this.changeInputField}
+                                name="usernameRoleChange"
                                 type="text"
                                 className="form-control"
                                 id="usernameInputField"
@@ -67,13 +70,14 @@ class ChangeUserRole extends Component {
                         <div id="passwordField" className="form-group">
                             <label htmlFor="exampleInputPassword">Roles</label>
                             <input
+                                onChange={this.changeInputField}
                                 disabled="disabled"
                                 name="roles"
                                 type="text"
                                 className="form-control"
                                 id="roles"
                                 placeholder="Roles"
-                                value="USER"
+                                value="ROLE_USER"
                             />
                         </div>
                         <button type="submit" className="btn btn-primary">Update roles</button>
@@ -97,19 +101,13 @@ class ChangeUserRole extends Component {
                 <Button variant="primary" onClick={this.showPopAndFetchUsers}>
                     Check user
                 </Button>
-
                 <Modal show={this.state.seen} animation={true}>
                     <Modal.Header>
                         <Modal.Title>Users</Modal.Title>
                     </Modal.Header>
                     <Modal.Body id="users"></Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.hidePop}>
-                            Close
-                </Button>
-                        <Button variant="primary" onClick={this.hidePop}>
-                            Save Changes
-                </Button>
+                        <Button variant="secondary" onClick={this.hidePop}>Close</Button>
                     </Modal.Footer>
                 </Modal>
             </React.Fragment>
@@ -148,7 +146,40 @@ class ChangeUserRole extends Component {
             if (respone.status === 200) {
                 const users = await respone.json();
                 const usersModel = document.getElementById('users');
-                usersModel.textContent = users.map(user => user['username']);
+                const usernames = users.map(user => user['username']);
+                if (usernames == '') {
+                    usersModel.textContent = "No results!";
+                } else {
+                    usersModel.textContent = usernames;
+                }
+            } else {
+                alert('Error while fetching users!');
+            }
+        });
+    }
+
+    updateRoles = (event) => {
+        event.preventDefault();
+        const rolesField = document.getElementById('roles');
+        const currentRoles = rolesField.value.split(' ');
+        const roles = currentRoles.join(',');
+        let currentThis = this;
+        async function update() {
+            const usersResponse = await fetch(process.env.REACT_APP_URL + '/users/change-roles/' + currentThis.state.usernameRoleChange
+                + '/?roles=' + roles, {
+                method: 'PUT',
+                mode: 'cors',
+                cache: 'no-cache',
+                credentials: 'include',
+            });
+            return usersResponse;
+        }
+
+        update().then(async respone => {
+            if (respone.status === 200) {
+                const users = await respone.json();
+                console.log(users);
+                this.props.history.push('/');
             } else {
                 alert('Error while fetching users!');
             }
