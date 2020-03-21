@@ -98,8 +98,6 @@ class Index extends Component {
           </div>
         </div>
 
-      
-
         <div className="d-flex justify-content-center">
           <h1 className="center">User Index page</h1>
         </div>
@@ -120,6 +118,7 @@ class Index extends Component {
             </div>
           </h3>
         </div>
+ 
       </React.Fragment>
     );
   }
@@ -127,6 +126,7 @@ class Index extends Component {
   componentDidMount() {
     this.getData();
     this.checkUserGithubAccessAvailable();
+    this.getVideo();
   }
 
   getData() {
@@ -152,6 +152,21 @@ class Index extends Component {
       });
 
     }).catch((err) => {
+      console.log(err);
+    });
+  }
+
+  getVideo = () => {
+    fetch(process.env.REACT_APP_URL + "/picture", {
+      method: 'GET',
+      credentials: 'include',
+    }).then(async (res) => {
+      let body = await res.arrayBuffer();
+      console.log(body);
+     console.log("EBNAAA GI");
+
+    }).catch((err) => {
+      console.log("EBAT ME GI");
       console.log(err);
     });
   }
