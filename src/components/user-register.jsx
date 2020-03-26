@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import qs from 'qs';
 
 class UserRegister extends Component {
   constructor(props) {
@@ -13,8 +14,10 @@ class UserRegister extends Component {
       lastName: null,
       username: null,
       phoneNumber: null,
-      birthDate: null
+      birthDate: null,
+      profilePicture: null
     };
+    this.fileInput = React.createRef();
   }
 
   state = {};
@@ -22,7 +25,7 @@ class UserRegister extends Component {
     return (
       <React.Fragment>
         <div className="col-md-4 mt-4 container">
-          <form onSubmit={this.registerUser}>
+          <form encType="multipart/form-data" onSubmit={this.registerUser}>
             <div className="form-group">
               <label htmlFor="inputEmailField">Email address</label>
               <input
@@ -112,6 +115,19 @@ class UserRegister extends Component {
                 placeholder="Password"
               />
             </div>
+            <div className="form-group">
+              <label for="profilePicture">Profile Picture</label>
+              <input
+                onChange={this.changeInputField}
+                ref={this.fileInput}
+                type="file"
+                class="form-control-file"
+                id="profilePicture"
+                aria-describedby="fileHelp"
+                name="profilePicture"
+              />
+              <small id="fileHelp" class="form-text text-muted">Avatar</small>
+            </div>
             <button type="submit" className="btn btn-primary">
               Submit
             </button>
@@ -134,36 +150,41 @@ class UserRegister extends Component {
       );
       return;
     }
-    let currentThis = this;
-    axios
-      .post(
-        process.env.REACT_APP_URL + "/users/register",
-        {
-          firstName: this.state.firstName,
-          lastName: this.state.lastName,
-          username: this.state.username,
-          phoneNumber: this.state.phoneNumber,
-          password: this.state.password,
-          confirmPassword: this.state.confirmPassword,
-          email: this.state.email,
-          birthDate: this.state.birthDate
-        },
-        {
-          headers: {
-            "Content-Type": "application/json;charset=ISO-8859-1",
-            "Vary": "Access-Control-Request-Headers",
-            "Vary": "Access-Control-Request-Method",
-            "Vary": "Origin"
-          }
-        }
-      )
-      .then(response => {
-        console.log(response);
-        currentThis.props.history.push('/users/login');
-      })
-      .catch(error => {
-        console.log(error.response);
+
+    const currentThis = this;
+
+    async function doRegister() {
+      const registerFormData = new FormData();
+      if (currentThis.state.profilePicture !== null) {
+        registerFormData.append('profilePicture', new Blob([currentThis.state.profilePicture]), currentThis.fileInput.current.files[0].name);
+      }
+      registerFormData.append('email', currentThis.state.email);
+      registerFormData.append('firstName', currentThis.state.firstName);
+      registerFormData.append('lastName', currentThis.state.lastName);
+      registerFormData.append('username', currentThis.state.username);
+      registerFormData.append('phoneNumber', currentThis.state.phoneNumber);
+      registerFormData.append('birthDate', currentThis.state.birthDate);
+      registerFormData.append('password', currentThis.state.password);
+      registerFormData.append('confirmPassword', currentThis.state.confirmPassword);
+
+      const registerResponse = await fetch(process.env.REACT_APP_URL + '/users/register', {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'include',
+        body: registerFormData
       });
+      return registerResponse;
+    }
+
+    doRegister().then(async respone => {
+      if (respone.status === 200) {
+        this.props.history.push('/');
+        window.location.reload();
+      } else {
+        alert("Register failed!");
+      }
+    });
   };
 
   createTextDangerDivElement = id => {

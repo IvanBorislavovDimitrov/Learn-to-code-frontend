@@ -29,7 +29,7 @@ function App() {
         <Route exact path="/first/enter" component={FirstEnter} />
         <Route exact path="/admin/change-user-role" component={ChangeUserRole} />
         <Route exact path="/admin/delete-user" component={DeleteUser} />
-      </Switch>
+      </Switch> 
       <Footer />
     </BrowserRouter>
   );
