@@ -25,111 +25,103 @@ class UserRegister extends Component {
     return (
       <React.Fragment>
         <div className="col-md-4 mt-4 container">
-          <form encType="multipart/form-data" onSubmit={this.registerUser}>
+          <form className="text-center border border-light p-5" encType="multipart/form-data" onSubmit={this.registerUser}>
+          <p class="h4 mb-4">Register</p>
             <div className="form-group">
-              <label htmlFor="inputEmailField">Email address</label>
               <input
                 onChange={this.changeInputField}
                 name="email"
                 type="text"
-                className="form-control"
+                className="form-control mb-4"
                 id="inputEmailField"
                 aria-describedby="emailHelp"
-                placeholder="Enter email"
+                placeholder="Email"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="firstNameInputField">First name</label>
               <input
                 onChange={this.changeInputField}
                 name="firstName"
                 type="text"
-                className="form-control"
+                className="form-control mb-4"
                 id="firstNameInputField"
                 placeholder="Enter your first name"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="lastNameInputField">Last name</label>
               <input
                 onChange={this.changeInputField}
                 name="lastName"
                 type="text"
-                className="form-control"
+                className="form-control mb-4"
                 id="lastNameInputField"
                 placeholder="Enter your last name"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="usernameInputField">Username</label>
               <input
                 onChange={this.changeInputField}
                 name="username"
                 type="text"
-                className="form-control"
+                className="form-control mb-4"
                 id="usernameInputField"
                 placeholder="Enter your username"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="phoneNumberInputField">Phone number</label>
               <input
                 onChange={this.changeInputField}
                 name="phoneNumber"
                 type="text"
-                className="form-control"
+                className="form-control mb-4"
                 id="phoneNumberInputField"
                 placeholder="Enter your phone number"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="birthDateInputField">Date of birth</label>
               <input
                 onChange={this.changeInputField}
                 name="birthDate"
                 type="date"
-                className="form-control"
+                className="form-control mb-4"
                 id="birthDateInputField"
                 placeholder="Enter you birth date"
               />
             </div>
             <div id="passwordField" className="form-group">
-              <label htmlFor="passwordInputField">Password</label>
               <input
                 onChange={this.changeInputField}
                 name="password"
                 type="text"
-                className="form-control"
+                className="form-control mb-4"
                 id="passwordInputField"
                 placeholder="Password"
               />
             </div>
             <div id="confirmPasswordField" className="form-group">
-              <label htmlFor="confirmPasswordInputField">Confirm password</label>
               <input
                 onChange={this.changeInputField}
                 name="confirmPassword"
                 type="text"
-                className="form-control"
+                className="form-control mb-4"
                 id="confirmPasswordInputField"
-                placeholder="Password"
+                placeholder="Confirm Password"
               />
             </div>
             <div className="form-group">
-              <label for="profilePicture">Profile Picture</label>
+            <small id="fileHelp" class="form-text text-muted">Avatar</small>
               <input
                 onChange={this.changeInputField}
                 ref={this.fileInput}
                 type="file"
-                class="form-control-file"
+                class="custom-file"
                 id="profilePicture"
                 aria-describedby="fileHelp"
                 name="profilePicture"
               />
-              <small id="fileHelp" class="form-text text-muted">Avatar</small>
             </div>
-            <button type="submit" className="btn btn-primary">
-              Submit
+            <button type="submit" className="btn btn-info btn-block">
+              Register
             </button>
           </form>
         </div>

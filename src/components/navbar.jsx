@@ -6,9 +6,11 @@ class Navbar extends Component {
         let loggedUser = localStorage.getItem('loggedUser');
         let isLoggedIn = loggedUser !== null;
         let isAdmin = false;
+        let isModerator = false;
         const userRoles = localStorage.getItem('userRoles');
         if (userRoles !== undefined && userRoles !== null) {
-            isAdmin = localStorage.getItem('userRoles').includes('ADMIN');
+            isAdmin = userRoles.includes('ADMIN');
+            isModerator = userRoles.includes('MODERATOR');
         }
 
         return (
@@ -36,6 +38,10 @@ class Navbar extends Component {
 
                             <li hidden={!isLoggedIn} className="nav-item active">
                                 <button onClick={this.logout} className="btn btn-danger">Logout</button>
+                            </li>
+
+                            <li hidden={!isModerator} className="ml-3 nav-item active">
+                                <a className="btn btn-danger" href="/moderator/index">Open Moderator UI</a>
                             </li>
 
                             <li hidden={!isAdmin} className="ml-3 nav-item active">
