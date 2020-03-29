@@ -38,14 +38,6 @@ class AdminUI extends Component {
                                 </div>
                             </div>
 
-                            <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
-                                <div className="icon-box icon-box-cyan">
-                                    <div className="icon"><i className="bx bx-command"></i></div>
-                                    <h4 className="title"><a href="/course-categories/add">Add Category</a></h4>
-                                    <p className="description">Add new course category!</p>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </section>

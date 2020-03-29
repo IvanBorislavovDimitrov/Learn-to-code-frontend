@@ -19,9 +19,11 @@ class AddNewCourse extends Component {
             description: null,
             formOfEducation: "REGULAR",
             video: null,
-            categoryName: null
+            categoryName: null,
+            thumbnail: null
         };
-        this.fileInput = React.createRef();
+        this.videoFileUpload = React.createRef();
+        this.thumbnailFileUpload = React.createRef();
     }
     render() {
         return (
@@ -138,12 +140,25 @@ class AddNewCourse extends Component {
                             <small id="fileHelp" className="form-text text-muted">Video</small>
                             <input
                                 onChange={this.changeInputField}
-                                ref={this.fileInput}
+                                ref={this.videoFileUpload}
                                 type="file"
                                 className="custom-file"
                                 id="videoInput"
                                 aria-describedby="fileHelp"
                                 name="video"
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <small id="fileHelp" className="form-text text-muted">Thumbnail</small>
+                            <input
+                                onChange={this.changeInputField}
+                                ref={this.thumbnailFileUpload}
+                                type="file"
+                                className="custom-file"
+                                id="thumbnailInput"
+                                aria-describedby="fileHelp"
+                                name="thumbnail"
                             />
                         </div>
 
@@ -183,7 +198,6 @@ class AddNewCourse extends Component {
         });
     }
 
-
     checkUser = () => {
         return (
             <React.Fragment>
@@ -210,7 +224,10 @@ class AddNewCourse extends Component {
         async function addNewCourse() {
             const registerFormData = new FormData();
             if (currentThis.state.video !== null) {
-                registerFormData.append('video', new Blob([currentThis.state.video]), currentThis.fileInput.current.files[0].name);
+                registerFormData.append('video', new Blob([currentThis.state.video]), currentThis.videoFileUpload.current.files[0].name);
+            }
+            if (currentThis.state.thumbnail !== null) {
+                registerFormData.append('thumbnail', new Blob([currentThis.state.thumbnail]), currentThis.thumbnailFileUpload.current.files[0].name);
             }
             registerFormData.append('startDate', currentThis.state.startDate);
             registerFormData.append('endDate', currentThis.state.endDate);

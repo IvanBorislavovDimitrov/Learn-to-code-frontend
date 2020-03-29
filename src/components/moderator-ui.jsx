@@ -20,7 +20,6 @@ class ModeratorUI extends Component {
 
                 <section className="services">
                     <div className="container">
-
                         <div className="row">
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
                                 <div className="icon-box icon-box-pink">
