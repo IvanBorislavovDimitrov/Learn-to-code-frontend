@@ -6,19 +6,23 @@ import { Modal, Button } from 'react-bootstrap';
 
 
 class AddNewCourse extends Component {
-    state = {
-        seen: false,
-        username: null,
-        name: null,
-        startDate: null,
-        endDate: null,
-        durationInWeeks: null,
-        credits: null,
-        description: null,
-        formOfEducation: null,
-        video: null
-
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            seen: false,
+            teacherName: null,
+            name: null,
+            startDate: null,
+            endDate: null,
+            durationInWeeks: null,
+            credits: null,
+            description: null,
+            formOfEducation: "REGULAR",
+            video: null,
+            categoryName: null
+        };
+        this.fileInput = React.createRef();
+    }
     render() {
         return (
             <React.Fragment>
@@ -111,16 +115,21 @@ class AddNewCourse extends Component {
                             <textarea onChange={this.changeInputField} name="description" className="form-control" id="descriptionTextArea" rows="3"></textarea>
                         </div>
 
+                        <div className="form-group">
+                            <label htmlFor="categoryInput">Category</label>
+                            <select name="categoryName" onChange={this.changeInputField} className="form-control" id="categoryInput">
+                            </select>
+                        </div>
 
                         <form>
-                            <label htmlFor="exampleInputEmail1">Username</label>
+                            <label htmlFor="exampleInputEmail1">Teacher name</label>
                             <input
                                 onChange={this.changeInputField}
-                                name="username"
+                                name="teacherName"
                                 type="text"
                                 className="form-control mb-4"
-                                id="usernameInputField"
-                                placeholder="Enter a username"
+                                id="teacherNameInputField"
+                                placeholder="Enter a teacherName"
                             />
                             {this.checkUser()}
                         </form>
@@ -132,9 +141,9 @@ class AddNewCourse extends Component {
                                 ref={this.fileInput}
                                 type="file"
                                 className="custom-file"
-                                id="profilePicture"
+                                id="videoInput"
                                 aria-describedby="fileHelp"
-                                name="profilePicture"
+                                name="video"
                             />
                         </div>
 
@@ -144,6 +153,34 @@ class AddNewCourse extends Component {
                 </div>
             </React.Fragment>
         )
+    }
+
+    componentDidMount() {
+        const categoryInputElement = document.getElementById('categoryInput');
+
+        async function getCourseCategories() {
+            const registerResponse = await fetch(process.env.REACT_APP_URL + '/course-categories', {
+                method: 'GET',
+                mode: 'cors',
+                cache: 'no-cache',
+                credentials: 'include',
+            });
+            return registerResponse;
+        }
+
+        getCourseCategories().then(async response => {
+            if (response.status === 200) {
+                const courseCategories = await response.json();
+                courseCategories.forEach(category => {
+                    let option = document.createElement('option');
+                    option.textContent = category['name'];
+                    categoryInputElement.appendChild(option);
+                });
+                this.setState({
+                    categoryName: courseCategories[0]["name"]
+                })
+            }
+        });
     }
 
 
@@ -170,7 +207,7 @@ class AddNewCourse extends Component {
         event.preventDefault();
         const currentThis = this;
 
-        async function AddNewCourse() {
+        async function addNewCourse() {
             const registerFormData = new FormData();
             if (currentThis.state.video !== null) {
                 registerFormData.append('video', new Blob([currentThis.state.video]), currentThis.fileInput.current.files[0].name);
@@ -178,12 +215,14 @@ class AddNewCourse extends Component {
             registerFormData.append('startDate', currentThis.state.startDate);
             registerFormData.append('endDate', currentThis.state.endDate);
             registerFormData.append('name', currentThis.state.name);
-            registerFormData.append('username', currentThis.state.username);
+            registerFormData.append('teacherName', currentThis.state.teacherName);
             registerFormData.append('durationInWeeks', currentThis.state.durationInWeeks);
             registerFormData.append('credits', currentThis.state.credits);
             registerFormData.append('formOfEducation', currentThis.state.formOfEducation);
             registerFormData.append('price', currentThis.state.price);
             registerFormData.append('description', currentThis.state.description);
+            registerFormData.append('categoryName', currentThis.state.categoryName);
+
 
             const registerResponse = await fetch(process.env.REACT_APP_URL + '/courses/add', {
                 method: 'POST',
@@ -195,8 +234,8 @@ class AddNewCourse extends Component {
             return registerResponse;
         }
 
-        AddNewCourse().then(async respone => {
-            if (respone.status === 200) {
+        addNewCourse().then(async response => {
+            if (response.status === 200) {
                 this.props.history.push('/');
                 window.location.reload();
             } else {
@@ -221,7 +260,7 @@ class AddNewCourse extends Component {
     getUsersByUsernameInput = () => {
         let currentThis = this;
         async function getUsersByUsername() {
-            const usersResponse = await fetch(process.env.REACT_APP_URL + '/users/filter/username?username=' + currentThis.state.username, {
+            const usersResponse = await fetch(process.env.REACT_APP_URL + '/users/filter/username?username=' + currentThis.state.teacherName, {
                 method: 'GET',
                 mode: 'cors',
                 cache: 'no-cache',
