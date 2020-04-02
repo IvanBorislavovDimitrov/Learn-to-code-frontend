@@ -84,6 +84,11 @@ class Index extends Component {
             </div>
           </h3>
         </div>
+
+        <video width="320" height="240" controls>
+          <source src="http://localhost:8080/resource/videos/milko.mp4" type="video/mp4" />
+        </video>
+
       </React.Fragment>
     );
   }
