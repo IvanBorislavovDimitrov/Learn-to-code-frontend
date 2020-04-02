@@ -4,7 +4,8 @@ import axios from "axios";
 class Index extends Component {
   state = {
     content: "",
-    githubUsername: null
+    githubUsername: null,
+    courses: null
   };
   render() {
 
@@ -58,43 +59,8 @@ class Index extends Component {
             </div>
           </div>
 
-          <div className="row">
-            <div className="col-md-4 mb-5">
-              <div className="card h-100">
-                <img className="card-img-top" src="http://placehold.it/300x200" alt="" />
-                <div className="card-body">
-                  <h4 className="card-title">Card title</h4>
-                  <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-                </div>
-                <div className="card-footer">
-                  <a href="#" className="btn btn-primary">Find Out More!</a>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4 mb-5">
-              <div className="card h-100">
-                <img className="card-img-top" src="http://placehold.it/300x200" alt="" />
-                <div className="card-body">
-                  <h4 className="card-title">Card title</h4>
-                  <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-                </div>
-                <div className="card-footer">
-                  <a href="#" className="btn btn-primary">Find Out More!</a>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4 mb-5">
-              <div className="card h-100">
-                <img className="card-img-top" src="http://placehold.it/300x200" alt="" />
-                <div className="card-body">
-                  <h4 className="card-title">Card title</h4>
-                  <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                </div>
-                <div className="card-footer">
-                  <a href="#" className="btn btn-primary">Find Out More!</a>
-                </div>
-              </div>
-            </div>
+          <div id="courses" className="row">
+
           </div>
         </div>
 
@@ -118,7 +84,6 @@ class Index extends Component {
             </div>
           </h3>
         </div>
- 
       </React.Fragment>
     );
   }
@@ -126,7 +91,7 @@ class Index extends Component {
   componentDidMount() {
     this.getData();
     this.checkUserGithubAccessAvailable();
-    this.getVideo();
+    this.getLatestCourses();
   }
 
   getData() {
@@ -156,17 +121,64 @@ class Index extends Component {
     });
   }
 
-  getVideo = () => {
-    fetch(process.env.REACT_APP_URL + "/picture", {
+  getLatestCourses = () => {
+    fetch(process.env.REACT_APP_URL + "/courses/latest?count=3", {
       method: 'GET',
       credentials: 'include',
     }).then(async (res) => {
-      let body = await res.arrayBuffer();
-      console.log(body);
-     console.log("EBNAAA GI");
+      let coursesLatest = await res.json();
+      console.log("nema", JSON.parse(JSON.stringify(coursesLatest)));
+      let courses = JSON.parse(JSON.stringify(coursesLatest));
+      let coursesDiv = document.getElementById('courses');
+
+      courses.forEach(course => {
+
+        let firstDiv = document.createElement("div");
+        firstDiv.setAttribute('class', 'col-md-4 mb-5');
+
+        let secondDiv = document.createElement("div");
+        secondDiv.setAttribute('class', 'card h-100');
+
+        let img = document.createElement("img");
+        img.setAttribute('class', 'card-img-top');
+        img.width = 300;
+        img.height = 250;
+        img.src = "data:image/jpeg;base64," + course["base64Thumbnail"];
+
+        let thirdDiv = document.createElement("div");
+        thirdDiv.setAttribute('class', 'card-body');
+
+        let h4 = document.createElement("h4");
+        h4.setAttribute('class', 'card-title');
+        h4.textContent = course['name'];
+
+        let p = document.createElement("p");
+        p.setAttribute('class', 'card-text');
+        p.textContent = course['description'];
+
+        let fourthDiv = document.createElement("div");
+        fourthDiv.setAttribute('class', 'card-footer');
+
+        let a = document.createElement("a");
+        a.setAttribute('class', 'btn btn-primary');
+        a.href = "#"
+        a.textContent = "Find out more!";
+
+        firstDiv.appendChild(secondDiv);
+        secondDiv.appendChild(img);
+        secondDiv.appendChild(thirdDiv);
+        secondDiv.appendChild(fourthDiv);
+        thirdDiv.appendChild(h4);
+        thirdDiv.appendChild(p);
+        fourthDiv.appendChild(a);
+
+
+
+        coursesDiv.appendChild(firstDiv);
+      });
+
 
     }).catch((err) => {
-      console.log("EBAT ME GI");
       console.log(err);
     });
   }
