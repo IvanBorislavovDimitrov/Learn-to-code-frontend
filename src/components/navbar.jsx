@@ -28,6 +28,10 @@ class Navbar extends Component {
                                 <a className="btn btn-info mr-3" href="/">Home</a>
                             </li>
 
+                            <li className="nav-item active">
+                                <a className="btn btn-info mr-3" href="/courses">Courses</a>
+                            </li>
+
                             <li hidden={isLoggedIn} className="nav-item active">
                                 <a className="btn btn-info mr-3" href="/users/login">Log in</a>
                             </li>

@@ -157,12 +157,11 @@ class Index extends Component {
   }
 
   getLatestCourses = () => {
-    fetch(process.env.REACT_APP_URL + "/courses/latest?count=3", {
+    fetch(process.env.REACT_APP_URL + "/courses/latest?count=3&loadThumbnails=true", {
       method: 'GET',
       credentials: 'include',
     }).then(async (res) => {
       let coursesLatest = await res.json();
-      console.log("nema", JSON.parse(JSON.stringify(coursesLatest)));
       let courses = JSON.parse(JSON.stringify(coursesLatest));
       let coursesDiv = document.getElementById('courses');
 
@@ -205,7 +204,7 @@ class Index extends Component {
 
         let a = document.createElement("a");
         a.setAttribute('class', 'btn btn-primary');
-        a.href = "#"
+        a.href = "/courses/" + course["name"];
         a.textContent = "Find out more!";
 
         firstDiv.appendChild(secondDiv);
