@@ -61,6 +61,41 @@ class Index extends Component {
 
           <div id="courses" className="row">
 
+            <div id="remove1" className="col-md-4 mb-5">
+              <div className="card h-100 justify-content-center align-items-center">
+                <div class="spinner-border text-warning" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <div className="card-body">
+                  <h4 className="card-title"></h4>
+                  <p className="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div id="remove2" className="col-md-4 mb-5">
+              <div className="card h-100 justify-content-center align-items-center">
+                <div class="spinner-border text-warning" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <div className="card-body">
+                  <h4 className="card-title"></h4>
+                  <p className="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div id="remove3" className="col-md-4 mb-5">
+              <div className="card h-100 justify-content-center align-items-center">
+                <div class="spinner-border text-warning" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <div className="card-body">
+                  <h4 className="card-title"></h4>
+                  <p className="card-text"></p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -84,11 +119,6 @@ class Index extends Component {
             </div>
           </h3>
         </div>
-
-        <video width="320" height="240" controls>
-          <source src="http://localhost:8080/resource/videos/milko.mp4" type="video/mp4" />
-        </video>
-
       </React.Fragment>
     );
   }
@@ -136,6 +166,15 @@ class Index extends Component {
       let courses = JSON.parse(JSON.stringify(coursesLatest));
       let coursesDiv = document.getElementById('courses');
 
+      const el1 = document.getElementById('remove1');
+      el1.parentNode.removeChild(el1);
+
+      const el2 = document.getElementById('remove2');
+      el2.parentNode.removeChild(el2);
+
+      const el3 = document.getElementById('remove3');
+      el3.parentNode.removeChild(el3);
+
       courses.forEach(course => {
 
         let firstDiv = document.createElement("div");
@@ -176,8 +215,6 @@ class Index extends Component {
         thirdDiv.appendChild(h4);
         thirdDiv.appendChild(p);
         fourthDiv.appendChild(a);
-
-
 
         coursesDiv.appendChild(firstDiv);
       });
