@@ -6,7 +6,7 @@ class Courses extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            courseName: "Java"
         };
     }
 
@@ -29,14 +29,15 @@ class Courses extends Component {
                         <div class="row">
                             <div class="col-lg-8 entries">
 
-                                <article id="remove" class="entry">
-                                    <div class="entry-img justify-content-center align-items-center">
-                                        <div class="spinner-border text-warning" role="status">
-                                            <span class="sr-only">Loading...</span>
+                                <div id="removeParent">
+                                    <article id="remove" class="entry">
+                                        <div class="entry-img justify-content-center align-items-center">
+                                            <div class="spinner-border text-warning" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </article>
-
+                                    </article>
+                                </div>
 
                                 <div id="courses">
 
@@ -56,8 +57,14 @@ class Courses extends Component {
                                 <div class="sidebar">
                                     <h3 class="sidebar-title">Search</h3>
                                     <div class="sidebar-item search-form">
-                                        <form action="">
-                                            <input type="text" />
+                                        <form onSubmit={this.search}>
+                                            <input
+                                                onChange={this.changeInputField}
+                                                name="courseName"
+                                                type="text"
+                                                id="passwordInputField"
+                                                placeholder="Java"
+                                            />
                                             <button type="submit"><i class="icofont-search"></i></button>
                                         </form>
                                     </div>
@@ -80,6 +87,20 @@ class Courses extends Component {
         this.loadCourses();
     }
 
+    changeInputField = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    };
+
+    search = (event) => {
+        event.preventDefault();
+        const coursesElement = document.getElementById('courses');
+        coursesElement.innerHTML = '';
+        this.loadLoading();
+        this.loadCourses(this.state.courseName);
+    }
+
     loadCategories = () => {
         fetch(process.env.REACT_APP_URL + "/course-categories", {
             method: 'GET',
@@ -91,7 +112,7 @@ class Courses extends Component {
             parsedCourseCategories.forEach(courseCategory => {
                 const courseCategoryListItem = document.createElement('li');
                 const courseCategoryHref = document.createElement('a');
-                courseCategoryHref.href = '#';
+                courseCategoryHref.href = '/courses?category=' + courseCategory['name'];
                 courseCategoryHref.textContent = courseCategory['name'];
                 courseCategoryListItem.appendChild(courseCategoryHref);
                 courseCategoriesUl.appendChild(courseCategoryListItem);
@@ -102,16 +123,20 @@ class Courses extends Component {
         });
     }
 
-    loadCourses = () => {
-        fetch(process.env.REACT_APP_URL + "/courses", {
+    loadCourses = (courseName) => {
+        console.log("invoking with: " + courseName);
+        let coursesResource = '/courses';
+        if (courseName !== null && courseName !== undefined) {
+            coursesResource += '?name=' + courseName;
+        }
+        fetch(process.env.REACT_APP_URL + coursesResource, {
             method: 'GET',
             credentials: 'include'
         }).then(async res => {
             const coursesJson = await res.json();
             const parsedCourses = JSON.parse(JSON.stringify(coursesJson));
 
-            const toRemove = document.getElementById('remove');
-            toRemove.parentNode.removeChild(toRemove);
+            this.removeLoading();
 
             parsedCourses.forEach(course => {
                 const article = document.createElement('article');
@@ -180,31 +205,38 @@ class Courses extends Component {
         });
     }
 
+    removeLoading = () => {
+        const toRemove = document.getElementById('remove');
+        if (toRemove !== null && toRemove !== undefined) {
+            toRemove.parentNode.removeChild(toRemove);
+        }
+    }
+
+
+    loadLoading = () => {
+        const article = document.createElement('article');
+        article.id = 'remove';
+        article.setAttribute('class', 'entry');
+
+        const firstDiv = document.createElement('div');
+        firstDiv.setAttribute('class', 'entry-img justify-content-center align-items-center');
+
+        const secondDiv = document.createElement('div');
+        secondDiv.setAttribute('class', 'spinner-border text-warning');
+        secondDiv.setAttribute('role', 'status');
+
+        const span = document.createElement('span');
+        span.textContent = 'Loading...';
+        span.setAttribute('class', 'sr-only');
+
+        secondDiv.appendChild(span);
+        firstDiv.appendChild(secondDiv);
+        article.appendChild(firstDiv);
+
+        const removeElement = document.getElementById('removeParent');
+        removeElement.appendChild(article);
+    }
+
 }
 
 export default Courses;
-
-
-{/* <article class="entry">
-<div class="entry-img">
-    <img src="assets/img/blog-4.jpg" alt="" class="img-fluid" />
-</div>
-<h2 class="entry-title">
-    <a href="blog-single.html">Non rem rerum nam cum quo minus. Dolor distinctio deleniti explicabo eius exercitationem.</a>
-</h2>
-<div class="entry-meta">
-    <ul>
-        <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">John Doe</a></li>
-        <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-        <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html">12 Comments</a></li>
-    </ul>
-</div>
-<div class="entry-content">
-    <p>
-        Aspernatur rerum perferendis et sint. Voluptates cupiditate voluptas atque quae. Rem veritatis rerum enim et autem. Saepe atque cum eligendi eaque iste omnis a qui.
-        Quia sed sunt. Ea asperiores expedita et et delectus voluptates rerum. Id saepe ut itaque quod qui voluptas nobis porro rerum. Quam quia nesciunt qui aut est non omnis. Inventore occaecati et quaerat magni itaque nam voluptas. Voluptatem ducimus sint id earum ut nesciunt sed corrupti nemo.</p>
-    <div class="read-more">
-        <a href="blog-single.html">Read More</a>
-    </div>
-</div>
-</article> */}
