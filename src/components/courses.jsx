@@ -98,6 +98,7 @@ class Courses extends Component {
         this.removeLoading();
         this.loadLoading();
         this.loadCourses(this.state.courseName);
+        this.addPages(this.state.courseName);
     }
 
     loadCategories = () => {
@@ -127,8 +128,13 @@ class Courses extends Component {
             coursesResource += 'name=' + courseName;
         }
         if (pageNumber !== null && pageNumber !== undefined) {
-            coursesResource += 'page=' + pageNumber;
+            if (coursesResource.endsWith('?')) {
+                coursesResource += 'page=' + pageNumber;
+            } else {
+                coursesResource += '&page=' + pageNumber;
+            }
         }
+        console.log("invoking " + coursesResource);
 
 
         fetch(process.env.REACT_APP_URL + coursesResource, {
@@ -282,9 +288,13 @@ class Courses extends Component {
         removeElement.appendChild(article);
     }
 
-    addPages = () => {
-        const currentThis = this;
-        fetch(process.env.REACT_APP_URL + "/courses/pages-count", {
+    addPages = (courseName) => {
+        let courseNameFilter = "?";
+        if (courseName != null) {
+            courseNameFilter += "courseName=" + courseName;
+            document.getElementById('paging').innerHTML = '';
+        }
+        fetch(process.env.REACT_APP_URL + "/courses/pages-count" + courseNameFilter, {
             method: 'GET',
             credentials: 'include',
         }).then(async (res) => {
@@ -319,7 +329,11 @@ class Courses extends Component {
                     if (this.state.currentPage == 1) {
                         leftArrow.setAttribute('class', 'disabled');
                     }
-                    rightArrow.setAttribute('class', '');
+                    if (pagesCount['count'] == 1) {
+                        rightArrow.setAttribute('class', 'disabled');
+                    } else {
+                        rightArrow.setAttribute('class', '');
+                    }
                 }
             });
 
@@ -375,6 +389,9 @@ class Courses extends Component {
             aHreaf.appendChild(rightArrowI);
             rightArrow.appendChild(aHreaf);
             paging.appendChild(rightArrow);
+            if (pagesCount['count'] == '1') {
+                rightArrow.setAttribute('class', 'disabled');
+            }
 
             rightArrow.addEventListener('click', () => {
                 if (rightArrow.getAttribute('class') == null || rightArrow.getAttribute('class') == '') {
