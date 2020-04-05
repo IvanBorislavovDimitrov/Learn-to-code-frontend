@@ -240,7 +240,7 @@ class AddNewCourse extends Component {
             registerFormData.append('description', currentThis.state.description);
             registerFormData.append('categoryName', currentThis.state.categoryName);
 
-            const registerResponse = await fetch(process.env.REACT_APP_URL + '/courses/', {
+            const registerResponse = await fetch(process.env.REACT_APP_URL + '/courses', {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',

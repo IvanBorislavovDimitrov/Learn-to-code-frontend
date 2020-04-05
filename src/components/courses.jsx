@@ -143,14 +143,14 @@ class Courses extends Component {
         }).then(async res => {
             const coursesJson = await res.json();
             const parsedCourses = JSON.parse(JSON.stringify(coursesJson));
-
+            const coursesDomElementd = document.getElementById('courses');
+            coursesDomElementd.innerHTML = '';
             this.removeLoading();
 
             if (parsedCourses.length == 0) {
                 const h1 = document.createElement('h1');
                 h1.textContent = "No courses found!";
                 h1.setAttribute('class', 'center d-flex justify-content-center');
-                const coursesDomElementd = document.getElementById('courses');
                 coursesDomElementd.appendChild(h1);
             }
 
@@ -262,7 +262,6 @@ class Courses extends Component {
             toRemove.parentNode.removeChild(toRemove);
         }
     }
-
 
     loadLoading = () => {
         const article = document.createElement('article');
@@ -445,7 +444,6 @@ class Courses extends Component {
         }
         return null;
     }
-
 
     getActivePage = () => {
         const paging = document.getElementById('paging');
