@@ -6,7 +6,8 @@ class Courses extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            courseName: "Java"
+            courseName: null,
+            currentPage: 1
         };
     }
 
@@ -115,14 +116,12 @@ class Courses extends Component {
                 courseCategoryListItem.appendChild(courseCategoryHref);
                 courseCategoriesUl.appendChild(courseCategoryListItem);
             })
-            console.log(parsedCourseCategories);
         }).catch((err) => {
             console.log(err);
         });
     }
 
     loadCourses = (courseName, pageNumber) => {
-        console.log("invoking with: " + courseName);
         let coursesResource = '/courses?';
         if (courseName !== null && courseName !== undefined) {
             coursesResource += 'name=' + courseName;
@@ -130,6 +129,7 @@ class Courses extends Component {
         if (pageNumber !== null && pageNumber !== undefined) {
             coursesResource += 'page=' + pageNumber;
         }
+
 
         fetch(process.env.REACT_APP_URL + coursesResource, {
             method: 'GET',
@@ -283,6 +283,7 @@ class Courses extends Component {
     }
 
     addPages = () => {
+        const currentThis = this;
         fetch(process.env.REACT_APP_URL + "/courses/pages-count", {
             method: 'GET',
             credentials: 'include',
@@ -293,28 +294,81 @@ class Courses extends Component {
 
             const leftArrow = document.createElement('li');
             leftArrow.setAttribute('class', 'disabled');
+            const aHreafleft = document.createElement('a');
+            leftArrow.id = 'left-arrow';
+            aHreafleft.href = '#';
             const leftArrowI = document.createElement('i');
             leftArrowI.setAttribute('class', 'icofont-rounded-left');
-            leftArrow.appendChild(leftArrowI);
+            aHreafleft.appendChild(leftArrowI);
+            leftArrow.appendChild(aHreafleft);
             paging.appendChild(leftArrow);
+            leftArrow.addEventListener('click', () => {
+                if (leftArrow.getAttribute('class') == null || leftArrow.getAttribute('class') == '') {
+                    const coursesElement = document.getElementById('courses');
+                    coursesElement.innerHTML = '';
+                    this.removeLoading();
+                    this.loadLoading();
+                    this.loadCourses(this.state.courseName, this.state.currentPage - 1);
+                    const activePageNumber = this.getActivePageNumber();
+                    const activePage = this.getActivePage();
+                    const previousPage = this.getPageByNumber(Number.parseInt(activePageNumber.textContent) - 1);
+                    activePage.setAttribute('class', '');
+                    this.removePgingActive();
+                    previousPage.setAttribute('class', 'active');
+                    this.setState({ currentPage: this.state.currentPage - 1 });
+                    if (this.state.currentPage == 1) {
+                        leftArrow.setAttribute('class', 'disabled');
+                    }
+                    rightArrow.setAttribute('class', '');
+                }
+            });
 
             const firstPage = document.createElement('li');
             firstPage.setAttribute('class', 'active');
             const firstHref = document.createElement('a');
+            firstHref.href = '#';
             firstHref.textContent = "1";
             firstPage.appendChild(firstHref);
+            firstPage.addEventListener('click', () => {
+                const coursesElement = document.getElementById('courses');
+                coursesElement.innerHTML = '';
+                this.removeLoading();
+                this.loadLoading();
+                this.loadCourses(this.state.courseName, "1");
+                this.removePgingActive();
+                firstPage.setAttribute('class', 'active');
+                this.setState({ currentPage: 1 });
+                leftArrow.setAttribute('class', 'disabled');
+                rightArrow.setAttribute('class', '');
+            });
             paging.appendChild(firstPage);
 
             for (let i = 1; i < Number.parseInt(pagesCount["count"]); i++) {
                 const page = document.createElement('li');
                 const href = document.createElement('a');
                 href.textContent = i + 1;
+                href.href = '#';
                 page.appendChild(href);
+                page.addEventListener('click', () => {
+                    const coursesElement = document.getElementById('courses');
+                    coursesElement.innerHTML = '';
+                    this.removeLoading();
+                    this.loadLoading();
+                    this.loadCourses(this.state.courseName, i + 1 + "");
+                    this.removePgingActive();
+                    page.setAttribute('class', 'active');
+                    this.setState({ currentPage: i + 1 });
+                    leftArrow.setAttribute('class', '');
+                    if (i + 1 == Number.parseInt(pagesCount["count"])) {
+                        rightArrow.setAttribute('class', 'disabled');
+                    }
+                });
                 paging.appendChild(page);
             }
 
             const rightArrow = document.createElement('li');
             const aHreaf = document.createElement('a');
+            rightArrow.id = 'right-arrow';
             aHreaf.href = '#';
             const rightArrowI = document.createElement('i');
             rightArrowI.setAttribute('class', 'icofont-rounded-right');
@@ -322,9 +376,82 @@ class Courses extends Component {
             rightArrow.appendChild(aHreaf);
             paging.appendChild(rightArrow);
 
+            rightArrow.addEventListener('click', () => {
+                if (rightArrow.getAttribute('class') == null || rightArrow.getAttribute('class') == '') {
+                    const coursesElement = document.getElementById('courses');
+                    coursesElement.innerHTML = '';
+                    this.removeLoading();
+                    this.loadLoading();
+                    this.loadCourses(this.state.courseName, this.state.currentPage + 1);
+                    const activePageNumber = this.getActivePageNumber();
+                    const activePage = this.getActivePage();
+                    const nextPage = this.getPageByNumber(Number.parseInt(activePageNumber.textContent) + 1);
+                    activePage.setAttribute('class', '');
+                    this.removePgingActive();
+                    nextPage.setAttribute('class', 'active');
+                    this.setState({ currentPage: this.state.currentPage + 1 });
+                    if (this.state.currentPage == Number.parseInt(pagesCount['count'])) {
+                        rightArrow.setAttribute('class', 'disabled');
+                    }
+                    leftArrow.setAttribute('class', '');
+                }
+            });
+
         }).catch((err) => {
             console.log(err);
         });
+    }
+
+    removePgingActive = () => {
+        const paging = document.getElementById('paging');
+        const pagingElements = paging.childNodes;
+
+        for (const pagingElement of pagingElements) {
+            const pagingClasses = pagingElement.getAttribute('class');
+            if (pagingClasses !== null && pagingClasses !== undefined) {
+                if (pagingClasses.includes('active')) {
+                    pagingElement.setAttribute('class', '');
+                }
+            }
+        }
+    }
+
+    getActivePageNumber = () => {
+        const paging = document.getElementById('paging');
+        const pagingElements = paging.childNodes;
+        for (const pagingElement of pagingElements) {
+            if (pagingElement.getAttribute('class') == 'active') {
+                for (const c of pagingElement.childNodes) {
+                    return c;
+                }
+            }
+        }
+        return null;
+    }
+
+
+    getActivePage = () => {
+        const paging = document.getElementById('paging');
+        const pagingElements = paging.childNodes;
+        for (const pagingElement of pagingElements) {
+            if (pagingElement.getAttribute('class') == 'active') {
+                return pagingElement;
+            }
+        }
+        return null;
+    }
+
+    getPageByNumber = (pageNumber) => {
+        const paging = document.getElementById('paging');
+        const pagingElements = paging.childNodes;
+        for (const pagingElement of pagingElements) {
+            for (const c of pagingElement.childNodes) {
+                if (Number.parseInt(c.textContent) == pageNumber) {
+                    return pagingElement;
+                }
+            }
+        }
+        return null;
     }
 
 }
