@@ -26,7 +26,7 @@ class UserRegister extends Component {
       <React.Fragment>
         <div className="col-md-4 mt-4 container">
           <form className="text-center border border-light p-5" encType="multipart/form-data" onSubmit={this.registerUser}>
-          <p class="h4 mb-4">Register</p>
+            <p class="h4 mb-4">Register</p>
             <div className="form-group">
               <input
                 onChange={this.changeInputField}
@@ -109,7 +109,7 @@ class UserRegister extends Component {
               />
             </div>
             <div className="form-group">
-            <small id="fileHelp" class="form-text text-muted">Avatar</small>
+              <small id="fileHelp" class="form-text text-muted">Avatar</small>
               <input
                 onChange={this.changeInputField}
                 ref={this.fileInput}
@@ -148,7 +148,7 @@ class UserRegister extends Component {
     async function doRegister() {
       const registerFormData = new FormData();
       if (currentThis.state.profilePicture !== null) {
-        registerFormData.append('profilePicture', new Blob([currentThis.state.profilePicture]), currentThis.fileInput.current.files[0].name);
+        registerFormData.append('profilePicture', currentThis.state.videoFileUpload.current.files[0], currentThis.fileInput.current.files[0].name);
       }
       registerFormData.append('email', currentThis.state.email);
       registerFormData.append('firstName', currentThis.state.firstName);

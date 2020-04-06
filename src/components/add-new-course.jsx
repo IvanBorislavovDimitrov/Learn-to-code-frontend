@@ -29,7 +29,7 @@ class AddNewCourse extends Component {
         return (
             <React.Fragment>
                 <div className="col-md-4 mt-4 container">
-                    <form className="text-center border border-light p-5" onSubmit={this.addCourse}>
+                    <form className="text-center border border-light p-5" onSubmit={this.addCourse} encType="multipart/form-data">
                         <p className="h4 mb-4">Add new course</p>
 
                         <div className="form-group">
@@ -224,22 +224,41 @@ class AddNewCourse extends Component {
         async function addNewCourse() {
             const registerFormData = new FormData();
             if (currentThis.state.video !== null) {
-                registerFormData.append('video', new Blob([currentThis.state.video]), currentThis.videoFileUpload.current.files[0].name);
+                registerFormData.append('video', currentThis.videoFileUpload.current.files[0], currentThis.videoFileUpload.current.files[0].name);
             }
             if (currentThis.state.thumbnail !== null) {
-                registerFormData.append('thumbnail', new Blob([currentThis.state.thumbnail]), currentThis.thumbnailFileUpload.current.files[0].name);
+                registerFormData.append('thumbnail', currentThis.thumbnailFileUpload.current.files[0], currentThis.thumbnailFileUpload.current.files[0].name);
             }
-            registerFormData.append('startDate', currentThis.state.startDate);
-            registerFormData.append('endDate', currentThis.state.endDate);
-            registerFormData.append('name', currentThis.state.name);
-            registerFormData.append('teacherName', currentThis.state.teacherName);
-            registerFormData.append('durationInWeeks', currentThis.state.durationInWeeks);
-            registerFormData.append('credits', currentThis.state.credits);
-            registerFormData.append('formOfEducation', currentThis.state.formOfEducation);
-            registerFormData.append('price', currentThis.state.price);
-            registerFormData.append('description', currentThis.state.description);
-            registerFormData.append('categoryName', currentThis.state.categoryName);
-
+            if (currentThis.state.startDate != null) {
+                registerFormData.append('startDate', currentThis.state.startDate);
+            }
+            if (currentThis.state.endDate != null) {
+                registerFormData.append('endDate', currentThis.state.endDate);
+            }
+            if (currentThis.state.name != null) {
+                registerFormData.append('name', currentThis.state.name);
+            }
+            if (currentThis.state.teacherName != null) {
+                registerFormData.append('teacherName', currentThis.state.teacherName);
+            }
+            if (currentThis.state.durationInWeeks) {
+                registerFormData.append('durationInWeeks', currentThis.state.durationInWeeks);
+            }
+            if (currentThis.state.credits != null) {
+                registerFormData.append('credits', currentThis.state.credits);
+            }
+            if (currentThis.state.formOfEducation != null) {
+                registerFormData.append('formOfEducation', currentThis.state.formOfEducation);
+            }
+            if (currentThis.state.price != null) {
+                registerFormData.append('price', currentThis.state.price);
+            }
+            if (currentThis.state.description != null) {
+                registerFormData.append('description', currentThis.state.description);
+            }
+            if (currentThis.state.categoryName != null) {
+                registerFormData.append('categoryName', currentThis.state.categoryName);
+            }
             const registerResponse = await fetch(process.env.REACT_APP_URL + '/courses', {
                 method: 'POST',
                 mode: 'cors',
