@@ -204,7 +204,7 @@ class Index extends Component {
 
         let a = document.createElement("a");
         a.setAttribute('class', 'btn btn-primary');
-        a.href = "/courses/" + course["name"];
+        a.href = "/courses/view/" + course["name"];
         a.textContent = "Find out more!";
 
         firstDiv.appendChild(secondDiv);

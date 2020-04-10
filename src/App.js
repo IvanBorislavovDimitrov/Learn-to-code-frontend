@@ -15,7 +15,8 @@ import ChangeUserRole from "./components/change-user-role";
 import DeleteUser from './components/delete-user'
 import ModeratorUI from './components/moderator-ui';
 import AddNewCourse from './components/add-new-course';
-import Courses from './components/courses'
+import Courses from './components/courses';
+import ViewCourse from './components/view-course';
 
 function App() {
   setTimeout(function () { localStorage.clear(); }, (10 * 30 * 1000));
@@ -35,6 +36,7 @@ function App() {
         <Route exact path="/moderator/index" component={ModeratorUI} />
         <Route exact path="/courses/add-new-course" component={AddNewCourse} />
         <Route exact path="/courses" component={Courses} />
+        <Route path="/courses/view" component={ViewCourse} />
 
       </Switch>
       <Footer />
