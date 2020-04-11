@@ -286,7 +286,7 @@ class AddNewCourse extends Component {
             for (let i = 1; i < currentThis.state.coursePartsCount; i++) {
                 const partName = document.getElementById('coursePartName' + i);
                 const partFile = document.getElementById('coursePartFile' + i);
-                registerFormData.append('videosName', partName.value);
+                registerFormData.append('videosNames', partName.value);
                 registerFormData.append('videos', partFile.files[0]);
             }
             if (currentThis.state.thumbnail !== null) {
@@ -337,8 +337,10 @@ class AddNewCourse extends Component {
                 this.props.history.push('/');
                 window.location.reload();
             } else {
-                alert("Register failed!");
+                alert(await response.text());
             }
+        }).catch(err => {
+            alert(err)
         });
     };
 
@@ -381,7 +383,7 @@ class AddNewCourse extends Component {
                     usersModel.textContent = usernames;
                 }
             } else {
-                alert('Error while fetching users!');
+                alert('Error while  fetchingusers!');
             }
         });
     }
