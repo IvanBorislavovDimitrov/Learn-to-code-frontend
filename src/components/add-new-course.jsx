@@ -18,9 +18,9 @@ class AddNewCourse extends Component {
             credits: null,
             description: null,
             formOfEducation: "REGULAR",
-            video: null,
             categoryName: null,
-            thumbnail: null
+            thumbnail: null,
+            coursePartsCount: 2
         };
         this.videoFileUpload = React.createRef();
         this.thumbnailFileUpload = React.createRef();
@@ -136,20 +136,32 @@ class AddNewCourse extends Component {
                             {this.checkUser()}
                         </form>
 
-                        <div className="form-group">
-                            <small id="fileHelp" className="form-text text-muted">Video</small>
-                            <input
-                                onChange={this.changeInputField}
-                                ref={this.videoFileUpload}
-                                type="file"
-                                className="custom-file"
-                                id="videoInput"
-                                aria-describedby="fileHelp"
-                                name="video"
-                            />
-                        </div>
+                        <div id="parts" class="row mt-4">
+                            <div class="col-sm-8">
+                                <input
+                                    id="coursePartName1"
+                                    onChange={this.changeInputField}
+                                    type="text"
+                                    className="form-control mb-4"
+                                    placeholder="Part name"
+                                />
+                            </div>
+                            <div class="col-sm-4">
+                                <input
+                                    onChange={this.changeInputField}
+                                    ref={this.videoFileUpload}
+                                    type="file"
+                                    className="custom-file"
+                                    id="coursePartFile1"
+                                    aria-describedby="fileHelp"
+                                />
+                            </div>
 
-                        <div className="form-group">
+                        </div>
+                        <button onClick={this.addCoursePart} className="btn btn-primary btn-block" type="button">Add part</button>
+                        <button onClick={this.removeCoursePart} className="btn btn-danger btn-block" type="button">Remove part</button>
+
+                        <div className="form-group mt-3">
                             <small id="fileHelp" className="form-text text-muted">Thumbnail</small>
                             <input
                                 onChange={this.changeInputField}
@@ -166,7 +178,7 @@ class AddNewCourse extends Component {
                         <button className="btn btn-info btn-block" type="submit">Add course</button>
                     </form>
                 </div>
-            </React.Fragment>
+            </React.Fragment >
         )
     }
 
@@ -198,6 +210,54 @@ class AddNewCourse extends Component {
         });
     }
 
+    addCoursePart = () => {
+
+        const firstDiv = document.createElement('div');
+        firstDiv.setAttribute('class', 'col-sm-8');
+        firstDiv.id = 'coursePartNameDiv' + this.state.coursePartsCount
+
+        const filePartNameInput = document.createElement('input');
+        filePartNameInput.onChange = this.changeInputField;
+        filePartNameInput.id = 'coursePartName' + this.state.coursePartsCount;
+        filePartNameInput.type = "text";
+        filePartNameInput.setAttribute('class', 'form-control mb-4');
+        filePartNameInput.placeholder = 'Part name';
+        firstDiv.appendChild(filePartNameInput);
+
+        const secondDiv = document.createElement('div');
+        secondDiv.setAttribute('class', 'col-sm-4');
+        secondDiv.id = 'coursePartFileDiv' + this.state.coursePartsCount;
+
+        const coursePartFileInput = document.createElement('input');
+        coursePartFileInput.id = 'coursePartFile' + this.state.coursePartsCount;
+        coursePartFileInput.type = "file";
+        coursePartFileInput.setAttribute('class', 'custom-file');
+        secondDiv.appendChild(coursePartFileInput);
+
+        const parts = document.getElementById('parts');
+        parts.appendChild(firstDiv);
+        parts.appendChild(secondDiv);
+        this.setState({
+            coursePartsCount: this.state.coursePartsCount + 1
+        });
+    }
+
+    removeCoursePart = () => {
+        if (this.state.coursePartsCount <= 2) {
+            return;
+        }
+        const parts = document.getElementById('parts');
+        const filePartNameInput = document.getElementById('coursePartNameDiv' + (this.state.coursePartsCount - 1));
+        const coursePartFileInput = document.getElementById('coursePartFileDiv' + (this.state.coursePartsCount - 1));
+        console.log(filePartNameInput);
+        console.log(coursePartFileInput);
+        parts.removeChild(filePartNameInput);
+        parts.removeChild(coursePartFileInput);
+        this.setState({
+            coursePartsCount: this.state.coursePartsCount - 1
+        });
+    }
+
     checkUser = () => {
         return (
             <React.Fragment>
@@ -223,8 +283,11 @@ class AddNewCourse extends Component {
 
         async function addNewCourse() {
             const registerFormData = new FormData();
-            if (currentThis.state.video !== null) {
-                registerFormData.append('video', currentThis.videoFileUpload.current.files[0], currentThis.videoFileUpload.current.files[0].name);
+            for (let i = 1; i < currentThis.state.coursePartsCount; i++) {
+                const partName = document.getElementById('coursePartName' + i);
+                const partFile = document.getElementById('coursePartFile' + i);
+                registerFormData.append('videosName', partName.value);
+                registerFormData.append('videos', partFile.files[0]);
             }
             if (currentThis.state.thumbnail !== null) {
                 registerFormData.append('thumbnail', currentThis.thumbnailFileUpload.current.files[0], currentThis.thumbnailFileUpload.current.files[0].name);
