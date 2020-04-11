@@ -2,18 +2,20 @@ import React, { Component } from "react";
 
 class ViewCourse extends Component {
     state = {
-        courseName: null
+        courseName: null,
+        teacherName: null,
+        description: null,
+        startDate: null,
+        endDate: null,
+        category: null,
+        videosFullNames: [],
+        currentVideoTitle: null,
+        currentVideoName: null
     }
     render() {
         return (
             <React.Fragment>
                 <main id="main">
-
-                    <section id="breadcrumbs" class="breadcrumbs">
-                        <div class="container">
-                            <h2>{this.state.courseName}</h2>
-                        </div>
-                    </section>
 
                     <section id="blog" class="blog">
                         <div class="container">
@@ -24,78 +26,36 @@ class ViewCourse extends Component {
 
                                     <article class="entry entry-single">
 
-                                        <div class="entry-img">
-                                            <img src="assets/img/blog-1.jpg" alt="" class="img-fluid" />
+                                        <div class="justify-content container">
+                                            <video id="video" controls>
+
+                                            </video>
+
                                         </div>
 
                                         <h2 class="entry-title">
-                                            <a href="blog-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+                                            <a>{this.state.courseName}</a>
                                         </h2>
 
                                         <div class="entry-meta">
                                             <ul>
-                                                <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">John Doe</a></li>
-                                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-                                                <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html">12 Comments</a></li>
+                                                <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="#">{this.state.teacherName}</a></li>
+                                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="#"><time >{this.state.startDate}</time></a></li>
+                                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="#"><time >{this.state.endDate}</time></a></li>
+                                                <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="#">12 Comments</a></li>
                                             </ul>
                                         </div>
 
                                         <div class="entry-content">
-                                            <p>
-                                                Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                                                Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-            </p>
-
-                                            <p>
-                                                Sit repellat hic cupiditate hic ut nemo. Quis nihil sunt non reiciendis. Sequi in accusamus harum vel aspernatur. Excepturi numquam nihil cumque odio. Et voluptate cupiditate.
-            </p>
-
-                                            <blockquote>
-                                                <i class="icofont-quote-left quote-left"></i>
-                                                <p>
-                                                    Et vero doloremque tempore voluptatem ratione vel aut. Deleniti sunt animi aut. Aut eos aliquam doloribus minus autem quos.
-              </p>
-                                                <i class="las la-quote-right quote-right"></i>
-                                                <i class="icofont-quote-right quote-right"></i>
-                                            </blockquote>
-
-                                            <p>
-                                                Sed quo laboriosam qui architecto. Occaecati repellendus omnis dicta inventore tempore provident voluptas mollitia aliquid. Id repellendus quia. Asperiores nihil magni dicta est suscipit perspiciatis. Voluptate ex rerum assumenda dolores nihil quaerat.
-                                                Dolor porro tempora et quibusdam voluptas. Beatae aut at ad qui tempore corrupti velit quisquam rerum. Omnis dolorum exercitationem harum qui qui blanditiis neque.
-                                                Iusto autem itaque. Repudiandae hic quae aspernatur ea neque qui. Architecto voluptatem magni. Vel magnam quod et tempora deleniti error rerum nihil tempora.
-            </p>
-
-                                            <h3>Et quae iure vel ut odit alias.</h3>
-                                            <p>
-                                                Officiis animi maxime nulla quo et harum eum quis a. Sit hic in qui quos fugit ut rerum atque. Optio provident dolores atque voluptatem rem excepturi molestiae qui. Voluptatem laborum omnis ullam quibusdam perspiciatis nulla nostrum. Voluptatum est libero eum nesciunt aliquid qui.
-                                                Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea.
-                                                Beatae minima sunt libero soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum quibusdam voluptatem voluptatem accusamus mollitia aut atque aut.
-            </p>
-                                            <img src="assets/img/blog-inside-post.jpg" class="img-fluid" alt="" />
-
-                                            <h3>Ut repellat blanditiis est dolore sunt dolorum quae.</h3>
-                                            <p>
-                                                Rerum ea est assumenda pariatur quasi et quam. Facilis nam porro amet nostrum. In assumenda quia quae a id praesentium. Quos deleniti libero sed occaecati aut porro autem. Consectetur sed excepturi sint non placeat quia repellat incidunt labore. Autem facilis hic dolorum dolores vel.
-                                                Consectetur quasi id et optio praesentium aut asperiores eaque aut. Explicabo omnis quibusdam esse. Ex libero illum iusto totam et ut aut blanditiis. Veritatis numquam ut illum ut a quam vitae.
-            </p>
-                                            <p>
-                                                Alias quia non aliquid. Eos et ea velit. Voluptatem maxime enim omnis ipsa voluptas incidunt. Nulla sit eaque mollitia nisi asperiores est veniam.
-            </p>
-
+                                            <h3>Descirption</h3>
+                                            <p>{this.state.description}</p>
                                         </div>
 
                                         <div class="entry-footer clearfix">
                                             <div class="float-left">
                                                 <i class="icofont-folder"></i>
-                                                <ul class="cats">
-                                                    <li><a href="#">Business</a></li>
-                                                </ul>
-
-                                                <i class="icofont-tags"></i>
-                                                <ul class="tags">
-                                                    <li><a href="#">Creative</a></li>
-                                                    <li><a href="#">Tips</a></li>
-                                                    <li><a href="#">Marketing</a></li>
+                                                <ul class="cats ml-2">
+                                                    <li><a href="#">{this.state.category}</a></li>
                                                 </ul>
                                             </div>
 
@@ -111,7 +71,7 @@ class ViewCourse extends Component {
 
                                     <div class="blog-author clearfix">
                                         <img src="assets/img/blog-author.jpg" class="rounded-circle float-left" alt="" />
-                                        <h4>Jane Smith</h4>
+                                        <h4>{this.state.teacherName}</h4>
                                         <div class="social-links">
                                             <a href="https://twitters.com/#"><i class="icofont-twitter"></i></a>
                                             <a href="https://facebook.com/#"><i class="icofont-facebook"></i></a>
@@ -229,36 +189,10 @@ class ViewCourse extends Component {
                                     <div class="sidebar">
 
                                         <h3 class="sidebar-title">Agenda</h3>
-                                        <div class="sidebar-item recent-posts">
-                                            <div class="post-item clearfix">
-                                                <img src="assets/img/blog-recent-1.jpg" alt="" />
-                                                <h4><a href="blog-single.html">Nihil blanditiis at in nihil autem</a></h4>
-                                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                                            </div>
 
-                                            <div class="post-item clearfix">
-                                                <img src="assets/img/blog-recent-2.jpg" alt="" />
-                                                <h4><a href="blog-single.html">Quidem autem et impedit</a></h4>
-                                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                                            </div>
+                                        <div id="agenda" class="sidebar-item h6">
 
-                                            <div class="post-item clearfix">
-                                                <img src="assets/img/blog-recent-3.jpg" alt="" />
-                                                <h4><a href="blog-single.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-                                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                                            </div>
 
-                                            <div class="post-item clearfix">
-                                                <img src="assets/img/blog-recent-4.jpg" alt="" />
-                                                <h4><a href="blog-single.html">Laborum corporis quo dara net para</a></h4>
-                                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                                            </div>
-
-                                            <div class="post-item clearfix">
-                                                <img src="assets/img/blog-recent-5.jpg" alt="" />
-                                                <h4><a href="blog-single.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                                            </div>
 
                                         </div>
 
@@ -287,14 +221,40 @@ class ViewCourse extends Component {
     }
 
     setCourseByName = (courseName) => {
+        const currentThis = this;
         fetch(process.env.REACT_APP_URL + "/courses/" + courseName, {
             method: 'GET',
             credentials: 'include',
         }).then(async (response) => {
             const coursesResponseJson = await response.json();
             let courseModel = JSON.parse(JSON.stringify(coursesResponseJson));
+            const agenda = document.getElementById('agenda');
+
+            courseModel["videosNames"].forEach(video => {
+                const firstDiv = document.createElement('div');
+                firstDiv.setAttribute('class', 'post-item clearfix');
+                const h5 = document.createElement('h5');
+                const a = document.createElement('a');
+                a.href = '#';
+                a.textContent = video["videoTitle"];
+                h5.appendChild(a);
+                firstDiv.appendChild(h5);
+                agenda.appendChild(firstDiv);
+            });
+
+            const video = document.getElementById('video');
+            const source = document.createElement('source');
+            source.src = "http://localhost:8080/resource/videos/" + courseModel["videosNames"][0]["videoFullName"];
+            source.type = "video/mp4";
+            video.appendChild(source);
+
             this.setState({
-                courseName: courseModel["name"]
+                courseName: courseModel["name"],
+                teacherName: courseModel["teacher"]["username"],
+                description: courseModel["description"],
+                startDate: courseModel["startDate"]["dayOfMonth"] + "-" + courseModel["startDate"]["monthValue"] + "-" + courseModel["startDate"]["year"],
+                endDate: courseModel["endDate"]["dayOfMonth"] + "-" + courseModel["endDate"]["monthValue"] + "-" + courseModel["endDate"]["year"],
+                category: courseModel["category"]["name"]
             });
         });
     }

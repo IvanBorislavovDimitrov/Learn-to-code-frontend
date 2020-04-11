@@ -19,7 +19,7 @@ import Courses from './components/courses';
 import ViewCourse from './components/view-course';
 
 function App() {
-  setTimeout(function () { localStorage.clear(); }, (10 * 30 * 1000));
+  setTimeout(function () { localStorage.clear(); }, (100 * 30 * 1000));
   return (
     <BrowserRouter>
       <Navbar />
