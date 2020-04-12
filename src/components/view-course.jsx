@@ -8,13 +8,20 @@ class ViewCourse extends Component {
         startDate: null,
         endDate: null,
         category: null,
+        videosTitles: [],
         videosFullNames: [],
         currentVideoTitle: null,
-        currentVideoName: null
+        currentVideoName: null,
+        teacherDescrption: null
     }
     render() {
         return (
             <React.Fragment>
+                <section id="breadcrumbs" className="breadcrumbs">
+                    <div className="container">
+                        <h2>You're currently watching: {this.state.currentVideoTitle}</h2>
+                    </div>
+                </section>
                 <main id="main">
 
                     <section id="blog" class="blog">
@@ -26,14 +33,11 @@ class ViewCourse extends Component {
 
                                     <article class="entry entry-single">
 
-                                        <div class="justify-content container">
-                                            <video id="video" controls>
-
-                                            </video>
+                                        <div id="video" class="justify-content container">
 
                                         </div>
 
-                                        <h2 class="entry-title">
+                                        <h2 class="entry-title mt-3">
                                             <a>{this.state.courseName}</a>
                                         </h2>
 
@@ -77,9 +81,7 @@ class ViewCourse extends Component {
                                             <a href="https://facebook.com/#"><i class="icofont-facebook"></i></a>
                                             <a href="https://instagram.com/#"><i class="icofont-instagram"></i></a>
                                         </div>
-                                        <p>
-                                            Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
-          </p>
+                                        <p>{this.state.teacherDescrption}</p>
                                     </div>
 
                                     <div class="blog-comments">
@@ -234,19 +236,38 @@ class ViewCourse extends Component {
                 const firstDiv = document.createElement('div');
                 firstDiv.setAttribute('class', 'post-item clearfix');
                 const h5 = document.createElement('h5');
-                const a = document.createElement('a');
-                a.href = '#';
-                a.textContent = video["videoTitle"];
-                h5.appendChild(a);
+                const button = document.createElement('button');
+                button.textContent = video["videoTitle"];
+                button.setAttribute('class', 'btn btn-link');
+                button.onclick = () => {
+                    const videoOuter = document.getElementById('video');
+                    videoOuter.innerHTML = '';
+                    const videoElement = document.createElement('video');
+                    videoElement.setAttribute('class', 'embed-responsive embed-responsive-16by9');
+                    videoElement.setAttribute('controls', '');
+                    const source = document.createElement('source');
+                    source.src = process.env.REACT_APP_URL + "/resource/videos/" + video["videoFullName"];
+                    source.type = "video/mp4";
+                    videoElement.appendChild(source);
+                    videoOuter.appendChild(videoElement);
+                    this.setState({
+                        currentVideoTitle: video["videoTitle"]
+                    });
+                };
+                h5.appendChild(button);
                 firstDiv.appendChild(h5);
                 agenda.appendChild(firstDiv);
             });
 
-            const video = document.getElementById('video');
+            const videoOuter = document.getElementById('video');
+            const video = document.createElement('video');
+            video.setAttribute('controls', '');
+            video.setAttribute('class', 'embed-responsive embed-responsive-16by9')
             const source = document.createElement('source');
-            source.src = "http://localhost:8080/resource/videos/" + courseModel["videosNames"][0]["videoFullName"];
+            source.src = process.env.REACT_APP_URL + "/resource/videos/" + courseModel["videosNames"][0]["videoFullName"];
             source.type = "video/mp4";
             video.appendChild(source);
+            videoOuter.appendChild(video);
 
             this.setState({
                 courseName: courseModel["name"],
@@ -254,7 +275,10 @@ class ViewCourse extends Component {
                 description: courseModel["description"],
                 startDate: courseModel["startDate"]["dayOfMonth"] + "-" + courseModel["startDate"]["monthValue"] + "-" + courseModel["startDate"]["year"],
                 endDate: courseModel["endDate"]["dayOfMonth"] + "-" + courseModel["endDate"]["monthValue"] + "-" + courseModel["endDate"]["year"],
-                category: courseModel["category"]["name"]
+                category: courseModel["category"]["name"],
+                currentVideoTitle: courseModel["videosNames"][0]["videoTitle"],
+                currentVideoName: courseModel["videosNames"][0]["videoFullName"],
+                teacherDescrption: courseModel["teacher"]["description"]
             });
         });
     }

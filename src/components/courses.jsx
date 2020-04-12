@@ -242,6 +242,7 @@ class Courses extends Component {
 
                 const a2 = document.createElement('a');
                 a2.textContent = 'Read more';
+                a2.href = "/courses/view/" + course['name'];
                 fourthDiv.appendChild(a2);
                 thirdDiv.appendChild(fourthDiv);
 

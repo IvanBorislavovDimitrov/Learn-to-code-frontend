@@ -197,7 +197,11 @@ class Index extends Component {
 
         let p = document.createElement("p");
         p.setAttribute('class', 'card-text');
-        p.textContent = course['description'];
+        if (course['description'].length > 120) {
+          p.textContent = course['description'].substring(0, 120) + "...";
+        } else {
+          p.textContent = course['description'];
+        }
 
         let fourthDiv = document.createElement("div");
         fourthDiv.setAttribute('class', 'card-footer');

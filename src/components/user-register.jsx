@@ -15,7 +15,8 @@ class UserRegister extends Component {
       username: null,
       phoneNumber: null,
       birthDate: null,
-      profilePicture: null
+      profilePicture: null,
+      description: null
     };
     this.fileInput = React.createRef();
   }
@@ -66,6 +67,16 @@ class UserRegister extends Component {
                 className="form-control mb-4"
                 id="usernameInputField"
                 placeholder="Enter your username"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                onChange={this.changeInputField}
+                name="description"
+                type="text"
+                className="form-control mb-4"
+                id="descriptionInputField"
+                placeholder="Enter description (optional)"
               />
             </div>
             <div className="form-group">
@@ -148,7 +159,7 @@ class UserRegister extends Component {
     async function doRegister() {
       const registerFormData = new FormData();
       if (currentThis.state.profilePicture !== null) {
-        registerFormData.append('profilePicture', currentThis.state.videoFileUpload.current.files[0], currentThis.fileInput.current.files[0].name);
+        registerFormData.append('profilePicture', currentThis.state.videoFileUpload.current.files[0]);
       }
       registerFormData.append('email', currentThis.state.email);
       registerFormData.append('firstName', currentThis.state.firstName);
@@ -158,6 +169,7 @@ class UserRegister extends Component {
       registerFormData.append('birthDate', currentThis.state.birthDate);
       registerFormData.append('password', currentThis.state.password);
       registerFormData.append('confirmPassword', currentThis.state.confirmPassword);
+      registerFormData.append('description', currentThis.state.description);
 
       const registerResponse = await fetch(process.env.REACT_APP_URL + '/users/register', {
         method: 'POST',
