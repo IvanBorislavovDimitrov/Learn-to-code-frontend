@@ -12,7 +12,8 @@ class ViewCourse extends Component {
         videosFullNames: [],
         currentVideoTitle: null,
         currentVideoName: null,
-        teacherDescrption: null
+        teacherDescrption: null,
+        teacherProfilePictureName: null
     }
     render() {
         return (
@@ -74,7 +75,7 @@ class ViewCourse extends Component {
                                     </article>
 
                                     <div class="blog-author clearfix">
-                                        <img src="assets/img/blog-author.jpg" class="rounded-circle float-left" alt="" />
+                                        <img src={this.state.teacherProfilePictureName} class="rounded-circle float-left" alt="" />
                                         <h4>{this.state.teacherName}</h4>
                                         <div class="social-links">
                                             <a href="https://twitters.com/#"><i class="icofont-twitter"></i></a>
@@ -278,7 +279,8 @@ class ViewCourse extends Component {
                 category: courseModel["category"]["name"],
                 currentVideoTitle: courseModel["videosNames"][0]["videoTitle"],
                 currentVideoName: courseModel["videosNames"][0]["videoFullName"],
-                teacherDescrption: courseModel["teacher"]["description"]
+                teacherDescrption: courseModel["teacher"]["description"],
+                teacherProfilePictureName: process.env.REACT_APP_URL + "/resource/images/" + courseModel["teacher"]["profilePictureName"]
             });
         });
     }
