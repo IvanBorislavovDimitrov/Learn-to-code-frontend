@@ -1,7 +1,11 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
+import {Button, Modal} from "react-bootstrap";
 
 class Navbar extends Component {
-    state = {};
+    state = {
+        seen: false,
+    };
+
     render() {
         let loggedUser = localStorage.getItem('loggedUser');
         let isLoggedIn = loggedUser !== null;
@@ -15,10 +19,14 @@ class Navbar extends Component {
 
         return (
             <React.Fragment>
+                <link rel="stylesheet"
+                      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
 
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <a className="navbar-brand" href="/">Learn To Code</a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button className="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -52,6 +60,10 @@ class Navbar extends Component {
                                 <a className="btn btn-danger" href="/admin/index">Open Admin UI</a>
                             </li>
 
+                            <li className="ml-3 nav-item active">
+                                {this.showShoppingCart()}
+                            </li>
+
                         </ul>
                     </div>
                 </nav>
@@ -72,6 +84,37 @@ class Navbar extends Component {
         });
         window.location.reload();
     }
+
+    showShoppingCart = () => {
+        return (
+            <React.Fragment>
+                <button className="btn btn-primary" variant="primary" onClick={this.show}>
+                    <i className="fa fa-shopping-cart fa-1x"></i> Shopping cart
+                </button>
+                <Modal show={this.state.seen} animation={true}>
+                    <Modal.Header>
+                        <Modal.Title>Courses</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body id="users"></Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={this.hidePop}>Close</Button>
+                    </Modal.Footer>
+                </Modal>
+            </React.Fragment>
+        );
+    }
+
+    show = () => {
+        this.setState({
+            seen: true
+        });
+    };
+
+    hidePop = () => {
+        this.setState({
+            seen: false
+        });
+    };
 }
 
 export default Navbar;

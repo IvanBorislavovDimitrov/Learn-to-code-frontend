@@ -16,7 +16,8 @@ class ViewCourse extends Component {
         teacherProfilePictureName: null,
         commentsCount: 0,
         price: 0,
-        isUserEnrolledForCourse: false
+        isUserEnrolledForCourse: false,
+        doesUserHaveCourseInCart: false
     }
 
     render() {
@@ -59,6 +60,12 @@ class ViewCourse extends Component {
                                             <button onClick={this.enrolledLoggedUserForCourse}
                                                     hidden={this.state.isUserEnrolledForCourse} type="button"
                                                     className="btn btn-warning mr-3">Enroll for course to reveal the
+                                                content
+                                            </button>
+                                            <button onClick={this.addToCourseToCart}
+                                                    hidden={this.state.isUserEnrolledForCourse || this.state.doesUserHaveCourseInCart}
+                                                    type="button"
+                                                    className="btn btn-success mr-3">Add to cart
                                                 content
                                             </button>
                                             <div hidden={this.state.isUserEnrolledForCourse} className="entry-content">
@@ -138,6 +145,7 @@ class ViewCourse extends Component {
         this.setCourseByName(courseName);
         this.loadComments(courseName);
         this.checkIsUserEnrolledForCourse();
+        this.checkIfUserHasCourseInCart();
     }
 
     addComment = event => {
@@ -343,6 +351,51 @@ class ViewCourse extends Component {
             } else {
                 alert('Enrollment failed!');
             }
+        });
+    }
+
+    addToCourseToCart = () => {
+
+        const courseName = this.getCourseName();
+
+        async function addToCart() {
+            return await fetch(process.env.REACT_APP_URL + '/courses/cart/add/' + courseName, {
+                method: 'POST',
+                credentials: 'include',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }
+
+        addToCart().then(async response => {
+            if (response.status === 200) {
+                window.location.reload();
+            } else {
+                alert('Add to cart failed!');
+            }
+        });
+    }
+
+    checkIfUserHasCourseInCart = () => {
+        const currentCourse = this.getCourseName();
+        fetch(process.env.REACT_APP_URL + '/courses/cart/all', {
+            method: 'GET',
+            credentials: 'include'
+        }).then(async response => {
+            const jsonResponse = await response.json();
+            const coursesInCart = JSON.parse(JSON.stringify(jsonResponse));
+            coursesInCart.forEach(course => {
+                if (course['name'] == currentCourse) {
+                    this.setState({
+                        doesUserHaveCourseInCart: true
+                    });
+                    return;
+                }
+            });
+        }).catch(error => {
+            console.log(error);
         });
     }
 

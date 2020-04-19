@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { BrowserRouter, Route, Switch, Link, Redirect } from "react-router-dom";
+import {BrowserRouter, Route, Switch, Link, Redirect} from "react-router-dom";
 import Index from "./components/index";
 import UserRegister from "./components/user-register";
 import UserAuthorize from "./components/user-authorize-github";
@@ -19,29 +19,31 @@ import Courses from './components/courses';
 import ViewCourse from './components/view-course';
 
 function App() {
-  setTimeout(function () { localStorage.clear(); }, (100 * 30 * 1000));
-  return (
-    <BrowserRouter>
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={Index} />
-        <Route exact path="/users/authorize" component={UserAuthorize} />
-        <Route exact path="/users/login" component={UserLogin} />
-        <Route exact path="/users/register" component={UserRegister} />
-        <Route exact path="/course-categories/add" component={AddCourseCategory} />
-        <Route exact path="/admin/index" component={AdminUI} />
-        <Route exact path="/first/enter" component={FirstEnter} />
-        <Route exact path="/admin/change-user-role" component={ChangeUserRole} />
-        <Route exact path="/admin/delete-user" component={DeleteUser} />
-        <Route exact path="/moderator/index" component={ModeratorUI} />
-        <Route exact path="/courses/add-new-course" component={AddNewCourse} />
-        <Route exact path="/courses" component={Courses} />
-        <Route path="/courses/view" component={ViewCourse} />
+    setTimeout(function () {
+        localStorage.clear();
+    }, (24 * 60 * 60 * 1000));
+    return (
+        <BrowserRouter>
+            <Navbar/>
+            <Switch>
+                <Route exact path="/" component={Index}/>
+                <Route exact path="/users/authorize" component={UserAuthorize}/>
+                <Route exact path="/users/login" component={UserLogin}/>
+                <Route exact path="/users/register" component={UserRegister}/>
+                <Route exact path="/course-categories/add" component={AddCourseCategory}/>
+                <Route exact path="/admin/index" component={AdminUI}/>
+                <Route exact path="/first/enter" component={FirstEnter}/>
+                <Route exact path="/admin/change-user-role" component={ChangeUserRole}/>
+                <Route exact path="/admin/delete-user" component={DeleteUser}/>
+                <Route exact path="/moderator/index" component={ModeratorUI}/>
+                <Route exact path="/courses/add-new-course" component={AddNewCourse}/>
+                <Route exact path="/courses" component={Courses}/>
+                <Route path="/courses/view" component={ViewCourse}/>
 
-      </Switch>
-      <Footer />
-    </BrowserRouter>
-  );
+            </Switch>
+            <Footer/>
+        </BrowserRouter>
+    );
 }
 
 export default App;
