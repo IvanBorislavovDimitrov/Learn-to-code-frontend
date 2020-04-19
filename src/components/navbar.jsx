@@ -93,18 +93,37 @@ class Navbar extends Component {
                 </button>
                 <Modal show={this.state.seen} animation={true}>
                     <Modal.Header>
-                        <Modal.Title>Courses</Modal.Title>
+                        <Modal.Title>Shopping cart</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body id="users"></Modal.Body>
+                    <Modal.Body id="users">
+                        <table className="table table-dark">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody id="table">
+
+                            </tbody>
+                        </table>
+                    </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.hidePop}>Close</Button>
+                        <Button className="btn btn-success" variant="secondary" onClick={this.hidePop}>Close</Button>
+                        <Button className="btn btn-warning" variant="secondary" onClick={this.hidePop}>Finish
+                            purchase</Button>
                     </Modal.Footer>
                 </Modal>
             </React.Fragment>
         );
     }
 
+    componentDidMount() {
+    }
+
     show = () => {
+        this.getCoursesInCart();
         this.setState({
             seen: true
         });
@@ -115,6 +134,41 @@ class Navbar extends Component {
             seen: false
         });
     };
+
+    getCoursesInCart = () => {
+        const currentThis = this;
+        fetch(process.env.REACT_APP_URL + '/courses/cart/all', {
+            method: 'GET',
+            credentials: 'include'
+        }).then(async response => {
+            const jsonResponse = await response.json();
+            const coursesInCart = JSON.parse(JSON.stringify(jsonResponse));
+            coursesInCart.forEach(course => {
+                const table = document.getElementById('table');
+                const tr = document.createElement('tr');
+                const courseName = document.createElement('td');
+                courseName.textContent = course['name'];
+                const coursePrice = document.createElement('td');
+                coursePrice.textContent = '$' + course['price'];
+                const actions = document.createElement('td');
+                const removeButton = document.createElement('button');
+                removeButton.setAttribute('class', 'btn btn-danger btn-sm');
+                removeButton.textContent = 'Remove';
+                removeButton.onclick = () => {
+                    table.innerText = '';
+                    currentThis.getCoursesInCart();
+                };
+                actions.appendChild(removeButton);
+                tr.appendChild(courseName);
+                tr.appendChild(coursePrice);
+                tr.appendChild(actions);
+                table.appendChild(tr);
+            });
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
 }
 
 export default Navbar;
