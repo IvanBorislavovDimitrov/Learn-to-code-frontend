@@ -155,8 +155,25 @@ class Navbar extends Component {
                 removeButton.setAttribute('class', 'btn btn-danger btn-sm');
                 removeButton.textContent = 'Remove';
                 removeButton.onclick = () => {
-                    table.innerText = '';
-                    currentThis.getCoursesInCart();
+                    async function removeFromCart() {
+                        return await fetch(process.env.REACT_APP_URL + '/courses/cart/remove/' + course['name'], {
+                            method: 'POST',
+                            credentials: 'include',
+                            mode: 'cors',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        });
+                    }
+
+                    removeFromCart().then(async response => {
+                        if (response.status === 200) {
+                            table.innerText = '';
+                            currentThis.getCoursesInCart();
+                        } else {
+                            alert('Add to cart failed!');
+                        }
+                    });
                 };
                 actions.appendChild(removeButton);
                 tr.appendChild(courseName);
