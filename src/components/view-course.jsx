@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
 class ViewCourse extends Component {
     state = {
@@ -12,9 +12,13 @@ class ViewCourse extends Component {
         videosFullNames: [],
         currentVideoTitle: null,
         currentVideoName: null,
-        teacherDescrption: null,
-        teacherProfilePictureName: null
+        teacherDescription: null,
+        teacherProfilePictureName: null,
+        commentsCount: 0,
+        price: 0,
+        isUserEnrolledForCourse: false
     }
+
     render() {
         return (
             <React.Fragment>
@@ -24,80 +28,100 @@ class ViewCourse extends Component {
                     </div>
                 </section>
                 <main id="main">
-                    <section id="blog" class="blog">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-8 entries">
-                                    <article class="entry entry-single">
-                                        <div id="video" class="justify-content container">
+                    <section id="blog" className="blog">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-lg-8 entries">
+                                    <article className="entry entry-single">
+                                        <div id="video" className="justify-content container">
                                         </div>
-                                        <h2 class="entry-title mt-3">
+                                        <h2 className="entry-title mt-3">
                                             <a>{this.state.courseName}</a>
                                         </h2>
-                                        <div class="entry-meta">
+                                        <div className="entry-meta">
                                             <ul>
-                                                <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="#">{this.state.teacherName}</a></li>
-                                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="#"><time >{this.state.startDate}</time></a></li>
-                                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="#"><time >{this.state.endDate}</time></a></li>
-                                                <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="#">12 Comments</a></li>
+                                                <li className="d-flex align-items-center"><i className="icofont-user"/>
+                                                    <a href="#">{this.state.teacherName}</a></li>
+                                                <li className="d-flex align-items-center"><i
+                                                    className="icofont-wall-clock"/> <a href="#">
+                                                    <time>{this.state.startDate}</time>
+                                                </a></li>
+                                                <li className="d-flex align-items-center"><i
+                                                    className="icofont-wall-clock"/> <a href="#">
+                                                    <time>{this.state.endDate}</time>
+                                                </a></li>
+                                                <li className="d-flex align-items-center"><i
+                                                    className="icofont-comment"/> <a
+                                                    href="#">{this.state.commentsCount} Comments</a></li>
                                             </ul>
                                         </div>
-                                        <div class="entry-content">
-                                            <h3>Descirption</h3>
+                                        <div className="jumbotron-fluid">
+                                            <button onClick={this.enrolledLoggedUserForCourse}
+                                                    hidden={this.state.isUserEnrolledForCourse} type="button"
+                                                    className="btn btn-warning mr-3">Enroll for course to reveal the
+                                                content
+                                            </button>
+                                            <div hidden={this.state.isUserEnrolledForCourse} className="entry-content">
+                                                <h3>Price - ${this.state.price}</h3>
+                                            </div>
+                                        </div>
+                                        <div className="entry-content">
+                                            <h3>Description</h3>
                                             <p>{this.state.description}</p>
                                         </div>
-                                        <div class="entry-footer clearfix">
-                                            <div class="float-left">
-                                                <i class="icofont-folder"></i>
-                                                <ul class="cats ml-2">
+
+                                        <div className="entry-footer clearfix">
+                                            <div className="float-left">
+                                                <i className="icofont-folder"/>
+                                                <ul className="cats ml-2">
                                                     <li><a href="#">{this.state.category}</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="float-right share">
-                                                <a href="" title="Share on Twitter"><i class="icofont-twitter"></i></a>
-                                                <a href="" title="Share on Facebook"><i class="icofont-facebook"></i></a>
-                                                <a href="" title="Share on Instagram"><i class="icofont-instagram"></i></a>
+                                            <div className="float-right share">
+                                                <a href="#" title="Share on Twitter"><i
+                                                    className="icofont-twitter"/></a>
+                                                <a href="#" title="Share on Facebook"><i
+                                                    className="icofont-facebook"/></a>
+                                                <a href="#" title="Share on Instagram"><i
+                                                    className="icofont-instagram"/></a>
                                             </div>
                                         </div>
                                     </article>
-                                    <div class="blog-author clearfix">
-                                        <img src={this.state.teacherProfilePictureName} class="rounded-circle float-left" alt="" />
+                                    <div className="blog-author clearfix">
+                                        <img src={this.state.teacherProfilePictureName}
+                                             className="rounded-circle float-left" alt=""/>
                                         <h4>{this.state.teacherName}</h4>
-                                        <div class="social-links">
-                                            <a href="https://twitters.com/#"><i class="icofont-twitter"></i></a>
-                                            <a href="https://facebook.com/#"><i class="icofont-facebook"></i></a>
-                                            <a href="https://instagram.com/#"><i class="icofont-instagram"></i></a>
+                                        <div className="social-links">
+                                            <a href="https://twitters.com/#"><i className="icofont-twitter"/></a>
+                                            <a href="https://facebook.com/#"><i className="icofont-facebook"/></a>
+                                            <a href="https://instagram.com/#"><i className="icofont-instagram"/></a>
                                         </div>
-                                        <p>{this.state.teacherDescrption}</p>
+                                        <p>{this.state.teacherDescription}</p>
                                     </div>
-                                    <div class="blog-comments">
-                                        <h4 class="comments-count">8 Comments</h4>
-                                        <div id="comment-1" class="comment clearfix">
-                                            <img src="assets/img/comments-1.jpg" class="comment-img  float-left" alt="" />
-                                            <h5><a href="">Georgia Reader</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                                            <time datetime="2020-01-01">01 Jan, 2020</time>
-                                            <p>
-                                                Et rerum totam nisi. Molestiae vel quam dolorum vel voluptatem et et. Est ad aut sapiente quis molestiae est qui cum soluta.
-                                                Vero aut rerum vel. Rerum quos laboriosam placeat ex qui. Sint qui facilis et.
-            </p>
+                                    <div className="blog-comments">
+                                        <h4 className="comments-count">Comments</h4>
+                                        <div id="comments-section">
+
                                         </div>
-                                        <div class="reply-form">
+
+                                        <div className="reply-form">
                                             <h4>Leave a Comment</h4>
                                             <form onSubmit={this.addComment}>
-                                                <div class="row">
-                                                    <div class="col form-group">
-                                                        <textarea id="commentContent" name="comment" rows="5" class="form-control" placeholder="Your Comment"></textarea>
+                                                <div className="row">
+                                                    <div className="col form-group">
+                                                        <textarea id="commentContent" name="comment" rows="5"
+                                                                  className="form-control" placeholder="Your Comment"/>
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Post Comment</button>
+                                                <button type="submit" className="btn btn-primary">Post Comment</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <div class="sidebar">
-                                        <h3 class="sidebar-title">Agenda</h3>
-                                        <div id="agenda" class="sidebar-item h6">
+                                <div className="col-lg-4">
+                                    <div className="sidebar">
+                                        <h3 className="sidebar-title">Agenda</h3>
+                                        <div id="agenda" className="sidebar-item h6">
                                         </div>
                                     </div>
                                 </div>
@@ -112,6 +136,8 @@ class ViewCourse extends Component {
     componentDidMount() {
         const courseName = this.getCourseName();
         this.setCourseByName(courseName);
+        this.loadComments(courseName);
+        this.checkIsUserEnrolledForCourse();
     }
 
     addComment = event => {
@@ -131,7 +157,7 @@ class ViewCourse extends Component {
         };
 
         async function sendComment() {
-            const logginResponse = await fetch(process.env.REACT_APP_URL + '/comments', {
+            return await fetch(process.env.REACT_APP_URL + '/comments/add', {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',
@@ -141,12 +167,11 @@ class ViewCourse extends Component {
                 },
                 body: JSON.stringify(commentRequest)
             });
-            return logginResponse;
         }
 
         sendComment().then(async respone => {
             if (respone.status === 200) {
-                console.log("SUCCESS");
+                window.location.reload();
             } else {
                 alert("Comment was not uploaded");
             }
@@ -159,7 +184,6 @@ class ViewCourse extends Component {
     }
 
     setCourseByName = (courseName) => {
-        const currentThis = this;
         fetch(process.env.REACT_APP_URL + "/courses/" + courseName, {
             method: 'GET',
             credentials: 'include',
@@ -214,11 +238,114 @@ class ViewCourse extends Component {
                 category: courseModel["category"]["name"],
                 currentVideoTitle: courseModel["videosNames"][0]["videoTitle"],
                 currentVideoName: courseModel["videosNames"][0]["videoFullName"],
-                teacherDescrption: courseModel["teacher"]["description"],
-                teacherProfilePictureName: process.env.REACT_APP_URL + "/resource/images/" + courseModel["teacher"]["profilePictureName"]
+                teacherDescription: courseModel["teacher"]["description"],
+                teacherProfilePictureName: process.env.REACT_APP_URL + "/resource/images/" + courseModel["teacher"]["profilePictureName"],
+                price: courseModel["price"]
             });
         });
     }
+
+    loadComments = courseName => {
+        const currentThis = this;
+        fetch(process.env.REACT_APP_URL + "/comments/all?courseName=" + courseName, {
+            method: 'GET',
+            credentials: 'include'
+        }).then(async response => {
+            if (response.status === 200) {
+                const jsonResponse = await response.json();
+                const comments = JSON.parse(JSON.stringify(jsonResponse));
+                comments.forEach(comment => {
+                    const commentsSection = document.getElementById('comments-section');
+                    const commentOuterDiv = document.createElement('div');
+                    commentOuterDiv.setAttribute('class', 'blog-author');
+                    const usernameH5 = document.createElement('h5');
+                    const usernameA = document.createElement('a');
+                    usernameA.href = '#';
+                    usernameA.textContent = comment['author']['username'];
+                    usernameH5.appendChild(usernameA);
+                    const time = document.createElement('time');
+                    time.textContent = comment['date']['dayOfMonth'] + ' ' + comment['date']['month'] + ', ' + comment['date']['year'];
+                    const contentParagraph = document.createElement('p');
+                    contentParagraph.textContent = currentThis.splitText(comment['content'], 50);
+                    commentOuterDiv.appendChild(usernameH5);
+                    commentOuterDiv.appendChild(time);
+                    commentOuterDiv.appendChild(contentParagraph);
+                    commentsSection.appendChild(commentOuterDiv);
+                });
+                this.setState({
+                    commentsCount: comments.length
+                });
+            } else {
+                alert('Comments cannot be fetched!');
+            }
+        }).catch(error => {
+            console.log(error.message);
+        });
+    }
+
+    splitText = (text, count) => {
+        if (text.length < count) {
+            return text;
+        }
+        let str = '';
+        let start = 0;
+        for (let i = 0; i < text.length; i++) {
+            if (i % count === 0) {
+                str += text.slice(start, i) + "\n";
+                start = i;
+            }
+        }
+        return str;
+    }
+
+    checkIsUserEnrolledForCourse = () => {
+        const currentThis = this;
+        const courseName = this.getCourseName();
+        fetch(process.env.REACT_APP_URL + '/courses/is-enrolled/' + courseName, {
+            method: 'GET',
+            credentials: 'include'
+        }).then(async response => {
+            if (response.status === 200) {
+                const jsonResponse = await response.json();
+                const isUserEnrolled = JSON.parse(JSON.stringify(jsonResponse))['userEnrolledForCourse'];
+                currentThis.setState({
+                    isUserEnrolledForCourse: isUserEnrolled
+                });
+                console.log(isUserEnrolled);
+            } else {
+                console.log(response.status, response);
+            }
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
+    enrolledLoggedUserForCourse = () => {
+
+        // TODO: Add payments, verifications, paypal...
+
+        const courseName = this.getCourseName();
+
+        async function enrollUserForCourse() {
+            return await fetch(process.env.REACT_APP_URL + '/courses/enroll/' + courseName, {
+                method: 'POST',
+                credentials: 'include',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }
+
+        enrollUserForCourse().then(async response => {
+            if (response.status === 200) {
+                window.location.reload();
+            } else {
+                alert('Enrollment failed!');
+            }
+        });
+    }
+
 }
 
 export default ViewCourse;
