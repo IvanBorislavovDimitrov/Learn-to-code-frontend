@@ -111,8 +111,8 @@ class Navbar extends Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button className="btn btn-success" variant="secondary" onClick={this.hidePop}>Close</Button>
-                        <Button className="btn btn-warning" variant="secondary" onClick={this.hidePop}>Finish
-                            purchase</Button>
+                        <a className="btn btn-warning" variant="secondary" href="/courses/cart/finish-cart-purchase">Finish
+                            purchase</a>
                     </Modal.Footer>
                 </Modal>
             </React.Fragment>
