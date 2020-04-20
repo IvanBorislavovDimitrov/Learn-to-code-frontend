@@ -1,8 +1,8 @@
 import React from 'react';
-import { Component } from 'react';
-import { Redirect } from "react-router-dom";
+import {Component} from 'react';
+import {Redirect} from "react-router-dom";
 import qs from 'qs'
-import { Modal, Button } from 'react-bootstrap';
+import {Modal, Button} from 'react-bootstrap';
 
 
 class AddNewCourse extends Component {
@@ -25,11 +25,13 @@ class AddNewCourse extends Component {
         this.videoFileUpload = React.createRef();
         this.thumbnailFileUpload = React.createRef();
     }
+
     render() {
         return (
             <React.Fragment>
                 <div className="col-md-4 mt-4 container">
-                    <form className="text-center border border-light p-5" onSubmit={this.addCourse} encType="multipart/form-data">
+                    <form className="text-center border border-light p-5" onSubmit={this.addCourse}
+                          encType="multipart/form-data">
                         <p className="h4 mb-4">Add new course</p>
 
                         <div className="form-group">
@@ -94,7 +96,8 @@ class AddNewCourse extends Component {
 
                         <div className="form-group">
                             <label htmlFor="formOfEducationInput">Form of education</label>
-                            <select name="formOfEducation" onChange={this.changeInputField} className="form-control" id="formOfEducationInput">
+                            <select name="formOfEducation" onChange={this.changeInputField} className="form-control"
+                                    id="formOfEducationInput">
                                 <option>REGULAR</option>
                                 <option>ONLINE</option>
                             </select>
@@ -114,12 +117,14 @@ class AddNewCourse extends Component {
 
                         <div className="form-group">
                             <label htmlFor="descriptionTextArea">Description</label>
-                            <textarea onChange={this.changeInputField} name="description" className="form-control" id="descriptionTextArea" rows="3"></textarea>
+                            <textarea onChange={this.changeInputField} name="description" className="form-control"
+                                      id="descriptionTextArea" rows="3"></textarea>
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="categoryInput">Category</label>
-                            <select name="categoryName" onChange={this.changeInputField} className="form-control" id="categoryInput">
+                            <select name="categoryName" onChange={this.changeInputField} className="form-control"
+                                    id="categoryInput">
                             </select>
                         </div>
 
@@ -158,8 +163,12 @@ class AddNewCourse extends Component {
                             </div>
 
                         </div>
-                        <button onClick={this.addCoursePart} className="btn btn-primary btn-block" type="button">Add part</button>
-                        <button onClick={this.removeCoursePart} className="btn btn-danger btn-block" type="button">Remove part</button>
+                        <button onClick={this.addCoursePart} className="btn btn-primary btn-block" type="button">Add
+                            part
+                        </button>
+                        <button onClick={this.removeCoursePart} className="btn btn-danger btn-block"
+                                type="button">Remove part
+                        </button>
 
                         <div className="form-group mt-3">
                             <small id="fileHelp" className="form-text text-muted">Thumbnail</small>
@@ -174,11 +183,11 @@ class AddNewCourse extends Component {
                             />
                         </div>
 
-                        <br />
+                        <br/>
                         <button className="btn btn-info btn-block" type="submit">Add course</button>
                     </form>
                 </div>
-            </React.Fragment >
+            </React.Fragment>
         )
     }
 
@@ -359,6 +368,7 @@ class AddNewCourse extends Component {
 
     getUsersByUsernameInput = () => {
         let currentThis = this;
+
         async function getUsersByUsername() {
             const usersResponse = await fetch(process.env.REACT_APP_URL + '/users/filter/username?username=' + currentThis.state.teacherName, {
                 method: 'GET',
@@ -394,7 +404,6 @@ class AddNewCourse extends Component {
         });
     };
 }
-
 
 
 export default AddNewCourse;

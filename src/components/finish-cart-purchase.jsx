@@ -100,6 +100,7 @@ class FinishCartPurchase extends Component {
                         credentials: 'include',
                     });
                 }
+
                 enrollForCoursesFromCart().then(async respone => {
                     if (respone.status === 200) {
                         this.props.history.push('/');

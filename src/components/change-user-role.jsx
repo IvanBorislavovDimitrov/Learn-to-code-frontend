@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import React, {Component} from 'react';
+import {Modal, Button} from 'react-bootstrap';
 
 class ChangeUserRole extends Component {
     state = {
@@ -16,23 +16,31 @@ class ChangeUserRole extends Component {
                 <div id="rolesTable" className="container mt-4">
                     <table className="table">
                         <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Add Role</th>
-                            </tr>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Add Role</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr id="adminTR">
-                                <th scope="row">1</th>
-                                <td>Moderator</td>
-                                <td><button onClick={() => this.addRole('ROLE_MODERATOR')} className="btn btn-primary">Add role</button></td>
-                            </tr>
-                            <tr id="moderatorTR">
-                                <th scope="row">2</th>
-                                <td>Admin</td>
-                                <td><button onClick={() => this.addRole('ROLE_ADMIN')} className="btn btn-primary">Add role</button></td>
-                            </tr>
+                        <tr id="adminTR">
+                            <th scope="row">1</th>
+                            <td>Moderator</td>
+                            <td>
+                                <button onClick={() => this.addRole('ROLE_MODERATOR')} className="btn btn-primary">Add
+                                    role
+                                </button>
+                            </td>
+                        </tr>
+                        <tr id="moderatorTR">
+                            <th scope="row">2</th>
+                            <td>Admin</td>
+                            <td>
+                                <button onClick={() => this.addRole('ROLE_ADMIN')} className="btn btn-primary">Add
+                                    role
+                                </button>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -129,6 +137,7 @@ class ChangeUserRole extends Component {
 
     getUsersByUsernameInput = () => {
         let currentThis = this;
+
         async function getUsersByUsername() {
             const usersResponse = await fetch(process.env.REACT_APP_URL + '/users/filter/username?username=' + currentThis.state.username, {
                 method: 'GET',
@@ -164,6 +173,7 @@ class ChangeUserRole extends Component {
         const currentRoles = rolesField.value.split(' ');
         const roles = currentRoles.join(',');
         let currentThis = this;
+
         async function update() {
             const usersResponse = await fetch(process.env.REACT_APP_URL + '/users/change-roles/' + currentThis.state.usernameRoleChange
                 + '/?roles=' + roles, {

@@ -1,5 +1,5 @@
-import React, { Component, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import React, {Component, useEffect} from "react";
+import {Redirect} from "react-router-dom";
 import qs from 'qs'
 
 class Courses extends Component {
@@ -12,6 +12,7 @@ class Courses extends Component {
     }
 
     state = {};
+
     render() {
         return (
             <React.Fragment>
@@ -325,7 +326,7 @@ class Courses extends Component {
                     activePage.setAttribute('class', '');
                     this.removePgingActive();
                     previousPage.setAttribute('class', 'active');
-                    this.setState({ currentPage: this.state.currentPage - 1 });
+                    this.setState({currentPage: this.state.currentPage - 1});
                     if (this.state.currentPage == 1) {
                         leftArrow.setAttribute('class', 'disabled');
                     }
@@ -351,7 +352,7 @@ class Courses extends Component {
                 this.loadCourses(this.state.courseName, "1");
                 this.removePgingActive();
                 firstPage.setAttribute('class', 'active');
-                this.setState({ currentPage: 1 });
+                this.setState({currentPage: 1});
                 leftArrow.setAttribute('class', 'disabled');
                 rightArrow.setAttribute('class', '');
             });
@@ -371,7 +372,7 @@ class Courses extends Component {
                     this.loadCourses(this.state.courseName, i + 1 + "");
                     this.removePgingActive();
                     page.setAttribute('class', 'active');
-                    this.setState({ currentPage: i + 1 });
+                    this.setState({currentPage: i + 1});
                     leftArrow.setAttribute('class', '');
                     if (i + 1 == Number.parseInt(pagesCount["count"])) {
                         rightArrow.setAttribute('class', 'disabled');
@@ -407,7 +408,7 @@ class Courses extends Component {
                     activePage.setAttribute('class', '');
                     this.removePgingActive();
                     nextPage.setAttribute('class', 'active');
-                    this.setState({ currentPage: this.state.currentPage + 1 });
+                    this.setState({currentPage: this.state.currentPage + 1});
                     if (this.state.currentPage == Number.parseInt(pagesCount['count'])) {
                         rightArrow.setAttribute('class', 'disabled');
                     }

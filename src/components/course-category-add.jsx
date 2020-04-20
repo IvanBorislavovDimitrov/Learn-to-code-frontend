@@ -1,12 +1,13 @@
 import React from 'react';
-import { Component } from 'react';
-import { Redirect } from "react-router-dom";
+import {Component} from 'react';
+import {Redirect} from "react-router-dom";
 import qs from 'qs'
 
 class AddCourseCategory extends Component {
     state = {
         courseCategoryName: null
     };
+
     render() {
         return (
             <React.Fragment>
@@ -69,7 +70,6 @@ class AddCourseCategory extends Component {
         });
     };
 }
-
 
 
 export default AddCourseCategory;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 class AdminUI extends Component {
 
@@ -26,7 +26,8 @@ class AdminUI extends Component {
                                 <div className="icon-box icon-box-pink">
                                     <div className="icon"><i className="bx bxl-redbubble"></i></div>
                                     <h4 className="title"><a href="/admin/change-user-role">Change User's Role</a></h4>
-                                    <p className="description">Click here if you want to change user's role. You can promote a user to Moderator or Admin!</p>
+                                    <p className="description">Click here if you want to change user's role. You can
+                                        promote a user to Moderator or Admin!</p>
                                 </div>
                             </div>
 
@@ -34,7 +35,8 @@ class AdminUI extends Component {
                                 <div className="icon-box icon-box-cyan">
                                     <div className="icon"><i className="bx bx-file"></i></div>
                                     <h4 className="title"><a href="/admin/delete-user">Delete User</a></h4>
-                                    <p className="description">Be careful when deleting a user's profile. It could not be backed up!</p>
+                                    <p className="description">Be careful when deleting a user's profile. It could not
+                                        be backed up!</p>
                                 </div>
                             </div>
 
