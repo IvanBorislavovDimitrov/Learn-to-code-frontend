@@ -123,6 +123,21 @@ class Courses extends Component {
         });
     }
 
+    splitText = (text, count) => {
+        if (text.length < count) {
+            return text;
+        }
+        let str = '';
+        let start = 0;
+        for (let i = 0; i < text.length; i++) {
+            if (i % count === 0) {
+                str += text.slice(start, i) + "\n";
+                start = i;
+            }
+        }
+        return str;
+    }
+
     loadCourses = (courseName, pageNumber) => {
         let coursesResource = '/courses?';
         if (courseName !== null && courseName !== undefined) {
@@ -136,7 +151,7 @@ class Courses extends Component {
             }
         }
         console.log("invoking " + coursesResource);
-
+        const currentThis = this;
 
         fetch(process.env.REACT_APP_URL + coursesResource, {
             method: 'GET',
@@ -235,7 +250,7 @@ class Courses extends Component {
                 thirdDiv.setAttribute('class', 'entry-content');
 
                 const p = document.createElement('p');
-                p.textContent = course['description'];
+                p.textContent = currentThis.splitText(course['description'], 100);
                 thirdDiv.appendChild(p);
 
                 const fourthDiv = document.createElement('div');

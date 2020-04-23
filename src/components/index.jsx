@@ -20,25 +20,30 @@ class Index extends Component {
 
         return (
             <React.Fragment>
-                <header className="bg-primary py-5 mb-5">
-                    <div className="container h-100">
-                        <div className="row h-100 align-items-center">
-                            <div className="col-lg-12">
-                                <h1 className="display-4 text-white mt-5 mb-2">Do you want to learn to code?</h1>
-                                <p className="lead mb-5 text-white-50">Learn-To-Code platform allows you learn to code
-                                    with a bunch of the best tutorials available online. Enroll to our courses and you
-                                    will explore totally different experience of learning new skills, technologies and
-                                    so much more.</p>
+                <div className="">
+                    <header className="bg-gradient-info py-5 mb-5">
+                        <div className="container h-100">
+                            <div className="row h-100 align-items-center">
+                                <div className="col-lg-12">
+                                    <h1 className="display-4 text-white mt-5 mb-2">Do you want to learn to code?</h1>
+                                    <p className="lead mb-5 text-white-50">Learn-To-Code platform allows you learn to
+                                        code
+                                        with a bunch of the best tutorials available online. Enroll to our courses and
+                                        you
+                                        will explore totally different experience of learning new skills, technologies
+                                        and
+                                        so much more.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </header>
+                    </header>
+                </div>
 
                 <div className="container">
 
                     <div className="row">
                         <div className="col-md-8 mb-5">
-                            <h2>What We Do</h2>
+                            <h2>The world's largest selection of courses</h2>
                             <hr/>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore
                                 recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde
@@ -67,6 +72,28 @@ class Index extends Component {
                         </div>
                     </div>
 
+                    <ul className="nav nav-pills nav-fill">
+                        <li className="nav-item">
+                            <a onClick={this.changeToNewestShownCourses} id="newest" className="nav-link active"
+                               href="javascript:void(0)">Newest</a>
+                        </li>
+                        <li className="nav-item">
+                            <a onClick={this.changeToBestSellersShownCourses} id="best-sellers" className="nav-link"
+                               href="javascript:void(0)">Best
+                                sellers</a>
+                        </li>
+                        <li className="nav-item">
+                            <a onClick={this.changeToTopRatedShownCourses} id="top-rated" className="nav-link"
+                               href="javascript:void(0)">Top
+                                Rated</a>
+                        </li>
+                        <li className="nav-item">
+                            <a onClick={this.changeToTopSalesShownCourses} id="top-sales" className="nav-link"
+                               href="javascript:void(0)">Top
+                                Sales</a>
+                        </li>
+                    </ul>
+                    <br/>
                     <div id="courses" className="row">
 
                         <div id="remove1" className="col-md-4 mb-5">
@@ -196,7 +223,7 @@ class Index extends Component {
     componentDidMount() {
         this.getData();
         this.checkUserGithubAccessAvailable();
-        this.getLatestCourses();
+        this.getCourses();
     }
 
     getData() {
@@ -226,7 +253,7 @@ class Index extends Component {
         });
     }
 
-    getLatestCourses = () => {
+    getCourses = () => {
         fetch(process.env.REACT_APP_URL + "/courses/latest?count=3&loadThumbnails=true", {
             method: 'GET',
             credentials: 'include',
@@ -236,13 +263,19 @@ class Index extends Component {
             let coursesDiv = document.getElementById('courses');
 
             const el1 = document.getElementById('remove1');
-            el1.parentNode.removeChild(el1);
+            if (el1 !== undefined && el1 !== null) {
+                el1.parentNode.removeChild(el1);
+            }
 
             const el2 = document.getElementById('remove2');
-            el2.parentNode.removeChild(el2);
+            if (el2 !== undefined && el1 !== null) {
+                el2.parentNode.removeChild(el2);
+            }
 
             const el3 = document.getElementById('remove3');
-            el3.parentNode.removeChild(el3);
+            if (el3 !== undefined && el1 !== null) {
+                el3.parentNode.removeChild(el3);
+            }
 
             courses.forEach(course => {
 
@@ -277,9 +310,13 @@ class Index extends Component {
                 fourthDiv.setAttribute('class', 'card-footer');
 
                 let a = document.createElement("a");
-                a.setAttribute('class', 'btn btn-primary');
+                a.setAttribute('class', 'ml-3 btn btn-primary');
                 a.href = "/courses/view/" + course["name"];
                 a.textContent = "Find out more!";
+
+                const priceH = document.createElement('h2');
+                priceH.setAttribute('class', 'ml-5 mt-2');
+                priceH.textContent = '$' + course['price'];
 
                 firstDiv.appendChild(secondDiv);
                 secondDiv.appendChild(img);
@@ -287,7 +324,13 @@ class Index extends Component {
                 secondDiv.appendChild(fourthDiv);
                 thirdDiv.appendChild(h4);
                 thirdDiv.appendChild(p);
-                fourthDiv.appendChild(a);
+
+                const jumb = document.createElement('div');
+                jumb.setAttribute('class', 'row');
+                jumb.appendChild(a);
+                jumb.appendChild(priceH);
+
+                fourthDiv.appendChild(jumb);
 
                 coursesDiv.appendChild(firstDiv);
             });
@@ -297,6 +340,80 @@ class Index extends Component {
             console.log(err);
         });
     }
+
+    changeToNewestShownCourses = () => {
+        this.removeActiveFromAll();
+        const newest = document.getElementById('newest');
+        newest.setAttribute('class', 'nav-link active');
+        document.getElementById('courses').innerText = '';
+        this.create3LoadingElements();
+        this.getCourses();
+    };
+
+
+    changeToBestSellersShownCourses = () => {
+        this.removeActiveFromAll();
+        const bestSellers = document.getElementById('best-sellers');
+        bestSellers.setAttribute('class', 'nav-link active');
+        document.getElementById('courses').innerText = '';
+        this.create3LoadingElements();
+        this.getCourses();
+    };
+
+
+    changeToTopRatedShownCourses = () => {
+        this.removeActiveFromAll();
+        const topRated = document.getElementById('top-rated');
+        topRated.setAttribute('class', 'nav-link active');
+        document.getElementById('courses').innerText = '';
+        this.create3LoadingElements();
+        this.getCourses();
+    };
+
+
+    changeToTopSalesShownCourses = () => {
+        this.removeActiveFromAll();
+        const topSales = document.getElementById('top-sales');
+        topSales.setAttribute('class', 'nav-link active');
+        document.getElementById('courses').innerText = '';
+        this.create3LoadingElements();
+        this.getCourses();
+    };
+
+    removeActiveFromAll = () => {
+        const newest = document.getElementById('newest');
+        const bestSellers = document.getElementById('best-sellers');
+        const topRated = document.getElementById('top-rated');
+        const topSales = document.getElementById('top-sales');
+        newest.setAttribute('class', 'nav-link');
+        bestSellers.setAttribute('class', 'nav-link');
+        topRated.setAttribute('class', 'nav-link');
+        topSales.setAttribute('class', 'nav-link');
+    };
+
+    create3LoadingElements = () => {
+        const courses = document.getElementById('courses');
+        for (let i = 1; i <= 3; i++) {
+            const firstDiv = document.createElement('div');
+            firstDiv.setAttribute('class', 'col-md-4 mb-5');
+            const secondDiv = document.createElement('div');
+            secondDiv.setAttribute('class', 'card h-100 justify-content-center align-items-center');
+            const thirdDiv = document.createElement('div');
+            thirdDiv.setAttribute('class', 'spinner-border text-warning');
+            thirdDiv.setAttribute('role', 'status');
+            const innerSpan = document.createElement('span');
+            innerSpan.setAttribute('class', 'sr-only');
+            thirdDiv.appendChild(innerSpan);
+            secondDiv.appendChild(thirdDiv);
+            const fourthDiv = document.createElement('card-body');
+            fourthDiv.setAttribute('class', 'card-body');
+            secondDiv.appendChild(fourthDiv);
+            firstDiv.appendChild(secondDiv);
+            firstDiv.id = 'remove' + i;
+            courses.appendChild(firstDiv);
+        }
+    }
+
 }
 
 export default Index;

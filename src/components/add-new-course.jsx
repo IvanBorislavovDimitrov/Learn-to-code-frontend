@@ -1,8 +1,5 @@
-import React from 'react';
-import {Component} from 'react';
-import {Redirect} from "react-router-dom";
-import qs from 'qs'
-import {Modal, Button} from 'react-bootstrap';
+import React, {Component} from 'react';
+import {Button, Modal} from 'react-bootstrap';
 
 
 class AddNewCourse extends Component {
@@ -370,7 +367,7 @@ class AddNewCourse extends Component {
         let currentThis = this;
 
         async function getUsersByUsername() {
-            const usersResponse = await fetch(process.env.REACT_APP_URL + '/users/filter/username?username=' + currentThis.state.teacherName, {
+            return await fetch(process.env.REACT_APP_URL + '/users/filter/username?username=' + currentThis.state.teacherName, {
                 method: 'GET',
                 mode: 'cors',
                 cache: 'no-cache',
@@ -379,7 +376,6 @@ class AddNewCourse extends Component {
                     'Content-Type': 'application/json'
                 },
             });
-            return usersResponse;
         }
 
         getUsersByUsername().then(async respone => {

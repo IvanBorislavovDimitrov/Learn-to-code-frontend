@@ -164,6 +164,8 @@ class ViewCourse extends Component {
             courseName: courseName
         };
 
+        console.log('putki', commentRequest);
+
         async function sendComment() {
             return await fetch(process.env.REACT_APP_URL + '/comments/add', {
                 method: 'POST',
@@ -188,10 +190,11 @@ class ViewCourse extends Component {
 
     getCourseName = () => {
         const splitUrl = window.location.href.split('/');
-        return splitUrl[splitUrl.length - 1];
+        return decodeURIComponent(splitUrl[splitUrl.length - 1]);
     }
 
     setCourseByName = (courseName) => {
+        const currentThis = this;
         fetch(process.env.REACT_APP_URL + "/courses/" + courseName, {
             method: 'GET',
             credentials: 'include',
@@ -240,7 +243,7 @@ class ViewCourse extends Component {
             this.setState({
                 courseName: courseModel["name"],
                 teacherName: courseModel["teacher"]["username"],
-                description: courseModel["description"],
+                description: currentThis.splitText(courseModel["description"], 100),
                 startDate: courseModel["startDate"]["dayOfMonth"] + "-" + courseModel["startDate"]["monthValue"] + "-" + courseModel["startDate"]["year"],
                 endDate: courseModel["endDate"]["dayOfMonth"] + "-" + courseModel["endDate"]["monthValue"] + "-" + courseModel["endDate"]["year"],
                 category: courseModel["category"]["name"],
