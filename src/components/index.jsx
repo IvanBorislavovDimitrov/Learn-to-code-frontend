@@ -5,7 +5,10 @@ class Index extends Component {
     state = {
         content: "",
         githubUsername: null,
-        courses: null
+        courses: null,
+        courseCategoriesUrls: [],
+        courseCategoriesNames: [],
+        courseCategoriesDescription: []
     };
 
     render() {
@@ -142,51 +145,51 @@ class Index extends Component {
                         </div>
 
                         <div className="row">
-                            <div className="col-lg-4 col-md-6 d-flex align-items-stretch">
+                            <div className="col-lg-4 col-md-6 align-items-stretch">
                                 <div className="icon-box">
                                     <div className="icon"><i className="bx bxl-dribbble"></i></div>
-                                    <h4><a href="">Lorem Ipsum</a></h4>
-                                    <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                                    <h4><a href={this.state.courseCategoriesUrls[0]}>{this.state.courseCategoriesNames[0]}</a></h4>
+                                    <p>{this.state.courseCategoriesDescription[0]}</p>
                                 </div>
                             </div>
 
-                            <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                            <div className="col-lg-4 col-md-6 align-items-stretch mt-4 mt-md-0">
                                 <div className="icon-box">
                                     <div className="icon"><i className="bx bx-file"></i></div>
-                                    <h4><a href="">Sed ut perspiciatis</a></h4>
-                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                                    <h4><a href={this.state.courseCategoriesUrls[1]}>{this.state.courseCategoriesNames[1]}</a></h4>
+                                    <p>{this.state.courseCategoriesDescription[1]}</p>
                                 </div>
                             </div>
 
-                            <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                            <div className="col-lg-4 col-md-6 align-items-stretch mt-4 mt-lg-0">
                                 <div className="icon-box">
                                     <div className="icon"><i className="bx bx-tachometer"></i></div>
-                                    <h4><a href="">Magni Dolores</a></h4>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                                    <h4><a href={this.state.courseCategoriesUrls[2]}>{this.state.courseCategoriesNames[2]}</a></h4>
+                                    <p>{this.state.courseCategoriesDescription[2]}</p>
                                 </div>
                             </div>
 
-                            <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                            <div className="col-lg-4 col-md-6 align-items-stretch mt-4">
                                 <div className="icon-box">
                                     <div className="icon"><i className="bx bx-world"></i></div>
-                                    <h4><a href="">Nemo Enim</a></h4>
-                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                                    <h4><a href={this.state.courseCategoriesUrls[3]}>{this.state.courseCategoriesNames[3]}</a></h4>
+                                    <p>{this.state.courseCategoriesDescription[3]}</p>
                                 </div>
                             </div>
 
-                            <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                            <div className="col-lg-4 col-md-6 align-items-stretch mt-4">
                                 <div className="icon-box">
                                     <div className="icon"><i className="bx bx-slideshow"></i></div>
-                                    <h4><a href="">Dele cardo</a></h4>
-                                    <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+                                    <h4><a href={this.state.courseCategoriesUrls[4]}>{this.state.courseCategoriesNames[4]}</a></h4>
+                                    <p>{this.state.courseCategoriesDescription[4]}</p>
                                 </div>
                             </div>
 
-                            <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                            <div className="col-lg-4 col-md-6 align-items-stretch mt-4">
                                 <div className="icon-box">
                                     <div className="icon"><i className="bx bx-arch"></i></div>
-                                    <h4><a href="">Divera don</a></h4>
-                                    <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+                                    <h4><a href={this.state.courseCategoriesUrls[5]}>{this.state.courseCategoriesNames[5]}</a></h4>
+                                    <p>{this.state.courseCategoriesDescription[5]}</p>
                                 </div>
                             </div>
 
@@ -223,6 +226,7 @@ class Index extends Component {
     componentDidMount() {
         this.getData();
         this.checkUserGithubAccessAvailable();
+        this.getCategoriesWithMostCourses();
         this.getCourses();
     }
 
@@ -334,8 +338,6 @@ class Index extends Component {
 
                 coursesDiv.appendChild(firstDiv);
             });
-
-
         }).catch((err) => {
             console.log(err);
         });
@@ -350,7 +352,6 @@ class Index extends Component {
         this.getCourses();
     };
 
-
     changeToBestSellersShownCourses = () => {
         this.removeActiveFromAll();
         const bestSellers = document.getElementById('best-sellers');
@@ -360,7 +361,6 @@ class Index extends Component {
         this.getCourses();
     };
 
-
     changeToTopRatedShownCourses = () => {
         this.removeActiveFromAll();
         const topRated = document.getElementById('top-rated');
@@ -369,7 +369,6 @@ class Index extends Component {
         this.create3LoadingElements();
         this.getCourses();
     };
-
 
     changeToTopSalesShownCourses = () => {
         this.removeActiveFromAll();
@@ -412,6 +411,30 @@ class Index extends Component {
             firstDiv.id = 'remove' + i;
             courses.appendChild(firstDiv);
         }
+    }
+
+    getCategoriesWithMostCourses = () => {
+        fetch(process.env.REACT_APP_URL + '/course-categories/top?limit=6', {
+            method: 'GET',
+            credentials: 'include'
+        }).then(async response => {
+            const jsonResponse = await response.json();
+            let categories = JSON.parse(JSON.stringify(jsonResponse));
+            let currentCourseCategoriesNames = this.state.courseCategoriesNames;
+            let currentCourseCategoriesDescriptions = this.state.courseCategoriesDescription;
+            let currentCourseCategoriesUrls = this.state.courseCategoriesUrls;
+            categories.forEach(category => {
+                currentCourseCategoriesNames.push(category['name']);
+                currentCourseCategoriesDescriptions.push(category['description']);
+                currentCourseCategoriesUrls.push('/courses?category=' + category['name']);
+            });
+            this.setState({
+                courseCategoriesNames: currentCourseCategoriesNames,
+                courseCategoriesDescription: currentCourseCategoriesDescriptions
+            });
+        }).catch(error => {
+            console.log(error);
+        })
     }
 
 }

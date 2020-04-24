@@ -1,11 +1,9 @@
-import React from 'react';
-import {Component} from 'react';
-import {Redirect} from "react-router-dom";
-import qs from 'qs'
+import React, {Component} from 'react';
 
 class AddCourseCategory extends Component {
     state = {
-        courseCategoryName: null
+        courseCategoryName: null,
+        courseCategoryDescription: null
     };
 
     render() {
@@ -23,6 +21,14 @@ class AddCourseCategory extends Component {
                                 placeholder="Course Category Name"
                                 onChange={this.changeInputField}
                             />
+                            <textarea
+                                name="courseCategoryDescription"
+                                className="form-control"
+                                id="usernameInputField"
+                                placeholder="Course Category Description"
+                                rows="10"
+                                onChange={this.changeInputField}
+                            />
                         </div>
                         <button type="submit" className="btn btn-dark">
                             Add course category
@@ -38,7 +44,7 @@ class AddCourseCategory extends Component {
         const currentThis = this;
 
         async function add() {
-            const addCourseCategoryResponse = await fetch(process.env.REACT_APP_URL + '/course-categories', {
+            return await fetch(process.env.REACT_APP_URL + '/course-categories', {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',
@@ -48,9 +54,9 @@ class AddCourseCategory extends Component {
                 },
                 body: JSON.stringify({
                     name: currentThis.state.courseCategoryName,
+                    description: currentThis.state.courseCategoryDescription
                 })
             });
-            return addCourseCategoryResponse;
         }
 
         add().then(async respone => {
@@ -59,7 +65,7 @@ class AddCourseCategory extends Component {
                 this.props.history.push('/');
                 window.location.reload();
             } else {
-                alert("Something went wrond. Check the console for error.");
+                alert("Something went wrong. Check the console for error.");
             }
         });
     };

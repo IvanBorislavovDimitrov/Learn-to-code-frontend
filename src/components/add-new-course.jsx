@@ -192,13 +192,12 @@ class AddNewCourse extends Component {
         const categoryInputElement = document.getElementById('categoryInput');
 
         async function getCourseCategories() {
-            const registerResponse = await fetch(process.env.REACT_APP_URL + '/course-categories', {
+            return await fetch(process.env.REACT_APP_URL + '/course-categories', {
                 method: 'GET',
                 mode: 'cors',
                 cache: 'no-cache',
                 credentials: 'include',
             });
-            return registerResponse;
         }
 
         getCourseCategories().then(async response => {
