@@ -8,7 +8,8 @@ class Index extends Component {
         courses: null,
         courseCategoriesUrls: [],
         courseCategoriesNames: [],
-        courseCategoriesDescription: []
+        courseCategoriesDescription: [],
+        courseCategoriesImagesNames: []
     };
 
     render() {
@@ -147,49 +148,108 @@ class Index extends Component {
                         <div className="row">
                             <div className="col-lg-4 col-md-6 align-items-stretch">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="bx bxl-dribbble"></i></div>
-                                    <h4><a href={this.state.courseCategoriesUrls[0]}>{this.state.courseCategoriesNames[0]}</a></h4>
+                                    <div className="mb-3">
+                                        <a href="javascript:void(0)"
+                                           onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[0])}>
+                                            <img className="card-img-top"
+                                                 src={this.state.courseCategoriesImagesNames[0]}/>
+                                        </a>
+                                    </div>
+                                    <h4><a
+                                        onMouseEnter={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[0])}
+                                        href={this.state.courseCategoriesUrls[0]}>{this.state.courseCategoriesNames[0]}</a>
+                                    </h4>
                                     <p>{this.state.courseCategoriesDescription[0]}</p>
                                 </div>
                             </div>
 
                             <div className="col-lg-4 col-md-6 align-items-stretch mt-4 mt-md-0">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="bx bx-file"></i></div>
-                                    <h4><a href={this.state.courseCategoriesUrls[1]}>{this.state.courseCategoriesNames[1]}</a></h4>
+                                    <div className="mb-3">
+                                        <a href="javascript:void(0)"
+                                           onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[1])}
+                                        >
+                                            <img className="card-img-top"
+                                                 src={this.state.courseCategoriesImagesNames[1]}/>
+                                        </a>
+                                    </div>
+                                    <h4><a
+                                        onMouseEnter={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[1])}
+                                        href={this.state.courseCategoriesUrls[1]}>{this.state.courseCategoriesNames[1]}</a>
+                                    </h4>
                                     <p>{this.state.courseCategoriesDescription[1]}</p>
                                 </div>
                             </div>
 
                             <div className="col-lg-4 col-md-6 align-items-stretch mt-4 mt-lg-0">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="bx bx-tachometer"></i></div>
-                                    <h4><a href={this.state.courseCategoriesUrls[2]}>{this.state.courseCategoriesNames[2]}</a></h4>
+                                    <div className="mb-3">
+                                        <a href="javascript:void(0)"
+                                           onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[2])}
+                                        >
+                                            <img className="card-img-top"
+                                                 src={this.state.courseCategoriesImagesNames[2]}/>
+                                        </a>
+                                    </div>
+                                    <h4><a
+                                        onMouseEnter={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[2])}
+                                        href={this.state.courseCategoriesUrls[2]}>{this.state.courseCategoriesNames[2]}</a>
+                                    </h4>
                                     <p>{this.state.courseCategoriesDescription[2]}</p>
                                 </div>
                             </div>
 
                             <div className="col-lg-4 col-md-6 align-items-stretch mt-4">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="bx bx-world"></i></div>
-                                    <h4><a href={this.state.courseCategoriesUrls[3]}>{this.state.courseCategoriesNames[3]}</a></h4>
+                                    <div className="mb-3">
+                                        <a href="javascript:void(0)"
+                                           onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[3])}
+                                        >
+                                            <img className="card-img-top"
+                                                 src={this.state.courseCategoriesImagesNames[3]}/>
+                                        </a>
+                                    </div>
+                                    <h4><a
+                                        onMouseEnter={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[3])}
+                                        href={this.state.courseCategoriesUrls[3]}>{this.state.courseCategoriesNames[3]}</a>
+                                    </h4>
                                     <p>{this.state.courseCategoriesDescription[3]}</p>
                                 </div>
                             </div>
 
                             <div className="col-lg-4 col-md-6 align-items-stretch mt-4">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="bx bx-slideshow"></i></div>
-                                    <h4><a href={this.state.courseCategoriesUrls[4]}>{this.state.courseCategoriesNames[4]}</a></h4>
+                                    <div className="mb-3">
+                                        <a href="javascript:void(0)"
+                                           onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[4])}
+                                        >
+                                            <img className="card-img-top"
+                                                 src={this.state.courseCategoriesImagesNames[4]}/>
+                                        </a>
+                                    </div>
+                                    <h4><a
+                                        onMouseEnter={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[4])}
+                                        href={this.state.courseCategoriesUrls[4]}>{this.state.courseCategoriesNames[4]}</a>
+                                    </h4>
                                     <p>{this.state.courseCategoriesDescription[4]}</p>
                                 </div>
                             </div>
 
                             <div className="col-lg-4 col-md-6 align-items-stretch mt-4">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="bx bx-arch"></i></div>
-                                    <h4><a href={this.state.courseCategoriesUrls[5]}>{this.state.courseCategoriesNames[5]}</a></h4>
-                                    <p>{this.state.courseCategoriesDescription[5]}</p>
+                                    <div className="mb-3">
+                                        <a href="javascript:void(0)"
+                                           onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[5])}
+                                        >
+                                            <img className="card-img-top"
+                                                 src={this.state.courseCategoriesImagesNames[5]}/>
+                                        </a>
+                                    </div>
+                                    <h4><a
+                                        onMouseEnter={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[5])}
+                                        href={this.state.courseCategoriesUrls[5]}>{this.state.courseCategoriesNames[5]}</a>
+                                    </h4>
+                                    <p id="courseCategoryDescriptionParagraph">{this.state.courseCategoriesDescription[5]}</p>
                                 </div>
                             </div>
 
@@ -282,7 +342,6 @@ class Index extends Component {
             }
 
             courses.forEach(course => {
-
                 let firstDiv = document.createElement("div");
                 firstDiv.setAttribute('class', 'col-md-4 mb-5');
 
@@ -304,7 +363,7 @@ class Index extends Component {
 
                 let p = document.createElement("p");
                 p.setAttribute('class', 'card-text');
-                if (course['description'].length > 120) {
+                if (course['description'].length > 20) {
                     p.textContent = course['description'].substring(0, 120) + "...";
                 } else {
                     p.textContent = course['description'];
@@ -423,10 +482,12 @@ class Index extends Component {
             let currentCourseCategoriesNames = this.state.courseCategoriesNames;
             let currentCourseCategoriesDescriptions = this.state.courseCategoriesDescription;
             let currentCourseCategoriesUrls = this.state.courseCategoriesUrls;
+            let currentCourseCategoriesImagesNames = this.state.courseCategoriesImagesNames;
             categories.forEach(category => {
                 currentCourseCategoriesNames.push(category['name']);
-                currentCourseCategoriesDescriptions.push(category['description']);
+                currentCourseCategoriesDescriptions.push(category['description'].length > 60 ? category['description'].substring(0, 60) + '...' : category['description']);
                 currentCourseCategoriesUrls.push('/courses?category=' + category['name']);
+                currentCourseCategoriesImagesNames.push(process.env.REACT_APP_URL + '/resource/images/' + category['thumbnailName']);
             });
             this.setState({
                 courseCategoriesNames: currentCourseCategoriesNames,
@@ -434,7 +495,33 @@ class Index extends Component {
             });
         }).catch(error => {
             console.log(error);
-        })
+        });
+    }
+
+
+
+    categoryOnMouseEventListener = (categoryName) => {
+        let categoryIndex = -1;
+        for (let i = 0; i < this.state.courseCategoriesNames.length; i++) {
+            if (this.state.courseCategoriesNames[i] === categoryName) {
+                categoryIndex = i;
+            }
+        }
+        let currentCourseCategoriesDescriptions = this.state.courseCategoriesDescription;
+
+        fetch(process.env.REACT_APP_URL + '/course-categories/' + categoryName, {
+            method: 'GET',
+            credentials: 'include'
+        }).then(async response => {
+            const jsonResponse = await response.json();
+            let category = JSON.parse(JSON.stringify(jsonResponse));
+            currentCourseCategoriesDescriptions[categoryIndex] = category['description'];
+            this.setState({
+                courseCategoriesDescriptions: currentCourseCategoriesDescriptions
+            });
+        }).catch(error => {
+            console.log(error);
+        });
     }
 
 }

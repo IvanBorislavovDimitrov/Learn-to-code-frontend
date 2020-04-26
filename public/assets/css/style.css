@@ -8,6 +8,12 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+.fake-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444;
