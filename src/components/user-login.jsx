@@ -18,7 +18,7 @@ class UserLogin extends Component {
             <React.Fragment>
                 <div className="col-md-4 mt-4 container">
                     <form className="text-center border border-light p-5" onSubmit={this.loginUser}>
-                        <p class="h4 mb-4">Login</p>
+                        <p className="h4 mb-4">Login</p>
                         <div className="form-group">
                             <input
                                 onChange={this.changeInputField}
@@ -33,7 +33,7 @@ class UserLogin extends Component {
                             <input
                                 onChange={this.changeInputField}
                                 name="password"
-                                type="text"
+                                type="password"
                                 className="form-control"
                                 id="passwordInputField"
                                 placeholder="Password"

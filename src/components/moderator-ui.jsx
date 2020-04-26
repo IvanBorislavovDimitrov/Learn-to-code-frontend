@@ -21,6 +21,7 @@ class ModeratorUI extends Component {
                 <section className="services">
                     <div className="container">
                         <div className="row">
+
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
                                 <div className="icon-box icon-box-pink">
                                     <div className="icon"><i className="bx bxl-css3"></i></div>
@@ -30,12 +31,19 @@ class ModeratorUI extends Component {
                             </div>
 
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
-                                <div className="icon-box icon-box-cyan">
-                                    <div className="icon"><i className="bx bxl-github"></i></div>
-                                    <h4 className="title"><a href="/course-categories/add">Add Category</a></h4>
-                                    <p className="description">Add new course category!</p>
+                                <div className="icon-box icon-box-pink">
+                                    <div className="icon"><i className="bx bxl-css3"></i></div>
+                                    <h4 className="title"><a href="/course-categories/add">Add category</a></h4>
+                                    <p className="description">Click here if you want to add a category!</p>
                                 </div>
                             </div>
+                            <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
+                            <div className="icon-box icon-box-pink">
+                                <div className="icon"><i className="bx bxl-css3"></i></div>
+                                <h4 className="title"><a href="/course-categories/update">Update category</a></h4>
+                                <p className="description">Click here if you want to update a category!</p>
+                            </div>
+                        </div>
 
                         </div>
                     </div>

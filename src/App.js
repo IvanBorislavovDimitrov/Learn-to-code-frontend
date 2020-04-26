@@ -18,6 +18,7 @@ import AddNewCourse from './components/add-new-course';
 import Courses from './components/courses';
 import ViewCourse from './components/view-course';
 import FinishCartPurchase from "./components/finish-cart-purchase";
+import UpdateCourseCategory from "./components/course-category-update";
 
 function App() {
     setTimeout(function () {
@@ -40,7 +41,8 @@ function App() {
                 <Route exact path="/courses/add-new-course" component={AddNewCourse}/>
                 <Route exact path="/courses" component={Courses}/>
                 <Route path="/courses/view" component={ViewCourse}/>
-                <Route path="/courses/cart/finish-cart-purchase" component={FinishCartPurchase}/>
+                <Route exact path="/courses/cart/finish-cart-purchase" component={FinishCartPurchase}/>
+                <Route exact path="/course-categories/update" component={UpdateCourseCategory}/>
 
             </Switch>
             <Footer/>
