@@ -19,6 +19,7 @@ import Courses from './components/courses';
 import ViewCourse from './components/view-course';
 import FinishCartPurchase from "./components/finish-cart-purchase";
 import UpdateCourseCategory from "./components/course-category-update";
+import CheckRepositories from "./components/check-repositories";
 
 function App() {
     setTimeout(function () {
@@ -43,6 +44,7 @@ function App() {
                 <Route path="/courses/view" component={ViewCourse}/>
                 <Route exact path="/courses/cart/finish-cart-purchase" component={FinishCartPurchase}/>
                 <Route exact path="/course-categories/update" component={UpdateCourseCategory}/>
+                <Route exact path="/github/check-repositories" component={CheckRepositories}/>
 
             </Switch>
             <Footer/>

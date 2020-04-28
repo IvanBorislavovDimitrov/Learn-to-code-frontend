@@ -49,6 +49,10 @@ class Navbar extends Component {
                             </li>
 
                             <li hidden={!isLoggedIn} className="nav-item active">
+                                <a className="btn btn-info mr-3" href="/github/check-repositories">Repositories</a>
+                            </li>
+
+                            <li hidden={!isLoggedIn} className="nav-item active">
                                 <button onClick={this.logout} className="btn btn-danger">Logout</button>
                             </li>
 
