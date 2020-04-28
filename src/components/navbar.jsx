@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Button, Modal} from "react-bootstrap";
+import React, { Component } from "react";
+import { Button, Modal } from "react-bootstrap";
 
 class Navbar extends Component {
     state = {
@@ -20,13 +20,13 @@ class Navbar extends Component {
         return (
             <React.Fragment>
                 <link rel="stylesheet"
-                      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+                    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <a className="navbar-brand" href="/">Learn To Code</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -102,11 +102,11 @@ class Navbar extends Component {
                     <Modal.Body id="users">
                         <table className="table table-dark">
                             <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Actions</th>
-                            </tr>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
                             </thead>
                             <tbody id="table">
 
@@ -124,6 +124,7 @@ class Navbar extends Component {
     }
 
     componentDidMount() {
+        this.isStillLogged();
     }
 
     show = () => {
@@ -185,6 +186,29 @@ class Navbar extends Component {
                 tr.appendChild(actions);
                 table.appendChild(tr);
             });
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
+    isStillLogged = () => {
+        let loggedUser = localStorage.getItem('loggedUser');
+        fetch(process.env.REACT_APP_URL + '/users/session', {
+            method: 'GET',
+            credentials: 'include'
+        }).then(async response => {
+            if (response.status === 200) {
+                const jsonResponse = await response.json();
+                const userMap = JSON.parse(JSON.stringify(jsonResponse));
+                console.log(userMap['username']);
+                if (loggedUser !== userMap['username']) {
+                    localStorage.removeItem('loggedUser');
+                    localStorage.removeItem('userRoles');
+                    if (loggedUser != undefined && loggedUser != null) {
+                        window.location.reload();
+                    }
+                }
+            }
         }).catch(error => {
             console.log(error);
         });
