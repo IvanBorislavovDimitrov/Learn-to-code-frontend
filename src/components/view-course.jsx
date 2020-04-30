@@ -217,7 +217,7 @@ class ViewCourse extends Component {
                     videoElement.setAttribute('class', 'embed-responsive embed-responsive-16by9');
                     videoElement.setAttribute('controls', '');
                     const source = document.createElement('source');
-                    source.src = process.env.REACT_APP_URL + "/resource/videos/" + video["videoFullName"];
+                    source.src = process.env.REACT_APP_URL + "/resource/videos/" + courseModel["name"] + "/" + video["videoFullName"];
                     source.type = "video/mp4";
                     videoElement.appendChild(source);
                     videoOuter.appendChild(videoElement);
@@ -235,7 +235,7 @@ class ViewCourse extends Component {
             video.setAttribute('controls', '');
             video.setAttribute('class', 'embed-responsive embed-responsive-16by9')
             const source = document.createElement('source');
-            source.src = process.env.REACT_APP_URL + "/resource/videos/" + courseModel["videosNames"][0]["videoFullName"];
+            source.src = process.env.REACT_APP_URL + "/resource/videos/" + courseModel["name"] + "/" + courseModel["videosNames"][0]["videoFullName"];
             source.type = "video/mp4";
             video.appendChild(source);
             videoOuter.appendChild(video);
