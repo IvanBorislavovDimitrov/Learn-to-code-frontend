@@ -257,28 +257,6 @@ class Index extends Component {
 
                     </div>
                 </section>
-
-                <div className="d-flex justify-content-center">
-                    <h1 className="center">User Index page</h1>
-                </div>
-                <div className="d-flex justify-content-center">
-                    <h2>Ping: {this.state.content}</h2>
-                </div>
-                <div className="d-flex justify-content-center">
-                    <h3 hidden={!isLoggedIn}>
-                        <div hidden={this.state.githubUsername}>
-                            Authorize with github: <a
-                            href="https://github.com/login/oauth/authorize?client_id=5b2f3c2f8bb2f09aa59d">Authorize</a>
-                        </div>
-                    </h3>
-                </div>
-                <div className="d-flex justify-content-center">
-                    <h3 hidden={!isLoggedIn}>
-                        <div hidden={!this.state.githubUsername}>
-                            Your GitHub username is: {this.state.githubUsername}
-                        </div>
-                    </h3>
-                </div>
             </React.Fragment>
         );
     }

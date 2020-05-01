@@ -53,6 +53,10 @@ class Navbar extends Component {
                             </li>
 
                             <li hidden={!isLoggedIn} className="nav-item active">
+                                <a className="btn btn-info mr-3" href="https://github.com/login/oauth/authorize?client_id=5b2f3c2f8bb2f09aa59d">Link GitHub Account</a>
+                            </li>
+
+                            <li hidden={!isLoggedIn} className="nav-item active">
                                 <button onClick={this.logout} className="btn btn-danger">Logout</button>
                             </li>
 
