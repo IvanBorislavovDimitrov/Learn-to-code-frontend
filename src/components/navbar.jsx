@@ -32,6 +32,14 @@ class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav nav ml-auto">
 
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle mr-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Categories
+  </button>
+                                <div id="categories" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                </div>
+                            </div>
+
                             <li className="nav-item active">
                                 <a className="btn btn-info mr-3" href="/">Home</a>
                             </li>
@@ -129,6 +137,7 @@ class Navbar extends Component {
 
     componentDidMount() {
         this.isStillLogged();
+        this.loadCategories();
     }
 
     show = () => {
@@ -216,6 +225,26 @@ class Navbar extends Component {
         }).catch(error => {
             console.log(error);
         });
+    }
+
+    loadCategories = () => {
+        fetch(process.env.REACT_APP_URL + '/course-categories', {
+            method: 'GET',
+            credentials: 'include'
+        }).then(async response => {
+            const jsonResponse = await response.json();
+            let categories = JSON.parse(JSON.stringify(jsonResponse));
+            const categoriesField = document.getElementById('categories');
+            categories.forEach(category => {
+                const a = document.createElement('a');
+                a.setAttribute('class', 'dropdown-item');
+                a.href = '/courses?category=' + category['name'];
+                a.textContent = category['name'];
+                categoriesField.appendChild(a);
+            })
+        }).catch(error => {
+            console.log(error);
+        })
     }
 
 }
