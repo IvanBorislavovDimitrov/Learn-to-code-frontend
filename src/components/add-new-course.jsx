@@ -29,7 +29,8 @@ class AddNewCourse extends Component {
             teacherNameInputFieldNotEntered: false,
             partInputFieldNotEntered: false,
             thumbnailInputFieldNotEntered: false,
-            courseNameTaken: false
+            courseNameTaken: false,
+            endDateIsBeforeStartDate: false
 
         };
         this.videoFileUpload = React.createRef();
@@ -69,6 +70,7 @@ class AddNewCourse extends Component {
                                 placeholder="Choose start date"
                             />
                             <div hidden={!this.state.startDateInputFieldNotEntered} class="text-danger mb-3">Enter a start date!</div>
+                            <div hidden={!this.state.endDateIsBeforeStartDate} class="text-danger mb-3">Start date should be before end date!</div>
                         </div>
 
                         <div className="form-group">
@@ -81,6 +83,7 @@ class AddNewCourse extends Component {
                                 className="form-control"
                             />
                             <div hidden={!this.state.endDateInputFieldNotEntered} class="text-danger mb-3">Enter an end date!</div>
+                            <div hidden={!this.state.endDateIsBeforeStartDate} class="text-danger mb-3">End date should be after start date!</div>
                         </div>
 
                         <div className="form-group">
@@ -379,6 +382,10 @@ class AddNewCourse extends Component {
                         nameNotEntered: false,
                         courseNameTaken: true
                     });
+                } else if (responseMap['type'] === 'InvalidDatesException') {
+                    this.setState({
+                        endDateIsBeforeStartDate: true,
+                    });
                 }
             } else {
                 alert(await response.text());
@@ -437,6 +444,7 @@ class AddNewCourse extends Component {
         const nameInputField = document.getElementById('nameInputField');
         nameInputField.setAttribute('class', 'form-control');
         this.setState({
+            endDateIsBeforeStartDate: false,
             nameInputFieldNotEntered: false,
             courseNameTaken: false
         });
