@@ -39,6 +39,9 @@ class FinishCartPurchase extends Component {
             const coursesInCart = JSON.parse(JSON.stringify(jsonResponse));
             let totalPrice = 0;
             const table = document.getElementById('finish-courses-table');
+            if (coursesInCart.length === 0) {
+                return;
+            }
             coursesInCart.forEach(course => {
                 const tr = document.createElement('tr');
                 const courseName = document.createElement('td');
