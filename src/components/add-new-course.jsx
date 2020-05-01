@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Button, Modal} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 
 
 class AddNewCourse extends Component {
@@ -17,7 +17,20 @@ class AddNewCourse extends Component {
             formOfEducation: "REGULAR",
             categoryName: null,
             thumbnail: null,
-            coursePartsCount: 2
+            coursePartsCount: 2,
+            nameInputFieldNotEntered: false,
+            startDateInputFieldNotEntered: false,
+            endDateInputFieldNotEntered: false,
+            durationOfWeeksInputFieldNotEntered: false,
+            creditsInputFieldNotEntered: false,
+            formOfEducationInputFieldNotEntered: false,
+            priceOfCourseInputFieldNotEntered: false,
+            descriptionOfCourseFieldNotEntered: false,
+            teacherNameInputFieldNotEntered: false,
+            partInputFieldNotEntered: false,
+            thumbnailInputFieldNotEntered: false,
+            courseNameTaken: false
+
         };
         this.videoFileUpload = React.createRef();
         this.thumbnailFileUpload = React.createRef();
@@ -28,7 +41,7 @@ class AddNewCourse extends Component {
             <React.Fragment>
                 <div className="col-md-4 mt-4 container">
                     <form className="text-center border border-light p-5" onSubmit={this.addCourse}
-                          encType="multipart/form-data">
+                        encType="multipart/form-data">
                         <p className="h4 mb-4">Add new course</p>
 
                         <div className="form-group">
@@ -37,10 +50,12 @@ class AddNewCourse extends Component {
                                 onChange={this.changeInputField}
                                 name="name"
                                 type="text"
-                                className="form-control mb-4"
-                                id="nameInput"
+                                className="form-control"
+                                id="nameInputField"
                                 placeholder="Name"
                             />
+                            <div hidden={!this.state.nameInputFieldNotEntered} class="text-danger mb-3">Enter a name!</div>
+                            <div hidden={!this.state.courseNameTaken} class="text-danger mb-3">Name is take!</div>
                         </div>
 
                         <div className="form-group">
@@ -49,21 +64,23 @@ class AddNewCourse extends Component {
                                 onChange={this.changeInputField}
                                 name="startDate"
                                 type="date"
-                                className="form-control mb-4"
-                                id="startDateDate"
+                                className="form-control"
+                                id="startDateInputField"
                                 placeholder="Choose start date"
                             />
+                            <div hidden={!this.state.startDateInputFieldNotEntered} class="text-danger mb-3">Enter a start date!</div>
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="endDateDate">End date</label>
                             <input
-                                id="endDateDate"
+                                id="endDateInputField"
                                 onChange={this.changeInputField}
                                 name="endDate"
                                 type="date"
-                                className="form-control mb-4"
+                                className="form-control"
                             />
+                            <div hidden={!this.state.endDateInputFieldNotEntered} class="text-danger mb-3">Enter an end date!</div>
                         </div>
 
                         <div className="form-group">
@@ -72,29 +89,30 @@ class AddNewCourse extends Component {
                                 onChange={this.changeInputField}
                                 name="durationInWeeks"
                                 type="text"
-                                className="form-control mb-4"
-                                id="durationInWeeksInput"
+                                className="form-control"
+                                id="durationInWeeksInputField"
                                 placeholder="Duration in weeks"
                             />
+                            <div hidden={!this.state.durationOfWeeksInputFieldNotEntered} class="text-danger mb-3">Enter a duration in weeks!</div>
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="creditsInput">Credits</label>
                             <input
-                                id="creditsInput"
+                                id="creditsInputField"
                                 onChange={this.changeInputField}
                                 name="credits"
                                 type="text"
-                                className="form-control mb-4"
+                                className="form-control"
                                 placeholder="Credits"
                             />
-
+                            <div hidden={!this.state.creditsInputFieldNotEntered} class="text-danger mb-3">Enter credits!</div>
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="formOfEducationInput">Form of education</label>
                             <select name="formOfEducation" onChange={this.changeInputField} className="form-control"
-                                    id="formOfEducationInput">
+                                id="formOfEducationInputField">
                                 <option>REGULAR</option>
                                 <option>ONLINE</option>
                             </select>
@@ -103,25 +121,27 @@ class AddNewCourse extends Component {
                         <div className="form-group">
                             <label htmlFor="priceOfCourseInput">Price of course</label>
                             <input
-                                id="priceOfCourseInput"
+                                id="priceOfCourseInputField"
                                 onChange={this.changeInputField}
                                 name="price"
                                 type="number"
-                                className="form-control mb-4"
+                                className="form-control"
                                 placeholder="Price"
                             />
+                            <div hidden={!this.state.priceOfCourseInputFieldNotEntered} class="text-danger mb-3">Enter a price of course!</div>
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="descriptionTextArea">Description</label>
                             <textarea onChange={this.changeInputField} name="description" className="form-control"
-                                      id="descriptionTextArea" rows="3"></textarea>
+                                id="descriptionTextAreaField" rows="3"></textarea>
+                            <div hidden={!this.state.descriptionOfCourseFieldNotEntered} class="text-danger mb-3">Enter a descirption!</div>
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="categoryInput">Category</label>
                             <select name="categoryName" onChange={this.changeInputField} className="form-control"
-                                    id="categoryInput">
+                                id="categoryInputField">
                             </select>
                         </div>
 
@@ -131,10 +151,11 @@ class AddNewCourse extends Component {
                                 onChange={this.changeInputField}
                                 name="teacherName"
                                 type="text"
-                                className="form-control mb-4"
+                                className="form-control"
                                 id="teacherNameInputField"
                                 placeholder="Enter a teacherName"
                             />
+                            <div hidden={!this.state.teacherNameInputFieldNotEntered} class="text-danger mb-3">Enter a teacher name!</div>
                             {this.checkUser()}
                         </form>
 
@@ -144,9 +165,10 @@ class AddNewCourse extends Component {
                                     id="coursePartName1"
                                     onChange={this.changeInputField}
                                     type="text"
-                                    className="form-control mb-4"
+                                    className="form-control"
                                     placeholder="Part name"
                                 />
+                                <div hidden={!this.state.partInputFieldNotEntered} class="text-danger mb-3">Enter at least one part (Intro)!</div>
                             </div>
                             <div class="col-sm-4">
                                 <input
@@ -161,10 +183,10 @@ class AddNewCourse extends Component {
 
                         </div>
                         <button onClick={this.addCoursePart} className="btn btn-primary btn-block" type="button">Add
-                            part
+                        part
                         </button>
                         <button onClick={this.removeCoursePart} className="btn btn-danger btn-block"
-                                type="button">Remove part
+                            type="button">Remove part
                         </button>
 
                         <div className="form-group mt-3">
@@ -174,13 +196,14 @@ class AddNewCourse extends Component {
                                 ref={this.thumbnailFileUpload}
                                 type="file"
                                 className="custom-file"
-                                id="thumbnailInput"
+                                id="thumbnailInputField"
                                 aria-describedby="fileHelp"
                                 name="thumbnail"
                             />
+                            <div hidden={!this.state.thumbnailInputFieldNotEntered} class="text-danger mb-3">Enter a thumbnail!</div>
                         </div>
 
-                        <br/>
+                        <br />
                         <button className="btn btn-info btn-block" type="submit">Add course</button>
                     </form>
                 </div>
@@ -189,7 +212,7 @@ class AddNewCourse extends Component {
     }
 
     componentDidMount() {
-        const categoryInputElement = document.getElementById('categoryInput');
+        const categoryInputElement = document.getElementById('categoryInputField');
 
         async function getCourseCategories() {
             return await fetch(process.env.REACT_APP_URL + '/course-categories', {
@@ -225,7 +248,7 @@ class AddNewCourse extends Component {
         filePartNameInput.onChange = this.changeInputField;
         filePartNameInput.id = 'coursePartName' + this.state.coursePartsCount;
         filePartNameInput.type = "text";
-        filePartNameInput.setAttribute('class', 'form-control mb-4');
+        filePartNameInput.setAttribute('class', 'form-control');
         filePartNameInput.placeholder = 'Part name';
         firstDiv.appendChild(filePartNameInput);
 
@@ -266,7 +289,7 @@ class AddNewCourse extends Component {
     checkUser = () => {
         return (
             <React.Fragment>
-                <Button variant="btn btn-info" onClick={this.showPopAndFetchUsers}>
+                <Button variant="btn btn-info mt-3" onClick={this.showPopAndFetchUsers}>
                     Check user
                 </Button>
                 <Modal show={this.state.seen} animation={true}>
@@ -284,6 +307,11 @@ class AddNewCourse extends Component {
 
     addCourse = event => {
         event.preventDefault();
+
+        if (!this.checkIfCourseIsValid()) {
+            return;
+        }
+
         const currentThis = this;
 
         async function addNewCourse() {
@@ -341,6 +369,17 @@ class AddNewCourse extends Component {
             if (response.status === 200) {
                 this.props.history.push('/');
                 window.location.reload();
+            } else if (response.status === 400) {
+                const jsonResponse = await response.json();
+                let responseMap = JSON.parse(JSON.stringify(jsonResponse));
+                if (responseMap['type'] === 'CourseNameTakenException') {
+                    const nameInputField = document.getElementById('nameInputField');
+                    nameInputField.setAttribute('class', 'form-control');
+                    this.setState({
+                        nameNotEntered: false,
+                        courseNameTaken: true
+                    });
+                }
             } else {
                 alert(await response.text());
             }
@@ -392,6 +431,132 @@ class AddNewCourse extends Component {
             }
         });
     }
+
+    checkIfCourseIsValid = () => {
+        let isValid = true;
+        const nameInputField = document.getElementById('nameInputField');
+        nameInputField.setAttribute('class', 'form-control');
+        this.setState({
+            nameInputFieldNotEntered: false,
+            courseNameTaken: false
+        });
+        if (this.state.name === null) {
+            nameInputField.setAttribute('class', 'form-control is-invalid');
+            this.setState({
+                nameInputFieldNotEntered: true
+            });
+            isValid = false;
+        }
+        const startDateInputField = document.getElementById('startDateInputField');
+        startDateInputField.setAttribute('class', 'form-control');
+        this.setState({
+            startDateInputFieldNotEntered: false
+        });
+        if (this.state.startDate === null) {
+            startDateInputField.setAttribute('class', 'form-control is-invalid');
+            this.setState({
+                startDateInputFieldNotEntered: true
+            });
+            isValid = false;
+        }
+        const endDateInputField = document.getElementById('endDateInputField');
+        endDateInputField.setAttribute('class', 'form-control');
+        this.setState({
+            endDateInputFieldNotEntered: false
+        });
+        if (this.state.endDate === null) {
+            endDateInputField.setAttribute('class', 'form-control is-invalid');
+            this.setState({
+                endDateInputFieldNotEntered: true
+            });
+            isValid = false;
+        }
+        const durationInWeeksInputField = document.getElementById('durationInWeeksInputField');
+        durationInWeeksInputField.setAttribute('class', 'form-control');
+        this.setState({
+            durationOfWeeksInputFieldNotEntered: false
+        });
+        if (this.state.endDate === null) {
+            durationInWeeksInputField.setAttribute('class', 'form-control is-invalid');
+            this.setState({
+                durationOfWeeksInputFieldNotEntered: true
+            });
+            isValid = false;
+        }
+        const creditsInputField = document.getElementById('creditsInputField');
+        creditsInputField.setAttribute('class', 'form-control');
+        this.setState({
+            creditsInputFieldNotEntered: false
+        });
+        if (this.state.credits === null) {
+            creditsInputField.setAttribute('class', 'form-control is-invalid');
+            this.setState({
+                creditsInputFieldNotEntered: true
+            });
+            isValid = false;
+        }
+        const priceOfCourseInputField = document.getElementById('priceOfCourseInputField');
+        priceOfCourseInputField.setAttribute('class', 'form-control');
+        this.setState({
+            priceOfCourseInputFieldNotEntered: false
+        });
+        if (this.state.price === null) {
+            priceOfCourseInputField.setAttribute('class', 'form-control is-invalid');
+            this.setState({
+                priceOfCourseInputFieldNotEntered: true
+            });
+            isValid = false;
+        }
+        const descriptionTextAreaField = document.getElementById('descriptionTextAreaField');
+        descriptionTextAreaField.setAttribute('class', 'form-control');
+        this.setState({
+            descriptionOfCourseFieldNotEntered: false
+        });
+        if (this.state.description === null) {
+            descriptionTextAreaField.setAttribute('class', 'form-control is-invalid');
+            this.setState({
+                descriptionOfCourseFieldNotEntered: true
+            });
+            isValid = false;
+        }
+        const teacherNameInputField = document.getElementById('teacherNameInputField');
+        teacherNameInputField.setAttribute('class', 'form-control');
+        this.setState({
+            teacherNameInputFieldNotEntered: false
+        });
+        if (this.state.teacherName === null) {
+            teacherNameInputField.setAttribute('class', 'form-control is-invalid');
+            this.setState({
+                teacherNameInputFieldNotEntered: true
+            });
+            isValid = false;
+        }
+        const coursePartFile1 = document.getElementById('coursePartFile1');
+        coursePartFile1.setAttribute('class', 'form-control');
+        this.setState({
+            partInputFieldNotEntered: false
+        });
+        if (document.getElementById('coursePartName1').value == null || document.getElementById('coursePartName1').value == '') {
+            coursePartFile1.setAttribute('class', 'form-control is-invalid');
+            this.setState({
+                partInputFieldNotEntered: true
+            });
+            isValid = false;
+        }
+        const thumbnailInputField = document.getElementById('thumbnailInputField');
+        thumbnailInputField.setAttribute('class', 'form-control');
+        this.setState({
+            thumbnailInputFieldNotEntered: false
+        });
+        if (this.state.thumbnail === null) {
+            thumbnailInputField.setAttribute('class', 'is-invalid');
+            this.setState({
+                thumbnailInputFieldNotEntered: true
+            });
+            isValid = false;
+        }
+        return isValid;
+    };
 
     changeInputField = event => {
         this.setState({

@@ -1,5 +1,4 @@
-import React, {Component, useEffect} from "react";
-import {Redirect} from "react-router-dom";
+import React, { Component } from "react";
 import qs from 'qs'
 
 class UserLogin extends Component {
@@ -7,7 +6,8 @@ class UserLogin extends Component {
         super(props);
         this.state = {
             username: null,
-            password: null
+            password: null,
+            hideInvalidUsernamePassword: true
         };
     }
 
@@ -28,6 +28,7 @@ class UserLogin extends Component {
                                 id="usernameInputField"
                                 placeholder="Username"
                             />
+
                         </div>
                         <div id="passwordField" className="form-group">
                             <input
@@ -39,6 +40,7 @@ class UserLogin extends Component {
                                 placeholder="Password"
                             />
                         </div>
+                        <div hidden={this.state.hideInvalidUsernamePassword} class="text-danger mb-3">Invalid username or passowrd!</div>
                         <button type="submit" className="btn btn-info btn-block">
                             Login
                         </button>
@@ -54,7 +56,7 @@ class UserLogin extends Component {
         const currentThis = this;
 
         async function doLogin() {
-            const logginResponse = await fetch(process.env.REACT_APP_URL + '/users/login', {
+            return await fetch(process.env.REACT_APP_URL + '/users/login', {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',
@@ -67,19 +69,27 @@ class UserLogin extends Component {
                     password: currentThis.state.password
                 })
             });
-            return logginResponse;
         }
 
-        doLogin().then(async respone => {
-            if (respone.status === 200) {
+        doLogin().then(async response => {
+            if (response.status === 200) {
                 localStorage.setItem('loggedUser', this.state.username);
-                const loginResponseBody = await respone.json();
+                const loginResponseBody = await response.json();
                 localStorage.setItem('userRoles', loginResponseBody['roles']);
                 this.props.history.push('/');
                 window.location.reload();
+            } else if (response.status === 401) {
+                const usernameInputField = document.getElementById('usernameInputField');
+                usernameInputField.setAttribute('class', 'form-control is-invalid');
+                const passowrdInputField = document.getElementById('passwordInputField');
+                passowrdInputField.setAttribute('class', 'form-control is-invalid');
+                this.setState({
+                    hideInvalidUsernamePassword: false
+                });
             } else {
-                alert("Invalid username and/or password");
+                alert("Login failed. Please check the console for further errors and find a support!");
             }
+
         });
     };
 
