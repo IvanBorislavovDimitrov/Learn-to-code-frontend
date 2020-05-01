@@ -30,8 +30,8 @@ class AddNewCourse extends Component {
             partInputFieldNotEntered: false,
             thumbnailInputFieldNotEntered: false,
             courseNameTaken: false,
-            endDateIsBeforeStartDate: false
-
+            endDateIsBeforeStartDate: false,
+            loading: false
         };
         this.videoFileUpload = React.createRef();
         this.thumbnailFileUpload = React.createRef();
@@ -205,8 +205,13 @@ class AddNewCourse extends Component {
                             />
                             <div hidden={!this.state.thumbnailInputFieldNotEntered} class="text-danger mb-3">Enter a thumbnail!</div>
                         </div>
-
                         <br />
+                        <div hidden={!this.state.loading} id="loading">
+                            <div id="remove1" className="mb-3">
+                                <div class="spinner-border text-warning" role="status">
+                                </div>
+                            </div>
+                        </div>
                         <button className="btn btn-info btn-block" type="submit">Add course</button>
                     </form>
                 </div>
@@ -308,10 +313,25 @@ class AddNewCourse extends Component {
         );
     }
 
+    showLoading = () => {
+        this.setState({
+            loading: true
+        });
+    }
+
+    hideLoading = () => {
+        this.setState({
+            loading: false
+        });
+    }
+
     addCourse = event => {
         event.preventDefault();
 
+        this.showLoading();
+
         if (!this.checkIfCourseIsValid()) {
+            this.hideLoading();
             return;
         }
 
@@ -370,10 +390,12 @@ class AddNewCourse extends Component {
 
         addNewCourse().then(async response => {
             if (response.status === 200) {
+                currentThis.hideLoading();
                 this.props.history.push('/');
                 window.location.reload();
             } else if (response.status === 400) {
                 const jsonResponse = await response.json();
+                currentThis.hideLoading();
                 let responseMap = JSON.parse(JSON.stringify(jsonResponse));
                 if (responseMap['type'] === 'CourseNameTakenException') {
                     const nameInputField = document.getElementById('nameInputField');
@@ -388,12 +410,14 @@ class AddNewCourse extends Component {
                     });
                 }
             } else {
+                currentThis.hideLoading();
                 alert(await response.text());
             }
         }).catch(err => {
             alert(err)
         });
     };
+
 
     showPopAndFetchUsers = () => {
         this.setState({
