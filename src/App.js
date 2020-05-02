@@ -23,6 +23,7 @@ import CheckRepositories from "./components/check-repositories";
 import SingleRepository from "./components/single-repository";
 import Team from "./components/information-team";
 import NotFound from './components/not-found-page';
+import AboutUs from './components/information-about-us';
 
 function App() {
     setTimeout(function () {
@@ -50,6 +51,8 @@ function App() {
                 <Route exact path="/github/check-repositories" component={CheckRepositories} />
                 <Route path="/github/single-repository/" component={SingleRepository} />
                 <Route exact path="/information/team" component={Team} />
+                <Route exact path="/information/about-us" component={AboutUs} />
+                
                 
                 {/* Must be at the end */}
                 <Route path="*" component={NotFound} />
