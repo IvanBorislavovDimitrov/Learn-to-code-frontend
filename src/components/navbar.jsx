@@ -22,6 +22,7 @@ class Navbar extends Component {
                 <link rel="stylesheet"
                     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 
+
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <a className="navbar-brand" href="/">Learn To Code</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
@@ -31,6 +32,18 @@ class Navbar extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav nav ml-auto">
+
+                            <div class="dropdown show mr-3">
+                                <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    About Us
+  </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="/information/about-us">About Us</a>
+                                    <a class="dropdown-item" href="/information/team">Our Team</a>
+                                </div>
+                            </div>
+
 
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle mr-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
