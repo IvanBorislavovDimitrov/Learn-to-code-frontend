@@ -332,7 +332,12 @@ class ViewCourse extends Component {
     }
 
     enrolledLoggedUserForCourse = () => {
-
+        let loggedUser = localStorage.getItem('loggedUser');
+        let isLoggedIn = loggedUser !== null;
+        if (!isLoggedIn) {
+            this.props.history.push('/users/login');
+            window.location.reload();
+        }
         // TODO: Add payments, verifications, paypal...
 
         const courseName = this.getCourseName();
@@ -358,7 +363,12 @@ class ViewCourse extends Component {
     }
 
     addToCourseToCart = () => {
-
+        let loggedUser = localStorage.getItem('loggedUser');
+        let isLoggedIn = loggedUser !== null;
+        if (!isLoggedIn) {
+            this.props.history.push('/users/login');
+            window.location.reload();
+        }
         const courseName = this.getCourseName();
 
         async function addToCart() {
@@ -401,6 +411,8 @@ class ViewCourse extends Component {
             console.log(error);
         });
     }
+
+    
 
 }
 
