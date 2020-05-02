@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import axios from "axios";
 
 class Index extends Component {
@@ -31,11 +31,11 @@ class Index extends Component {
                                 <div className="col-lg-12">
                                     <h1 className="display-4 text-white mt-5 mb-2">Do you want to learn to code?</h1>
                                     <p className="lead mb-5 text-white-50">Learn-To-Code platform allows you learn to
-                                        code
-                                        with a bunch of the best tutorials available online. Enroll to our courses and
-                                        you
-                                        will explore totally different experience of learning new skills, technologies
-                                        and
+                                    code
+                                    with a bunch of the best tutorials available online. Enroll to our courses and
+                                    you
+                                    will explore totally different experience of learning new skills, technologies
+                                    and
                                         so much more.</p>
                                 </div>
                             </div>
@@ -48,28 +48,28 @@ class Index extends Component {
                     <div className="row">
                         <div className="col-md-8 mb-5">
                             <h2>The world's largest selection of courses</h2>
-                            <hr/>
+                            <hr />
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore
-                                recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde
+                            recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde
                                 debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur
-                                consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum,
+                            consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum,
                                 alias, adipisci nesciunt voluptate. Voluptatum.</p>
                             <a className="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>
                         </div>
                         <div className="col-md-4 mb-5">
                             <h2>Contact Us</h2>
-                            <hr/>
+                            <hr />
                             <address>
                                 <strong>Start Bootstrap</strong>
-                                <br/>3481 Melrose Place
-                                <br/>Beverly Hills, CA 90210
-                                <br/>
+                                <br />3481 Melrose Place
+                                <br />Beverly Hills, CA 90210
+                                <br />
                             </address>
                             <address>
                                 <abbr title="Phone">P:</abbr>
                                 (123) 456-7890
-                                <br/>
+                                <br />
                                 <abbr title="Email">E:</abbr>
                                 <a href="mailto:#">name@example.com</a>
                             </address>
@@ -79,25 +79,25 @@ class Index extends Component {
                     <ul className="nav nav-pills nav-fill">
                         <li className="nav-item">
                             <a onClick={this.changeToNewestShownCourses} id="newest" className="nav-link active"
-                               href="javascript:void(0)">Newest</a>
+                                href="javascript:void(0)">Newest</a>
                         </li>
                         <li className="nav-item">
                             <a onClick={this.changeToBestSellersShownCourses} id="best-sellers" className="nav-link"
-                               href="javascript:void(0)">Best
+                                href="javascript:void(0)">Best
                                 sellers</a>
                         </li>
                         <li className="nav-item">
                             <a onClick={this.changeToTopRatedShownCourses} id="top-rated" className="nav-link"
-                               href="javascript:void(0)">Top
+                                href="javascript:void(0)">Top
                                 Rated</a>
                         </li>
                         <li className="nav-item">
                             <a onClick={this.changeToTopSalesShownCourses} id="top-sales" className="nav-link"
-                               href="javascript:void(0)">Top
+                                href="javascript:void(0)">Top
                                 Sales</a>
                         </li>
                     </ul>
-                    <br/>
+                    <br />
                     <div id="courses" className="row">
 
                         <div id="remove1" className="col-md-4 mb-5">
@@ -150,9 +150,9 @@ class Index extends Component {
                                 <div className="icon-box">
                                     <div className="mb-3">
                                         <a href="javascript:void(0)"
-                                           onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[0])}>
+                                            onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[0])}>
                                             <img className="card-img-top"
-                                                 src={this.state.courseCategoriesImagesNames[0]}/>
+                                                src={this.state.courseCategoriesImagesNames[0]} />
                                         </a>
                                     </div>
                                     <h4><a
@@ -167,10 +167,10 @@ class Index extends Component {
                                 <div className="icon-box">
                                     <div className="mb-3">
                                         <a href="javascript:void(0)"
-                                           onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[1])}
+                                            onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[1])}
                                         >
                                             <img className="card-img-top"
-                                                 src={this.state.courseCategoriesImagesNames[1]}/>
+                                                src={this.state.courseCategoriesImagesNames[1]} />
                                         </a>
                                     </div>
                                     <h4><a
@@ -185,10 +185,10 @@ class Index extends Component {
                                 <div className="icon-box">
                                     <div className="mb-3">
                                         <a href="javascript:void(0)"
-                                           onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[2])}
+                                            onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[2])}
                                         >
                                             <img className="card-img-top"
-                                                 src={this.state.courseCategoriesImagesNames[2]}/>
+                                                src={this.state.courseCategoriesImagesNames[2]} />
                                         </a>
                                     </div>
                                     <h4><a
@@ -203,10 +203,10 @@ class Index extends Component {
                                 <div className="icon-box">
                                     <div className="mb-3">
                                         <a href="javascript:void(0)"
-                                           onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[3])}
+                                            onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[3])}
                                         >
                                             <img className="card-img-top"
-                                                 src={this.state.courseCategoriesImagesNames[3]}/>
+                                                src={this.state.courseCategoriesImagesNames[3]} />
                                         </a>
                                     </div>
                                     <h4><a
@@ -221,10 +221,10 @@ class Index extends Component {
                                 <div className="icon-box">
                                     <div className="mb-3">
                                         <a href="javascript:void(0)"
-                                           onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[4])}
+                                            onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[4])}
                                         >
                                             <img className="card-img-top"
-                                                 src={this.state.courseCategoriesImagesNames[4]}/>
+                                                src={this.state.courseCategoriesImagesNames[4]} />
                                         </a>
                                     </div>
                                     <h4><a
@@ -239,10 +239,10 @@ class Index extends Component {
                                 <div className="icon-box">
                                     <div className="mb-3">
                                         <a href="javascript:void(0)"
-                                           onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[5])}
+                                            onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[5])}
                                         >
                                             <img className="card-img-top"
-                                                 src={this.state.courseCategoriesImagesNames[5]}/>
+                                                src={this.state.courseCategoriesImagesNames[5]} />
                                         </a>
                                     </div>
                                     <h4><a
@@ -253,6 +253,24 @@ class Index extends Component {
                                 </div>
                             </div>
 
+                        </div>
+
+                    </div>
+                </section>
+                <section id="clients" class="clients">
+
+                    <div class="container">
+
+                        <div class="section-title">
+                            <h2>Clients</h2>
+                            Some of our top sponsors and regular users!
+                        </div>
+
+                        <div class="row d-flex justify-content-center mt-5 mb-5">
+                            <img className="mr-5" width="20%" height="10%" src={process.env.REACT_APP_URL + '/resource/images/client-1.png'} alt="" />
+                            <img className="mr-5" width="20%" height="10%" src={process.env.REACT_APP_URL + '/resource/images/client-2.png'} alt="" />
+                            <img className="mr-5" width="20%" height="10%" src={process.env.REACT_APP_URL + '/resource/images/client-3.png'} alt="" />
+                            <img className="mr-5" width="20%" height="10%" src={process.env.REACT_APP_URL + '/resource/images/client-4.png'} alt="" />
                         </div>
 
                     </div>
@@ -272,7 +290,7 @@ class Index extends Component {
         axios
             .get(process.env.REACT_APP_URL)
             .then(response => {
-                this.setState({content: response.data});
+                this.setState({ content: response.data });
             })
             .catch(err => {
                 console.log(err);
