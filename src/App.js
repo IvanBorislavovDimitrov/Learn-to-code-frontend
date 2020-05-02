@@ -22,6 +22,7 @@ import UpdateCourseCategory from "./components/course-category-update";
 import CheckRepositories from "./components/check-repositories";
 import SingleRepository from "./components/single-repository";
 import Team from "./components/information-team";
+import NotFound from './components/not-found-page';
 
 function App() {
     setTimeout(function () {
@@ -49,7 +50,9 @@ function App() {
                 <Route exact path="/github/check-repositories" component={CheckRepositories} />
                 <Route path="/github/single-repository/" component={SingleRepository} />
                 <Route exact path="/information/team" component={Team} />
-
+                
+                {/* Must be at the end */}
+                <Route path="*" component={NotFound} />
             </Switch>
             <Footer />
         </BrowserRouter>
