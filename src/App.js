@@ -25,6 +25,7 @@ import Team from "./components/information-team";
 import NotFound from './components/not-found-page';
 import AboutUs from './components/information-about-us';
 import UpdateCourse from './components/update-course';
+import DeleteCourse from "./components/delete-course";
 
 function App() {
     setTimeout(function () {
@@ -54,7 +55,8 @@ function App() {
                 <Route exact path="/information/team" component={Team} />
                 <Route exact path="/information/about-us" component={AboutUs} />
                 <Route exact path="/courses/update-course" component={UpdateCourse} />
-                
+                <Route exact path="/courses/delete-course" component={DeleteCourse} />
+
                 
                 {/* Must be at the end */}
                 <Route path="*" component={NotFound} />

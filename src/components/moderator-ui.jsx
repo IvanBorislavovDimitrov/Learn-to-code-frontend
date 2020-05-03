@@ -41,6 +41,14 @@ class ModeratorUI extends Component {
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
                                 <div className="icon-box icon-box-pink">
                                     <div className="icon"><i className="bx bxl-css3"></i></div>
+                                    <h4 className="title"><a href="/courses/delete-course">Delete a course</a></h4>
+                                    <p className="description">Delete a course!</p>
+                                </div>
+                            </div>
+
+                            <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
+                                <div className="icon-box icon-box-pink">
+                                    <div className="icon"><i className="bx bxl-css3"></i></div>
                                     <h4 className="title"><a href="/course-categories/add">Add category</a></h4>
                                     <p className="description">Click here if you want to add a category!</p>
                                 </div>
