@@ -281,6 +281,14 @@ class ViewCourse extends Component {
                     commentOuterDiv.appendChild(usernameH5);
                     commentOuterDiv.appendChild(time);
                     commentOuterDiv.appendChild(contentParagraph);
+                    let loggedUser = localStorage.getItem('loggedUser');
+                    if (loggedUser === comment['author']['username']) {
+                        const edit = document.createElement('a');
+                        edit.setAttribute('class', 'btn btn-warning');
+                        edit.href = '/comments/edit/' + comment['id'];
+                        edit.textContent = 'Edit';
+                        commentOuterDiv.appendChild(edit);
+                    }
                     commentsSection.appendChild(commentOuterDiv);
                 });
                 this.setState({
@@ -412,7 +420,6 @@ class ViewCourse extends Component {
         });
     }
 
-    
 
 }
 
