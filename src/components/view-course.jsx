@@ -289,6 +289,16 @@ class ViewCourse extends Component {
                         edit.textContent = 'Edit';
                         commentOuterDiv.appendChild(edit);
                     }
+                    const roles = localStorage.getItem('userRoles');
+                    const rolesArray = roles.split(",");
+                    const isAdminOrModerator = rolesArray.includes('ROLE_ADMIN') || rolesArray.includes('ROLE_MODERATOR');
+                    if (loggedUser === comment['author']['username'] || isAdminOrModerator) {
+                        const deleteComment = document.createElement('a');
+                        deleteComment.setAttribute('class', 'btn btn-danger ml-1');
+                        deleteComment.href = '/comments/delete/' + comment['id'];
+                        deleteComment.textContent = 'Delete';
+                        commentOuterDiv.appendChild(deleteComment);
+                    }
                     commentsSection.appendChild(commentOuterDiv);
                 });
                 this.setState({

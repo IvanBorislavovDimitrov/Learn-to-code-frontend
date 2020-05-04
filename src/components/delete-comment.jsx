@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class EditComment extends Component {
+class DeleteComment extends Component {
 
     constructor(props) {
         super(props);
@@ -16,8 +16,9 @@ class EditComment extends Component {
             <React.Fragment>
                 <div className="col-md-7 mt-4 container text-center">
                     <div className="form-group ">
-                        <label htmlFor="exampleInputEmail1">Edit comment</label>
+                        <label htmlFor="exampleInputEmail1">Delete comment</label>
                         <textarea
+                            disabled="disabled"
                             onChange={this.changeInputField}
                             name="content"
                             className="form-control"
@@ -25,7 +26,7 @@ class EditComment extends Component {
                         />
                         <div hidden={this.state.valid} className="text-danger">Please login!</div>
                     </div>
-                    <button onClick={this.editComment} className="btn btn-warning">Edit comment</button>
+                    <button onClick={this.deleteComment} className="btn btn-danger">Delete comment</button>
                 </div>
             </React.Fragment>
         )
@@ -55,22 +56,15 @@ class EditComment extends Component {
         })
     }
 
-    editComment = () => {
+    deleteComment = () => {
         this.setState({
             valid: true
         });
-        let loggedUser = localStorage.getItem('loggedUser');
-        const currentThis = this;
         const commentId = this.getCommentId();
-        const comment = {
-            id: commentId,
-            content: currentThis.state.content,
-            author: loggedUser
-        };
-        fetch(process.env.REACT_APP_URL + '/comments/update', {
-            method: 'PUT',
+
+        fetch(process.env.REACT_APP_URL + '/comments/delete/' + commentId, {
+            method: 'DELETE',
             credentials: 'include',
-            body: JSON.stringify(comment),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -84,7 +78,7 @@ class EditComment extends Component {
                     valid: false
                 });
             } else {
-                alert('Not updated!');
+                alert('Not deleted!');
             }
         })
     };
@@ -101,4 +95,4 @@ class EditComment extends Component {
     };
 }
 
-export default EditComment;
+export default DeleteComment;
