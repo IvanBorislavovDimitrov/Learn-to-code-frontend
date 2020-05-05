@@ -28,6 +28,7 @@ import UpdateCourse from './components/update-course';
 import DeleteCourse from "./components/delete-course";
 import EditComment from "./components/edit-comment";
 import DeleteComment from "./components/delete-comment";
+import ActivateAccount from "./components/activate-accout";
 
 function App() {
     setTimeout(function () {
@@ -59,9 +60,9 @@ function App() {
                 <Route exact path="/courses/update-course" component={UpdateCourse} />
                 <Route exact path="/courses/delete-course" component={DeleteCourse} />
                 <Route path="/comments/edit/" component={EditComment} />
-                <Route path="/comments/delete/" component={DeleteComment} />
+                <Route exact path="/comments/delete/" component={DeleteComment} />
+                <Route path="/users/activate/" component={ActivateAccount} />
 
-                
                 {/* Must be at the end */}
                 <Route path="*" component={NotFound} />
             </Switch>
