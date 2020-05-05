@@ -282,22 +282,24 @@ class ViewCourse extends Component {
                     commentOuterDiv.appendChild(time);
                     commentOuterDiv.appendChild(contentParagraph);
                     let loggedUser = localStorage.getItem('loggedUser');
-                    if (loggedUser === comment['author']['username']) {
-                        const edit = document.createElement('a');
-                        edit.setAttribute('class', 'btn btn-warning');
-                        edit.href = '/comments/edit/' + comment['id'];
-                        edit.textContent = 'Edit';
-                        commentOuterDiv.appendChild(edit);
-                    }
-                    const roles = localStorage.getItem('userRoles');
-                    const rolesArray = roles.split(",");
-                    const isAdminOrModerator = rolesArray.includes('ROLE_ADMIN') || rolesArray.includes('ROLE_MODERATOR');
-                    if (loggedUser === comment['author']['username'] || isAdminOrModerator) {
-                        const deleteComment = document.createElement('a');
-                        deleteComment.setAttribute('class', 'btn btn-danger ml-1');
-                        deleteComment.href = '/comments/delete/' + comment['id'];
-                        deleteComment.textContent = 'Delete';
-                        commentOuterDiv.appendChild(deleteComment);
+                    if (loggedUser !== null && loggedUser !== undefined) {
+                        if (loggedUser === comment['author']['username']) {
+                            const edit = document.createElement('a');
+                            edit.setAttribute('class', 'btn btn-warning');
+                            edit.href = '/comments/edit/' + comment['id'];
+                            edit.textContent = 'Edit';
+                            commentOuterDiv.appendChild(edit);
+                        }
+                        const roles = localStorage.getItem('userRoles');
+                        const rolesArray = roles.split(",");
+                        const isAdminOrModerator = rolesArray.includes('ROLE_ADMIN') || rolesArray.includes('ROLE_MODERATOR');
+                        if (loggedUser === comment['author']['username'] || isAdminOrModerator) {
+                            const deleteComment = document.createElement('a');
+                            deleteComment.setAttribute('class', 'btn btn-danger ml-1');
+                            deleteComment.href = '/comments/delete/' + comment['id'];
+                            deleteComment.textContent = 'Delete';
+                            commentOuterDiv.appendChild(deleteComment);
+                        }
                     }
                     commentsSection.appendChild(commentOuterDiv);
                 });
