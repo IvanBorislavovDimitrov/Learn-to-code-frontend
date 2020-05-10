@@ -40,7 +40,7 @@ class UserRegister extends Component {
                 <div className="col-md-4 mt-4 container">
                     <form className="text-center border border-light p-5" encType="multipart/form-data"
                         onSubmit={this.registerUser}>
-                        <p class="h4 mb-4">Register</p>
+                        <p className="h4 mb-4">Register</p>
                         <div className="form-group">
                             <input
                                 onChange={this.changeInputField}
@@ -51,8 +51,8 @@ class UserRegister extends Component {
                                 aria-describedby="emailHelp"
                                 placeholder="Email"
                             />
-                            <div hidden={!this.state.emailNotEntered} class="text-danger mb-3">Enter an email!</div>
-                            <div hidden={!this.state.emailExists} class="text-danger mb-3">Enter is taken!</div>
+                            <div hidden={!this.state.emailNotEntered} className="text-danger mb-3">Enter an email!</div>
+                            <div hidden={!this.state.emailExists} className="text-danger mb-3">Enter is taken!</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -63,7 +63,7 @@ class UserRegister extends Component {
                                 id="firstNameInputField"
                                 placeholder="Enter your first name"
                             />
-                            <div hidden={!this.state.firstNameNotEntered} class="text-danger mb-3">Enter first name!</div>
+                            <div hidden={!this.state.firstNameNotEntered} className="text-danger mb-3">Enter first name!</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -74,7 +74,7 @@ class UserRegister extends Component {
                                 id="lastNameInputField"
                                 placeholder="Enter your last name"
                             />
-                            <div hidden={!this.state.lastNameNotEntered} class="text-danger mb-3">Enter last name!</div>
+                            <div hidden={!this.state.lastNameNotEntered} className="text-danger mb-3">Enter last name!</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -85,8 +85,8 @@ class UserRegister extends Component {
                                 id="usernameInputField"
                                 placeholder="Enter your username"
                             />
-                            <div hidden={!this.state.usernameNotEntered} class="text-danger mb-3">Enter a username!</div>
-                            <div hidden={!this.state.usernameTaken} class="text-danger mb-3">Username is taken!!</div>
+                            <div hidden={!this.state.usernameNotEntered} className="text-danger mb-3">Enter a username!</div>
+                            <div hidden={!this.state.usernameTaken} className="text-danger mb-3">Username is taken!!</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -107,8 +107,8 @@ class UserRegister extends Component {
                                 id="phoneNumberInputField"
                                 placeholder="Enter your phone number"
                             />
-                            <div hidden={!this.state.phoneNumberNotEntered} class="text-danger mb-3">Enter a phone number!</div>
-                            <div hidden={!this.state.phoneNumberTaken} class="text-danger mb-3">Phone number taken!</div>
+                            <div hidden={!this.state.phoneNumberNotEntered} className="text-danger mb-3">Enter a phone number!</div>
+                            <div hidden={!this.state.phoneNumberTaken} className="text-danger mb-3">Phone number taken!</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -119,7 +119,7 @@ class UserRegister extends Component {
                                 id="birthDateInputField"
                                 placeholder="Enter you birth date"
                             />
-                            <div hidden={!this.state.birthDateNotEntered} class="text-danger mb-3">Enter a birth date!</div>
+                            <div hidden={!this.state.birthDateNotEntered} className="text-danger mb-3">Enter a birth date!</div>
                         </div>
                         <div id="passwordField" className="form-group">
                             <input
@@ -130,7 +130,7 @@ class UserRegister extends Component {
                                 id="passwordInputField"
                                 placeholder="Password"
                             />
-                            <div hidden={!this.state.passwordNotEntered} class="text-danger mb-3">Enter a password!</div>
+                            <div hidden={!this.state.passwordNotEntered} className="text-danger mb-3">Enter a password!</div>
                         </div>
                         <div id="confirmPasswordField" className="form-group">
                             <input
@@ -141,15 +141,15 @@ class UserRegister extends Component {
                                 id="confirmPasswordInputField"
                                 placeholder="Confirm Password"
                             />
-                            <div hidden={!this.state.confirmPasswordNotEntered} class="text-danger mb-3">Enter a confirm password!</div>
+                            <div hidden={!this.state.confirmPasswordNotEntered} className="text-danger mb-3">Enter a confirm password!</div>
                         </div>
                         <div className="form-group">
-                            <small id="fileHelp" class="form-text text-muted">Avatar</small>
+                            <small id="fileHelp" className="form-text text-muted">Avatar</small>
                             <input
                                 onChange={this.changeInputField}
                                 ref={this.profilePictureRef}
                                 type="file"
-                                class="custom-file"
+                                className="custom-file"
                                 id="profilePicture"
                                 aria-describedby="fileHelp"
                                 name="profilePicture"

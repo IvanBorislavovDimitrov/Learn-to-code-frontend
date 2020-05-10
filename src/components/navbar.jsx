@@ -67,6 +67,10 @@ class Navbar extends Component {
                                 <a className="btn btn-info" href="/users/register">Register</a>
                             </li>
 
+                            <li hidden={!isLoggedIn} className="nav-item active mr-3">
+                                <a className="btn btn-info" href="/users/profile">Profile</a>
+                            </li>
+
                             <li hidden={!isLoggedIn} className="nav-item active">
                                 <a className="btn btn-info mr-3" href="/github/check-repositories">Repositories</a>
                             </li>

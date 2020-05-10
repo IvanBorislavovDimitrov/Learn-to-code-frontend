@@ -219,16 +219,16 @@ class Index extends Component {
 
                     </div>
                 </section>
-                <section id="clients" class="clients">
+                <section id="clients" className="clients">
 
-                    <div class="container">
+                    <div className="container">
 
-                        <div class="section-title">
+                        <div className="section-title">
                             <h2>Clients</h2>
                             Some of our top sponsors and regular users!
                         </div>
 
-                        <div class="row d-flex justify-content-center mt-5 mb-5">
+                        <div className="row d-flex justify-content-center mt-5 mb-5">
                             <img className="mr-5" width="20%" height="10%"
                                  src={process.env.REACT_APP_URL + '/resource/images/client-1.png'} alt=""/>
                             <img className="mr-5" width="20%" height="10%"
@@ -253,8 +253,7 @@ class Index extends Component {
     }
 
     getData() {
-        axios
-            .get(process.env.REACT_APP_URL)
+        axios.get(process.env.REACT_APP_URL)
             .then(response => {
                 this.setState({content: response.data});
             })
@@ -273,7 +272,6 @@ class Index extends Component {
                 content: this.state.content,
                 githubUsername: jsonResponse['login']
             });
-
         }).catch((err) => {
             console.log(err);
         });
