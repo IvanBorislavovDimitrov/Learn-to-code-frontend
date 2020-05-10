@@ -29,6 +29,7 @@ import DeleteCourse from "./components/delete-course";
 import EditComment from "./components/edit-comment";
 import DeleteComment from "./components/delete-comment";
 import ActivateAccount from "./components/activate-accout";
+import ChangePassword from "./components/change-password";
 
 function App() {
     setTimeout(function () {
@@ -62,6 +63,7 @@ function App() {
                 <Route path="/comments/edit/" component={EditComment} />
                 <Route exact path="/comments/delete/" component={DeleteComment} />
                 <Route path="/users/activate/" component={ActivateAccount} />
+                <Route path="/users/new-password/" component={ChangePassword} />
 
                 {/* Must be at the end */}
                 <Route path="*" component={NotFound} />

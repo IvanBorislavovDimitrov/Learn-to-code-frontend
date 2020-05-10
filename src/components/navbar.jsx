@@ -21,8 +21,6 @@ class Navbar extends Component {
             <React.Fragment>
                 <link rel="stylesheet"
                     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
-
-
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <a className="navbar-brand" href="/">Learn To Code</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"

@@ -418,7 +418,6 @@ class Courses extends Component {
                     this.loadCourses(this.state.courseName, this.state.currentPage + 1);
                     const activePageNumber = this.getActivePageNumber();
                     const activePage = this.getActivePage();
-                    console.log('EBANIEEEE', activePage.textContent);
                     const nextPage = this.getPageByNumber(Number.parseInt(activePageNumber.textContent) + 1);
                     activePage.setAttribute('class', '');
                     this.removePgingActive();
