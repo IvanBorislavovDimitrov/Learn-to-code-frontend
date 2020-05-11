@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import qs from 'qs'
-import {Button, Modal} from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 
 class UserProfile extends Component {
     constructor(props) {
@@ -10,9 +10,10 @@ class UserProfile extends Component {
             description: null,
             firstName: null,
             lastName: null,
-            phoneNumber: null,
-            email: null,
-            profilePictureName: null,
+            birthDate: null,
+            validFirstName: true,
+            validLastName: true,
+            validBirthDate: true
         };
         this.profilePictureRef = React.createRef();
     }
@@ -28,12 +29,18 @@ class UserProfile extends Component {
                             <ul className="nav nav-tabs">
                                 <li className="nav-item">
                                     <a href="" data-target="#profile" data-toggle="tab"
-                                       className="nav-link active">Profile</a>
+                                        className="nav-link active">Profile</a>
                                 </li>
                                 <li className="nav-item">
                                     <a onClick={this.getCoursesForUser} href="" data-target="#messages"
-                                       data-toggle="tab"
-                                       className="nav-link">Enrolled courses</a>
+                                        data-toggle="tab"
+                                        className="nav-link">Enrolled courses</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a onClick={this.loadCoursesThatUserTeaches} href=""
+                                        data-target="#courses-that-you-teach-div"
+                                        data-toggle="tab"
+                                        className="nav-link">Courses that you teach</a>
                                 </li>
                                 <li className="nav-item">
                                     <a href="" data-target="#edit" data-toggle="tab" className="nav-link">Edit</a>
@@ -59,175 +66,103 @@ class UserProfile extends Component {
                                         </div>
                                         <div className="col-md-12">
                                             <h5 className="mt-2"><span
-                                                className="fa fa-clock-o ion-clock float-right"></span> Recent Activity
+                                                className="fa fa-clock-o ion-clock float-right" /> Recent Activity
                                             </h5>
                                             <table className="table table-sm table-hover table-striped">
                                                 <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <strong>Abby</strong> joined ACME Project Team
-                                                        in <strong>`Collaboration`</strong>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <strong>Gary</strong> deleted My Board1
+                                                    <tr>
+                                                        <td>
+                                                            <strong>Skell</strong> deleted his post Look at Why this is..
                                                         in <strong>`Discussions`</strong>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <strong>Kensington</strong> deleted MyBoard3
-                                                        in <strong>`Discussions`</strong>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <strong>John</strong> deleted My Board1
-                                                        in <strong>`Discussions`</strong>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <strong>Skell</strong> deleted his post Look at Why this is..
-                                                        in <strong>`Discussions`</strong>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="tab-pane" id="messages">
-                                    <table className="table table-hover table-striped">
+                                    <table className="table table-hover table-striped"
+                                        id="courses-that-you-are-enrolled-div">
                                         <tbody id="courses-body">
-                                        {/*<tr>*/}
-                                        {/*    <td>*/}
-                                        {/*        <span className="float-right font-weight-bold">3 hrs ago</span> Here is*/}
-                                        {/*        your a link to the latest summary report from the..*/}
-                                        {/*    </td>*/}
-                                        {/*</tr>*/}
+                                            {/*<tr>*/}
+                                            {/*    <td>*/}
+                                            {/*        <span className="float-right font-weight-bold">3 hrs ago</span> Here is*/}
+                                            {/*        your a link to the latest summary report from the..*/}
+                                            {/*    </td>*/}
+                                            {/*</tr>*/}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div className="tab-pane" id="courses-that-you-teach-div">
+                                    <table className="table table-hover table-striped">
+                                        <tbody id="courses-that-you-teach">
+                                            {/*<tr>*/}
+                                            {/*    <td>*/}
+                                            {/*        <span className="float-right font-weight-bold">3 hrs ago</span> Here is*/}
+                                            {/*        your a link to the latest summary report from the..*/}
+                                            {/*    </td>*/}
+                                            {/*</tr>*/}
 
                                         </tbody>
                                     </table>
                                 </div>
                                 <div className="tab-pane" id="edit">
-                                    <form role="form">
-                                        <div className="form-group row">
-                                            <label className="col-lg-3 col-form-label form-control-label">First
-                                                name</label>
-                                            <div className="col-lg-9">
-                                                <input className="form-control" type="text" value="Jane"/>
-                                            </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label form-control-label">First name</label>
+                                        <div className="col-lg-9">
+                                            <input
+                                                id="firstNameInputField"
+                                                onChange={this.changeInputField}
+                                                className="form-control" type="text" name="firstName" />
                                         </div>
-                                        <div className="form-group row">
-                                            <label className="col-lg-3 col-form-label form-control-label">Last
-                                                name</label>
-                                            <div className="col-lg-9">
-                                                <input className="form-control" type="text" value="Bishop"/>
-                                            </div>
+                                        <div hidden={this.state.validFirstName} className="ml-3 text-danger">Enter a valid first name</div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label form-control-label">Last name</label>
+                                        <div className="col-lg-9">
+                                            <input
+                                                id="lastNameInputField"
+                                                onChange={this.changeInputField} className="form-control"
+                                                type="text" name="lastName" />
                                         </div>
-                                        <div className="form-group row">
-                                            <label className="col-lg-3 col-form-label form-control-label">Email</label>
-                                            <div className="col-lg-9">
-                                                <input className="form-control" type="email" value="email@gmail.com"/>
-                                            </div>
+                                        <div hidden={this.state.validLastName} className="ml-3 text-danger">Enter a valid last name</div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label
+                                            className="col-lg-3 col-form-label form-control-label">Birth
+                                                Date</label>
+                                        <div className="col-lg-9">
+                                            <input
+                                                id="birthDateInputField"
+                                                onChange={this.changeInputField} className="form-control"
+                                                type="date" name="birthDate" />
                                         </div>
-                                        <div className="form-group row">
-                                            <label
-                                                className="col-lg-3 col-form-label form-control-label">Company</label>
-                                            <div className="col-lg-9">
-                                                <input className="form-control" type="text" value=""/>
-                                            </div>
+                                        <div hidden={this.state.validBirthDate} className="ml-3 text-danger">Enter a valid birth date</div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label
+                                            className="col-lg-3 col-form-label form-control-label">Description</label>
+                                        <div className="col-lg-9">
+                                            <textarea onChange={this.changeInputField} className="form-control"
+                                                name="description" />
                                         </div>
-                                        <div className="form-group row">
-                                            <label
-                                                className="col-lg-3 col-form-label form-control-label">Website</label>
-                                            <div className="col-lg-9">
-                                                <input className="form-control" type="url" value=""/>
-                                            </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label form-control-label" />
+                                        <div className="col-lg-9">
+                                            <button onClick={this.updateUserBasicInformation} type="button" className="btn btn-primary"
+                                                value="Save Changes" >Save changes</button>
                                         </div>
-                                        <div className="form-group row">
-                                            <label
-                                                className="col-lg-3 col-form-label form-control-label">Address</label>
-                                            <div className="col-lg-9">
-                                                <input className="form-control" type="text" value=""
-                                                       placeholder="Street"/>
-                                            </div>
-                                        </div>
-                                        <div className="form-group row">
-                                            <label className="col-lg-3 col-form-label form-control-label"></label>
-                                            <div className="col-lg-6">
-                                                <input className="form-control" type="text" value=""
-                                                       placeholder="City"/>
-                                            </div>
-                                            <div className="col-lg-3">
-                                                <input className="form-control" type="text" value=""
-                                                       placeholder="State"/>
-                                            </div>
-                                        </div>
-                                        <div className="form-group row">
-                                            <label className="col-lg-3 col-form-label form-control-label">Time
-                                                Zone</label>
-                                            <div className="col-lg-9">
-                                                <select id="user_time_zone" className="form-control" size="0">
-                                                    <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                                                    <option value="Alaska">(GMT-09:00) Alaska</option>
-                                                    <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific
-                                                        Time (US &amp; Canada)
-                                                    </option>
-                                                    <option value="Arizona">(GMT-07:00) Arizona</option>
-                                                    <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain
-                                                        Time (US &amp; Canada)
-                                                    </option>
-                                                    <option value="Central Time (US &amp; Canada)"
-                                                            selected="selected">(GMT-06:00) Central Time
-                                                        (US &amp; Canada)
-                                                    </option>
-                                                    <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern
-                                                        Time (US &amp; Canada)
-                                                    </option>
-                                                    <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="form-group row">
-                                            <label
-                                                className="col-lg-3 col-form-label form-control-label">Username</label>
-                                            <div className="col-lg-9">
-                                                <input className="form-control" type="text" value="janeuser"/>
-                                            </div>
-                                        </div>
-                                        <div className="form-group row">
-                                            <label
-                                                className="col-lg-3 col-form-label form-control-label">Password</label>
-                                            <div className="col-lg-9">
-                                                <input className="form-control" type="password" value="11111122333"/>
-                                            </div>
-                                        </div>
-                                        <div className="form-group row">
-                                            <label className="col-lg-3 col-form-label form-control-label">Confirm
-                                                password</label>
-                                            <div className="col-lg-9">
-                                                <input className="form-control" type="password" value="11111122333"/>
-                                            </div>
-                                        </div>
-                                        <div className="form-group row">
-                                            <label className="col-lg-3 col-form-label form-control-label"></label>
-                                            <div className="col-lg-9">
-                                                <input type="reset" className="btn btn-secondary" value="Cancel"/>
-                                                <input type="button" className="btn btn-primary"
-                                                       value="Save Changes"/>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-4 order-lg-1 text-center">
                             <img src={this.state.profilePictureName} width="300pc" height="300pc"
-                                 className="mx-auto img-fluid img-circle d-block"
-                                 alt="avatar"/>
+                                className="mx-auto img-fluid img-circle d-block"
+                                alt="avatar" />
                             <div className="justify-content container text-left">
                                 <small id="fileHelp" className="form-text text-muted mt-5">Upload profile
                                     picture</small>
@@ -241,7 +176,7 @@ class UserProfile extends Component {
                                     name="profilePicture"
                                 />
                                 <button onClick={this.changeProfilePicture} className="btn btn-primary">Change profile
-                                    picture
+                                picture
                                 </button>
                             </div>
                         </div>
@@ -253,6 +188,11 @@ class UserProfile extends Component {
     }
 
     componentDidMount() {
+        this.loadUser();
+
+    };
+
+    loadUser = () => {
         fetch(process.env.REACT_APP_URL + '/users/user', {
             method: 'GET',
             credentials: 'include'
@@ -279,6 +219,124 @@ class UserProfile extends Component {
         });
     };
 
+    updateUserBasicInformation = () => {
+        if (!this.checkIfUserFormIsValid()) {
+            return;
+        }
+        let loggedUser = localStorage.getItem('loggedUser');
+        const currentThis = this;
+        const userUpdateForm = {
+            firstName: currentThis.state.firstName,
+            lastName: currentThis.state.lastName,
+            birthDate: currentThis.state.birthDate,
+            description: currentThis.state.description
+        };
+        fetch(process.env.REACT_APP_URL + '/users/update/basic/' + loggedUser, {
+            method: 'PATCH',
+            credentials: 'include',
+            body: JSON.stringify(userUpdateForm),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(async response => {
+            await response.text();
+            if (response.status === 200) {
+                this.props.history.push('/users/profile');
+                window.location.reload();
+                return;
+            }
+        }).catch(error => {
+            console.log(error);
+        })
+    };
+
+    checkIfUserFormIsValid = () => {
+        let isValid = true;
+        const firstNameInputField = document.getElementById('firstNameInputField');
+        const lastNameInputField = document.getElementById('lastNameInputField');
+        const birthDateInputField = document.getElementById('birthDateInputField');
+        firstNameInputField.setAttribute('class', 'form-control');
+        this.setState({
+            validFirstName: true
+        });
+        lastNameInputField.setAttribute('class', 'form-control');
+        this.setState({
+            validLastName: true
+        });
+        birthDateInputField.setAttribute('class', 'form-control');
+        this.setState({
+            validBirthDate: true
+        });
+        if (firstNameInputField.value.length === 0) {
+            this.setState({
+                validFirstName: false
+            });
+            firstNameInputField.setAttribute('class', 'form-control is-invalid');
+            isValid = false;
+        }
+        if (lastNameInputField.value.length === 0) {
+            this.setState({
+                validLastName: false
+            });
+            lastNameInputField.setAttribute('class', 'form-control is-invalid');
+            isValid = false;
+        }
+        if (birthDateInputField.value.length === 0) {
+            this.setState({
+                validBirthDate: false
+            });
+            birthDateInputField.setAttribute('class', 'form-control is-invalid');
+            isValid = false;
+        }
+        return isValid;
+    };
+
+    loadCoursesThatUserTeaches = () => {
+        const coursesTable = document.getElementById('courses-that-you-teach');
+        coursesTable.innerHTML = '';
+        const loggedUser = localStorage.getItem('loggedUser');
+        fetch(process.env.REACT_APP_URL + '/courses/user/teaches/' + loggedUser, {
+            method: 'GET',
+            credentials: 'include'
+        }).then(async response => {
+            const coursesForUserJsonResponse = await response.json();
+            let coursesMap = JSON.parse(JSON.stringify(coursesForUserJsonResponse));
+            if (coursesMap.length === 0) {
+                const coursesThatYouTeach = document.getElementById('courses-that-you-teach-div');
+                const noCoursesThatYouTeach = document.getElementById('no-courses-that-you-teach');
+                if (noCoursesThatYouTeach !== undefined && noCoursesThatYouTeach !== null) {
+                    coursesThatYouTeach.removeChild(noCoursesThatYouTeach);
+                }
+                const noCoursesH2 = document.createElement('h2');
+                noCoursesH2.textContent = 'You do not teach any courses!';
+                noCoursesH2.id = 'no-courses-that-you-teach';
+                coursesThatYouTeach.appendChild(noCoursesH2);
+            }
+            coursesMap.forEach(course => {
+                const tableRowElement = document.createElement('tr');
+                const tableDataCellElement = document.createElement('td');
+                const categorySpanElements = document.createElement('span');
+                categorySpanElements.setAttribute('class', 'float-right font-weight-bold');
+                categorySpanElements.textContent = course['category']['name'];
+                tableDataCellElement.appendChild(categorySpanElements);
+                const nameParagraphElement = document.createElement('p');
+                nameParagraphElement.textContent = 'Course name: ' + course['name'];
+                const descriptionParagraphElement = document.createElement('p');
+                descriptionParagraphElement.textContent = 'Description: ' + course['description'];
+                tableDataCellElement.appendChild(nameParagraphElement);
+                tableDataCellElement.appendChild(descriptionParagraphElement);
+                const courseLinkParagraphElement = document.createElement('p');
+                const courseLinkAnchorTagElement = document.createElement('a');
+                courseLinkAnchorTagElement.href = '/courses/view/' + course['name'];
+                courseLinkAnchorTagElement.textContent = 'Go to the course page.';
+                courseLinkParagraphElement.appendChild(courseLinkAnchorTagElement);
+                tableDataCellElement.appendChild(courseLinkParagraphElement);
+                tableRowElement.appendChild(tableDataCellElement);
+                coursesTable.appendChild(tableRowElement);
+            });
+        });
+    };
+
     getCoursesForUser = () => {
         const coursesTable = document.getElementById('courses-body');
         coursesTable.innerHTML = '';
@@ -289,6 +347,20 @@ class UserProfile extends Component {
         }).then(async response => {
             const coursesForUserJsonResponse = await response.json();
             let coursesMap = JSON.parse(JSON.stringify(coursesForUserJsonResponse));
+
+            const coursesThatYouTeach = document.getElementById('courses-that-you-are-enrolled-div');
+            const noCoursesThatYouTeach = document.getElementById('no-courses-that-you-are-enrolled-for');
+            if (noCoursesThatYouTeach !== undefined && noCoursesThatYouTeach !== null) {
+                coursesThatYouTeach.removeChild(noCoursesThatYouTeach);
+            }
+
+            if (coursesMap.length === 0) {
+                const coursesThatYourAreEnrolledFor = document.getElementById('courses-that-you-are-enrolled-div');
+                const noCoursesH2 = document.createElement('h2');
+                noCoursesH2.textContent = 'You have not enrolled for any courses!';
+                noCoursesH2.id = 'no-courses-that-you-are-enrolled-for';
+                coursesThatYourAreEnrolledFor.appendChild(noCoursesH2);
+            }
             coursesMap.forEach(course => {
                 const tableRowElement = document.createElement('tr');
                 const tableDataCellElement = document.createElement('td');
