@@ -15,7 +15,7 @@ class ViewCourse extends Component {
         teacherDescription: null,
         teacherProfilePictureName: null,
         commentsCount: 0,
-        price: 0,
+        price: -1,
         isUserEnrolledForCourse: false,
         doesUserHaveCourseInCart: false
     }
@@ -152,10 +152,10 @@ class ViewCourse extends Component {
     }
 
     componentDidMount() {
+        this.checkIsUserEnrolledForCourse();
         const courseName = this.getCourseName();
         this.setCourseByName(courseName);
         this.loadComments(courseName);
-        this.checkIsUserEnrolledForCourse();
         this.checkIfUserHasCourseInCart();
     }
 
@@ -174,8 +174,6 @@ class ViewCourse extends Component {
             content: commentContent,
             courseName: courseName
         };
-
-        console.log('putki', commentRequest);
 
         async function sendComment() {
             return await fetch(process.env.REACT_APP_URL + '/comments/add', {
@@ -234,7 +232,7 @@ class ViewCourse extends Component {
             
                 if (count === 1) {
                     tdLink.appendChild(button);
-                } else if (this.state.isUserEnrolledForCourse || this.state.price === 0) {
+                } else if (this.state.isUserEnrolledForCourse) {
                     tdLink.appendChild(button);
                 } else {
                     const locked = document.createElement('button');
