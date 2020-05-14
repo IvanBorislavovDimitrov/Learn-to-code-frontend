@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 class ViewCourse extends Component {
     state = {
@@ -41,32 +41,31 @@ class ViewCourse extends Component {
                                         </h2>
                                         <div className="entry-meta">
                                             <ul>
-                                                <li className="d-flex align-items-center"><i className="icofont-user"/>
+                                                <li className="d-flex align-items-center"><i className="icofont-user" />
                                                     <a href="#">{this.state.teacherName}</a></li>
                                                 <li className="d-flex align-items-center"><i
-                                                    className="icofont-wall-clock"/> <a href="#">
-                                                    <time>{this.state.startDate}</time>
-                                                </a></li>
+                                                    className="icofont-wall-clock" /> <a href="#">
+                                                        <time>{this.state.startDate}</time>
+                                                    </a></li>
                                                 <li className="d-flex align-items-center"><i
-                                                    className="icofont-wall-clock"/> <a href="#">
-                                                    <time>{this.state.endDate}</time>
-                                                </a></li>
+                                                    className="icofont-wall-clock" /> <a href="#">
+                                                        <time>{this.state.endDate}</time>
+                                                    </a></li>
                                                 <li className="d-flex align-items-center"><i
-                                                    className="icofont-comment"/> <a
-                                                    href="#">{this.state.commentsCount} Comments</a></li>
+                                                    className="icofont-comment" /> <a
+                                                        href="#">{this.state.commentsCount} Comments</a></li>
                                             </ul>
                                         </div>
                                         <div className="jumbotron-fluid">
                                             <button onClick={this.enrolledLoggedUserForCourse}
-                                                    hidden={this.state.isUserEnrolledForCourse} type="button"
-                                                    className="btn btn-warning mr-3">Enroll for course to reveal the
+                                                hidden={this.state.isUserEnrolledForCourse} type="button"
+                                                className="btn btn-warning mr-3">Enroll for course to reveal the
                                                 content
                                             </button>
                                             <button onClick={this.addToCourseToCart}
-                                                    hidden={this.state.isUserEnrolledForCourse || this.state.doesUserHaveCourseInCart}
-                                                    type="button"
-                                                    className="btn btn-success mr-3">Add to cart
-                                                content
+                                                hidden={this.state.isUserEnrolledForCourse || this.state.doesUserHaveCourseInCart}
+                                                type="button"
+                                                className="btn btn-success mr-3">Add to cart
                                             </button>
                                             <div hidden={this.state.isUserEnrolledForCourse} className="entry-content">
                                                 <h3>Price - ${this.state.price}</h3>
@@ -79,29 +78,29 @@ class ViewCourse extends Component {
 
                                         <div className="entry-footer clearfix">
                                             <div className="float-left">
-                                                <i className="icofont-folder"/>
+                                                <i className="icofont-folder" />
                                                 <ul className="cats ml-2">
                                                     <li><a href="#">{this.state.category}</a></li>
                                                 </ul>
                                             </div>
                                             <div className="float-right share">
                                                 <a href="#" title="Share on Twitter"><i
-                                                    className="icofont-twitter"/></a>
+                                                    className="icofont-twitter" /></a>
                                                 <a href="#" title="Share on Facebook"><i
-                                                    className="icofont-facebook"/></a>
+                                                    className="icofont-facebook" /></a>
                                                 <a href="#" title="Share on Instagram"><i
-                                                    className="icofont-instagram"/></a>
+                                                    className="icofont-instagram" /></a>
                                             </div>
                                         </div>
                                     </article>
                                     <div className="blog-author clearfix">
                                         <img src={this.state.teacherProfilePictureName}
-                                             className="rounded-circle float-left" alt=""/>
+                                            className="rounded-circle float-left" alt="" />
                                         <h4>{this.state.teacherName}</h4>
                                         <div className="social-links">
-                                            <a href="https://twitters.com/#"><i className="icofont-twitter"/></a>
-                                            <a href="https://facebook.com/#"><i className="icofont-facebook"/></a>
-                                            <a href="https://instagram.com/#"><i className="icofont-instagram"/></a>
+                                            <a href="https://twitters.com/#"><i className="icofont-twitter" /></a>
+                                            <a href="https://facebook.com/#"><i className="icofont-facebook" /></a>
+                                            <a href="https://instagram.com/#"><i className="icofont-instagram" /></a>
                                         </div>
                                         <p>{this.state.teacherDescription}</p>
                                     </div>
@@ -117,7 +116,7 @@ class ViewCourse extends Component {
                                                 <div className="row">
                                                     <div className="col form-group">
                                                         <textarea id="commentContent" name="comment" rows="5"
-                                                                  className="form-control" placeholder="Your Comment"/>
+                                                            className="form-control" placeholder="Your Comment" />
                                                     </div>
                                                 </div>
                                                 <button type="submit" className="btn btn-primary">Post Comment</button>
@@ -129,6 +128,18 @@ class ViewCourse extends Component {
                                     <div className="sidebar">
                                         <h3 className="sidebar-title">Agenda</h3>
                                         <div id="agenda" className="sidebar-item h6">
+                                            <table class="table table-hover table-dark">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Lecture name</th>
+                                                        <th scope="col">Watch</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="table-body">
+
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -202,14 +213,41 @@ class ViewCourse extends Component {
             const coursesResponseJson = await response.json();
             let courseModel = JSON.parse(JSON.stringify(coursesResponseJson));
             const agenda = document.getElementById('agenda');
-
+            let count = 1;
             courseModel["videosNames"].forEach(video => {
                 const firstDiv = document.createElement('div');
                 firstDiv.setAttribute('class', 'post-item clearfix');
                 const h5 = document.createElement('h5');
+
                 const button = document.createElement('button');
-                button.textContent = video["videoTitle"];
-                button.setAttribute('class', 'btn btn-link');
+                button.textContent = 'Go';
+                button.setAttribute('class', 'btn btn-warning btn-sm');
+
+                const tableBodyAgenda = document.getElementById('table-body');
+                const tableRow = document.createElement('tr');
+                const thRowElementd = document.createElement('th');
+                thRowElementd.setAttribute('scope', 'row');
+                thRowElementd.textContent = count;
+                const tdName = document.createElement('td');
+                tdName.textContent = video['videoTitle'];
+                const tdLink = document.createElement('td');
+            
+                if (count === 1) {
+                    tdLink.appendChild(button);
+                } else if (this.state.isUserEnrolledForCourse || this.state.price === 0) {
+                    tdLink.appendChild(button);
+                } else {
+                    const locked = document.createElement('button');
+                    locked.textContent = 'Locked';
+                    locked.setAttribute('class', 'btn btn-danger btn-sm');
+                    tdLink.appendChild(locked);
+                }
+                tableRow.appendChild(thRowElementd);
+                tableRow.appendChild(tdName);
+                tableRow.appendChild(tdLink);
+                tableBodyAgenda.appendChild(tableRow);
+
+                count++;
                 button.onclick = () => {
                     const videoOuter = document.getElementById('video');
                     videoOuter.innerHTML = '';
@@ -225,7 +263,6 @@ class ViewCourse extends Component {
                         currentVideoTitle: video["videoTitle"]
                     });
                 };
-                h5.appendChild(button);
                 firstDiv.appendChild(h5);
                 agenda.appendChild(firstDiv);
             });

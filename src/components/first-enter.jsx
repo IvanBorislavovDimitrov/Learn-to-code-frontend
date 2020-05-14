@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import $ from 'jquery';
 
 class FirstEnter extends Component {
@@ -8,184 +8,139 @@ class FirstEnter extends Component {
         return (
             <React.Fragment>
 
-                <section id="hero" className="d-flex justify-cntent-center align-items-center">
-                    <div id="heroCarousel" className="container carousel carousel-fade" data-ride="carousel">
+                <section id="hero" className="mb-5">
+                    <div class="hero-container">
+                        <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 
-                        <div id="first_item" className="carousel-item active">
-                            <div className="carousel-container">
-                                <h2 className="animated fadeInDown">Welcome to Learn-To-Code Platform</h2>
-                                <p className="animated fadeInUp">1 Ut velit est quam dolor ad a aliquid qui aliquid.
-                                    Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia
-                                    ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel.
-                                    Minus et tempore modi architecto.</p>
-                                <a href="/" className="btn-get-started animated fadeInUp">Proceed to the Webapp</a>
-                            </div>
-                        </div>
+                            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
-                        <div id="second_item" className="carousel-item">
-                            <div className="carousel-container">
-                                <h2 className="animated fadeInDown">Lorem Ipsum Dolor</h2>
-                                <p className="animated fadeInUp">2 Ut velit est quam dolor ad a aliquid qui aliquid.
-                                    Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia
-                                    ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel.
-                                    Minus et tempore modi architecto.</p>
-                                <a href="/" className="btn-get-started animated fadeInUp">Proceed to the Webapp</a>
-                            </div>
-                        </div>
+                            <div class="carousel-inner" role="listbox">
 
-                        <div id="third_item" className="carousel-item">
-                            <div className="carousel-container">
-                                <h2 className="animated fadeInDown">Sequi ea ut et est quaerat</h2>
-                                <p className="animated fadeInUp"> 3 Ut velit est quam dolor ad a aliquid qui aliquid.
-                                    Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia
-                                    ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel.
-                                    Minus et tempore modi architecto.</p>
-                                <a href="/" className="btn-get-started animated fadeInUp">Proceed to the Webapp</a>
-                            </div>
-                        </div>
-
-                        <a className="carousel-control-prev" href="#" onClick={this.moveBackwards} role="button"
-                           data-slide="prev">
-                            <span className="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
-                            <span className="sr-only">Previous</span>
-                        </a>
-
-                        <a className="carousel-control-next" href="#" onClick={this.moveForward} role="button"
-                           data-slide="next">
-                            <span className="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
-                            <span className="sr-only">Next</span>
-                        </a>
-
-                    </div>
-                </section>
-
-                <section className="service-details">
-                    <div className="container">
-
-                        <div className="row">
-                            <div className="col-md-6 d-flex align-items-stretch">
-                                <div className="card">
-                                    <div className="card-img">
-                                        <img src="/assets/img/service-details-1.jpg" alt="..."/>
-                                    </div>
-                                    <div className="card-body">
-                                        <h5 className="card-title"><a href="#">Our Mission</a></h5>
-                                        <p className="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do
-                                            eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat</p>
-                                        <div className="read-more"><a href="#"><i
-                                            className="icofont-arrow-right"></i> Read More</a></div>
+                                <div class="carousel-item active background1">
+                                    <div class="carousel-container">
+                                        <div class="carousel-content">
+                                            <h2 class="animated fadeInDown">Welcome to <span>Eterna</span></h2>
+                                            <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                                            <a href="" class="btn-get-started animated fadeInUp">Read More</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="col-md-6 d-flex align-items-stretch">
-                                <div className="card">
-                                    <div className="card-img">
-                                        <img src="/assets/img/service-details-2.jpg" alt="..."/>
+
+                                <div class="carousel-item background2">
+                                    <div class="carousel-container">
+                                        <div class="carousel-content">
+                                            <h2 class="animated fadeInDown">Lorem <span>Ipsum Dolor</span></h2>
+                                            <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                                            <a href="" class="btn-get-started animated fadeInUp">Read More</a>
+                                        </div>
                                     </div>
-                                    <div className="card-body">
-                                        <h5 className="card-title"><a href="#">Our Plan</a></h5>
-                                        <p className="card-text">Sed ut perspiciatis unde omnis iste natus error sit
-                                            voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                            inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                            explicabo</p>
-                                        <div className="read-more"><a href="#"><i
-                                            className="icofont-arrow-right"></i> Read More</a></div>
+                                </div>
+
+                                <div class="carousel-item background3">
+                                    <div class="carousel-container">
+                                        <div class="carousel-content">
+                                            <h2 class="animated fadeInDown">Sequi ea <span>Dime Lara</span></h2>
+                                            <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                                            <a href="" class="btn-get-started animated fadeInUp">Read More</a>
+                                        </div>
                                     </div>
                                 </div>
 
                             </div>
-                            <div className="col-md-6 d-flex align-items-stretch">
-                                <div className="card">
-                                    <div className="card-img">
-                                        <img src="/assets/img/service-details-3.jpg" alt="..."/>
-                                    </div>
-                                    <div className="card-body">
-                                        <h5 className="card-title"><a href="#">Our Vision</a></h5>
-                                        <p className="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit
-                                            aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt
-                                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet</p>
-                                        <div className="read-more"><a href="#"><i
-                                            className="icofont-arrow-right"></i> Read More</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 d-flex align-items-stretch">
-                                <div className="card">
-                                    <div className="card-img">
-                                        <img src="/assets/img/service-details-4.jpg" alt="..."/>
-                                    </div>
-                                    <div className="card-body">
-                                        <h5 className="card-title"><a href="#">Our Care</a></h5>
-                                        <p className="card-text">Nostrum eum sed et autem dolorum perspiciatis. Magni
-                                            porro quisquam laudantium voluptatem. In molestiae earum ab sit esse
-                                            voluptatem. Eos ipsam cumque ipsum officiis qui nihil aut incidunt aut</p>
-                                        <div className="read-more"><a href="#"><i
-                                            className="icofont-arrow-right"></i> Read More</a></div>
-                                    </div>
-                                </div>
-                            </div>
+
+                            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon icofont-rounded-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+
+                            <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon icofont-rounded-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+
                         </div>
                     </div>
                 </section>
 
-                <section className="pricing section-bg">
-                    <div className="container">
+                <section id="featured" class="featured">
+                    <div class="container">
 
-                        <div className="section-title">
-                            <h2>Pricing</h2>
-                            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum
-                                quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui
-                                impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="icon-box">
+                                    <i class="icofont-computer"></i>
+                                    <h3><a href="">Lorem Ipsum</a></h3>
+                                    <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mt-4 mt-lg-0">
+                                <div class="icon-box">
+                                    <i class="icofont-image"></i>
+                                    <h3><a href="">Dolor Sitema</a></h3>
+                                    <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mt-4 mt-lg-0">
+                                <div class="icon-box">
+                                    <i class="icofont-tasks-alt"></i>
+                                    <h3><a href="">Sed ut perspiciatis</a></h3>
+                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <div className="row no-gutters">
+                    </div>
+                </section>
+                
+                <section id="pricing" class="pricing">
+                    <div class="container">
 
-                            <div className="col-lg-4 box">
+                        <div class="row no-gutters">
+
+                            <div class="col-lg-4 box">
                                 <h3>Free</h3>
                                 <h4>$0<span>per month</span></h4>
                                 <ul>
-                                    <li><i className="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                                    <li><i className="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                                    <li><i className="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                                    <li className="na"><i className="bx bx-x"></i>
-                                        <span>Pharetra massa massa ultricies</span></li>
-                                    <li className="na"><i className="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span>
-                                    </li>
+                                    <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                                    <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
+                                    <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
+                                    <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
+                                    <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
                                 </ul>
-                                <a href="#" className="get-started-btn">Get Started</a>
+                                <a href="#" class="buy-btn">Buy Now</a>
                             </div>
 
-                            <div className="col-lg-4 box featured">
+                            <div class="col-lg-4 box featured">
                                 <h3>Business</h3>
                                 <h4>$29<span>per month</span></h4>
                                 <ul>
-                                    <li><i className="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                                    <li><i className="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                                    <li><i className="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                                    <li><i className="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                                    <li><i className="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
+                                    <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                                    <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
+                                    <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
+                                    <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
+                                    <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
                                 </ul>
-                                <a href="#" className="get-started-btn">Get Started</a>
+                                <a href="#" class="buy-btn">Buy Now</a>
                             </div>
 
-                            <div className="col-lg-4 box">
+                            <div class="col-lg-4 box">
                                 <h3>Developer</h3>
                                 <h4>$49<span>per month</span></h4>
                                 <ul>
-                                    <li><i className="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                                    <li><i className="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                                    <li><i className="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                                    <li><i className="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                                    <li><i className="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
+                                    <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                                    <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
+                                    <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
+                                    <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
+                                    <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
                                 </ul>
-                                <a href="#" className="get-started-btn">Get Started</a>
+                                <a href="#" class="buy-btn">Buy Now</a>
                             </div>
 
                         </div>
+
                     </div>
                 </section>
+
             </React.Fragment>
         )
     }

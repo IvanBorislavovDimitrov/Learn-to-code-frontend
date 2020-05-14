@@ -2184,3 +2184,15 @@ section {
   font-size: 13px;
   color: #fff;
 }
+
+.background1 {
+  background: url(/assets/img/slide/slide-1.jpg)
+}
+
+.background2 {
+  background: url(/assets/img/slide/slide-2.jpg)
+}
+
+.background3 {
+  background: url(/assets/img/slide/slide-3.jpg)
+}

@@ -110,6 +110,8 @@ class Navbar extends Component {
             credentials: 'include',
         }).then((res) => {
             console.log(res);
+            localStorage.setItem('firstEnterSeen', false);
+
         }).catch((err) => {
             console.log(err);
         });
