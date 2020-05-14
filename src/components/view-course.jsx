@@ -229,10 +229,10 @@ class ViewCourse extends Component {
                 const tdName = document.createElement('td');
                 tdName.textContent = video['videoTitle'];
                 const tdLink = document.createElement('td');
-            
+                const isEnrolled = currentThis.checkIsUserEnrolledForCourse();
                 if (count === 1) {
                     tdLink.appendChild(button);
-                } else if (this.state.isUserEnrolledForCourse) {
+                } else if (isEnrolled) {
                     tdLink.appendChild(button);
                 } else {
                     const locked = document.createElement('button');
@@ -364,26 +364,28 @@ class ViewCourse extends Component {
         return str;
     }
 
-    checkIsUserEnrolledForCourse = () => {
+    checkIsUserEnrolledForCourse = async () => {
         const currentThis = this;
         const courseName = this.getCourseName();
-        fetch(process.env.REACT_APP_URL + '/courses/is-enrolled/' + courseName, {
+        let value = null;
+        await fetch(process.env.REACT_APP_URL + '/courses/is-enrolled/' + courseName, {
             method: 'GET',
             credentials: 'include'
         }).then(async response => {
             if (response.status === 200) {
                 const jsonResponse = await response.json();
                 const isUserEnrolled = JSON.parse(JSON.stringify(jsonResponse))['userEnrolledForCourse'];
+                value = isUserEnrolled;
                 currentThis.setState({
                     isUserEnrolledForCourse: isUserEnrolled
                 });
-                console.log(isUserEnrolled);
             } else {
                 console.log(response.status, response);
             }
         }).catch(error => {
             console.log(error);
         });
+        return value;
     }
 
     enrolledLoggedUserForCourse = () => {
