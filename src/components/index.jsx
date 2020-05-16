@@ -9,7 +9,8 @@ class Index extends Component {
         courseCategoriesUrls: [],
         courseCategoriesNames: [],
         courseCategoriesDescription: [],
-        courseCategoriesImagesNames: []
+        courseCategoriesImagesNames: [],
+        lock: false
     };
 
     render() {
@@ -283,8 +284,8 @@ class Index extends Component {
         });
     }
 
-    getCourses = (endpoint) => {
-        fetch(process.env.REACT_APP_URL + endpoint, {
+    getCourses = async (endpoint) => {
+        await fetch(process.env.REACT_APP_URL + endpoint, {
             method: 'GET',
             credentials: 'include',
         }).then(async (res) => {
@@ -368,31 +369,58 @@ class Index extends Component {
         });
     }
 
-    changeToNewestShownCourses = () => {
+    changeToNewestShownCourses = async () => {
+        if (this.state.lock) {
+            return;
+        }
         this.removeActiveFromAll();
         const newest = document.getElementById('newest');
         newest.setAttribute('class', 'nav-link active');
         document.getElementById('courses').innerText = '';
         this.create3LoadingElements();
-        this.getCourses('/courses/latest?count=3&loadThumbnails=true');
+        this.setState({
+            lock: true
+        });
+        await this.getCourses('/courses/latest?count=3&loadThumbnails=true');
+        this.setState({
+            lock: false
+        });
     };
 
-    changeToBestSellersShownCourses = () => {
+    changeToBestSellersShownCourses = async () => {
+        if (this.state.lock) {
+            return;
+        }
         this.removeActiveFromAll();
         const bestSellers = document.getElementById('best-sellers');
         bestSellers.setAttribute('class', 'nav-link active');
         document.getElementById('courses').innerText = '';
         this.create3LoadingElements();
-        this.getCourses('/courses/get?filter=BEST_SELLERS&limit=3');
+        this.setState({
+            lock: true
+        });
+        await this.getCourses('/courses/get?filter=BEST_SELLERS&limit=3');
+        this.setState({
+            lock: false
+        });
     };
 
-    changeToTopRatedShownCourses = () => {
+    changeToTopRatedShownCourses = async () => {
+        if (this.state.lock) {
+            return;
+        }
         this.removeActiveFromAll();
         const topRated = document.getElementById('top-rated');
         topRated.setAttribute('class', 'nav-link active');
         document.getElementById('courses').innerText = '';
         this.create3LoadingElements();
-        this.getCourses('/courses/get?filter=MOST_COMMENTED&limit=3');
+        this.setState({
+            lock: true
+        });
+        await this.getCourses('/courses/get?filter=MOST_COMMENTED&limit=3');
+        this.setState({
+            lock: false
+        });
     };
 
     removeActiveFromAll = () => {
