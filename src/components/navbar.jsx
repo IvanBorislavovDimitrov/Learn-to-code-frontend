@@ -108,14 +108,13 @@ class Navbar extends Component {
         fetch(process.env.REACT_APP_URL + "/users/logout", {
             method: 'POST',
             credentials: 'include',
-        }).then((res) => {
-            console.log(res);
+        }).then(async res => {
+            await res.text();
             localStorage.setItem('firstEnterSeen', false);
-
+            window.location.reload();
         }).catch((err) => {
             console.log(err);
         });
-        window.location.reload();
     }
 
     showShoppingCart = () => {

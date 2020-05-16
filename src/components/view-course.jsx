@@ -202,7 +202,7 @@ class ViewCourse extends Component {
         return decodeURIComponent(splitUrl[splitUrl.length - 1]);
     }
 
-    setCourseByName = (courseName) => {
+    setCourseByName = async (courseName) => {
         const currentThis = this;
         fetch(process.env.REACT_APP_URL + "/courses/" + courseName, {
             method: 'GET',
@@ -212,7 +212,7 @@ class ViewCourse extends Component {
             let courseModel = JSON.parse(JSON.stringify(coursesResponseJson));
             const agenda = document.getElementById('agenda');
             let count = 1;
-            courseModel["videosNames"].forEach(video => {
+            courseModel["videosNames"].forEach(async video => {
                 const firstDiv = document.createElement('div');
                 firstDiv.setAttribute('class', 'post-item clearfix');
                 const h5 = document.createElement('h5');
@@ -229,7 +229,8 @@ class ViewCourse extends Component {
                 const tdName = document.createElement('td');
                 tdName.textContent = video['videoTitle'];
                 const tdLink = document.createElement('td');
-                const isEnrolled = currentThis.checkIsUserEnrolledForCourse();
+                const isEnrolled = await currentThis.checkIsUserEnrolledForCourse();
+                console.log('pishkii ', isEnrolled);
                 if (count === 1) {
                     tdLink.appendChild(button);
                 } else if (isEnrolled) {
@@ -367,7 +368,7 @@ class ViewCourse extends Component {
     checkIsUserEnrolledForCourse = async () => {
         const currentThis = this;
         const courseName = this.getCourseName();
-        let value = null;
+        let value = false;
         await fetch(process.env.REACT_APP_URL + '/courses/is-enrolled/' + courseName, {
             method: 'GET',
             credentials: 'include'
@@ -376,15 +377,18 @@ class ViewCourse extends Component {
                 const jsonResponse = await response.json();
                 const isUserEnrolled = JSON.parse(JSON.stringify(jsonResponse))['userEnrolledForCourse'];
                 value = isUserEnrolled;
+                console.log('kiras', value);
                 currentThis.setState({
                     isUserEnrolledForCourse: isUserEnrolled
                 });
             } else {
+                value = false;
                 console.log(response.status, response);
             }
         }).catch(error => {
             console.log(error);
         });
+        console.log('kra', value);
         return value;
     }
 
@@ -396,21 +400,19 @@ class ViewCourse extends Component {
             window.location.reload();
         }
         // TODO: Add payments, verifications, paypal...
-
-        const courseName = this.getCourseName();
-
-        async function enrollUserForCourse() {
-            return await fetch(process.env.REACT_APP_URL + '/courses/enroll/' + courseName, {
-                method: 'POST',
-                credentials: 'include',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+        var courseName = this.getCourseName();
+        if (courseName.endsWith('#')) {
+            courseName = courseName.substring(0, courseName.length - 2);
         }
-
-        enrollUserForCourse().then(async response => {
+        console.log('courssdsdsds', courseName);
+        fetch(process.env.REACT_APP_URL + '/courses/enroll/' + courseName, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+        }).then(async response => {
             if (response.status === 200) {
                 window.location.reload();
             } else {
