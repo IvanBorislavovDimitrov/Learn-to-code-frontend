@@ -66,16 +66,10 @@ class UserProfile extends Component {
                                         </div>
                                         <div className="col-md-12">
                                             <h5 className="mt-2"><span
-                                                className="fa fa-clock-o ion-clock float-right" /> Recent Activity
+                                                className="fa fa-clock-o ion-clock float-right" /> Recent login activities
                                             </h5>
                                             <table className="table table-sm table-hover table-striped">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>Skell</strong> deleted his post Look at Why this is..
-                                                        in <strong>`Discussions`</strong>
-                                                        </td>
-                                                    </tr>
+                                                <tbody id="recent-logins">
                                                 </tbody>
                                             </table>
                                         </div>
@@ -193,6 +187,7 @@ class UserProfile extends Component {
     };
 
     loadUser = () => {
+        const currentThis = this;
         fetch(process.env.REACT_APP_URL + '/users/user', {
             method: 'GET',
             credentials: 'include'
@@ -204,7 +199,6 @@ class UserProfile extends Component {
             }
             const jsonResponse = await response.json();
             let user = JSON.parse(JSON.stringify(jsonResponse));
-            console.log('nasdasd', user['profilePictureName']);
             this.setState({
                 username: user['username'],
                 description: user['description'],
@@ -214,10 +208,22 @@ class UserProfile extends Component {
                 email: user['email'],
                 profilePictureName: process.env.REACT_APP_URL + '/resource/images/' + user['profilePictureName']
             });
+            currentThis.loadRecentLogins(user['loginRecords']);
         }).catch(error => {
             console.log(error);
         });
     };
+
+    loadRecentLogins = (loginRecords) => {
+        const recentLogins = document.getElementById('recent-logins');
+        loginRecords.forEach(loginRecord => {
+            const tableRow = document.createElement('tr');
+            const td = document.createElement('td');
+            td.textContent = loginRecord['additionalInformation'];
+            tableRow.appendChild(td);
+            recentLogins.appendChild(tableRow);
+        })
+    }
 
     updateUserBasicInformation = () => {
         if (!this.checkIfUserFormIsValid()) {
