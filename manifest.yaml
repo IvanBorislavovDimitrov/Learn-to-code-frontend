@@ -1,0 +1,13 @@
+  
+---
+    applications:
+    - name: learn-to-code-frontend
+      buildpack: https://github.com/cloudfoundry/nodejs-buildpack
+      memory: 512MB
+      disk_quota: 2GB
+      path: ./
+      routes:
+        - route: learn-to-code-frontend-reliable-platypus-ft.cfapps.io
+      env:
+        - REACT_APP_URL: http://learn-to-code-backend-reliable-platypus-ft.cfapps.io
+    

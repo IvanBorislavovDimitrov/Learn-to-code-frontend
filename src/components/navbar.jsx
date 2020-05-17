@@ -42,7 +42,9 @@ class Navbar extends Component {
                                     <a class="dropdown-item" href="/information/team">Our Team</a>
                                 </div>
                             </div>
-
+                            <li className="nav-item">
+                                <a className="nav-link mr-3" href="/contact-us">Contact us</a>
+                            </li>
 
                             <div class="dropdown">
                                 <a class="nav-link dropdown-toggle mr-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
