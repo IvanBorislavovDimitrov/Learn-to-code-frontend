@@ -32,9 +32,9 @@ class Courses extends Component {
                             <div className="col-lg-8 entries">
 
                                 <div id="removeParent">
-                                    <article id="remove" className="entry">
-                                        <div className="entry-img justify-content-center align-items-center">
-                                            <div className="spinner-border text-warning" role="status">
+                                    <article id="remove" className="entry card">
+                                        <div className="entry-img justify-content-center align-items-center ">
+                                            <div className="spinner-border text-warning " role="status">
                                                 <span className="sr-only">Loading...</span>
                                             </div>
                                         </div>
@@ -52,7 +52,7 @@ class Courses extends Component {
                             </div>
 
                             <div className="col-lg-4">
-                                <div className="sidebar">
+                                <div className="sidebar card">
                                     <h3 className="sidebar-title">Search</h3>
                                     <div className="sidebar-item search-form">
                                         <form onSubmit={this.search}>
@@ -172,7 +172,7 @@ class Courses extends Component {
 
             parsedCourses.forEach(course => {
                 const article = document.createElement('article');
-                article.setAttribute('class', 'entry');
+                article.setAttribute('class', 'entry card');
 
                 const firstDiv = document.createElement('div');
                 firstDiv.setAttribute('class', 'entry-img');

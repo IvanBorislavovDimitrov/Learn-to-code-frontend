@@ -109,8 +109,8 @@ class Index extends Component {
                         </div>
 
                         <div className="row">
-                            <div className="col-lg-4 col-md-6 align-items-stretch">
-                                <div className="icon-box">
+                            <div className="col-lg-4 col-md-6 align-items-stretch ">
+                                <div className="icon-box card">
                                     <div className="mb-3">
                                         <a href="javascript:void(0)"
                                             onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[0])}>
@@ -127,7 +127,7 @@ class Index extends Component {
                             </div>
 
                             <div className="col-lg-4 col-md-6 align-items-stretch mt-4 mt-md-0">
-                                <div className="icon-box">
+                                <div className="icon-box card">
                                     <div className="mb-3">
                                         <a href="javascript:void(0)"
                                             onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[1])}
@@ -145,7 +145,7 @@ class Index extends Component {
                             </div>
 
                             <div className="col-lg-4 col-md-6 align-items-stretch mt-4 mt-lg-0">
-                                <div className="icon-box">
+                                <div className="icon-box card">
                                     <div className="mb-3">
                                         <a href="javascript:void(0)"
                                             onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[2])}
@@ -163,7 +163,7 @@ class Index extends Component {
                             </div>
 
                             <div className="col-lg-4 col-md-6 align-items-stretch mt-4">
-                                <div className="icon-box">
+                                <div className="icon-box card">
                                     <div className="mb-3">
                                         <a href="javascript:void(0)"
                                             onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[3])}
@@ -181,7 +181,7 @@ class Index extends Component {
                             </div>
 
                             <div className="col-lg-4 col-md-6 align-items-stretch mt-4">
-                                <div className="icon-box">
+                                <div className="icon-box card">
                                     <div className="mb-3">
                                         <a href="javascript:void(0)"
                                             onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[4])}
@@ -199,7 +199,7 @@ class Index extends Component {
                             </div>
 
                             <div className="col-lg-4 col-md-6 align-items-stretch mt-4">
-                                <div className="icon-box">
+                                <div className="icon-box card">
                                     <div className="mb-3">
                                         <a href="javascript:void(0)"
                                             onClick={() => this.categoryOnMouseEventListener(this.state.courseCategoriesNames[5])}

@@ -23,7 +23,7 @@ class UserProfile extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="container mt-3">
+                <div className="container mt-3 card">
                     <div className="row my-2">
                         <div className="col-lg-8 order-lg-2">
                             <ul className="nav nav-tabs">

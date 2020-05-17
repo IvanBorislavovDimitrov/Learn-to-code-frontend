@@ -19,7 +19,7 @@ class UserLogin extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="col-md-4 mt-4 container">
+                <div className="col-md-4 mt-4 container card">
                     <form className="text-center border border-light p-5" onSubmit={this.loginUser}>
                         <p className="h4 mb-4">Login</p>
                         <div className="form-group">
@@ -91,7 +91,7 @@ class UserLogin extends Component {
                                     <p>You can reset your password here.</p>
                                     <div className="panel-body">
 
-                                        <div id="register-form" className="form">
+                                        <div id="register-form " className="form">
 
                                             <div className="form-group">
                                                 <div className="input-group">

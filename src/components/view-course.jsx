@@ -33,7 +33,7 @@ class ViewCourse extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-8 entries">
-                                    <article className="entry entry-single">
+                                    <article className="entry entry-single card">
                                         <div id="video" className="justify-content container">
                                         </div>
                                         <h2 className="entry-title mt-3">
@@ -93,7 +93,7 @@ class ViewCourse extends Component {
                                             </div>
                                         </div>
                                     </article>
-                                    <div className="blog-author clearfix">
+                                    <div className="blog-author clearfix card">
                                         <img src={this.state.teacherProfilePictureName}
                                             className="rounded-circle float-left" alt="" />
                                         <h4>{this.state.teacherName}</h4>
@@ -106,11 +106,11 @@ class ViewCourse extends Component {
                                     </div>
                                     <div className="blog-comments">
                                         <h4 className="comments-count">Comments</h4>
-                                        <div id="comments-section">
+                                        <div id="comments-section" className="card">
 
                                         </div>
 
-                                        <div className="reply-form">
+                                        <div className="reply-form card">
                                             <h4>Leave a Comment</h4>
                                             <form onSubmit={this.addComment}>
                                                 <div className="row">
@@ -125,9 +125,9 @@ class ViewCourse extends Component {
                                     </div>
                                 </div>
                                 <div className="col-lg-4">
-                                    <div className="sidebar">
+                                    <div className="sidebar card">
                                         <h3 className="sidebar-title">Agenda</h3>
-                                        <div id="agenda" className="sidebar-item h6">
+                                        <div id="agenda" className="sidebar-item h6 ">
                                             <table class="table table-hover table-dark">
                                                 <thead>
                                                     <tr>

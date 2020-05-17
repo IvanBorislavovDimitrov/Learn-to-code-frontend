@@ -31,8 +31,9 @@ class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav nav ml-auto">
 
+
                             <div class="dropdown show mr-3">
-                                <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     About Us
   </a>
 
@@ -44,54 +45,54 @@ class Navbar extends Component {
 
 
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle mr-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle mr-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Categories
-  </button>
+  </a>
                                 <div id="categories" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 </div>
                             </div>
 
-                            <li className="nav-item active">
-                                <a className="btn btn-info mr-3" href="/">Home</a>
+                            <li className="nav-item">
+                                <a className="nav-link mr-3" href="/">Home</a>
                             </li>
 
-                            <li className="nav-item active">
-                                <a className="btn btn-info mr-3" href="/courses">Courses</a>
+                            <li className="nav-item">
+                                <a className="nav-link mr-3" href="/courses">Courses</a>
                             </li>
 
-                            <li hidden={isLoggedIn} className="nav-item active">
-                                <a className="btn btn-info mr-3" href="/users/login">Log in</a>
+                            <li hidden={isLoggedIn} className="nav-item">
+                                <a className="nav-link mr-3" href="/users/login">Log in</a>
                             </li>
 
-                            <li hidden={isLoggedIn} className="nav-item active">
-                                <a className="btn btn-info" href="/users/register">Register</a>
+                            <li hidden={isLoggedIn} className="nav-item">
+                                <a className="nav-link" href="/users/register">Register</a>
                             </li>
 
-                            <li hidden={!isLoggedIn} className="nav-item active mr-3">
-                                <a className="btn btn-info" href="/users/profile">Profile</a>
+                            <li hidden={!isLoggedIn} className="nav-item mr-3">
+                                <a className="nav-link" href="/users/profile">Profile</a>
                             </li>
 
-                            <li hidden={!isLoggedIn} className="nav-item active">
-                                <a className="btn btn-info mr-3" href="/github/check-repositories">Repositories</a>
+                            <li hidden={!isLoggedIn} className="nav-item">
+                                <a className="nav-link mr-3" href="/github/check-repositories">Repositories</a>
                             </li>
 
-                            <li hidden={!isLoggedIn} className="nav-item active">
-                                <a className="btn btn-info mr-3" href="https://github.com/login/oauth/authorize?client_id=5b2f3c2f8bb2f09aa59d">Link GitHub Account</a>
+                            <li hidden={!isLoggedIn} className="nav-item">
+                                <a className="nav-link mr-3" href="https://github.com/login/oauth/authorize?client_id=5b2f3c2f8bb2f09aa59d">Link GitHub Account</a>
                             </li>
 
-                            <li hidden={!isLoggedIn} className="nav-item active">
-                                <button onClick={this.logout} className="btn btn-danger">Logout</button>
+                            <li hidden={!isLoggedIn} className="nav-item">
+                                <a href="javascript:void(0)" onClick={this.logout} className="nav-link">Logout</a>
                             </li>
 
-                            <li hidden={!isModerator} className="ml-3 nav-item active">
-                                <a className="btn btn-danger" href="/moderator/index">Open Moderator UI</a>
+                            <li hidden={!isModerator} className="ml-3 nav-item">
+                                <a className="nav-link" href="/moderator/index">Open Moderator UI</a>
                             </li>
 
-                            <li hidden={!isAdmin} className="ml-3 nav-item active">
-                                <a className="btn btn-danger" href="/admin/index">Open Admin UI</a>
+                            <li hidden={!isAdmin} className="ml-3 nav-item">
+                                <a className="nav-link" href="/admin/index">Open Admin UI</a>
                             </li>
 
-                            <li className="ml-3 nav-item active">
+                            <li className="ml-3 nav-item">
                                 {this.showShoppingCart()}
                             </li>
 
@@ -120,7 +121,7 @@ class Navbar extends Component {
     showShoppingCart = () => {
         return (
             <React.Fragment>
-                <button className="btn btn-primary" variant="primary" onClick={this.show}>
+                <button className="btn btn-warning" variant="primary" onClick={this.show}>
                     <i className="fa fa-shopping-cart fa-1x"></i> Shopping cart
                 </button>
                 <Modal show={this.state.seen} animation={true}>

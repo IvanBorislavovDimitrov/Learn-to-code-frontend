@@ -37,7 +37,7 @@ class UserRegister extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="col-md-4 mt-4 container">
+                <div className="col-md-4 mt-4 container card">
                     <form className="text-center border border-light p-5" encType="multipart/form-data"
                         onSubmit={this.registerUser}>
                         <p className="h4 mb-4">Register</p>
