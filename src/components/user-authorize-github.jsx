@@ -28,12 +28,14 @@ class UserAuthorize extends Component {
         const values = queryString.parse(this.props.location.search);
         const authorizeGithubUserRequst = new XMLHttpRequest();
         const authorizeGithubUser = process.env.REACT_APP_URL + "/github/authorize?code=" + values.code;
+        console.log(authorizeGithubUser);
+        console.log(this.props.location.search);
         authorizeGithubUserRequst.open("POST", authorizeGithubUser);
         authorizeGithubUserRequst.withCredentials = true;
         authorizeGithubUserRequst.onreadystatechange = function () {
             if (this.readyState === XMLHttpRequest.DONE) {
-                currentThis.props.history.push('/');
-                window.location.reload();
+                //currentThis.props.history.push('/');
+                //window.location.reload();
             }
         }
         authorizeGithubUserRequst.send();

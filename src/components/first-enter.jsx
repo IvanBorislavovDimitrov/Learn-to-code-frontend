@@ -19,8 +19,8 @@ class FirstEnter extends Component {
                                 <div class="carousel-item active background1">
                                     <div class="carousel-container">
                                         <div class="carousel-content">
-                                            <h2 class="animated fadeInDown">Welcome to <span>Eterna</span></h2>
-                                            <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                                            <h2 class="animated fadeInDown">Welcome to <span>Learn to Code</span></h2>
+                                            <p class="animated fadeInUp">New and inovative way to learn.</p>
                                             <a href="/" class="btn-get-started animated fadeInUp">Proceed to the website</a>
                                         </div>
                                     </div>
@@ -29,8 +29,8 @@ class FirstEnter extends Component {
                                 <div class="carousel-item background2">
                                     <div class="carousel-container">
                                         <div class="carousel-content">
-                                            <h2 class="animated fadeInDown">Lorem <span>Ipsum Dolor</span></h2>
-                                            <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                                            <h2 class="animated fadeInDown">Best courses <span>worldwide</span></h2>
+                                            <p class="animated fadeInUp">New and inovative way to learn..</p>
                                             <a href="/" class="btn-get-started animated fadeInUp">Proceed to the website</a>
                                         </div>
                                     </div>
@@ -39,8 +39,8 @@ class FirstEnter extends Component {
                                 <div class="carousel-item background3">
                                     <div class="carousel-container">
                                         <div class="carousel-content">
-                                            <h2 class="animated fadeInDown">Sequi ea <span>Dime Lara</span></h2>
-                                            <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                                            <h2 class="animated fadeInDown">Best teachers <span>worldwide</span></h2>
+                                            <p class="animated fadeInUp">New and inovative way to learn..</p>
                                             <a href="/" class="btn-get-started animated fadeInUp">Proceed to the website</a>
                                         </div>
                                     </div>
@@ -61,7 +61,7 @@ class FirstEnter extends Component {
                         </div>
                     </div>
                 </section>
-
+{/* 
                 <section id="featured" class="featured">
                     <div class="container">
 
@@ -90,7 +90,7 @@ class FirstEnter extends Component {
                         </div>
 
                     </div>
-                </section>
+                </section> */}
 
                 <section id="pricing" class="pricing">
                     <div class="container">
