@@ -313,7 +313,7 @@ class Courses extends Component {
     loadLoading = () => {
         const article = document.createElement('article');
         article.id = 'remove';
-        article.setAttribute('class', 'entry');
+        article.setAttribute('class', 'entry custom-white');
 
         const firstDiv = document.createElement('div');
         firstDiv.setAttribute('class', 'entry-img justify-content-center align-items-center');
@@ -370,7 +370,7 @@ class Courses extends Component {
                     const previousPage = this.getPageByNumber(Number.parseInt(activePageNumber.textContent) - 1);
                     activePage.setAttribute('class', '');
                     this.removePgingActive();
-                    previousPage.setAttribute('class', 'active');
+                    previousPage.setAttribute('class', 'active ');
                     this.setState({ currentPage: this.state.currentPage - 1 });
                     if (this.state.currentPage == 1) {
                         leftArrow.setAttribute('class', 'disabled');
