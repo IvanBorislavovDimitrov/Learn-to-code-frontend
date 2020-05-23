@@ -23,7 +23,7 @@ class AdminUI extends Component {
 
                         <div className="row">
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
-                                <div className="icon-box icon-box-pink">
+                                <div className="icon-box icon-box-pink card h-100 w-100">
                                     <div className="icon"><i className="bx bxl-redbubble"></i></div>
                                     <h4 className="title"><a href="/admin/change-user-role">Change User's Role</a></h4>
                                     <p className="description">Click here if you want to change user's role. You can
@@ -32,7 +32,7 @@ class AdminUI extends Component {
                             </div>
 
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
-                                <div className="icon-box icon-box-cyan">
+                                <div className="icon-box icon-box-cyan card h-100 w-100">
                                     <div className="icon"><i className="bx bx-file"></i></div>
                                     <h4 className="title"><a href="/admin/delete-user">Delete User</a></h4>
                                     <p className="description">Be careful when deleting a user's profile. It could not

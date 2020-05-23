@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Modal, Button} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Modal, Button } from 'react-bootstrap';
 
 class ChangeUserRole extends Component {
     state = {
@@ -13,83 +13,87 @@ class ChangeUserRole extends Component {
         return (
             <React.Fragment>
 
-                <div id="rolesTable" className="container mt-4">
-                    <table className="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Role</th>
-                            <th scope="col">Add Role</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr id="adminTR">
-                            <th scope="row">1</th>
-                            <td>Moderator</td>
-                            <td>
-                                <button onClick={() => this.addRole('ROLE_MODERATOR')} className="btn btn-primary">Add
-                                    role
+                <div className="col-md-4 mt-4 container">
+                    <div className="text-center border border-light p-5 card h-100 w-100">
+                        <div id="rolesTable" className="container mt-4">
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Role</th>
+                                        <th scope="col">Add Role</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id="adminTR">
+                                        <th scope="row">1</th>
+                                        <td>Moderator</td>
+                                        <td>
+                                            <button onClick={() => this.addRole('ROLE_MODERATOR')} className="btn btn-primary">Add
+                                            role
                                 </button>
-                            </td>
-                        </tr>
-                        <tr id="moderatorTR">
-                            <th scope="row">2</th>
-                            <td>Admin</td>
-                            <td>
-                                <button onClick={() => this.addRole('ROLE_ADMIN')} className="btn btn-primary">Add
-                                    role
+                                        </td>
+                                    </tr>
+                                    <tr id="moderatorTR">
+                                        <th scope="row">2</th>
+                                        <td>Admin</td>
+                                        <td>
+                                            <button onClick={() => this.addRole('ROLE_ADMIN')} className="btn btn-primary">Add
+                                            role
                                 </button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                <div className="col-md-7 container">
-                    <form>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputEmail1">Username</label>
-                            <input
-                                onChange={this.changeInputField}
-                                name="username"
-                                type="text"
-                                className="form-control"
-                                id="usernameInputField"
-                                placeholder="Enter a username"
-                            />
+                        <div className="col-md-7 container">
+                            <form>
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputEmail1">Username</label>
+                                    <input
+                                        onChange={this.changeInputField}
+                                        name="username"
+                                        type="text"
+                                        className="form-control"
+                                        id="usernameInputField"
+                                        placeholder="Enter a username"
+                                    />
+                                </div>
+                                {this.checkUser()}
+                            </form>
                         </div>
-                        {this.checkUser()}
-                    </form>
-                </div>
 
-                <div className="col-md-7 mt-4 container">
-                    <form onSubmit={this.updateRoles}>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputEmail1">Username</label>
-                            <input
-                                onChange={this.changeInputField}
-                                name="usernameRoleChange"
-                                type="text"
-                                className="form-control"
-                                id="usernameInputField"
-                                placeholder="Enter a username"
-                            />
+                        <div className="col-md-7 mt-4 container">
+                            <form onSubmit={this.updateRoles}>
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputEmail1">Username</label>
+                                    <input
+                                        onChange={this.changeInputField}
+                                        name="usernameRoleChange"
+                                        type="text"
+                                        className="form-control"
+                                        id="usernameInputField"
+                                        placeholder="Enter a username"
+                                    />
+                                </div>
+                                <div id="passwordField" className="form-group">
+                                    <label htmlFor="exampleInputPassword">Roles</label>
+                                    <input
+                                        onChange={this.changeInputField}
+                                        disabled="disabled"
+                                        name="roles"
+                                        type="text"
+                                        className="form-control"
+                                        id="roles"
+                                        placeholder="Roles"
+                                        value="ROLE_USER"
+                                    />
+                                </div>
+                                <button type="submit" className="btn btn-primary">Update roles</button>
+                            </form>
                         </div>
-                        <div id="passwordField" className="form-group">
-                            <label htmlFor="exampleInputPassword">Roles</label>
-                            <input
-                                onChange={this.changeInputField}
-                                disabled="disabled"
-                                name="roles"
-                                type="text"
-                                className="form-control"
-                                id="roles"
-                                placeholder="Roles"
-                                value="ROLE_USER"
-                            />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Update roles</button>
-                    </form>
+                    </div>
                 </div>
             </React.Fragment>
         )

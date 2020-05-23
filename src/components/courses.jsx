@@ -1,5 +1,5 @@
-import React, {Component, useEffect} from "react";
-import {Redirect} from "react-router-dom";
+import React, { Component, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import qs from 'qs'
 
 class Courses extends Component {
@@ -34,7 +34,7 @@ class Courses extends Component {
                                 <div id="removeParent">
                                     <article id="remove" className="entry card">
                                         <div className="entry-img justify-content-center align-items-center ">
-                                            <div className="spinner-border text-warning " role="status">
+                                            <div className="spinner-border text-warning card" role="status">
                                                 <span className="sr-only">Loading...</span>
                                             </div>
                                         </div>
@@ -112,10 +112,21 @@ class Courses extends Component {
             const parsedCourseCategories = JSON.parse(JSON.stringify(courseCategoriesjson));
             parsedCourseCategories.forEach(courseCategory => {
                 const courseCategoryListItem = document.createElement('li');
-                const courseCategoryHref = document.createElement('a');
-                courseCategoryHref.href = '/courses?category=' + courseCategory['name'];
-                courseCategoryHref.textContent = courseCategory['name'];
-                courseCategoryListItem.appendChild(courseCategoryHref);
+                const div = document.createElement('div');
+                div.setAttribute('class', 'form-check');
+                const label = document.createElement('label');
+                label.setAttribute('class', 'form-check-label');
+                const courseCategoryCheckbox = document.createElement('input');
+                courseCategoryCheckbox.setAttribute('type', 'checkbox');
+                courseCategoryCheckbox.setAttribute('class', 'form-check-input');
+                label.appendChild(courseCategoryCheckbox);
+                label.textContent = courseCategory['name'];
+                // const courseCategoryHref = document.createElement('a');
+                // courseCategoryHref.href = '/courses?category=' + courseCategory['name'];
+                // courseCategoryHref.textContent = courseCategory['name'];
+                div.appendChild(courseCategoryCheckbox);
+                div.appendChild(label);
+                courseCategoryListItem.appendChild(div);
                 courseCategoriesUl.appendChild(courseCategoryListItem);
             })
         }).catch((err) => {
@@ -341,7 +352,7 @@ class Courses extends Component {
                     activePage.setAttribute('class', '');
                     this.removePgingActive();
                     previousPage.setAttribute('class', 'active');
-                    this.setState({currentPage: this.state.currentPage - 1});
+                    this.setState({ currentPage: this.state.currentPage - 1 });
                     if (this.state.currentPage == 1) {
                         leftArrow.setAttribute('class', 'disabled');
                     }
@@ -367,7 +378,7 @@ class Courses extends Component {
                 this.loadCourses(this.state.courseName, "1");
                 this.removePgingActive();
                 firstPage.setAttribute('class', 'active');
-                this.setState({currentPage: 1});
+                this.setState({ currentPage: 1 });
                 leftArrow.setAttribute('class', 'disabled');
                 rightArrow.setAttribute('class', '');
             });
@@ -387,7 +398,7 @@ class Courses extends Component {
                     this.loadCourses(this.state.courseName, i + 1 + "");
                     this.removePgingActive();
                     page.setAttribute('class', 'active');
-                    this.setState({currentPage: i + 1});
+                    this.setState({ currentPage: i + 1 });
                     leftArrow.setAttribute('class', '');
                     if (i + 1 == Number.parseInt(pagesCount["count"])) {
                         rightArrow.setAttribute('class', 'disabled');
@@ -422,7 +433,7 @@ class Courses extends Component {
                     activePage.setAttribute('class', '');
                     this.removePgingActive();
                     nextPage.setAttribute('class', 'active');
-                    this.setState({currentPage: this.state.currentPage + 1});
+                    this.setState({ currentPage: this.state.currentPage + 1 });
                     if (this.state.currentPage == Number.parseInt(pagesCount['count'])) {
                         rightArrow.setAttribute('class', 'disabled');
                     }

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class DeleteCourse extends Component {
 
@@ -13,21 +13,22 @@ class DeleteCourse extends Component {
     render() {
         return (
             <React.Fragment>
-
-                <div className="col-md-7 mt-4 container">
-                    <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">Course name</label>
-                        <input
-                            onChange={this.changeInputField}
-                            name="courseName"
-                            type="text"
-                            className="form-control"
-                            id="courseNameInputField"
-                            placeholder="Enter a username"
-                        />
-                        <div hidden={this.state.valid} className="text-danger">Course not found!</div>
+                <div className="col-md-4 mt-4 container">
+                    <div className="text-center border border-light p-5 card h-100 w-100">
+                        <div className="form-group">
+                            <label htmlFor="exampleInputEmail1">Course name</label>
+                            <input
+                                onChange={this.changeInputField}
+                                name="courseName"
+                                type="text"
+                                className="form-control"
+                                id="courseNameInputField"
+                                placeholder="Enter a username"
+                            />
+                            <div hidden={this.state.valid} className="text-danger">Course not found!</div>
+                        </div>
+                        <button onClick={this.deleteCourse} className="btn btn-primary">Delete course</button>
                     </div>
-                    <button onClick={this.deleteCourse} className="btn btn-primary">Delete course</button>
                 </div>
             </React.Fragment>
         )

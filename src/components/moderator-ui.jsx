@@ -23,7 +23,7 @@ class ModeratorUI extends Component {
                         <div className="row">
 
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
-                                <div className="icon-box icon-box-pink">
+                                <div className="icon-box icon-box-pink card h-100 w-100">
                                     <div className="icon"><i className="bx bxl-css3"></i></div>
                                     <h4 className="title"><a href="/courses/add-new-course">Add course</a></h4>
                                     <p className="description">Click here if you want to add a new course!</p>
@@ -31,7 +31,7 @@ class ModeratorUI extends Component {
                             </div>
 
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
-                                <div className="icon-box icon-box-pink">
+                                <div className="icon-box icon-box-pink card h-100 w-100">
                                     <div className="icon"><i className="bx bxl-css3"></i></div>
                                     <h4 className="title"><a href="/courses/update-course">Update course</a></h4>
                                     <p className="description">Click here if you want to update a course!</p>
@@ -39,23 +39,24 @@ class ModeratorUI extends Component {
                             </div>
 
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
-                                <div className="icon-box icon-box-pink">
+                                <div className="icon-box icon-box-pink card h-100 w-100">
                                     <div className="icon"><i className="bx bxl-css3"></i></div>
                                     <h4 className="title"><a href="/courses/delete-course">Delete a course</a></h4>
                                     <p className="description">Delete a course!</p>
                                 </div>
                             </div>
 
+
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
-                                <div className="icon-box icon-box-pink">
+                                <div className="icon-box icon-box-pink card h-100 w-100">
                                     <div className="icon"><i className="bx bxl-css3"></i></div>
                                     <h4 className="title"><a href="/course-categories/add">Add category</a></h4>
                                     <p className="description">Click here if you want to add a category!</p>
                                 </div>
                             </div>
 
-                            <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
-                                <div className="icon-box icon-box-pink">
+                            <div className="col-md-6 col-lg-3 d-flex align-items-stretch mt-5">
+                                <div className="icon-box icon-box-pink card h-100 w-100">
                                     <div className="icon"><i className="bx bxl-css3"></i></div>
                                     <h4 className="title"><a href="/course-categories/update">Update category</a></h4>
                                     <p className="description">Click here if you want to update a category!</p>

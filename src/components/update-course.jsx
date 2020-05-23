@@ -42,7 +42,7 @@ class UpdateCourse extends Component {
         return (
             <React.Fragment>
                 <div className="col-md-4 mt-4 container">
-                    <form className="text-center border border-light p-5" onSubmit={this.addCourse}
+                    <form className="text-center border border-light p-5 card h-100 w-100" onSubmit={this.addCourse}
                         encType="multipart/form-data">
                         <p className="h4 mb-4">Update course</p>
 

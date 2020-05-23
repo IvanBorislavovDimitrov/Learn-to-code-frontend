@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class UpdateCourseCategory extends Component {
     state = {
@@ -14,44 +14,46 @@ class UpdateCourseCategory extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="col-xl-3 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
-                    <form onSubmit={this.updateCourseCategory}>
-                        <div className="form-group">
-                            <h3 htmlFor="exampleInputEmail1">Course Category Name</h3>
-                            <select
-                                name="courseCategoryName"
-                                className="form-control"
-                                id="courseCategoryNameSelect"
-                                placeholder="Course Category Name"
-                                onChange={this.changeInputField}>
+                <div className="col-md-4 mt-4 container">
+                    <div className="text-center border border-light p-5 card h-100 w-100">
+                        <form onSubmit={this.updateCourseCategory}>
+                            <div className="form-group">
+                                <h3 htmlFor="exampleInputEmail1">Course Category Name</h3>
+                                <select
+                                    name="courseCategoryName"
+                                    className="form-control"
+                                    id="courseCategoryNameSelect"
+                                    placeholder="Course Category Name"
+                                    onChange={this.changeInputField}>
 
-                            </select>
-                            <textarea
-                                name="courseCategoryDescription"
-                                className="form-control"
-                                id="usernameInputField"
-                                placeholder="Course Category Description"
-                                rows="10"
-                                onChange={this.changeInputField}
-                                value={this.courseCategoryDescription}
-                            />
-                            <div className="form-group mt-3">
-                                <small id="fileHelp" className="form-text text-muted">Thumbnail</small>
-                                <input
+                                </select>
+                                <textarea
+                                    name="courseCategoryDescription"
+                                    className="form-control"
+                                    id="usernameInputField"
+                                    placeholder="Course Category Description"
+                                    rows="10"
                                     onChange={this.changeInputField}
-                                    ref={this.thumbnailFileUpload}
-                                    type="file"
-                                    className="custom-file"
-                                    id="thumbnailInput"
-                                    aria-describedby="fileHelp"
-                                    name="thumbnail"
+                                    value={this.courseCategoryDescription}
                                 />
+                                <div className="form-group mt-3">
+                                    <small id="fileHelp" className="form-text text-muted">Thumbnail</small>
+                                    <input
+                                        onChange={this.changeInputField}
+                                        ref={this.thumbnailFileUpload}
+                                        type="file"
+                                        className="custom-file"
+                                        id="thumbnailInput"
+                                        aria-describedby="fileHelp"
+                                        name="thumbnail"
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <button type="submit" className="btn btn-dark">
-                            Update course category
+                            <button type="submit" className="btn btn-dark">
+                                Update course category
                         </button>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </React.Fragment>
         )
