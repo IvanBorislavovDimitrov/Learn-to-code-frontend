@@ -117,8 +117,10 @@ class Courses extends Component {
                 const label = document.createElement('label');
                 label.setAttribute('class', 'form-check-label');
                 const courseCategoryCheckbox = document.createElement('input');
-                courseCategoryCheckbox.setAttribute('type', 'checkbox');
+                courseCategoryCheckbox.setAttribute('type', 'radio');
                 courseCategoryCheckbox.setAttribute('class', 'form-check-input');
+                courseCategoryCheckbox.setAttribute('name', 'category-for-course-radio');
+                courseCategoryCheckbox.textContent = courseCategory['name'];
                 label.appendChild(courseCategoryCheckbox);
                 label.textContent = courseCategory['name'];
                 // const courseCategoryHref = document.createElement('a');
@@ -161,9 +163,19 @@ class Courses extends Component {
                 coursesResource += '&page=' + pageNumber;
             }
         }
-        console.log("invoking " + coursesResource);
+        const checkedCategory = document.querySelector('input[name="category-for-course-radio"]:checked');
+        console.log('kurvvii');
+        if (checkedCategory != null)
+            console.log(checkedCategory.textContent);
+        console.log('kurvvii');
+        if (checkedCategory != null) {
+            if (coursesResource.endsWith('?')) {
+                coursesResource += 'category=' + checkedCategory.textContent;
+            } else {
+                coursesResource += '&category=' + checkedCategory.textContent;
+            }
+        }
         const currentThis = this;
-
         fetch(process.env.REACT_APP_URL + coursesResource, {
             method: 'GET',
             credentials: 'include'
@@ -317,9 +329,9 @@ class Courses extends Component {
 
     addPages = (courseName) => {
         let courseNameFilter = "?";
+        document.getElementById('paging').innerHTML = '';
         if (courseName != null) {
             courseNameFilter += "courseName=" + courseName;
-            document.getElementById('paging').innerHTML = '';
         }
         fetch(process.env.REACT_APP_URL + "/courses/pages-count" + courseNameFilter, {
             method: 'GET',

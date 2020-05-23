@@ -72,6 +72,10 @@ class ViewCourse extends Component {
                                             </div>
                                         </div>
                                         <div className="entry-content">
+                                            <h3>Category</h3>
+                                            <p>{this.state.category}</p>
+                                        </div>
+                                        <div className="entry-content">
                                             <h3>Description</h3>
                                             <p>{this.state.description}</p>
                                         </div>
