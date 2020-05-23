@@ -16,7 +16,7 @@ class AboutUs extends Component {
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur
                                 consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum,
                                 alias, adipisci nesciunt voluptate. Voluptatum.</p>
-                            <a className="btn btn-primary btn-lg" href="#">Send a message to us!</a>
+                            <a className="btn btn-primary btn-lg" href="/contact-us">Send a message to us!</a>
                         </div>
                         <div className="col-md-4 mb-5">
                             <h2>Contact Us</h2>

@@ -53,7 +53,7 @@ class Team extends Component {
                 const h4 = document.createElement('h4');
                 const teacherHref = document.createElement('a');
                 teacherHref.textContent = teacher['firstName'] + " " + teacher['lastName'];
-                teacherHref.href = '/users/profile/' + teacher['username'];
+                teacherHref.href = '/users/' + teacher['username'] + '/profile';
                 h4.appendChild(teacherHref);
                 const p = document.createElement('p');
                 p.textContent = teacher['description'];
