@@ -45,6 +45,12 @@ class UserProfile extends Component {
                                 <li className="nav-item">
                                     <a href="" data-target="#edit" data-toggle="tab" className="nav-link">Edit</a>
                                 </li>
+                                <li className="nav-item">
+                                    <a href=""
+                                        data-target="#delete-profile"
+                                        data-toggle="tab"
+                                        className="nav-link">Delete account</a>
+                                </li>
                             </ul>
                             <div className="tab-content py-4">
                                 <div className="tab-pane active" id="profile">
@@ -150,6 +156,9 @@ class UserProfile extends Component {
                                                 value="Save Changes" >Save changes</button>
                                         </div>
                                     </div>
+                                </div>
+                                <div className="tab-pane text-center" id="delete-profile">
+                                    <button onClick={this.deactivateUser} className="btn btn-danger mt-3">Delete profile</button>
                                 </div>
                             </div>
                         </div>
@@ -410,6 +419,22 @@ class UserProfile extends Component {
             alert('Profile picture has not been updated!');
         });
     };
+
+    deactivateUser = () => {
+        fetch(process.env.REACT_APP_URL + '/users/update/deactivate', {
+            method: 'POST',
+            credentials: 'include'
+        }).then(async response => {
+            await response.text();
+            if (response.status !== 200) {
+                alert("User was not deleted!");
+                return;
+            }
+            alert("User was deleted!");
+            localStorage.removeItem('loggedUser');
+            window.location.reload();
+        })
+    }
 
     changeInputField = event => {
         this.setState({

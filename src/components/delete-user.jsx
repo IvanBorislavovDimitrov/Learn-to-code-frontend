@@ -13,20 +13,18 @@ class DeleteUser extends Component {
                 <div className="col-md-4 mt-4 container">
                     <div className="text-center border border-light p-5 card h-100 w-100">
                         <div className="col-md-7 mt-4 container">
-                            <form>
-                                <div className="form-group">
-                                    <label htmlFor="exampleInputEmail1">Username</label>
-                                    <input
-                                        onChange={this.changeInputField}
-                                        name="username"
-                                        type="text"
-                                        className="form-control"
-                                        id="usernameInputField"
-                                        placeholder="Enter a username"
-                                    />
-                                </div>
-                                {this.checkUser()}
-                            </form>
+                            <div className="form-group">
+                                <label htmlFor="exampleInputEmail1">Username</label>
+                                <input
+                                    onChange={this.changeInputField}
+                                    name="username"
+                                    type="text"
+                                    className="form-control"
+                                    id="usernameInputField"
+                                    placeholder="Enter a username"
+                                />
+                            </div>
+                            {this.checkUser()}
                         </div>
                         <button onClick={this.deactivateUser} className="btn btn-danger mt-3">Delete user</button>
                     </div>
