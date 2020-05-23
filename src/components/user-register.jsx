@@ -95,7 +95,7 @@ class UserRegister extends Component {
                                 type="text"
                                 className="form-control"
                                 id="descriptionInputField"
-                                placeholder="Enter description (optional)"
+                                placeholder="Enter description"
                             />
                         </div>
                         <div className="form-group">

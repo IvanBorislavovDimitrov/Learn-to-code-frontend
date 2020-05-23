@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class DeleteComment extends Component {
 
@@ -14,19 +14,21 @@ class DeleteComment extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="col-md-7 mt-4 container text-center">
-                    <div className="form-group ">
-                        <label htmlFor="exampleInputEmail1">Delete comment</label>
-                        <textarea
-                            disabled="disabled"
-                            onChange={this.changeInputField}
-                            name="content"
-                            className="form-control"
-                            id="contentInputField"
-                        />
-                        <div hidden={this.state.valid} className="text-danger">Please login!</div>
+                <div className="col-md-4 mt-4 container card">
+                    <div className="col-md-7 mt-4 container text-center">
+                        <div className="form-group ">
+                            <label htmlFor="exampleInputEmail1">Delete comment</label>
+                            <textarea
+                                disabled="disabled"
+                                onChange={this.changeInputField}
+                                name="content"
+                                className="form-control"
+                                id="contentInputField"
+                            />
+                            <div hidden={this.state.valid} className="text-danger">Please login!</div>
+                        </div>
+                        <button onClick={this.deleteComment} className="btn btn-danger mb-5">Delete comment</button>
                     </div>
-                    <button onClick={this.deleteComment} className="btn btn-danger">Delete comment</button>
                 </div>
             </React.Fragment>
         )

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class EditComment extends Component {
 
@@ -14,18 +14,20 @@ class EditComment extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="col-md-7 mt-4 container text-center">
-                    <div className="form-group ">
-                        <label htmlFor="exampleInputEmail1">Edit comment</label>
-                        <textarea
-                            onChange={this.changeInputField}
-                            name="content"
-                            className="form-control"
-                            id="contentInputField"
-                        />
-                        <div hidden={this.state.valid} className="text-danger">Please login!</div>
+                <div className="col-md-4 mt-4 container card">
+                    <div className="col-md-7 mt-4 container text-center">
+                        <div className="form-group ">
+                            <label htmlFor="exampleInputEmail1">Edit comment</label>
+                            <textarea
+                                onChange={this.changeInputField}
+                                name="content"
+                                className="form-control"
+                                id="contentInputField"
+                            />
+                            <div hidden={this.state.valid} className="text-danger">Please login!</div>
+                        </div>
+                        <button onClick={this.editComment} className="btn btn-warning mb-5">Edit comment</button>
                     </div>
-                    <button onClick={this.editComment} className="btn btn-warning">Edit comment</button>
                 </div>
             </React.Fragment>
         )

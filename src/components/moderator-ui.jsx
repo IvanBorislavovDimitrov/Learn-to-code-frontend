@@ -63,6 +63,13 @@ class ModeratorUI extends Component {
                                 </div>
                             </div>
 
+                            <div className="col-md-6 col-lg-3 d-flex align-items-stretch mt-5">
+                                <div className="icon-box icon-box-pink card h-100 w-100">
+                                    <div className="icon"><i className="bx bxl-css3"></i></div>
+                                    <h4 className="title"><a href="/contact-us/show">Check contact us forms</a></h4>
+                                    <p className="description">Click here if you want to check contact us forms!</p>
+                                </div>
+                            </div>
 
                         </div>
                     </div>

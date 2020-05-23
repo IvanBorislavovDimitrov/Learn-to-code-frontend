@@ -5,30 +5,32 @@ class CheckRepositories extends Component {
     render() {
         return (
             <React.Fragment>
+                <div className="col-md-8 mt-4 container">
+                    <h2 className="text-center">Your repositories</h2>
+                    <table className="table table-bordered table-dark mt-4">
 
-                <table className="table table-bordered table-dark mt-4">
-
-                    <thead>
-                        <tr>
-                            <th scope="col">Number</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Created at</th>
-                            <th scope="col">Updated at</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="repositories">
-                        <tr id="loading">
-                            <td><div class="spinner-border text-warning" role="status"></div></td>
-                            <td><div class="spinner-border text-warning" role="status"></div></td>
-                            <td><div class="spinner-border text-warning" role="status"></div></td>
-                            <td><div class="spinner-border text-warning" role="status"></div></td>
-                            <td><div class="spinner-border text-warning" role="status"></div></td>
-                            <td><div class="spinner-border text-warning" role="status"></div></td>
-                        </tr>
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Number</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Created at</th>
+                                <th scope="col">Updated at</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="repositories">
+                            <tr id="loading">
+                                <td><div class="spinner-border text-warning" role="status"></div></td>
+                                <td><div class="spinner-border text-warning" role="status"></div></td>
+                                <td><div class="spinner-border text-warning" role="status"></div></td>
+                                <td><div class="spinner-border text-warning" role="status"></div></td>
+                                <td><div class="spinner-border text-warning" role="status"></div></td>
+                                <td><div class="spinner-border text-warning" role="status"></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </React.Fragment>
         )
     }

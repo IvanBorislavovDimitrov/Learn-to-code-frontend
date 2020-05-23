@@ -32,6 +32,7 @@ import ActivateAccount from "./components/activate-accout";
 import ChangePassword from "./components/change-password";
 import UserProfile from "./components/user-profile";
 import ContactUs from "./components/contact-us";
+import ContactUsForms from "./components/moderator-check-contact-us";
 
 function App() {
     setTimeout(function () {
@@ -63,11 +64,12 @@ function App() {
                 <Route exact path="/courses/update-course" component={UpdateCourse} />
                 <Route exact path="/courses/delete-course" component={DeleteCourse} />
                 <Route path="/comments/edit/" component={EditComment} />
-                <Route exact path="/comments/delete/" component={DeleteComment} />
+                <Route path="/comments/delete/" component={DeleteComment} />
                 <Route path="/users/activate/" component={ActivateAccount} />
                 <Route path="/users/new-password/" component={ChangePassword} />
                 <Route exact path="/users/profile/" component={UserProfile} />
                 <Route exact path="/contact-us/" component={ContactUs} />
+                <Route exact path="/contact-us/show/" component={ContactUsForms} />
 
                 {/* Must be at the end */}
                 <Route path="*" component={NotFound} />
