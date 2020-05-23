@@ -42,7 +42,7 @@ class ViewCourse extends Component {
                                         <div className="entry-meta">
                                             <ul>
                                                 <li className="d-flex align-items-center"><i className="icofont-user" />
-                                                    <a href="#">{this.state.teacherName}</a></li>
+                                                    <a href={'/users/' + this.state.teacherName + '/profile'}>{this.state.teacherName}</a></li>
                                                 <li className="d-flex align-items-center"><i
                                                     className="icofont-wall-clock" /> <a href="#">
                                                         <time>{this.state.startDate}</time>
@@ -97,10 +97,10 @@ class ViewCourse extends Component {
                                             </div>
                                         </div>
                                     </article>
-                                    <div className="blog-author clearfix card">
+                                    <div className="blog-author clearfix custom-white">
                                         <img src={this.state.teacherProfilePictureName}
                                             className="rounded-circle float-left" alt="" />
-                                        <h4>{this.state.teacherName}</h4>
+                                        <h4><a href={'/users/' + this.state.teacherName + '/profile'}>{this.state.teacherName}</a></h4>
                                         <div className="social-links">
                                             <a href="https://twitters.com/#"><i className="icofont-twitter" /></a>
                                             <a href="https://facebook.com/#"><i className="icofont-facebook" /></a>
@@ -110,7 +110,7 @@ class ViewCourse extends Component {
                                     </div>
                                     <div className="blog-comments">
                                         <h4 className="comments-count">Comments</h4>
-                                        <div id="comments-section" className="card">
+                                        <div id="comments-section">
 
                                         </div>
 
@@ -308,7 +308,7 @@ class ViewCourse extends Component {
                 comments.forEach(comment => {
                     const commentsSection = document.getElementById('comments-section');
                     const commentOuterDiv = document.createElement('div');
-                    commentOuterDiv.setAttribute('class', 'blog-author');
+                    commentOuterDiv.setAttribute('class', 'blog-author custom-white');
                     const usernameH5 = document.createElement('h5');
                     const usernameA = document.createElement('a');
                     usernameA.href = '#';

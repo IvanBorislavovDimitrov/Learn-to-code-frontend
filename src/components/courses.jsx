@@ -82,7 +82,7 @@ class Courses extends Component {
 
     componentDidMount() {
         this.loadCategories();
-        this.loadCourses();
+        this.loadCourses(null, null, this.getCategoryName());
         this.addPages();
     }
 
@@ -151,7 +151,7 @@ class Courses extends Component {
         return str;
     }
 
-    loadCourses = (courseName, pageNumber) => {
+    loadCourses = (courseName, pageNumber, initalCategory) => {
         let coursesResource = '/courses?';
         if (courseName !== null && courseName !== undefined) {
             coursesResource += 'name=' + courseName;
@@ -173,6 +173,13 @@ class Courses extends Component {
                 coursesResource += 'category=' + checkedCategory.textContent;
             } else {
                 coursesResource += '&category=' + checkedCategory.textContent;
+            }
+        }
+        if (initalCategory != null) {
+            if (coursesResource.endsWith('?')) {
+                coursesResource += 'category=' + initalCategory;
+            } else {
+                coursesResource += '&category=' + initalCategory;
             }
         }
         const currentThis = this;
@@ -507,6 +514,11 @@ class Courses extends Component {
             }
         }
         return null;
+    }
+
+    getCategoryName = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('category');
     }
 
 }

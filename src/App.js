@@ -33,6 +33,7 @@ import ChangePassword from "./components/change-password";
 import UserProfile from "./components/user-profile";
 import ContactUs from "./components/contact-us";
 import ContactUsForms from "./components/moderator-check-contact-us";
+import OtherUserProfile from "./components/other-user-profile";
 
 function App() {
     setTimeout(function () {
@@ -70,6 +71,7 @@ function App() {
                 <Route exact path="/users/profile/" component={UserProfile} />
                 <Route exact path="/contact-us/" component={ContactUs} />
                 <Route exact path="/contact-us/show/" component={ContactUsForms} />
+                <Route exact path="/users/*/profile" component={OtherUserProfile} />
 
                 {/* Must be at the end */}
                 <Route path="*" component={NotFound} />
