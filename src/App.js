@@ -34,6 +34,7 @@ import UserProfile from "./components/user-profile";
 import ContactUs from "./components/contact-us";
 import ContactUsForms from "./components/moderator-check-contact-us";
 import OtherUserProfile from "./components/other-user-profile";
+import GithubUI from "./components/github-ui";
 
 function App() {
     setTimeout(function () {
@@ -72,6 +73,7 @@ function App() {
                 <Route exact path="/contact-us/" component={ContactUs} />
                 <Route exact path="/contact-us/show/" component={ContactUsForms} />
                 <Route exact path="/users/*/profile" component={OtherUserProfile} />
+                <Route exact path="/github/" component={GithubUI} />
 
                 {/* Must be at the end */}
                 <Route path="*" component={NotFound} />

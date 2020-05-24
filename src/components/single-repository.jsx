@@ -16,13 +16,13 @@ class SingleRepository extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="container justify-content mt-5 mb-5">
-                    <h1>GitHub Repository: {this.state.repositoryName}</h1>
+                <div className="container justify-content text-center mt-5 mb-5">
+                    <h1>GitHub Repository Name: {this.state.repositoryName}</h1>
                     <h2>Descritpion: {this.state.descritpion}</h2>
                     <h1>Created At: {this.state.createdAt}</h1>
                     <h1>Updated At: {this.state.updatedAt}</h1>
                     <h1>Full Name: {this.state.fullName}</h1>
-                    <h1>Html Url: <a href={this.state.htmlUrl}>click</a></h1>
+                    <h1>Link: <a href={this.state.htmlUrl}>click</a></h1>
                 </div>
             </React.Fragment>
         )

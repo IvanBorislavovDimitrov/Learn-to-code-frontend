@@ -1,25 +1,27 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class FinishCartPurchase extends Component {
 
     render() {
         return (
             <React.Fragment>
-                <div className="mr-3 ml-3 mt-3 mb-3">
-                    <h2>Enroll for courses</h2>
-                    <table className="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Short description</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody id="finish-courses-table">
+                <div className="col-md-6 container">
+                    <div className=" mr-3 ml-3 mt-3 mb-3 jumbotron-fluid card">
+                        <h2 className="mt-3 text-center">Enroll for courses</h2>
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Short description</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="finish-courses-table">
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </React.Fragment>
         )

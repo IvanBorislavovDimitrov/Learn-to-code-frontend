@@ -75,11 +75,7 @@ class Navbar extends Component {
                             </li>
 
                             <li hidden={!isLoggedIn} className="nav-item">
-                                <a className="nav-link mr-3" href="/github/check-repositories">Repositories</a>
-                            </li>
-
-                            <li hidden={!isLoggedIn} className="nav-item">
-                                <a className="nav-link mr-3" href="https://github.com/login/oauth/authorize?client_id=5b2f3c2f8bb2f09aa59d">Link GitHub Account</a>
+                                <a className="nav-link mr-3" href="/github">Github</a>
                             </li>
 
                             <li hidden={!isLoggedIn} className="nav-item">
