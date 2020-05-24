@@ -13,7 +13,10 @@ class UserProfile extends Component {
             birthDate: null,
             validFirstName: true,
             validLastName: true,
-            validBirthDate: true
+            validBirthDate: true,
+            currentPassword: null,
+            newPassword: null,
+            confirmNewPassword: null
         };
         this.profilePictureRef = React.createRef();
     }
@@ -50,6 +53,12 @@ class UserProfile extends Component {
                                         data-target="#delete-profile"
                                         data-toggle="tab"
                                         className="nav-link">Delete account</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a href=""
+                                        data-target="#change-password"
+                                        data-toggle="tab"
+                                        className="nav-link">Change password</a>
                                 </li>
                             </ul>
                             <div className="tab-content py-4">
@@ -160,6 +169,40 @@ class UserProfile extends Component {
                                 <div className="tab-pane text-center" id="delete-profile">
                                     <button onClick={this.deactivateUser} className="btn btn-danger mt-3">Delete profile</button>
                                 </div>
+                                <div className="tab-pane" id="change-password">
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label form-control-label">Current password</label>
+                                        <div className="col-lg-9">
+                                            <input
+                                                id="currentPasswordInputField"
+                                                onChange={this.changeInputField}
+                                                className="form-control" type="text" name="currentPassword" />
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label form-control-label">New password</label>
+                                        <div className="col-lg-9">
+                                            <input
+                                                id="newPasswordInputField"
+                                                onChange={this.changeInputField}
+                                                className="form-control" type="text" name="newPassword" />
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label form-control-label">Confirm new password</label>
+                                        <div className="col-lg-9">
+                                            <input
+                                                id="confirmNewPasswordInputField"
+                                                onChange={this.changeInputField}
+                                                className="form-control" type="text" name="confirmNewPassword" />
+                                        </div>
+                                    </div>
+                                    <label className="col-lg-3 col-form-label form-control-label" />
+                                    <div className="col-lg-9">
+                                        <button onClick={this.changePassword} type="button" className="btn btn-primary"
+                                            value="Save Changes" >Change password</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className="col-lg-4 order-lg-1 text-center">
@@ -264,6 +307,38 @@ class UserProfile extends Component {
             console.log(error);
         })
     };
+
+    changePassword = () => {
+        const passwordModel = {
+            currentPassword: this.state.currentPassword,
+            newPassword: this.state.newPassword,
+            confirmNewPassword: this.state.confirmNewPassword
+        };
+        console.log(passwordModel);
+        fetch(process.env.REACT_APP_URL + '/users/update/password', {
+            method: 'PATCH',
+            credentials: 'include',
+            body: JSON.stringify(passwordModel),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        }).then(async response => {
+            if (response.status === 200) {
+                alert("Password changed!");
+                window.location.reload();
+            } else if (response.status === 400) {
+                const jsonResponse = await response.json();
+                let error = JSON.parse(JSON.stringify(jsonResponse));
+                if (error['type'] == 'PasswordsDoNotMatchException') {
+                    alert('Invalid current or new password do not match!');
+                    return;
+                }
+                alert('Password not updated!'); 
+            }
+        }).catch(error => {
+            console.log(error);
+        });
+    }
 
     checkIfUserFormIsValid = () => {
         let isValid = true;
