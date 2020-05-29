@@ -17,16 +17,16 @@ class EditComment extends Component {
                 <div className="col-md-4 mt-4 container card">
                     <div className="col-md-7 mt-4 container text-center">
                         <div className="form-group ">
-                            <label htmlFor="exampleInputEmail1">Edit comment</label>
+                            <label htmlFor="exampleInputEmail1">Редактирай коментар</label>
                             <textarea
                                 onChange={this.changeInputField}
                                 name="content"
                                 className="form-control"
                                 id="contentInputField"
                             />
-                            <div hidden={this.state.valid} className="text-danger">Please login!</div>
+                            <div hidden={this.state.valid} className="text-danger">Моля влезте в профила си!</div>
                         </div>
-                        <button onClick={this.editComment} className="btn btn-warning mb-5">Edit comment</button>
+                        <button onClick={this.editComment} className="btn btn-warning mb-5">Редактирай коментар</button>
                     </div>
                 </div>
             </React.Fragment>

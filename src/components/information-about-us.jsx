@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class AboutUs extends Component {
     render() {
@@ -8,31 +8,30 @@ class AboutUs extends Component {
                 <div className="container mt-5">
                     <div className="row">
                         <div className="col-md-8 mb-5">
-                            <h2>The world's largest selection of courses</h2>
-                            <hr/>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore
-                                recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde
-                                debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur
-                                consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum,
-                                alias, adipisci nesciunt voluptate. Voluptatum.</p>
-                            <a className="btn btn-primary btn-lg" href="/contact-us">Send a message to us!</a>
+                            <h2>Най-добрите и най-новите курсове, които можете да открите.</h2>
+                            <hr />
+                            <p>"Научи се да пишеш код" платформата позволява
+                            да се научиш да програмираш бързо, лесно и интерактивно. Платформата предоставя най-различни
+                            курсове за обучение, които са с възможно най-новото съдържание. Имаш профил, влез в него, а ако
+                            нямаш, регистрацията почти не отнема време. Регистрирай се и се научи да програмираш на
+                                    най-различни езици с най-различни технологии.</p>
+                            <a className="btn btn-primary btn-lg" href="/contact-us">Изпратете ни съобщение!</a>
                         </div>
                         <div className="col-md-4 mb-5">
-                            <h2>Contact Us</h2>
-                            <hr/>
+                            <h2>Свържете се с нас</h2>
+                            <hr />
                             <address>
-                                <strong>Start Bootstrap</strong>
-                                <br/>3481 Melrose Place
-                                <br/>Beverly Hills, CA 90210
-                                <br/>
+                                <strong>Научи се да пишеш код</strong>
+                                <br />България, София
+                                <br />Булевар "Свети Климент Охридски" 8, 1756 Студентски Комплекс
+                                <br />
                             </address>
                             <address>
-                                <abbr title="Phone">P:</abbr>
-                                (123) 456-7890
-                                <br/>
-                                <abbr title="Email">E:</abbr>
-                                <a href="mailto:#">name@example.com</a>
+                                <abbr title="Phone">Тел: </abbr>
+                                +359 877 590 400
+                                <br />
+                                <abbr title="Email">Имейл: </abbr>
+                                <a href="mailto:#">starstrucks1997@gmail.com</a>
                             </address>
                         </div>
                     </div>
@@ -42,21 +41,14 @@ class AboutUs extends Component {
                     <div className="container">
                         <div className="row justify-content-center">
                             <div className="col-lg-8 text-center">
-                                <h2 className="text-white mt-5">More Information</h2>
+                                <h2 className="text-white mt-5">Още информация</h2>
                                 <div className="divider light my-4">
-                                    <p className="text-white-50 mb-4">Lorem Ipsum is simply dummy text of the printing and
-                                        typesetting industry.
-                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                        when an unknown
-                                        printer took a galley of type and scrambled it to make a type specimen book. It
-                                        has survived not
-                                        only five centuries, but also the leap into electronic typesetting, remaining
-                                        essentially unchanged.
-                                        It was popularised in the 1960s with the release of Letraset sheets containing
-                                        Lorem Ipsum passages,
-                                        and more recently with desktop publishing software like Aldus PageMaker
-                                        including versions of Lorem
-                                        Ipsum.</p>
+                                    <p className="text-white-50 mb-4">
+                                        Приложението е разработка на дипломна работа през 2020 година. Приложението представлява
+                                     платформа за гледане на курсове, както коментиране и разучаване. Също така предоставя интеграция 
+                                     с GitHub, като по този начин насърчава курсистите да започнат да използват тази платформа,
+                                     за да публикуват своите проекти и решения на проблеми в нея. GitHub е една от най-използваните
+                                     системи за контрол на кода. Позволява негово по-лесно менежиране и модифициране.</p>
                                 </div>
                             </div>
                         </div>
@@ -69,54 +61,54 @@ class AboutUs extends Component {
                         <div className="row no-gutters">
                             <div className="col-lg-4 col-sm-6">
                                 <a className="portfolio-box"
-                                   href={process.env.REACT_APP_URL + '/resource/images/about-1.jpg'}>
+                                    href={process.env.REACT_APP_URL + '/resource/images/about-1.jpg'}>
                                     <img className="img-fluid"
-                                         src={process.env.REACT_APP_URL + '/resource/images/about-1.jpg'} alt=""/>
+                                        src={process.env.REACT_APP_URL + '/resource/images/about-1.jpg'} alt="" />
                                     <div className="portfolio-box-caption">
                                     </div>
                                 </a>
                             </div>
                             <div className="col-lg-4 col-sm-6">
                                 <a className="portfolio-box"
-                                   href={process.env.REACT_APP_URL + '/resource/images/about-2.jpg'}>
+                                    href={process.env.REACT_APP_URL + '/resource/images/about-2.jpg'}>
                                     <img className="img-fluid"
-                                         src={process.env.REACT_APP_URL + '/resource/images/about-2.jpg'} alt=""/>
+                                        src={process.env.REACT_APP_URL + '/resource/images/about-2.jpg'} alt="" />
                                     <div className="portfolio-box-caption">
                                     </div>
                                 </a>
                             </div>
                             <div className="col-lg-4 col-sm-6">
                                 <a className="portfolio-box"
-                                   href={process.env.REACT_APP_URL + '/resource/images/about-3.jpg'}>
+                                    href={process.env.REACT_APP_URL + '/resource/images/about-3.jpg'}>
                                     <img className="img-fluid"
-                                         src={process.env.REACT_APP_URL + '/resource/images/about-3.jpg'} alt=""/>
+                                        src={process.env.REACT_APP_URL + '/resource/images/about-3.jpg'} alt="" />
                                     <div className="portfolio-box-caption">
                                     </div>
                                 </a>
                             </div>
                             <div className="col-lg-4 col-sm-6">
                                 <a className="portfolio-box"
-                                   href={process.env.REACT_APP_URL + '/resource/images/about-4.jpg'}>
+                                    href={process.env.REACT_APP_URL + '/resource/images/about-4.jpg'}>
                                     <img className="img-fluid"
-                                         src={process.env.REACT_APP_URL + '/resource/images/about-4.jpg'} alt=""/>
+                                        src={process.env.REACT_APP_URL + '/resource/images/about-4.jpg'} alt="" />
                                     <div className="portfolio-box-caption">
                                     </div>
                                 </a>
                             </div>
                             <div className="col-lg-4 col-sm-6">
                                 <a className="portfolio-box"
-                                   href={process.env.REACT_APP_URL + '/resource/images/about-5.jpg'}>
+                                    href={process.env.REACT_APP_URL + '/resource/images/about-5.jpg'}>
                                     <img className="img-fluid"
-                                         src={process.env.REACT_APP_URL + '/resource/images/about-5.jpg'} alt=""/>
+                                        src={process.env.REACT_APP_URL + '/resource/images/about-5.jpg'} alt="" />
                                     <div className="portfolio-box-caption">
                                     </div>
                                 </a>
                             </div>
                             <div className="col-lg-4 col-sm-6">
                                 <a className="portfolio-box"
-                                   href={process.env.REACT_APP_URL + '/resource/images/about-6.jpg'}>
+                                    href={process.env.REACT_APP_URL + '/resource/images/about-6.jpg'}>
                                     <img className="img-fluid"
-                                         src={process.env.REACT_APP_URL + '/resource/images/about-6.jpg'} alt=""/>
+                                        src={process.env.REACT_APP_URL + '/resource/images/about-6.jpg'} alt="" />
                                     <div className="portfolio-box-caption p-3">
                                     </div>
                                 </a>

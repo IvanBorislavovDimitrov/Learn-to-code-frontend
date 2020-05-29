@@ -25,7 +25,7 @@ class ViewCourse extends Component {
             <React.Fragment>
                 <section id="breadcrumbs" className="breadcrumbs">
                     <div className="container">
-                        <h2>You're currently watching: {this.state.currentVideoTitle}</h2>
+                        <h2>В момента гледате: {this.state.currentVideoTitle}</h2>
                     </div>
                 </section>
                 <main id="main">
@@ -53,30 +53,29 @@ class ViewCourse extends Component {
                                                     </a></li>
                                                 <li className="d-flex align-items-center"><i
                                                     className="icofont-comment" /> <a
-                                                        href="#">{this.state.commentsCount} Comments</a></li>
+                                                        href="#">{this.state.commentsCount} Коментара</a></li>
                                             </ul>
                                         </div>
                                         <div className="jumbotron-fluid">
                                             <button onClick={this.enrolledLoggedUserForCourse}
                                                 hidden={this.state.isUserEnrolledForCourse} type="button"
-                                                className="btn btn-warning mr-3">Enroll for course to reveal the
-                                                content
+                                                className="btn btn-warning mr-3">Запиши се за курса, за да разкриеш цялото съдържание
                                             </button>
                                             <button onClick={this.addToCourseToCart}
                                                 hidden={this.state.isUserEnrolledForCourse || this.state.doesUserHaveCourseInCart}
                                                 type="button"
-                                                className="btn btn-success mr-3">Add to cart
+                                                className="btn btn-success mr-3">Добави в количка
                                             </button>
                                             <div hidden={this.state.isUserEnrolledForCourse} className="entry-content">
                                                 <h3>Price - ${this.state.price}</h3>
                                             </div>
                                         </div>
                                         <div className="entry-content">
-                                            <h3>Category</h3>
+                                            <h3>Категория</h3>
                                             <p>{this.state.category}</p>
                                         </div>
                                         <div className="entry-content">
-                                            <h3>Description</h3>
+                                            <h3>Описание</h3>
                                             <p>{this.state.description}</p>
                                         </div>
 
@@ -109,35 +108,46 @@ class ViewCourse extends Component {
                                         <p>{this.state.teacherDescription}</p>
                                     </div>
                                     <div className="blog-comments">
-                                        <h4 className="comments-count">Comments</h4>
+                                        <h4 className="comments-count">Коментари</h4>
                                         <div id="comments-section">
 
                                         </div>
 
                                         <div className="reply-form card">
-                                            <h4>Leave a Comment</h4>
+                                            <h4>Напиши коментар</h4>
                                             <form onSubmit={this.addComment}>
                                                 <div className="row">
                                                     <div className="col form-group">
                                                         <textarea id="commentContent" name="comment" rows="5"
-                                                            className="form-control" placeholder="Your Comment" />
+                                                            className="form-control" placeholder="Вашият коментар" />
                                                     </div>
                                                 </div>
-                                                <button type="submit" className="btn btn-primary">Post Comment</button>
+                                                <button type="submit" className="btn btn-primary">Напиши коментар</button>
                                             </form>
                                         </div>
+                                        {/* 
+                                        <div className="reply-form card">
+                                            <h4>Rate this course</h4>
+                                            <select class="browser-default custom-select">
+                                                <option selected>Open this select menu</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                            <button type="submit" className="btn btn-primary mt-3">Rate</button>
+                                        </div> */}
                                     </div>
                                 </div>
                                 <div className="col-lg-4">
                                     <div className="sidebar card">
-                                        <h3 className="sidebar-title">Agenda</h3>
+                                        <h3 className="sidebar-title">Съдържание</h3>
                                         <div id="agenda" className="sidebar-item h6 ">
                                             <table class="table table-hover table-dark">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">#</th>
-                                                        <th scope="col">Lecture name</th>
-                                                        <th scope="col">Watch</th>
+                                                        <th scope="col">Име на лекцията</th>
+                                                        <th scope="col">Гледай</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="table-body">
@@ -196,7 +206,7 @@ class ViewCourse extends Component {
             if (respone.status === 200) {
                 window.location.reload();
             } else {
-                alert("Comment was not uploaded");
+                alert("Коментарът не беше публикуван. Опитай отново!");
             }
         });
     }
@@ -222,7 +232,7 @@ class ViewCourse extends Component {
                 const h5 = document.createElement('h5');
 
                 const button = document.createElement('button');
-                button.textContent = 'Go';
+                button.textContent = 'Отвори';
                 button.setAttribute('class', 'btn btn-warning btn-sm');
 
                 const tableBodyAgenda = document.getElementById('table-body');
@@ -327,7 +337,7 @@ class ViewCourse extends Component {
                             const edit = document.createElement('a');
                             edit.setAttribute('class', 'btn btn-warning');
                             edit.href = '/comments/edit/' + comment['id'];
-                            edit.textContent = 'Edit';
+                            edit.textContent = 'Редактирай';
                             commentOuterDiv.appendChild(edit);
                         }
                         const roles = localStorage.getItem('userRoles');
@@ -337,7 +347,7 @@ class ViewCourse extends Component {
                             const deleteComment = document.createElement('a');
                             deleteComment.setAttribute('class', 'btn btn-danger ml-1');
                             deleteComment.href = '/comments/delete/' + comment['id'];
-                            deleteComment.textContent = 'Delete';
+                            deleteComment.textContent = 'Изтрий';
                             commentOuterDiv.appendChild(deleteComment);
                         }
                     }
@@ -347,7 +357,7 @@ class ViewCourse extends Component {
                     commentsCount: comments.length
                 });
             } else {
-                alert('Comments cannot be fetched!');
+                alert('Коментарът не беше изтрит. Опитай отново!');
             }
         }).catch(error => {
             console.log(error.message);
@@ -449,7 +459,7 @@ class ViewCourse extends Component {
             if (response.status === 200) {
                 window.location.reload();
             } else {
-                alert('Add to cart failed!');
+                alert('Добавянето към количката не беше успешно. Опитай отново!');
             }
         });
     }

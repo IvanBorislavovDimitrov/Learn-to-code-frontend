@@ -6,17 +6,17 @@ class CheckRepositories extends Component {
         return (
             <React.Fragment>
                 <div className="col-md-8 mt-4 container">
-                    <h2 className="text-center">Your repositories</h2>
+                    <h2 className="text-center">Вашите хранилища в GitHub</h2>
                     <table className="table table-bordered table-dark mt-4">
 
                         <thead>
                             <tr>
-                                <th scope="col">Number</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Created at</th>
-                                <th scope="col">Updated at</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">Номер</th>
+                                <th scope="col">Име</th>
+                                <th scope="col">Описание</th>
+                                <th scope="col">Създадена на</th>
+                                <th scope="col">Обновена на</th>
+                                <th scope="col">Действия</th>
                             </tr>
                         </thead>
                         <tbody id="repositories">
@@ -63,7 +63,7 @@ class CheckRepositories extends Component {
                 if (repository['description'] !== null) {
                     repositoryDescription.textContent = repository['description'];
                 } else {
-                    repositoryDescription.textContent = "No content provided!";
+                    repositoryDescription.textContent = "Няма информация!";
                 }
                 const createdAt = document.createElement('td');
                 createdAt.textContent = repository['created_at'];

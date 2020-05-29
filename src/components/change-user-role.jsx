@@ -20,26 +20,24 @@ class ChangeUserRole extends Component {
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Role</th>
-                                        <th scope="col">Add Role</th>
+                                        <th scope="col">Роля</th>
+                                        <th scope="col">Добави роля</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr id="adminTR">
                                         <th scope="row">1</th>
-                                        <td>Moderator</td>
+                                        <td>Модератор</td>
                                         <td>
-                                            <button onClick={() => this.addRole('ROLE_MODERATOR')} className="btn btn-primary">Add
-                                            role
+                                            <button onClick={() => this.addRole('ROLE_MODERATOR')} className="btn btn-primary">Добави роля
                                 </button>
                                         </td>
                                     </tr>
                                     <tr id="moderatorTR">
                                         <th scope="row">2</th>
-                                        <td>Admin</td>
+                                        <td>Админ</td>
                                         <td>
-                                            <button onClick={() => this.addRole('ROLE_ADMIN')} className="btn btn-primary">Add
-                                            role
+                                            <button onClick={() => this.addRole('ROLE_ADMIN')} className="btn btn-primary">Добави роля
                                 </button>
                                         </td>
                                     </tr>
@@ -50,14 +48,14 @@ class ChangeUserRole extends Component {
                         <div className="col-md-7 container">
                             <form>
                                 <div className="form-group">
-                                    <label htmlFor="exampleInputEmail1">Username</label>
+                                    <label htmlFor="exampleInputEmail1">Потребителско име</label>
                                     <input
                                         onChange={this.changeInputField}
                                         name="username"
                                         type="text"
                                         className="form-control"
                                         id="usernameInputField"
-                                        placeholder="Enter a username"
+                                        placeholder="Въведи потребителско име"
                                     />
                                 </div>
                                 {this.checkUser()}
@@ -67,18 +65,18 @@ class ChangeUserRole extends Component {
                         <div className="col-md-7 mt-4 container">
                             <form onSubmit={this.updateRoles}>
                                 <div className="form-group">
-                                    <label htmlFor="exampleInputEmail1">Username</label>
+                                    <label htmlFor="exampleInputEmail1">Потребителско име</label>
                                     <input
                                         onChange={this.changeInputField}
                                         name="usernameRoleChange"
                                         type="text"
                                         className="form-control"
                                         id="usernameInputField"
-                                        placeholder="Enter a username"
+                                        placeholder="Въведи потребителско име"
                                     />
                                 </div>
                                 <div id="passwordField" className="form-group">
-                                    <label htmlFor="exampleInputPassword">Roles</label>
+                                    <label htmlFor="exampleInputPassword">Роли</label>
                                     <input
                                         onChange={this.changeInputField}
                                         disabled="disabled"
@@ -86,11 +84,11 @@ class ChangeUserRole extends Component {
                                         type="text"
                                         className="form-control"
                                         id="roles"
-                                        placeholder="Roles"
+                                        placeholder="Роли"
                                         value="ROLE_USER"
                                     />
                                 </div>
-                                <button type="submit" className="btn btn-primary">Update roles</button>
+                                <button type="submit" className="btn btn-primary">Промени роли</button>
                             </form>
                         </div>
                     </div>
@@ -111,7 +109,7 @@ class ChangeUserRole extends Component {
         return (
             <React.Fragment>
                 <Button variant="primary" onClick={this.showPopAndFetchUsers}>
-                    Check user
+                    Провери потребител
                 </Button>
                 <Modal show={this.state.seen} animation={true}>
                     <Modal.Header>

@@ -19,10 +19,10 @@ class Courses extends Component {
                 <section id="breadcrumbs" className="breadcrumbs">
                     <div className="container">
                         <ol>
-                            <li><a href="/">Home</a></li>
-                            <li>Courses</li>
+                            <li><a href="/">Начало</a></li>
+                            <li>Курсове</li>
                         </ol>
-                        <h2>Courses</h2>
+                        <h2>Курсове</h2>
                     </div>
                 </section>
 
@@ -53,7 +53,7 @@ class Courses extends Component {
 
                             <div className="col-lg-4">
                                 <div className="sidebar card">
-                                    <h3 className="sidebar-title">Search</h3>
+                                    <h3 className="sidebar-title">Търси</h3>
                                     <div className="sidebar-item search-form">
                                         <form onSubmit={this.search}>
                                             <input
@@ -66,7 +66,7 @@ class Courses extends Component {
                                             <button type="submit"><i className="icofont-search"></i></button>
                                         </form>
                                     </div>
-                                    <h3 className="sidebar-title">Categories</h3>
+                                    <h3 className="sidebar-title">Категории</h3>
                                     <div className="sidebar-item categories">
                                         <ul id="course-categories-ul">
                                         </ul>
@@ -195,7 +195,7 @@ class Courses extends Component {
 
             if (parsedCourses.length == 0) {
                 const h1 = document.createElement('h1');
-                h1.textContent = "No courses found!";
+                h1.textContent = "Не са намерение курсове!";
                 h1.setAttribute('class', 'center d-flex justify-content-center');
                 coursesDomElementd.appendChild(h1);
             }
@@ -287,7 +287,7 @@ class Courses extends Component {
                 fourthDiv.setAttribute('class', 'read-more');
 
                 const a2 = document.createElement('a');
-                a2.textContent = 'Read more';
+                a2.textContent = 'Виж курс';
                 a2.href = "/courses/view/" + course['name'];
                 fourthDiv.appendChild(a2);
                 thirdDiv.appendChild(fourthDiv);

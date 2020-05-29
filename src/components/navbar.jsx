@@ -22,7 +22,7 @@ class Navbar extends Component {
                 <link rel="stylesheet"
                     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <a className="navbar-brand" href="/">Learn To Code</a>
+                    <a className="navbar-brand" href="/">Научи се да пишеш код</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -34,60 +34,60 @@ class Navbar extends Component {
 
                             <div class="dropdown show mr-3">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    About Us
+                                    За нас
   </a>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="/information/about-us">About Us</a>
-                                    <a class="dropdown-item" href="/information/team">Our Team</a>
+                                    <a class="dropdown-item" href="/information/about-us">За нас</a>
+                                    <a class="dropdown-item" href="/information/team">Нашите проподаватели</a>
                                 </div>
                             </div>
                             <li className="nav-item">
-                                <a className="nav-link mr-3" href="/contact-us">Contact us</a>
+                                <a className="nav-link mr-3" href="/contact-us">Свържете се с нас</a>
                             </li>
 
                             <div class="dropdown">
                                 <a class="nav-link dropdown-toggle mr-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Categories
+                                    Категории
   </a>
                                 <div id="categories" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 </div>
                             </div>
 
                             <li className="nav-item">
-                                <a className="nav-link mr-3" href="/">Home</a>
+                                <a className="nav-link mr-3" href="/">Начало</a>
                             </li>
 
                             <li className="nav-item">
-                                <a className="nav-link mr-3" href="/courses">Courses</a>
+                                <a className="nav-link mr-3" href="/courses">Курсове</a>
                             </li>
 
                             <li hidden={isLoggedIn} className="nav-item">
-                                <a className="nav-link mr-3" href="/users/login">Log in</a>
+                                <a className="nav-link mr-3" href="/users/login">Вход</a>
                             </li>
 
                             <li hidden={isLoggedIn} className="nav-item">
-                                <a className="nav-link" href="/users/register">Register</a>
+                                <a className="nav-link" href="/users/register">Регистрация</a>
                             </li>
 
                             <li hidden={!isLoggedIn} className="nav-item mr-3">
-                                <a className="nav-link" href="/users/profile">Profile</a>
+                                <a className="nav-link" href="/users/profile">Профил</a>
                             </li>
 
                             <li hidden={!isLoggedIn} className="nav-item">
-                                <a className="nav-link mr-3" href="/github">Github</a>
+                                <a className="nav-link mr-3" href="/github">GitHub</a>
                             </li>
 
                             <li hidden={!isLoggedIn} className="nav-item">
-                                <a href="javascript:void(0)" onClick={this.logout} className="nav-link">Logout</a>
+                                <a href="javascript:void(0)" onClick={this.logout} className="nav-link">Излез</a>
                             </li>
 
                             <li hidden={!isModerator} className="ml-3 nav-item">
-                                <a className="nav-link" href="/moderator/index">Open Moderator UI</a>
+                                <a className="nav-link" href="/moderator/index">Отвори модератор меню</a>
                             </li>
 
                             <li hidden={!isAdmin} className="ml-3 nav-item">
-                                <a className="nav-link" href="/admin/index">Open Admin UI</a>
+                                <a className="nav-link" href="/admin/index">Отвори Админ меню</a>
                             </li>
 
                             <li className="ml-3 nav-item">
@@ -120,19 +120,19 @@ class Navbar extends Component {
         return (
             <React.Fragment>
                 <button className="btn btn-warning" variant="primary" onClick={this.show}>
-                    <i className="fa fa-shopping-cart fa-1x"></i> Shopping cart
+                    <i className="fa fa-shopping-cart fa-1x"></i> Количка
                 </button>
                 <Modal show={this.state.seen} animation={true}>
                     <Modal.Header>
-                        <Modal.Title>Shopping cart</Modal.Title>
+                        <Modal.Title>Количка</Modal.Title>
                     </Modal.Header>
                     <Modal.Body id="users">
                         <table className="table table-dark">
                             <thead>
                                 <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Actions</th>
+                                    <th scope="col">Име</th>
+                                    <th scope="col">Цена</th>
+                                    <th scope="col">Действия</th>
                                 </tr>
                             </thead>
                             <tbody id="table">
@@ -141,9 +141,8 @@ class Navbar extends Component {
                         </table>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button className="btn btn-success" variant="secondary" onClick={this.hidePop}>Close</Button>
-                        <a className="btn btn-warning" variant="secondary" href="/courses/cart/finish-cart-purchase">Finish
-                            purchase</a>
+                        <Button className="btn btn-success" variant="secondary" onClick={this.hidePop}>Затвори</Button>
+                        <a className="btn btn-warning" variant="secondary" href="/courses/cart/finish-cart-purchase">Завърши поръчка</a>
                     </Modal.Footer>
                 </Modal>
             </React.Fragment>
@@ -186,7 +185,7 @@ class Navbar extends Component {
                 const actions = document.createElement('td');
                 const removeButton = document.createElement('button');
                 removeButton.setAttribute('class', 'btn btn-danger btn-sm');
-                removeButton.textContent = 'Remove';
+                removeButton.textContent = 'Премахни';
                 removeButton.onclick = () => {
                     async function removeFromCart() {
                         return await fetch(process.env.REACT_APP_URL + '/courses/cart/remove/' + course['name'], {
@@ -204,7 +203,7 @@ class Navbar extends Component {
                             table.innerText = '';
                             currentThis.getCoursesInCart();
                         } else {
-                            alert('Add to cart failed!');
+                            alert('Премахването от количката не беше успешно. Опитай пак!');
                         }
                     });
                 };

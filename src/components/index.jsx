@@ -30,14 +30,12 @@ class Index extends Component {
                         <div className="container h-100">
                             <div className="row h-100 align-items-center">
                                 <div className="col-lg-12">
-                                    <h1 className="display-4 text-white mt-5 mb-2">Do you want to learn to code?</h1>
-                                    <p className="lead mb-5 text-white-50">Learn-To-Code platform allows you learn to
-                                    code
-                                    with a bunch of the best tutorials available online. Enroll to our courses and
-                                    you
-                                    will explore totally different experience of learning new skills, technologies
-                                    and
-                                        so much more.</p>
+                                    <h1 className="display-4 text-white mt-5 mb-2">Искаш ли да се научиш да пишеш код?</h1>
+                                    <p className="lead mb-5 text-white-50">"Научи се да пишеш код" платформата позволява 
+                                    да се научиш да програмираш бързо, лесно и интерактивно. Платформата предоставя най-различни
+                                    курсове за обучение, които са с възможно най-новото съдържание. Имаш профил, влез в него, а ако
+                                    нямаш, регистрацията почти не отнема време. Регистрирай се и се научи да програмираш на
+                                    най-различни езици с най-различни технологии.</p>
                                 </div>
                             </div>
                         </div>
@@ -49,15 +47,15 @@ class Index extends Component {
                     <ul className="nav nav-pills nav-fill">
                         <li className="nav-item">
                             <a onClick={this.changeToNewestShownCourses} id="newest" className="nav-link active"
-                                href="javascript:void(0)">Newest</a>
+                                href="javascript:void(0)">Най-нови</a>
                         </li>
                         <li className="nav-item">
                             <a onClick={this.changeToBestSellersShownCourses} id="best-sellers" className="nav-link"
-                                href="javascript:void(0)">Best sellers</a>
+                                href="javascript:void(0)">С най-много курсисти</a>
                         </li>
                         <li className="nav-item">
                             <a onClick={this.changeToTopRatedShownCourses} id="top-rated" className="nav-link"
-                                href="javascript:void(0)">Most commented</a>
+                                href="javascript:void(0)">Най-коментирани</a>
                         </li>
                     </ul>
                     <br />
@@ -105,7 +103,7 @@ class Index extends Component {
                     <div className="container">
 
                         <div className="section-title">
-                            <h2>Explore top categories</h2>
+                            <h2>Разгледай на известните категории</h2>
                         </div>
 
                         <div className="row">
@@ -225,8 +223,8 @@ class Index extends Component {
                     <div className="container">
 
                         <div className="section-title">
-                            <h2>Clients</h2>
-                            Some of our top sponsors and regular users!
+                            <h2>Спонсори</h2>
+                            Най-известните ни спонсори, както и най-редовни клиенти!
                         </div>
 
                         <div className="row d-flex justify-content-center mt-5 mb-5">
@@ -342,7 +340,7 @@ class Index extends Component {
                 let a = document.createElement("a");
                 a.setAttribute('class', 'ml-3 btn btn-primary');
                 a.href = "/courses/view/" + course["name"];
-                a.textContent = "Find out more!";
+                a.textContent = "Разбери повече!";
 
                 const priceH = document.createElement('h2');
                 priceH.setAttribute('class', 'ml-5 mt-2');

@@ -7,14 +7,14 @@ class FinishCartPurchase extends Component {
             <React.Fragment>
                 <div className="col-md-6 container">
                     <div className=" mr-3 ml-3 mt-3 mb-3 jumbotron-fluid card">
-                        <h2 className="mt-3 text-center">Enroll for courses</h2>
+                        <h2 className="mt-3 text-center">Запиши се за курс</h2>
                         <table className="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Short description</th>
-                                    <th scope="col">Actions</th>
+                                    <th scope="col">Име</th>
+                                    <th scope="col">Цена</th>
+                                    <th scope="col">Кратко описание</th>
+                                    <th scope="col">Действия</th>
                                 </tr>
                             </thead>
                             <tbody id="finish-courses-table">
@@ -73,7 +73,7 @@ class FinishCartPurchase extends Component {
                             table.innerText = '';
                             currentThis.getCoursesInCart();
                         } else {
-                            alert('Add to cart failed!');
+                            alert('Премахването от количката не беше успешно!');
                         }
                     });
                 };
@@ -111,7 +111,7 @@ class FinishCartPurchase extends Component {
                         this.props.history.push('/');
                         window.location.reload();
                     } else {
-                        alert("Failed to enroll for courses!");
+                        alert("Записването на курс не беше успешно!");
                     }
                 });
             };

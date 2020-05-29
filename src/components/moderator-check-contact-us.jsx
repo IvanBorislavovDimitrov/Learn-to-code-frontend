@@ -6,14 +6,14 @@ class ContactUsForms extends Component {
         return (
             <React.Fragment>
                 <div className="col-md-8 mt-4 container">
-                    <h2 className="text-center">Received messages</h2>
+                    <h2 className="text-center">Получени съобщения</h2>
                     <table className="table table-bordered table-dark mt-4">
                         <thead>
                             <tr>
-                                <th scope="col">Username</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Subject</th>
-                                <th scope="col">Message</th>
+                                <th scope="col">Име</th>
+                                <th scope="col">Имейл</th>
+                                <th scope="col">Тема</th>
+                                <th scope="col">Съобщение</th>
                             </tr>
                         </thead>
                         <tbody id="contacts">

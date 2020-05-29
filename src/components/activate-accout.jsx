@@ -5,8 +5,7 @@ class ActivateAccount extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1 className="text-center">Your account has been activated! You will be redirected in just a
-                    moment.</h1>
+                <h1 className="text-center">Вашият акаунт беше активиран! Ще бъдете препратени всеки момент.</h1>
             </React.Fragment>
         );
     }

@@ -16,18 +16,18 @@ class DeleteCourse extends Component {
                 <div className="col-md-4 mt-4 container">
                     <div className="text-center border border-light p-5 card h-100 w-100">
                         <div className="form-group">
-                            <label htmlFor="exampleInputEmail1">Course name</label>
+                            <label htmlFor="exampleInputEmail1">Име на курс</label>
                             <input
                                 onChange={this.changeInputField}
                                 name="courseName"
                                 type="text"
                                 className="form-control"
                                 id="courseNameInputField"
-                                placeholder="Enter a username"
+                                placeholder="Въведи име на курс"
                             />
-                            <div hidden={this.state.valid} className="text-danger">Course not found!</div>
+                            <div hidden={this.state.valid} className="text-danger">Курсът не беше открит!</div>
                         </div>
-                        <button onClick={this.deleteCourse} className="btn btn-primary">Delete course</button>
+                        <button onClick={this.deleteCourse} className="btn btn-primary">Изтрий курс</button>
                     </div>
                 </div>
             </React.Fragment>
@@ -36,7 +36,7 @@ class DeleteCourse extends Component {
 
     deleteCourse = () => {
         const courseNameInputField = document.getElementById('courseNameInputField');
-        courseNameInputField.setAttribute('class', 'form-control    ');
+        courseNameInputField.setAttribute('class', 'form-control');
         this.setState({
             valid: true
         });

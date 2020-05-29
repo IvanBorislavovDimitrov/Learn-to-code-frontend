@@ -14,7 +14,6 @@ class AddNewCourse extends Component {
             durationInWeeks: null,
             credits: null,
             description: null,
-            formOfEducation: "REGULAR",
             categoryName: null,
             thumbnail: null,
             coursePartsCount: 2,
@@ -23,7 +22,6 @@ class AddNewCourse extends Component {
             endDateInputFieldNotEntered: false,
             durationOfWeeksInputFieldNotEntered: false,
             creditsInputFieldNotEntered: false,
-            formOfEducationInputFieldNotEntered: false,
             priceOfCourseInputFieldNotEntered: false,
             descriptionOfCourseFieldNotEntered: false,
             teacherNameInputFieldNotEntered: false,
@@ -43,122 +41,114 @@ class AddNewCourse extends Component {
                 <div className="col-md-4 mt-4 container">
                     <form className="text-center border border-light p-5 card h-100 w-100" onSubmit={this.addCourse}
                         encType="multipart/form-data">
-                        <p className="h4 mb-4">Add new course</p>
+                        <p className="h4 mb-4">Добави нов курс</p>
 
                         <div className="form-group">
-                            <label htmlFor="nameInput">Name</label>
+                            <label htmlFor="nameInput">Име</label>
                             <input
                                 onChange={this.changeInputField}
                                 name="name"
                                 type="text"
                                 className="form-control"
                                 id="nameInputField"
-                                placeholder="Name"
+                                placeholder="Име"
                             />
-                            <div hidden={!this.state.nameInputFieldNotEntered} class="text-danger mb-3">Enter a name!</div>
-                            <div hidden={!this.state.courseNameTaken} class="text-danger mb-3">Name is take!</div>
+                            <div hidden={!this.state.nameInputFieldNotEntered} class="text-danger mb-3">Въведи име!</div>
+                            <div hidden={!this.state.courseNameTaken} class="text-danger mb-3">Името е заето!</div>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="startDateDate">Start date</label>
+                            <label htmlFor="startDateDate">Дата на започване</label>
                             <input
                                 onChange={this.changeInputField}
                                 name="startDate"
                                 type="date"
                                 className="form-control"
                                 id="startDateInputField"
-                                placeholder="Choose start date"
+                                placeholder="Избери дата на започване"
                             />
-                            <div hidden={!this.state.startDateInputFieldNotEntered} class="text-danger mb-3">Enter a start date!</div>
-                            <div hidden={!this.state.endDateIsBeforeStartDate} class="text-danger mb-3">Start date should be before end date!</div>
+                            <div hidden={!this.state.startDateInputFieldNotEntered} class="text-danger mb-3">Въведи дата на започване!</div>
+                            <div hidden={!this.state.endDateIsBeforeStartDate} class="text-danger mb-3">Датата на започване трябва да е преди датата на завършване!</div>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="endDateDate">End date</label>
+                            <label htmlFor="endDateDate">Дата на завършване</label>
                             <input
                                 id="endDateInputField"
                                 onChange={this.changeInputField}
                                 name="endDate"
                                 type="date"
                                 className="form-control"
+                                placeholder="Избери дата на завършване"
                             />
-                            <div hidden={!this.state.endDateInputFieldNotEntered} class="text-danger mb-3">Enter an end date!</div>
-                            <div hidden={!this.state.endDateIsBeforeStartDate} class="text-danger mb-3">End date should be after start date!</div>
+                            <div hidden={!this.state.endDateInputFieldNotEntered} class="text-danger mb-3">Въведи дата на завършване!</div>
+                            <div hidden={!this.state.endDateIsBeforeStartDate} class="text-danger mb-3">Датата на завършване трябва да е преди датата на започване!</div>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="durationInWeeksInput">Duration in weeks</label>
+                            <label htmlFor="durationInWeeksInput">Продължителност в седмици</label>
                             <input
                                 onChange={this.changeInputField}
                                 name="durationInWeeks"
                                 type="text"
                                 className="form-control"
                                 id="durationInWeeksInputField"
-                                placeholder="Duration in weeks"
+                                placeholder="Продължителност в седмици"
                             />
-                            <div hidden={!this.state.durationOfWeeksInputFieldNotEntered} class="text-danger mb-3">Enter a duration in weeks!</div>
+                            <div hidden={!this.state.durationOfWeeksInputFieldNotEntered} class="text-danger mb-3">Въведете дължина на курса в седмици!</div>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="creditsInput">Credits</label>
+                            <label htmlFor="creditsInput">Кредити</label>
                             <input
                                 id="creditsInputField"
                                 onChange={this.changeInputField}
                                 name="credits"
                                 type="text"
                                 className="form-control"
-                                placeholder="Credits"
+                                placeholder="Кредити"
                             />
-                            <div hidden={!this.state.creditsInputFieldNotEntered} class="text-danger mb-3">Enter credits!</div>
+                            <div hidden={!this.state.creditsInputFieldNotEntered} class="text-danger mb-3">Въведете кредити за курса!</div>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="formOfEducationInput">Form of education</label>
-                            <select name="formOfEducation" onChange={this.changeInputField} className="form-control"
-                                id="formOfEducationInputField">
-                                <option>REGULAR</option>
-                                <option>ONLINE</option>
-                            </select>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="priceOfCourseInput">Price of course</label>
+                            <label htmlFor="priceOfCourseInput">Цена на курс</label>
                             <input
                                 id="priceOfCourseInputField"
                                 onChange={this.changeInputField}
                                 name="price"
                                 type="number"
                                 className="form-control"
-                                placeholder="Price"
+                                placeholder="Цена"
                             />
-                            <div hidden={!this.state.priceOfCourseInputFieldNotEntered} class="text-danger mb-3">Enter a price of course!</div>
+                            <div hidden={!this.state.priceOfCourseInputFieldNotEntered} class="text-danger mb-3">Въведи цена на курса!</div>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="descriptionTextArea">Description</label>
+                            <label htmlFor="descriptionTextArea">Описание</label>
                             <textarea onChange={this.changeInputField} name="description" className="form-control"
                                 id="descriptionTextAreaField" rows="3"></textarea>
-                            <div hidden={!this.state.descriptionOfCourseFieldNotEntered} class="text-danger mb-3">Enter a descirption!</div>
+                            <div hidden={!this.state.descriptionOfCourseFieldNotEntered} class="text-danger mb-3">Въведи описание!</div>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="categoryInput">Category</label>
+                            <label htmlFor="categoryInput">Категория</label>
                             <select name="categoryName" onChange={this.changeInputField} className="form-control"
                                 id="categoryInputField">
                             </select>
                         </div>
 
                         <form>
-                            <label htmlFor="exampleInputEmail1">Teacher name</label>
+                            <label htmlFor="exampleInputEmail1">Име на преподавател</label>
                             <input
                                 onChange={this.changeInputField}
                                 name="teacherName"
                                 type="text"
                                 className="form-control"
                                 id="teacherNameInputField"
-                                placeholder="Enter a teacherName"
+                                placeholder="Въведи име на преподавате"
                             />
-                            <div hidden={!this.state.teacherNameInputFieldNotEntered} class="text-danger mb-3">Enter a teacher name!</div>
+                            <div hidden={!this.state.teacherNameInputFieldNotEntered} class="text-danger mb-3">Въведи име на преподавател!</div>
                             {this.checkUser()}
                         </form>
 
@@ -169,9 +159,9 @@ class AddNewCourse extends Component {
                                     onChange={this.changeInputField}
                                     type="text"
                                     className="form-control"
-                                    placeholder="Part name"
+                                    placeholder="Име на част"
                                 />
-                                <div hidden={!this.state.partInputFieldNotEntered} class="text-danger mb-3">Enter at least one part (Intro)!</div>
+                                <div hidden={!this.state.partInputFieldNotEntered} class="text-danger mb-3">Добави поне една част (Начало)!</div>
                             </div>
                             <div class="col-sm-4">
                                 <input
@@ -185,15 +175,12 @@ class AddNewCourse extends Component {
                             </div>
 
                         </div>
-                        <button onClick={this.addCoursePart} className="btn btn-primary btn-block" type="button">Add
-                        part
-                        </button>
+                        <button onClick={this.addCoursePart} className="btn btn-primary btn-block" type="button">Добави част</button>
                         <button onClick={this.removeCoursePart} className="btn btn-danger btn-block"
-                            type="button">Remove part
-                        </button>
+                            type="button">Премахни част</button>
 
                         <div className="form-group mt-3">
-                            <small id="fileHelp" className="form-text text-muted">Thumbnail</small>
+                            <small id="fileHelp" className="form-text text-muted">Изображение</small>
                             <input
                                 onChange={this.changeInputField}
                                 ref={this.thumbnailFileUpload}
@@ -203,7 +190,7 @@ class AddNewCourse extends Component {
                                 aria-describedby="fileHelp"
                                 name="thumbnail"
                             />
-                            <div hidden={!this.state.thumbnailInputFieldNotEntered} class="text-danger mb-3">Enter a thumbnail!</div>
+                            <div hidden={!this.state.thumbnailInputFieldNotEntered} class="text-danger mb-3">Добави изображение!</div>
                         </div>
                         <br />
                         <div hidden={!this.state.loading} id="loading">
@@ -212,7 +199,7 @@ class AddNewCourse extends Component {
                                 </div>
                             </div>
                         </div>
-                        <button className="btn btn-info btn-block" type="submit">Add course</button>
+                        <button className="btn btn-info btn-block" type="submit">Добави курс</button>
                     </form>
                 </div>
             </React.Fragment>
@@ -257,7 +244,7 @@ class AddNewCourse extends Component {
         filePartNameInput.id = 'coursePartName' + this.state.coursePartsCount;
         filePartNameInput.type = "text";
         filePartNameInput.setAttribute('class', 'form-control');
-        filePartNameInput.placeholder = 'Part name';
+        filePartNameInput.placeholder = 'Име на част';
         firstDiv.appendChild(filePartNameInput);
 
         const secondDiv = document.createElement('div');
@@ -366,9 +353,7 @@ class AddNewCourse extends Component {
             if (currentThis.state.credits != null) {
                 registerFormData.append('credits', currentThis.state.credits);
             }
-            if (currentThis.state.formOfEducation != null) {
-                registerFormData.append('formOfEducation', currentThis.state.formOfEducation);
-            }
+    
             if (currentThis.state.price != null) {
                 registerFormData.append('price', currentThis.state.price);
             }
@@ -453,12 +438,12 @@ class AddNewCourse extends Component {
                 const usersModel = document.getElementById('users');
                 const usernames = users.map(user => user['username']);
                 if (usernames == '') {
-                    usersModel.textContent = "No results!";
+                    usersModel.textContent = "Няма резултати!";
                 } else {
                     usersModel.textContent = usernames;
                 }
             } else {
-                alert('Error while  fetchingusers!');
+                alert('Грешка доката се взимаха потребители, моля презаредете страницата!');
             }
         });
     }

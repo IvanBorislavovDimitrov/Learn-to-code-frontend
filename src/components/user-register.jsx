@@ -40,7 +40,7 @@ class UserRegister extends Component {
                 <div className="col-md-4 mt-4 container card">
                     <form className="text-center border border-light p-5" encType="multipart/form-data"
                         onSubmit={this.registerUser}>
-                        <p className="h4 mb-4">Register</p>
+                        <p className="h4 mb-4">Регистрация</p>
                         <div className="form-group">
                             <input
                                 onChange={this.changeInputField}
@@ -49,10 +49,10 @@ class UserRegister extends Component {
                                 className="form-control"
                                 id="emailInputField"
                                 aria-describedby="emailHelp"
-                                placeholder="Email"
+                                placeholder="Имейл"
                             />
-                            <div hidden={!this.state.emailNotEntered} className="text-danger mb-3">Enter an email!</div>
-                            <div hidden={!this.state.emailExists} className="text-danger mb-3">Enter is taken!</div>
+                            <div hidden={!this.state.emailNotEntered} className="text-danger mb-3">Въведи имейл!</div>
+                            <div hidden={!this.state.emailExists} className="text-danger mb-3">Имейлът е в употреба избери друг!</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -61,9 +61,9 @@ class UserRegister extends Component {
                                 type="text"
                                 className="form-control"
                                 id="firstNameInputField"
-                                placeholder="Enter your first name"
+                                placeholder="Въведи първо име"
                             />
-                            <div hidden={!this.state.firstNameNotEntered} className="text-danger mb-3">Enter first name!</div>
+                            <div hidden={!this.state.firstNameNotEntered} className="text-danger mb-3">Въведи първо име!</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -72,9 +72,9 @@ class UserRegister extends Component {
                                 type="text"
                                 className="form-control"
                                 id="lastNameInputField"
-                                placeholder="Enter your last name"
+                                placeholder="Въведи фамилия"
                             />
-                            <div hidden={!this.state.lastNameNotEntered} className="text-danger mb-3">Enter last name!</div>
+                            <div hidden={!this.state.lastNameNotEntered} className="text-danger mb-3">Въведи фамилия!</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -83,10 +83,10 @@ class UserRegister extends Component {
                                 type="text"
                                 className="form-control"
                                 id="usernameInputField"
-                                placeholder="Enter your username"
+                                placeholder="Въведи потребителско име"
                             />
-                            <div hidden={!this.state.usernameNotEntered} className="text-danger mb-3">Enter a username!</div>
-                            <div hidden={!this.state.usernameTaken} className="text-danger mb-3">Username is taken!!</div>
+                            <div hidden={!this.state.usernameNotEntered} className="text-danger mb-3">Въведи потребителско име!</div>
+                            <div hidden={!this.state.usernameTaken} className="text-danger mb-3">Потребителското име е заето, избери друго!</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -95,7 +95,7 @@ class UserRegister extends Component {
                                 type="text"
                                 className="form-control"
                                 id="descriptionInputField"
-                                placeholder="Enter description"
+                                placeholder="Въведи описание"
                             />
                         </div>
                         <div className="form-group">
@@ -105,10 +105,10 @@ class UserRegister extends Component {
                                 type="text"
                                 className="form-control"
                                 id="phoneNumberInputField"
-                                placeholder="Enter your phone number"
+                                placeholder="Въведи телефонен номер"
                             />
-                            <div hidden={!this.state.phoneNumberNotEntered} className="text-danger mb-3">Enter a phone number!</div>
-                            <div hidden={!this.state.phoneNumberTaken} className="text-danger mb-3">Phone number taken!</div>
+                            <div hidden={!this.state.phoneNumberNotEntered} className="text-danger mb-3">Въведи телефонен номер!</div>
+                            <div hidden={!this.state.phoneNumberTaken} className="text-danger mb-3">Телефонният номер е зает!</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -117,9 +117,9 @@ class UserRegister extends Component {
                                 type="date"
                                 className="form-control"
                                 id="birthDateInputField"
-                                placeholder="Enter you birth date"
+                                placeholder="Дата на раждане"
                             />
-                            <div hidden={!this.state.birthDateNotEntered} className="text-danger mb-3">Enter a birth date!</div>
+                            <div hidden={!this.state.birthDateNotEntered} className="text-danger mb-3">Въведи дата на раждане!</div>
                         </div>
                         <div id="passwordField" className="form-group">
                             <input
@@ -128,9 +128,9 @@ class UserRegister extends Component {
                                 type="text"
                                 className="form-control"
                                 id="passwordInputField"
-                                placeholder="Password"
+                                placeholder="Парола"
                             />
-                            <div hidden={!this.state.passwordNotEntered} className="text-danger mb-3">Enter a password!</div>
+                            <div hidden={!this.state.passwordNotEntered} className="text-danger mb-3">Въведи парола!</div>
                         </div>
                         <div id="confirmPasswordField" className="form-group">
                             <input
@@ -139,12 +139,12 @@ class UserRegister extends Component {
                                 type="text"
                                 className="form-control"
                                 id="confirmPasswordInputField"
-                                placeholder="Confirm Password"
+                                placeholder="Потвърди въведената парола"
                             />
-                            <div hidden={!this.state.confirmPasswordNotEntered} className="text-danger mb-3">Enter a confirm password!</div>
+                            <div hidden={!this.state.confirmPasswordNotEntered} className="text-danger mb-3">Въведи паролата за потвърждение!</div>
                         </div>
                         <div className="form-group">
-                            <small id="fileHelp" className="form-text text-muted">Avatar</small>
+                            <small id="fileHelp" className="form-text text-muted">Профилна снимка</small>
                             <input
                                 onChange={this.changeInputField}
                                 ref={this.profilePictureRef}
@@ -152,11 +152,11 @@ class UserRegister extends Component {
                                 className="custom-file"
                                 id="profilePicture"
                                 aria-describedby="fileHelp"
-                                name="profilePicture"
+                                name="Профилна снимка"
                             />
                         </div>
                         <button type="submit" className="btn btn-info btn-block">
-                            Register
+                            Регистрация
                         </button>
                     </form>
                 </div>
@@ -252,7 +252,7 @@ class UserRegister extends Component {
         let invalidFeedbackDiv = document.createElement("div");
         invalidFeedbackDiv.classList.toggle("text-danger");
         invalidFeedbackDiv.id = id;
-        invalidFeedbackDiv.textContent = "Passwords do not match!";
+        invalidFeedbackDiv.textContent = "Паролите на съвпадат!";
         return invalidFeedbackDiv;
     };
 

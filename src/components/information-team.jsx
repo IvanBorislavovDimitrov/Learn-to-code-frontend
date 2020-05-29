@@ -9,10 +9,10 @@ class Team extends Component {
                 <section id="breadcrumbs" class="breadcrumbs">
                     <div class="container">
                         <ol>
-                            <li><a href="index.html">Home</a></li>
-                            <li>Team</li>
+                            <li><a href="index.html">Начало</a></li>
+                            <li>Преподаватели</li>
                         </ol>
-                        <h2>Team</h2>
+                        <h2>Преподаватели</h2>
                     </div>
                 </section>
 
@@ -37,8 +37,6 @@ class Team extends Component {
             method: 'GET',
             credentials: 'include'
         }).then(async response => {
-            console.log("PISHKA");
-
             const jsonResponse = await response.json();
             let teachers = JSON.parse(JSON.stringify(jsonResponse));
             teachers.forEach(teacher => {

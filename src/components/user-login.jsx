@@ -21,7 +21,7 @@ class UserLogin extends Component {
             <React.Fragment>
                 <div className="col-md-4 mt-4 container card">
                     <form className="text-center border border-light p-5" onSubmit={this.loginUser}>
-                        <p className="h4 mb-4">Login</p>
+                        <p className="h4 mb-4">Вход</p>
                         <div className="form-group">
                             <input
                                 onChange={this.changeInputField}
@@ -29,7 +29,7 @@ class UserLogin extends Component {
                                 type="text"
                                 className="form-control"
                                 id="usernameInputField"
-                                placeholder="Username"
+                                placeholder="Потребителско име"
                             />
 
                         </div>
@@ -40,14 +40,13 @@ class UserLogin extends Component {
                                 type="password"
                                 className="form-control"
                                 id="passwordInputField"
-                                placeholder="Password"
+                                placeholder="Парола"
                             />
                         </div>
-                        <div hidden={this.state.hideInvalidUsernamePassword} class="text-danger mb-3">Invalid username
-                            or password!
+                        <div hidden={this.state.hideInvalidUsernamePassword} class="text-danger mb-3">Невалидно потребителско име или парола
                         </div>
                         <button type="submit" className="btn btn-info btn-block">
-                            Login
+                            Вход
                         </button>
                     </form>
                     <div className="text-center border border-light p-5">
@@ -76,19 +75,19 @@ class UserLogin extends Component {
         return (
             <React.Fragment>
                 <button className="mt-3 btn btn-danger" onClick={this.show}>
-                    Forgotten password
+                    Забравена парола
                 </button>
                 <Modal show={this.state.seen} animation={true}>
                     <Modal.Header>
-                        <Modal.Title>Reset your password</Modal.Title>
+                        <Modal.Title>Възстанови забравена парола</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <div className="panel panel-default">
                             <div className="text-center">
                                 <div className="text-center">
                                     <h3><i className="fa fa-lock fa-4x"/></h3>
-                                    <h2 className="text-center">Forgotten Password?</h2>
-                                    <p>You can reset your password here.</p>
+                                    <h2 className="text-center">Забравена парола?</h2>
+                                    <p>Можеш да промениеш паролата си тук.</p>
                                     <div className="panel-body">
 
                                         <div id="register-form " className="form">
@@ -98,16 +97,16 @@ class UserLogin extends Component {
                                                     <span className="input-group-addon"><i
                                                         className="glyphicon glyphicon-envelope color-blue"/></span>
                                                     <input id="usernameInputFieldForRest" name="email"
-                                                           placeholder="username"
+                                                           placeholder="Потребителско име"
                                                            className="form-control" type="email"/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
                                                 <input onClick={this.requestResetPassword} name="recover-submit"
                                                        className="btn btn-lg btn-primary btn-block"
-                                                       value="Reset Password"/>
+                                                       value="Нулирай парола"/>
                                             </div>
-                                            <h3 hidden={!this.state.emailSent} className="text-danger">Email sent!</h3>
+                                            <h3 hidden={!this.state.emailSent} className="text-danger">Имелй ви бе изпратен!</h3>
 
                                             <input type="hidden" className="hide" name="token" id="token"
                                                    value=""/>
@@ -120,7 +119,7 @@ class UserLogin extends Component {
 
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button className="btn btn-success" variant="secondary" onClick={this.hidePop}>Close</Button>
+                        <Button className="btn btn-success" variant="secondary" onClick={this.hidePop}>Затвори</Button>
                     </Modal.Footer>
                 </Modal>
             </React.Fragment>
@@ -139,7 +138,7 @@ class UserLogin extends Component {
                 if (errorResponse['']) {
 
                 }
-                alert('Password reset not triggered!');
+                alert('Проманята на паролата не бе задействана. Моля опитайте отново!');
             } else {
                 this.setState({
                     emailSent: true
@@ -187,7 +186,7 @@ class UserLogin extends Component {
                     hideInvalidUsernamePassword: false
                 });
             } else {
-                alert("Login failed. Please check the console for further errors and find a support!");
+                alert("Входът се провали. Моля опитайте отново!");
             }
 
         });

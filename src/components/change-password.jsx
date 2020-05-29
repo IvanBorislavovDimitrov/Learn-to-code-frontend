@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import qs from 'qs'
-import {Button, Modal} from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 
 class ChangePassword extends Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class ChangePassword extends Component {
             <React.Fragment>
                 <div className="col-md-4 mt-4 container">
                     <form className="text-center border border-light p-5" onSubmit={this.changePassword}>
-                        <p className="h4 mb-4">New Password</p>
+                        <p className="h4 mb-4">Нова парола</p>
                         <div className="form-group">
                             <input
                                 onChange={this.changeInputField}
@@ -29,10 +29,11 @@ class ChangePassword extends Component {
                                 type="password"
                                 className="form-control"
                                 id="newPasswordInputField"
-                                placeholder="New Password"
+                                placeholder="Нова парола"
                             />
 
                         </div>
+                        <p className="h4 mb-4">Повтори новата парола</p>
                         <div id="passwordField" className="form-group">
                             <input
                                 onChange={this.changeInputField}
@@ -40,14 +41,12 @@ class ChangePassword extends Component {
                                 type="password"
                                 className="form-control"
                                 id="confirmNewPasswordInputField"
-                                placeholder="Confirm new password"
+                                placeholder="Повтори новата парола"
                             />
                         </div>
-                        <div hidden={this.state.hideInvalidUsernamePassword} class="text-danger mb-3">Invalid username
-                            or password!
-                        </div>
+                        <div hidden={this.state.hideInvalidUsernamePassword} class="text-danger mb-3">Невалидно потребителско име или парола.</div>
                         <button type="submit" className="btn btn-info btn-block">
-                            Change password
+                            Промени парола
                         </button>
                     </form>
 

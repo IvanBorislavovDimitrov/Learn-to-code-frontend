@@ -19,9 +19,9 @@ class FirstEnter extends Component {
                                 <div class="carousel-item active background1">
                                     <div class="carousel-container">
                                         <div class="carousel-content">
-                                            <h2 class="animated fadeInDown">Welcome to <span>Learn to Code</span></h2>
-                                            <p class="animated fadeInUp">New and inovative way to learn.</p>
-                                            <a href="/" class="btn-get-started animated fadeInUp">Proceed to the website</a>
+                                            <h2 class="animated fadeInDown">Добре дошли в <span>Научи се да пишеш код</span></h2>
+                                            <p class="animated fadeInUp">Нов, иновативен и интерактивен начин да учиш.</p>
+                                            <a href="/" class="btn-get-started animated fadeInUp">Продължете към платформата</a>
                                         </div>
                                     </div>
                                 </div>
@@ -29,9 +29,9 @@ class FirstEnter extends Component {
                                 <div class="carousel-item background2">
                                     <div class="carousel-container">
                                         <div class="carousel-content">
-                                            <h2 class="animated fadeInDown">Best courses <span>worldwide</span></h2>
-                                            <p class="animated fadeInUp">New and inovative way to learn..</p>
-                                            <a href="/" class="btn-get-started animated fadeInUp">Proceed to the website</a>
+                                            <h2 class="animated fadeInDown">Най-добрите курсове <span>на световно ниво</span></h2>
+                                            <p class="animated fadeInUp">Нов, иновативен и интерактивен начин да учиш.</p>
+                                            <a href="/" class="btn-get-started animated fadeInUp">Продължете към платформата</a>
                                         </div>
                                     </div>
                                 </div>
@@ -39,9 +39,9 @@ class FirstEnter extends Component {
                                 <div class="carousel-item background3">
                                     <div class="carousel-container">
                                         <div class="carousel-content">
-                                            <h2 class="animated fadeInDown">Best teachers <span>worldwide</span></h2>
-                                            <p class="animated fadeInUp">New and inovative way to learn..</p>
-                                            <a href="/" class="btn-get-started animated fadeInUp">Proceed to the website</a>
+                                            <h2 class="animated fadeInDown">Най-добрите проподаватели <span>на световно ниво</span></h2>
+                                            <p class="animated fadeInUp">Нов, иновативен и интерактивен начин да учиш.</p>
+                                            <a href="/" class="btn-get-started animated fadeInUp">Продължете към платформата</a>
                                         </div>
                                     </div>
                                 </div>
@@ -50,18 +50,18 @@ class FirstEnter extends Component {
 
                             <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon icofont-rounded-left" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
+                                <span class="sr-only">Предишен</span>
                             </a>
 
                             <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon icofont-rounded-right" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
+                                <span class="sr-only">Следващ</span>
                             </a>
 
                         </div>
                     </div>
                 </section>
-{/* 
+                {/* 
                 <section id="featured" class="featured">
                     <div class="container">
 
@@ -98,42 +98,28 @@ class FirstEnter extends Component {
                         <div class="row no-gutters">
 
                             <div class="col-lg-4 box">
-                                <h3>Free</h3>
-                                <h4>$0<span>per month</span></h4>
+                                <h3>Безплатни</h3>
+                                <h4>Започва от $0<span>за курс</span></h4>
                                 <ul>
-                                    <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                                    <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                                    <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                                    <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                                    <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+                                    <li><i class="bx bx-check"></i>Достъп до всички безплатни уроци.</li>
                                 </ul>
-                                <a href="#" class="buy-btn">Buy Now</a>
                             </div>
 
                             <div class="col-lg-4 box featured">
-                                <h3>Business</h3>
-                                <h4>$29<span>per month</span></h4>
+                                <h3>Любителски</h3>
+                                <h4>Започва от $5<span>за курс</span></h4>
                                 <ul>
-                                    <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                                    <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                                    <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                                    <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                                    <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
+                                    <li><i class="bx bx-check"></i>Достъп до всички любителски видеа, които са верифицирани!</li>
                                 </ul>
-                                <a href="#" class="buy-btn">Buy Now</a>
                             </div>
 
                             <div class="col-lg-4 box">
-                                <h3>Developer</h3>
-                                <h4>$49<span>per month</span></h4>
+                                <h3>Професионални</h3>
+                                <h4>Започва от $15<span>за курс</span></h4>
                                 <ul>
-                                    <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                                    <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                                    <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                                    <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                                    <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
+                                    <li><i class="bx bx-check"></i>Курсове изготвени от световно известни програмисти.</li>
+                                    <li><i class="bx bx-check"></i>Най-доброто съдържание, което може да бъде намерено на пазара.</li>
                                 </ul>
-                                <a href="#" class="buy-btn">Buy Now</a>
                             </div>
 
                         </div>

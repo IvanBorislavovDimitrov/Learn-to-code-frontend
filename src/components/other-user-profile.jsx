@@ -29,30 +29,30 @@ class OtherUserProfile extends Component {
                             <ul className="nav nav-tabs">
                                 <li className="nav-item">
                                     <a href="" data-target="#profile" data-toggle="tab"
-                                        className="nav-link active">Profile</a>
+                                        className="nav-link active">Профил на друг потребител</a>
                                 </li>
                                 <li className="nav-item">
                                     <a onClick={this.getCoursesForUser} href="" data-target="#messages"
                                         data-toggle="tab"
-                                        className="nav-link">Enrolled courses</a>
+                                        className="nav-link">Записани курсове</a>
                                 </li>
                                 <li className="nav-item">
                                     <a onClick={this.loadCoursesThatUserTeaches} href=""
                                         data-target="#courses-that-you-teach-div"
                                         data-toggle="tab"
-                                        className="nav-link">Courses that user teaches</a>
+                                        className="nav-link">Курсове, които преподава</a>
                                 </li>
                             </ul>
                             <div className="tab-content py-4">
                                 <div className="tab-pane active" id="profile">
-                                    <h2 className="mb-3">User Profile</h2>
-                                    <h3>This is, {this.state.username}</h3>
+                                    <h2 className="mb-3">Потребителски профил</h2>
+                                    <h3>Това е, {this.state.username}</h3>
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <h5>About</h5>
+                                            <h5>Описание на потребител</h5>
                                             <p><h5>{this.state.description}</h5></p>
                                             <p>
-                                                <h5>Full name: {this.state.firstName} {this.state.lastName}</h5>
+                                                <h5>Пълно име: {this.state.firstName} {this.state.lastName}</h5>
                                             </p>
                                         </div>
                                     </div>
@@ -120,8 +120,8 @@ class OtherUserProfile extends Component {
     loadCoursesThatUserTeaches = () => {
         const coursesTable = document.getElementById('courses-that-you-teach');
         coursesTable.innerHTML = '';
-        const loggedUser = localStorage.getItem('loggedUser');
-        fetch(process.env.REACT_APP_URL + '/courses/user/teaches/' + loggedUser, {
+        const currentThis = this;
+        fetch(process.env.REACT_APP_URL + '/courses/user/teaches/' + currentThis.getUsername(), {
             method: 'GET',
             credentials: 'include'
         }).then(async response => {
@@ -146,15 +146,15 @@ class OtherUserProfile extends Component {
                 categorySpanElements.textContent = course['category']['name'];
                 tableDataCellElement.appendChild(categorySpanElements);
                 const nameParagraphElement = document.createElement('p');
-                nameParagraphElement.textContent = 'Course name: ' + course['name'];
+                nameParagraphElement.textContent = 'Име на курс: ' + course['name'];
                 const descriptionParagraphElement = document.createElement('p');
-                descriptionParagraphElement.textContent = 'Description: ' + course['description'];
+                descriptionParagraphElement.textContent = 'Описание: ' + course['description'];
                 tableDataCellElement.appendChild(nameParagraphElement);
                 tableDataCellElement.appendChild(descriptionParagraphElement);
                 const courseLinkParagraphElement = document.createElement('p');
                 const courseLinkAnchorTagElement = document.createElement('a');
                 courseLinkAnchorTagElement.href = '/courses/view/' + course['name'];
-                courseLinkAnchorTagElement.textContent = 'Go to the course page.';
+                courseLinkAnchorTagElement.textContent = 'Отиди на курс';
                 courseLinkParagraphElement.appendChild(courseLinkAnchorTagElement);
                 tableDataCellElement.appendChild(courseLinkParagraphElement);
                 tableRowElement.appendChild(tableDataCellElement);
@@ -166,8 +166,7 @@ class OtherUserProfile extends Component {
     getCoursesForUser = () => {
         const coursesTable = document.getElementById('courses-body');
         coursesTable.innerHTML = '';
-        const loggedUser = localStorage.getItem('loggedUser');
-        fetch(process.env.REACT_APP_URL + '/courses/user/' + loggedUser, {
+        fetch(process.env.REACT_APP_URL + '/courses/user/' + this.getUsername(), {
             method: 'GET',
             credentials: 'include'
         }).then(async response => {
@@ -195,15 +194,15 @@ class OtherUserProfile extends Component {
                 categorySpanElements.textContent = course['category']['name'];
                 tableDataCellElement.appendChild(categorySpanElements);
                 const nameParagraphElement = document.createElement('p');
-                nameParagraphElement.textContent = 'Course name: ' + course['name'];
+                nameParagraphElement.textContent = 'Име на курс: ' + course['name'];
                 const descriptionParagraphElement = document.createElement('p');
-                descriptionParagraphElement.textContent = 'Description: ' + course['description'];
+                descriptionParagraphElement.textContent = 'Описание: ' + course['description'];
                 tableDataCellElement.appendChild(nameParagraphElement);
                 tableDataCellElement.appendChild(descriptionParagraphElement);
                 const courseLinkParagraphElement = document.createElement('p');
                 const courseLinkAnchorTagElement = document.createElement('a');
                 courseLinkAnchorTagElement.href = '/courses/view/' + course['name'];
-                courseLinkAnchorTagElement.textContent = 'Go to the course page.';
+                courseLinkAnchorTagElement.textContent = 'Отиди на курс';
                 courseLinkParagraphElement.appendChild(courseLinkAnchorTagElement);
                 tableDataCellElement.appendChild(courseLinkParagraphElement);
                 tableRowElement.appendChild(tableDataCellElement);

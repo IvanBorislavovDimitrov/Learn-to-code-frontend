@@ -9,10 +9,10 @@ class AdminUI extends Component {
                 <section className="breadcrumbs">
                     <div className="container">
                         <div className="d-flex justify-content-between align-items-center">
-                            <h2>Admin Services</h2>
+                            <h2>Админ услуги</h2>
                             <ol>
-                                <li><a href="/">Home</a></li>
-                                <li>Admin Services</li>
+                                <li><a href="/">Начало</a></li>
+                                <li>Админ услуги</li>
                             </ol>
                         </div>
                     </div>
@@ -25,18 +25,18 @@ class AdminUI extends Component {
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
                                 <div className="icon-box icon-box-pink card h-100 w-100">
                                     <div className="icon"><i className="bx bxl-redbubble"></i></div>
-                                    <h4 className="title"><a href="/admin/change-user-role">Change User's Role</a></h4>
-                                    <p className="description">Click here if you want to change user's role. You can
-                                        promote a user to Moderator or Admin!</p>
+                                    <h4 className="title"><a href="/admin/change-user-role">Промени роля на потребител</a></h4>
+                                    <p className="description">Натисни тук, за да промениш роля на потребител.
+                                    Възможните роли са Админ или Модератор!</p>
                                 </div>
                             </div>
 
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
                                 <div className="icon-box icon-box-cyan card h-100 w-100">
                                     <div className="icon"><i className="bx bx-file"></i></div>
-                                    <h4 className="title"><a href="/admin/delete-user">Delete User</a></h4>
-                                    <p className="description">Be careful when deleting a user's profile. It could not
-                                        be backed up!</p>
+                                    <h4 className="title"><a href="/admin/delete-user">Изтрий потребител</a></h4>
+                                    <p className="description">Изтрий потребителски профил. Бъди внимателен, когато изтриваш потребителски
+                                    профил!</p>
                                 </div>
                             </div>
 

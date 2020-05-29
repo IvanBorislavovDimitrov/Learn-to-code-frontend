@@ -10,7 +10,7 @@ class UserAuthorize extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>Access token added</h1>
+                <h1>Token за GitHub беше добавен. Може да отворите вашите хранилища!</h1>
             </React.Fragment>
         );
     }

@@ -14,19 +14,19 @@ class DeleteUser extends Component {
                     <div className="text-center border border-light p-5 card h-100 w-100">
                         <div className="col-md-7 mt-4 container">
                             <div className="form-group">
-                                <label htmlFor="exampleInputEmail1">Username</label>
+                                <label htmlFor="exampleInputEmail1">Потребителско име</label>
                                 <input
                                     onChange={this.changeInputField}
                                     name="username"
                                     type="text"
                                     className="form-control"
                                     id="usernameInputField"
-                                    placeholder="Enter a username"
+                                    placeholder="Потребителско име"
                                 />
                             </div>
                             {this.checkUser()}
                         </div>
-                        <button onClick={this.deactivateUser} className="btn btn-danger mt-3">Delete user</button>
+                        <button onClick={this.deactivateUser} className="btn btn-danger mt-3">Изтрий потребител</button>
                     </div>
                 </div>
             </React.Fragment>
@@ -37,7 +37,7 @@ class DeleteUser extends Component {
         return (
             <React.Fragment>
                 <Button variant="primary" onClick={this.showPopAndFetchUsers}>
-                    Check user
+                    Провери потребител
                 </Button>
                 <Modal show={this.state.seen} animation={true}>
                     <Modal.Header>
@@ -45,7 +45,7 @@ class DeleteUser extends Component {
                     </Modal.Header>
                     <Modal.Body id="users"></Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.hidePop}>Close</Button>
+                        <Button variant="secondary" onClick={this.hidePop}>Затвори</Button>
                     </Modal.Footer>
                 </Modal>
             </React.Fragment>

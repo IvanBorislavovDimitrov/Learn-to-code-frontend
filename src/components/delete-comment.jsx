@@ -17,7 +17,7 @@ class DeleteComment extends Component {
                 <div className="col-md-4 mt-4 container card">
                     <div className="col-md-7 mt-4 container text-center">
                         <div className="form-group ">
-                            <label htmlFor="exampleInputEmail1">Delete comment</label>
+                            <label htmlFor="exampleInputEmail1">Изтриване на коментар</label>
                             <textarea
                                 disabled="disabled"
                                 onChange={this.changeInputField}
@@ -25,9 +25,9 @@ class DeleteComment extends Component {
                                 className="form-control"
                                 id="contentInputField"
                             />
-                            <div hidden={this.state.valid} className="text-danger">Please login!</div>
+                            <div hidden={this.state.valid} className="text-danger">Моля влез в профила си!</div>
                         </div>
-                        <button onClick={this.deleteComment} className="btn btn-danger mb-5">Delete comment</button>
+                        <button onClick={this.deleteComment} className="btn btn-danger mb-5">Изтрий коментар</button>
                     </div>
                 </div>
             </React.Fragment>
@@ -80,7 +80,7 @@ class DeleteComment extends Component {
                     valid: false
                 });
             } else {
-                alert('Not deleted!');
+                alert('Коментарът не беше изтрит. Пробвай пак!');
             }
         })
     };

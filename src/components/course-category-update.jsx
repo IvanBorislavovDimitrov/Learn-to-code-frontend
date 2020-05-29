@@ -18,12 +18,12 @@ class UpdateCourseCategory extends Component {
                     <div className="text-center border border-light p-5 card h-100 w-100">
                         <form onSubmit={this.updateCourseCategory}>
                             <div className="form-group">
-                                <h3 htmlFor="exampleInputEmail1">Course Category Name</h3>
+                                <h3 htmlFor="exampleInputEmail1">Име на категорията на курса</h3>
                                 <select
                                     name="courseCategoryName"
                                     className="form-control"
                                     id="courseCategoryNameSelect"
-                                    placeholder="Course Category Name"
+                                    placeholder="Име на категорията на курса"
                                     onChange={this.changeInputField}>
 
                                 </select>
@@ -31,13 +31,13 @@ class UpdateCourseCategory extends Component {
                                     name="courseCategoryDescription"
                                     className="form-control"
                                     id="usernameInputField"
-                                    placeholder="Course Category Description"
+                                    placeholder="Описание на категорията на курса"
                                     rows="10"
                                     onChange={this.changeInputField}
                                     value={this.courseCategoryDescription}
                                 />
                                 <div className="form-group mt-3">
-                                    <small id="fileHelp" className="form-text text-muted">Thumbnail</small>
+                                    <small id="fileHelp" className="form-text text-muted">Изображение</small>
                                     <input
                                         onChange={this.changeInputField}
                                         ref={this.thumbnailFileUpload}
@@ -50,7 +50,7 @@ class UpdateCourseCategory extends Component {
                                 </div>
                             </div>
                             <button type="submit" className="btn btn-dark">
-                                Update course category
+                                Обнови категорията на курса
                         </button>
                         </form>
                     </div>
@@ -88,7 +88,7 @@ class UpdateCourseCategory extends Component {
                 this.props.history.push('/');
                 window.location.reload();
             } else {
-                alert("Something went wrong. Check the console for error.");
+                alert("Нещо се обърка. Презареди страницата!");
             }
         });
     };

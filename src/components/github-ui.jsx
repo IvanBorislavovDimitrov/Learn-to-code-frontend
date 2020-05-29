@@ -7,10 +7,10 @@ class GithubUI extends Component {
                 <section className="breadcrumbs">
                     <div className="container">
                         <div className="d-flex justify-content-between align-items-center">
-                            <h2>Github Services</h2>
+                            <h2>Github услуги</h2>
                             <ol>
-                                <li><a href="/">Home</a></li>
-                                <li>Github Services</li>
+                                <li><a href="/">Начало</a></li>
+                                <li>Github услуги</li>
                             </ol>
                         </div>
                     </div>
@@ -24,16 +24,16 @@ class GithubUI extends Component {
                                 <div className="icon-box icon-box-pink card h-100 w-100">
                                     <div className="icon"><i className="bx bxl-github"></i></div>
                                     <h4 className="title"><a href="/https://github.com/login/oauth/authorize?client_id=5b2f3c2f8bb2f09aa59d">Link GitHub Account</a></h4>
-                                    <p className="description">Click here to link your profile to github!</p>
+                                    <p className="description">Натисни тук, за да свържеш профила си с GitHub!</p>
                                 </div>
                             </div>
 
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
                                 <div className="icon-box icon-box-pink card h-100 w-100">
                                     <div className="icon"><i className="bx bxl-github"></i></div>
-                                    <h4 className="title"><a href="/github/check-repositories">Repositories</a></h4>
-                                    <p className="description">Click here if you want to check you Repositories
-                                    , your profile has to be linked to GitHub first!</p>
+                                    <h4 className="title"><a href="/github/check-repositories">Хранилища</a></h4>
+                                    <p className="description">Натисни тук, за да отвориш своите хранилища. ВАЖНО: Първо трябва
+                                    акаунтът да е свързан с GitHub!</p>
                                 </div>
                             </div>
 

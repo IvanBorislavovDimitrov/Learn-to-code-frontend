@@ -32,56 +32,56 @@ class UserProfile extends Component {
                             <ul className="nav nav-tabs">
                                 <li className="nav-item">
                                     <a href="" data-target="#profile" data-toggle="tab"
-                                        className="nav-link active">Profile</a>
+                                        className="nav-link active">Профил</a>
                                 </li>
                                 <li className="nav-item">
                                     <a onClick={this.getCoursesForUser} href="" data-target="#messages"
                                         data-toggle="tab"
-                                        className="nav-link">Enrolled courses</a>
+                                        className="nav-link">Записани курсове</a>
                                 </li>
                                 <li className="nav-item">
                                     <a onClick={this.loadCoursesThatUserTeaches} href=""
                                         data-target="#courses-that-you-teach-div"
                                         data-toggle="tab"
-                                        className="nav-link">Courses that you teach</a>
+                                        className="nav-link">Курсове, които водиш</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a href="" data-target="#edit" data-toggle="tab" className="nav-link">Edit</a>
+                                    <a href="" data-target="#edit" data-toggle="tab" className="nav-link">Редактирай</a>
                                 </li>
                                 <li className="nav-item">
                                     <a href=""
                                         data-target="#delete-profile"
                                         data-toggle="tab"
-                                        className="nav-link">Delete account</a>
+                                        className="nav-link">Изтрий акаунт</a>
                                 </li>
                                 <li className="nav-item">
                                     <a href=""
                                         data-target="#change-password"
                                         data-toggle="tab"
-                                        className="nav-link">Change password</a>
+                                        className="nav-link">Промени парола</a>
                                 </li>
                             </ul>
                             <div className="tab-content py-4">
                                 <div className="tab-pane active" id="profile">
-                                    <h2 className="mb-3">User Profile</h2>
+                                    <h2 className="mb-3">Потребителски профил</h2>
                                     <h3>Hello, {this.state.username}</h3>
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <h5>About</h5>
+                                            <h5>Информация</h5>
                                             <p><h5>{this.state.description}</h5></p>
                                             <p>
-                                                <h5>Full name: {this.state.firstName} {this.state.lastName}</h5>
+                                                <h5>Пълно име: {this.state.firstName} {this.state.lastName}</h5>
                                             </p>
                                             <p>
-                                                <h5>Phone Number: {this.state.phoneNumber}</h5>
+                                                <h5>Телефонен номер: {this.state.phoneNumber}</h5>
                                             </p>
                                             <p>
-                                                <h5>Email address: {this.state.email}</h5>
+                                                <h5>Имейл адрес: {this.state.email}</h5>
                                             </p>
                                         </div>
                                         <div className="col-md-12">
                                             <h5 className="mt-2"><span
-                                                className="fa fa-clock-o ion-clock float-right" /> Recent login activities
+                                                className="fa fa-clock-o ion-clock float-right" /> Последни влизания в системата
                                             </h5>
                                             <table className="table table-sm table-hover table-striped">
                                                 <tbody id="recent-logins">
@@ -119,40 +119,39 @@ class UserProfile extends Component {
                                 </div>
                                 <div className="tab-pane" id="edit">
                                     <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label form-control-label">First name</label>
+                                        <label className="col-lg-3 col-form-label form-control-label">Първо име</label>
                                         <div className="col-lg-9">
                                             <input
                                                 id="firstNameInputField"
                                                 onChange={this.changeInputField}
                                                 className="form-control" type="text" name="firstName" />
                                         </div>
-                                        <div hidden={this.state.validFirstName} className="ml-3 text-danger">Enter a valid first name</div>
+                                        <div hidden={this.state.validFirstName} className="ml-3 text-danger">Въведи валидно първо име</div>
                                     </div>
                                     <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label form-control-label">Last name</label>
+                                        <label className="col-lg-3 col-form-label form-control-label">Фамилия</label>
                                         <div className="col-lg-9">
                                             <input
                                                 id="lastNameInputField"
                                                 onChange={this.changeInputField} className="form-control"
                                                 type="text" name="lastName" />
                                         </div>
-                                        <div hidden={this.state.validLastName} className="ml-3 text-danger">Enter a valid last name</div>
+                                        <div hidden={this.state.validLastName} className="ml-3 text-danger">Въведи валидна фамилия</div>
                                     </div>
                                     <div className="form-group row">
                                         <label
-                                            className="col-lg-3 col-form-label form-control-label">Birth
-                                                Date</label>
+                                            className="col-lg-3 col-form-label form-control-label">Дата на раждане</label>
                                         <div className="col-lg-9">
                                             <input
                                                 id="birthDateInputField"
                                                 onChange={this.changeInputField} className="form-control"
                                                 type="date" name="birthDate" />
                                         </div>
-                                        <div hidden={this.state.validBirthDate} className="ml-3 text-danger">Enter a valid birth date</div>
+                                        <div hidden={this.state.validBirthDate} className="ml-3 text-danger">Въведи валидна дата на раждане</div>
                                     </div>
                                     <div className="form-group row">
                                         <label
-                                            className="col-lg-3 col-form-label form-control-label">Description</label>
+                                            className="col-lg-3 col-form-label form-control-label">Описание</label>
                                         <div className="col-lg-9">
                                             <textarea onChange={this.changeInputField} className="form-control"
                                                 name="description" />
@@ -162,16 +161,16 @@ class UserProfile extends Component {
                                         <label className="col-lg-3 col-form-label form-control-label" />
                                         <div className="col-lg-9">
                                             <button onClick={this.updateUserBasicInformation} type="button" className="btn btn-primary"
-                                                value="Save Changes" >Save changes</button>
+                                                value="Save Changes" >Запази промени</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="tab-pane text-center" id="delete-profile">
-                                    <button onClick={this.deactivateUser} className="btn btn-danger mt-3">Delete profile</button>
+                                    <button onClick={this.deactivateUser} className="btn btn-danger mt-3">Изтрий акаунт</button>
                                 </div>
                                 <div className="tab-pane" id="change-password">
                                     <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label form-control-label">Current password</label>
+                                        <label className="col-lg-3 col-form-label form-control-label">Текуща парола</label>
                                         <div className="col-lg-9">
                                             <input
                                                 id="currentPasswordInputField"
@@ -180,7 +179,7 @@ class UserProfile extends Component {
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label form-control-label">New password</label>
+                                        <label className="col-lg-3 col-form-label form-control-label">Нова парола</label>
                                         <div className="col-lg-9">
                                             <input
                                                 id="newPasswordInputField"
@@ -189,7 +188,7 @@ class UserProfile extends Component {
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label form-control-label">Confirm new password</label>
+                                        <label className="col-lg-3 col-form-label form-control-label">Потвърди нова парола</label>
                                         <div className="col-lg-9">
                                             <input
                                                 id="confirmNewPasswordInputField"
@@ -200,7 +199,7 @@ class UserProfile extends Component {
                                     <label className="col-lg-3 col-form-label form-control-label" />
                                     <div className="col-lg-9">
                                         <button onClick={this.changePassword} type="button" className="btn btn-primary"
-                                            value="Save Changes" >Change password</button>
+                                            value="Save Changes" >Промени парола</button>
                                     </div>
                                 </div>
                             </div>
@@ -210,8 +209,7 @@ class UserProfile extends Component {
                                 className="mx-auto img-fluid img-circle d-block"
                                 alt="avatar" />
                             <div className="justify-content container text-left">
-                                <small id="fileHelp" className="form-text text-muted mt-5">Upload profile
-                                    picture</small>
+                                <small id="fileHelp" className="form-text text-muted mt-5">Промени снимка на профила</small>
                                 <input
                                     onChange={this.changeInputField}
                                     ref={this.profilePictureRef}
@@ -221,8 +219,7 @@ class UserProfile extends Component {
                                     aria-describedby="fileHelp"
                                     name="profilePicture"
                                 />
-                                <button onClick={this.changeProfilePicture} className="btn btn-primary">Change profile
-                                picture
+                                <button onClick={this.changeProfilePicture} className="btn btn-primary">Промени снимка на профила
                                 </button>
                             </div>
                         </div>
@@ -330,10 +327,10 @@ class UserProfile extends Component {
                 const jsonResponse = await response.json();
                 let error = JSON.parse(JSON.stringify(jsonResponse));
                 if (error['type'] == 'PasswordsDoNotMatchException') {
-                    alert('Invalid current or new password do not match!');
+                    alert('Невалидна нова парола или паролите не съвпадат!');
                     return;
                 }
-                alert('Password not updated!'); 
+                alert('Password not updated!');
             }
         }).catch(error => {
             console.log(error);
@@ -398,7 +395,7 @@ class UserProfile extends Component {
                     coursesThatYouTeach.removeChild(noCoursesThatYouTeach);
                 }
                 const noCoursesH2 = document.createElement('h2');
-                noCoursesH2.textContent = 'You do not teach any courses!';
+                noCoursesH2.textContent = 'Не водиш никакви курсове!';
                 noCoursesH2.id = 'no-courses-that-you-teach';
                 coursesThatYouTeach.appendChild(noCoursesH2);
             }
@@ -410,15 +407,15 @@ class UserProfile extends Component {
                 categorySpanElements.textContent = course['category']['name'];
                 tableDataCellElement.appendChild(categorySpanElements);
                 const nameParagraphElement = document.createElement('p');
-                nameParagraphElement.textContent = 'Course name: ' + course['name'];
+                nameParagraphElement.textContent = 'Име на курс: ' + course['name'];
                 const descriptionParagraphElement = document.createElement('p');
-                descriptionParagraphElement.textContent = 'Description: ' + course['description'];
+                descriptionParagraphElement.textContent = 'Описание: ' + course['description'];
                 tableDataCellElement.appendChild(nameParagraphElement);
                 tableDataCellElement.appendChild(descriptionParagraphElement);
                 const courseLinkParagraphElement = document.createElement('p');
                 const courseLinkAnchorTagElement = document.createElement('a');
                 courseLinkAnchorTagElement.href = '/courses/view/' + course['name'];
-                courseLinkAnchorTagElement.textContent = 'Go to the course page.';
+                courseLinkAnchorTagElement.textContent = 'Отиди на курс';
                 courseLinkParagraphElement.appendChild(courseLinkAnchorTagElement);
                 tableDataCellElement.appendChild(courseLinkParagraphElement);
                 tableRowElement.appendChild(tableDataCellElement);
@@ -447,7 +444,7 @@ class UserProfile extends Component {
             if (coursesMap.length === 0) {
                 const coursesThatYourAreEnrolledFor = document.getElementById('courses-that-you-are-enrolled-div');
                 const noCoursesH2 = document.createElement('h2');
-                noCoursesH2.textContent = 'You have not enrolled for any courses!';
+                noCoursesH2.textContent = 'Не си записал за никакви курсове все още!';
                 noCoursesH2.id = 'no-courses-that-you-are-enrolled-for';
                 coursesThatYourAreEnrolledFor.appendChild(noCoursesH2);
             }
@@ -459,15 +456,15 @@ class UserProfile extends Component {
                 categorySpanElements.textContent = course['category']['name'];
                 tableDataCellElement.appendChild(categorySpanElements);
                 const nameParagraphElement = document.createElement('p');
-                nameParagraphElement.textContent = 'Course name: ' + course['name'];
+                nameParagraphElement.textContent = 'Име на курс: ' + course['name'];
                 const descriptionParagraphElement = document.createElement('p');
-                descriptionParagraphElement.textContent = 'Description: ' + course['description'];
+                descriptionParagraphElement.textContent = 'Описание: ' + course['description'];
                 tableDataCellElement.appendChild(nameParagraphElement);
                 tableDataCellElement.appendChild(descriptionParagraphElement);
                 const courseLinkParagraphElement = document.createElement('p');
                 const courseLinkAnchorTagElement = document.createElement('a');
                 courseLinkAnchorTagElement.href = '/courses/view/' + course['name'];
-                courseLinkAnchorTagElement.textContent = 'Go to the course page.';
+                courseLinkAnchorTagElement.textContent = 'Отиди на курс';
                 courseLinkParagraphElement.appendChild(courseLinkAnchorTagElement);
                 tableDataCellElement.appendChild(courseLinkParagraphElement);
                 tableRowElement.appendChild(tableDataCellElement);
@@ -491,7 +488,7 @@ class UserProfile extends Component {
                 window.location.reload();
                 return;
             }
-            alert('Profile picture has not been updated!');
+            alert('Възникна проблем. Профилната Ви снимка не беше обновена!');
         });
     };
 
@@ -502,10 +499,10 @@ class UserProfile extends Component {
         }).then(async response => {
             await response.text();
             if (response.status !== 200) {
-                alert("User was not deleted!");
+                alert("Профилът НЕ беше изтрит успешно!");
                 return;
             }
-            alert("User was deleted!");
+            alert("Профилът беше изтрит успешно!");
             localStorage.removeItem('loggedUser');
             window.location.reload();
         })
