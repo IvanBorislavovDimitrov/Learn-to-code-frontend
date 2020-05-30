@@ -395,7 +395,6 @@ class Courses extends Component {
     removePagingActive = () => {
         const paging = document.getElementById('paging');
         const pagingElements = paging.childNodes;
-
         for (const pagingElement of pagingElements) {
             const pagingClasses = pagingElement.getAttribute('class');
             if (pagingClasses !== null && pagingClasses !== undefined) {

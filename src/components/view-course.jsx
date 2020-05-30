@@ -17,7 +17,9 @@ class ViewCourse extends Component {
         commentsCount: 0,
         price: -1,
         isUserEnrolledForCourse: false,
-        doesUserHaveCourseInCart: false
+        doesUserHaveCourseInCart: false,
+        stars: 5,
+        rating: 0
     }
 
     render() {
@@ -125,6 +127,17 @@ class ViewCourse extends Component {
                                                 <button type="submit" className="btn btn-primary">Напиши коментар</button>
                                             </form>
                                         </div>
+
+                                        <div className="reply-form custom-white">
+                                            <h4>Ревю</h4>
+                                            <span onClick={this.firstStartPressed} id="firstStar" class="fa fa-star checked"></span>
+                                            <span onClick={this.secondStartPressed} id="secondStar" class="fa fa-star checked"></span>
+                                            <span onClick={this.thirdStartPressed} id="thirdStar" class="fa fa-star checked"></span>
+                                            <span onClick={this.fourthStartPressed} id="fourthStar" class="fa fa-star checked"></span>
+                                            <span onClick={this.fifthStartPressed} id="fifthStar" class="fa fa-star checked"></span>
+                                            <br />
+                                            <button onClick={this.rateCourse} className="mt-3 btn btn-primary">Оцени</button>
+                                        </div>
                                         {/* 
                                         <div className="reply-form card">
                                             <h4>Rate this course</h4>
@@ -156,7 +169,17 @@ class ViewCourse extends Component {
                                             </table>
                                         </div>
                                     </div>
+                                    <div className="sidebar custom-white">
+                                        <h3 className="sidebar-title">Оценка</h3>
+                                        <span id="firstStarRating" class="fa fa-star checked"></span>
+                                        <span id="secondStarRating" class="fa fa-star checked"></span>
+                                        <span id="thirdStarRating" class="fa fa-star checked"></span>
+                                        <span id="fourthStarRating" class="fa fa-star checked"></span>
+                                        <span id="fifthStarRating" class="fa fa-star checked"></span>
+                                        <h3>{Number.parseFloat((this.state.rating)).toFixed(2)} / 5</h3>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </section>
@@ -165,12 +188,13 @@ class ViewCourse extends Component {
         )
     }
 
-    componentDidMount() {
-        this.checkIsUserEnrolledForCourse();
+    async componentDidMount() {
+        await this.checkIsUserEnrolledForCourse();
         const courseName = this.getCourseName();
-        this.setCourseByName(courseName);
+        await this.setCourseByName(courseName);
         this.loadComments(courseName);
         this.checkIfUserHasCourseInCart();
+        this.loadStars();
     }
 
     addComment = event => {
@@ -218,7 +242,7 @@ class ViewCourse extends Component {
 
     setCourseByName = async (courseName) => {
         const currentThis = this;
-        fetch(process.env.REACT_APP_URL + "/courses/" + courseName, {
+        await fetch(process.env.REACT_APP_URL + "/courses/" + courseName, {
             method: 'GET',
             credentials: 'include',
         }).then(async (response) => {
@@ -251,7 +275,7 @@ class ViewCourse extends Component {
                     tdLink.appendChild(button);
                 } else {
                     const locked = document.createElement('button');
-                    locked.textContent = 'Locked';
+                    locked.textContent = 'Заключено';
                     locked.setAttribute('class', 'btn btn-danger btn-sm');
                     tdLink.appendChild(locked);
                 }
@@ -301,7 +325,8 @@ class ViewCourse extends Component {
                 currentVideoName: courseModel["videosNames"][0]["videoFullName"],
                 teacherDescription: courseModel["teacher"]["description"],
                 teacherProfilePictureName: process.env.REACT_APP_URL + "/resource/images/" + courseModel["teacher"]["profilePictureName"],
-                price: courseModel["price"]
+                price: courseModel["price"],
+                rating: courseModel['rating']
             });
         });
     }
@@ -391,18 +416,15 @@ class ViewCourse extends Component {
                 const jsonResponse = await response.json();
                 const isUserEnrolled = JSON.parse(JSON.stringify(jsonResponse))['userEnrolledForCourse'];
                 value = isUserEnrolled;
-                console.log('kiras', value);
                 currentThis.setState({
                     isUserEnrolledForCourse: isUserEnrolled
                 });
             } else {
                 value = false;
-                console.log(response.status, response);
             }
         }).catch(error => {
             console.log(error);
         });
-        console.log('kra', value);
         return value;
     }
 
@@ -430,7 +452,7 @@ class ViewCourse extends Component {
             if (response.status === 200) {
                 window.location.reload();
             } else {
-                alert('Enrollment failed!');
+                alert('Записването не беше успешно!');
             }
         });
     }
@@ -485,7 +507,155 @@ class ViewCourse extends Component {
         });
     }
 
+    firstStartPressed = () => {
+        const firstStart = document.getElementById('firstStar');
+        const secondStart = document.getElementById('secondStar');
+        const thirdStart = document.getElementById('thirdStar');
+        const fourthStart = document.getElementById('fourthStar');
+        const fifthStart = document.getElementById('fifthStar');
+        firstStart.setAttribute('class', 'fa fa-star checked');
+        secondStart.setAttribute('class', 'fa fa-star');
+        thirdStart.setAttribute('class', 'fa fa-star');
+        fourthStart.setAttribute('class', 'fa fa-star');
+        fifthStart.setAttribute('class', 'fa fa-star');
+        this.setState({ stars: 1 });
+    }
 
+
+    secondStartPressed = () => {
+        const firstStart = document.getElementById('firstStar');
+        const secondStart = document.getElementById('secondStar');
+        const thirdStart = document.getElementById('thirdStar');
+        const fourthStart = document.getElementById('fourthStar');
+        const fifthStart = document.getElementById('fifthStar');
+        firstStart.setAttribute('class', 'fa fa-star checked');
+        secondStart.setAttribute('class', 'fa fa-star checked');
+        thirdStart.setAttribute('class', 'fa fa-star');
+        fourthStart.setAttribute('class', 'fa fa-star');
+        fifthStart.setAttribute('class', 'fa fa-star');
+        this.setState({ stars: 2 });
+    }
+
+
+    thirdStartPressed = () => {
+        const firstStart = document.getElementById('firstStar');
+        const secondStart = document.getElementById('secondStar');
+        const thirdStart = document.getElementById('thirdStar');
+        const fourthStart = document.getElementById('fourthStar');
+        const fifthStart = document.getElementById('fifthStar');
+        firstStart.setAttribute('class', 'fa fa-star checked');
+        secondStart.setAttribute('class', 'fa fa-star checked');
+        thirdStart.setAttribute('class', 'fa fa-star checked');
+        fourthStart.setAttribute('class', 'fa fa-star');
+        fifthStart.setAttribute('class', 'fa fa-star');
+        this.setState({ stars: 3 });
+    }
+
+    fourthStartPressed = () => {
+        const firstStart = document.getElementById('firstStar');
+        const secondStart = document.getElementById('secondStar');
+        const thirdStart = document.getElementById('thirdStar');
+        const fourthStart = document.getElementById('fourthStar');
+        const fifthStart = document.getElementById('fifthStar');
+        firstStart.setAttribute('class', 'fa fa-star checked');
+        secondStart.setAttribute('class', 'fa fa-star checked');
+        thirdStart.setAttribute('class', 'fa fa-star checked');
+        fourthStart.setAttribute('class', 'fa fa-star checked');
+        fifthStart.setAttribute('class', 'fa fa-star');
+        this.setState({ stars: 4 });
+    }
+
+    fifthStartPressed = () => {
+        const firstStart = document.getElementById('firstStar');
+        const secondStart = document.getElementById('secondStar');
+        const thirdStart = document.getElementById('thirdStar');
+        const fourthStart = document.getElementById('fourthStar');
+        const fifthStart = document.getElementById('fifthStar');
+        firstStart.setAttribute('class', 'fa fa-star checked');
+        secondStart.setAttribute('class', 'fa fa-star checked');
+        thirdStart.setAttribute('class', 'fa fa-star checked');
+        fourthStart.setAttribute('class', 'fa fa-star checked');
+        fifthStart.setAttribute('class', 'fa fa-star checked');
+        this.setState({ stars: 5 });
+    }
+
+    rateCourse = async () => {
+        const isEnrolled = await this.checkIsUserEnrolledForCourse();
+        let loggedUser = localStorage.getItem('loggedUser');
+        let isLoggedIn = loggedUser !== null;
+        if (!isLoggedIn) {
+            this.props.history.push('/users/login');
+            window.location.reload();
+            return;
+        }
+        if (!isEnrolled) {
+            alert('Please enroll for the course first');
+            return;
+        }
+        const currentThis = this;
+        const requestBody = {
+            courseName: currentThis.getCourseName(),
+            stars: currentThis.state.stars,
+            courseRatingType: 'INPUT'
+        };
+        fetch(process.env.REACT_APP_URL + '/courses/rate', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody)
+        }).then(async response => {
+            if (response.status === 200) {
+                window.location.reload();
+            } else {
+                alert('Оценката не бе записана!');
+            }
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
+    loadStars = () => {
+        const firstStart = document.getElementById('firstStarRating');
+        const secondStart = document.getElementById('secondStarRating');
+        const thirdStart = document.getElementById('thirdStarRating');
+        const fourthStart = document.getElementById('fourthStarRating');
+        const fifthStart = document.getElementById('fifthStarRating');
+        const rating = Number.parseFloat(this.state.rating);
+        console.log('malii', rating);
+        if (rating > 4.5) {
+            firstStart.setAttribute('class', 'fa fa-star checked');
+            secondStart.setAttribute('class', 'fa fa-star checked');
+            thirdStart.setAttribute('class', 'fa fa-star checked');
+            fourthStart.setAttribute('class', 'fa fa-star checked');
+            fifthStart.setAttribute('class', 'fa fa-star checked');
+        } else if (rating > 3.5) {
+            firstStart.setAttribute('class', 'fa fa-star checked');
+            secondStart.setAttribute('class', 'fa fa-star checked');
+            thirdStart.setAttribute('class', 'fa fa-star checked');
+            fourthStart.setAttribute('class', 'fa fa-star checked');
+            fifthStart.setAttribute('class', 'fa fa-star');
+        } else if (rating > 2.5) {
+            firstStart.setAttribute('class', 'fa fa-star checked');
+            secondStart.setAttribute('class', 'fa fa-star checked');
+            thirdStart.setAttribute('class', 'fa fa-star checked');
+            fourthStart.setAttribute('class', 'fa fa-star');
+            fifthStart.setAttribute('class', 'fa fa-star');
+        } else if (rating > 1.5) {
+            firstStart.setAttribute('class', 'fa fa-star checked');
+            secondStart.setAttribute('class', 'fa fa-star checked');
+            thirdStart.setAttribute('class', 'fa fa-star');
+            fourthStart.setAttribute('class', 'fa fa-star');
+            fifthStart.setAttribute('class', 'fa fa-star');
+        } else {
+            firstStart.setAttribute('class', 'fa fa-star checked');
+            secondStart.setAttribute('class', 'fa fa-star');
+            thirdStart.setAttribute('class', 'fa fa-star');
+            fourthStart.setAttribute('class', 'fa fa-star');
+            fifthStart.setAttribute('class', 'fa fa-star');
+        }
+    }
 }
 
 export default ViewCourse;
