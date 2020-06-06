@@ -6,7 +6,6 @@ class ViewCourse extends Component {
         teacherName: null,
         description: null,
         startDate: null,
-        endDate: null,
         category: null,
         videosTitles: [],
         videosFullNames: [],
@@ -51,10 +50,6 @@ class ViewCourse extends Component {
                                                     <time>{this.state.startDate}</time>
                                                 </a></li>
                                                 <li className="d-flex align-items-center"><i
-                                                    className="icofont-wall-clock"/> <a href="#">
-                                                    <time>{this.state.endDate}</time>
-                                                </a></li>
-                                                <li className="d-flex align-items-center"><i
                                                     className="icofont-comment"/> <a
                                                     href="#">{this.state.commentsCount} Коментара</a></li>
                                             </ul>
@@ -71,7 +66,7 @@ class ViewCourse extends Component {
                                                     className="btn btn-success mr-3">Добави в количка
                                             </button>
                                             <div hidden={this.state.isUserEnrolledForCourse} className="entry-content">
-                                                <h3>Price - ${this.state.price}</h3>
+                                                <h3>Цена - ${this.state.price}</h3>
                                             </div>
                                         </div>
                                         <div className="entry-content">
@@ -330,7 +325,6 @@ class ViewCourse extends Component {
                 teacherName: courseModel["teacher"]["username"],
                 description: currentThis.splitText(courseModel["description"], 100),
                 startDate: courseModel["startDate"]["dayOfMonth"] + "-" + courseModel["startDate"]["monthValue"] + "-" + courseModel["startDate"]["year"],
-                endDate: courseModel["endDate"]["dayOfMonth"] + "-" + courseModel["endDate"]["monthValue"] + "-" + courseModel["endDate"]["year"],
                 category: courseModel["category"]["name"],
                 currentVideoTitle: courseModel["videosNames"][0]["videoTitle"],
                 currentVideoName: courseModel["videosNames"][0]["videoFullName"],

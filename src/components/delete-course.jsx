@@ -48,7 +48,7 @@ class DeleteCourse extends Component {
             console.log(jsonResponse);
             let responseMap = JSON.parse(JSON.stringify(jsonResponse));
             if (response.status === 200) {
-                this.props.history.push('/users/login');
+                this.props.history.push('/');
                 window.location.reload();
             } else if (response.status === 400) {
                 if (responseMap['type'] === 'NotFoundException') {

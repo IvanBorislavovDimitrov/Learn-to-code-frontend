@@ -264,8 +264,6 @@ class Courses extends Component {
                 const endTimeIcon = document.createElement('i');
                 endTimeIcon.setAttribute('class', 'icofont-wall-clock');
                 const endTimeTime = document.createElement('time');
-                endTimeTime.textContent = course['endDate']['dayOfMonth'] + '-' +
-                    course['endDate']['monthValue'] + '-' + course['endDate']['year'];
                 endTimeTime.style.color = 'black';
                 endTime.appendChild(endTimeIcon);
                 endTime.appendChild(endTimeTime);

@@ -10,25 +10,18 @@ class AddNewCourse extends Component {
             teacherName: null,
             name: null,
             startDate: null,
-            endDate: null,
-            durationInWeeks: null,
-            credits: null,
             description: null,
             categoryName: null,
             thumbnail: null,
             coursePartsCount: 2,
             nameInputFieldNotEntered: false,
             startDateInputFieldNotEntered: false,
-            endDateInputFieldNotEntered: false,
-            durationOfWeeksInputFieldNotEntered: false,
-            creditsInputFieldNotEntered: false,
             priceOfCourseInputFieldNotEntered: false,
             descriptionOfCourseFieldNotEntered: false,
             teacherNameInputFieldNotEntered: false,
             partInputFieldNotEntered: false,
             thumbnailInputFieldNotEntered: false,
             courseNameTaken: false,
-            endDateIsBeforeStartDate: false,
             loading: false
         };
         this.videoFileUpload = React.createRef();
@@ -68,47 +61,6 @@ class AddNewCourse extends Component {
                                 placeholder="Избери дата на започване"
                             />
                             <div hidden={!this.state.startDateInputFieldNotEntered} class="text-danger mb-3">Въведи дата на започване!</div>
-                            <div hidden={!this.state.endDateIsBeforeStartDate} class="text-danger mb-3">Датата на започване трябва да е преди датата на завършване!</div>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="endDateDate">Дата на завършване</label>
-                            <input
-                                id="endDateInputField"
-                                onChange={this.changeInputField}
-                                name="endDate"
-                                type="date"
-                                className="form-control"
-                                placeholder="Избери дата на завършване"
-                            />
-                            <div hidden={!this.state.endDateInputFieldNotEntered} class="text-danger mb-3">Въведи дата на завършване!</div>
-                            <div hidden={!this.state.endDateIsBeforeStartDate} class="text-danger mb-3">Датата на завършване трябва да е преди датата на започване!</div>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="durationInWeeksInput">Продължителност в седмици</label>
-                            <input
-                                onChange={this.changeInputField}
-                                name="durationInWeeks"
-                                type="text"
-                                className="form-control"
-                                id="durationInWeeksInputField"
-                                placeholder="Продължителност в седмици"
-                            />
-                            <div hidden={!this.state.durationOfWeeksInputFieldNotEntered} class="text-danger mb-3">Въведете дължина на курса в седмици!</div>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="creditsInput">Кредити</label>
-                            <input
-                                id="creditsInputField"
-                                onChange={this.changeInputField}
-                                name="credits"
-                                type="text"
-                                className="form-control"
-                                placeholder="Кредити"
-                            />
-                            <div hidden={!this.state.creditsInputFieldNotEntered} class="text-danger mb-3">Въведете кредити за курса!</div>
                         </div>
 
                         <div className="form-group">
@@ -338,22 +290,12 @@ class AddNewCourse extends Component {
             if (currentThis.state.startDate != null) {
                 registerFormData.append('startDate', currentThis.state.startDate);
             }
-            if (currentThis.state.endDate != null) {
-                registerFormData.append('endDate', currentThis.state.endDate);
-            }
             if (currentThis.state.name != null) {
                 registerFormData.append('name', currentThis.state.name);
             }
             if (currentThis.state.teacherName != null) {
                 registerFormData.append('teacherName', currentThis.state.teacherName);
             }
-            if (currentThis.state.durationInWeeks) {
-                registerFormData.append('durationInWeeks', currentThis.state.durationInWeeks);
-            }
-            if (currentThis.state.credits != null) {
-                registerFormData.append('credits', currentThis.state.credits);
-            }
-    
             if (currentThis.state.price != null) {
                 registerFormData.append('price', currentThis.state.price);
             }
@@ -388,10 +330,6 @@ class AddNewCourse extends Component {
                     this.setState({
                         nameNotEntered: false,
                         courseNameTaken: true
-                    });
-                } else if (responseMap['type'] === 'InvalidDatesException') {
-                    this.setState({
-                        endDateIsBeforeStartDate: true,
                     });
                 }
             } else {
@@ -453,7 +391,6 @@ class AddNewCourse extends Component {
         const nameInputField = document.getElementById('nameInputField');
         nameInputField.setAttribute('class', 'form-control');
         this.setState({
-            endDateIsBeforeStartDate: false,
             nameInputFieldNotEntered: false,
             courseNameTaken: false
         });
@@ -473,42 +410,6 @@ class AddNewCourse extends Component {
             startDateInputField.setAttribute('class', 'form-control is-invalid');
             this.setState({
                 startDateInputFieldNotEntered: true
-            });
-            isValid = false;
-        }
-        const endDateInputField = document.getElementById('endDateInputField');
-        endDateInputField.setAttribute('class', 'form-control');
-        this.setState({
-            endDateInputFieldNotEntered: false
-        });
-        if (this.state.endDate === null) {
-            endDateInputField.setAttribute('class', 'form-control is-invalid');
-            this.setState({
-                endDateInputFieldNotEntered: true
-            });
-            isValid = false;
-        }
-        const durationInWeeksInputField = document.getElementById('durationInWeeksInputField');
-        durationInWeeksInputField.setAttribute('class', 'form-control');
-        this.setState({
-            durationOfWeeksInputFieldNotEntered: false
-        });
-        if (this.state.endDate === null) {
-            durationInWeeksInputField.setAttribute('class', 'form-control is-invalid');
-            this.setState({
-                durationOfWeeksInputFieldNotEntered: true
-            });
-            isValid = false;
-        }
-        const creditsInputField = document.getElementById('creditsInputField');
-        creditsInputField.setAttribute('class', 'form-control');
-        this.setState({
-            creditsInputFieldNotEntered: false
-        });
-        if (this.state.credits === null) {
-            creditsInputField.setAttribute('class', 'form-control is-invalid');
-            this.setState({
-                creditsInputFieldNotEntered: true
             });
             isValid = false;
         }
