@@ -16,6 +16,7 @@ class ViewCourse extends Component {
         commentsCount: 0,
         price: -1,
         isUserEnrolledForCourse: false,
+        hasUserPaidForCourse: false,
         doesUserHaveCourseInCart: false,
         stars: 5,
         rating: 0
@@ -274,7 +275,7 @@ class ViewCourse extends Component {
                 const tdName = document.createElement('td');
                 tdName.textContent = video['videoTitle'];
                 const tdLink = document.createElement('td');
-                const isEnrolled = await currentThis.checkIsUserEnrolledForCourse();
+                const isEnrolled = await currentThis.hasUserPaidForTheCourse();
                 if (count === 1) {
                     tdLink.appendChild(button);
                 } else if (isEnrolled) {
@@ -423,6 +424,31 @@ class ViewCourse extends Component {
                 value = isUserEnrolled;
                 currentThis.setState({
                     isUserEnrolledForCourse: isUserEnrolled
+                });
+            } else {
+                value = false;
+            }
+        }).catch(error => {
+            console.log(error);
+        });
+        return value;
+    }
+
+    hasUserPaidForTheCourse = async () => {
+        const currentThis = this;
+        const courseName = this.getCourseName();
+        let value = false;
+        await fetch(process.env.REACT_APP_URL + '/courses/has-paid/' + courseName, {
+            method: 'GET',
+            credentials: 'include'
+        }).then(async response => {
+            if (response.status === 200) {
+                const jsonResponse = await response.json();
+                const hasUserPaidForCourse = JSON.parse(JSON.stringify(jsonResponse))['hasUserPaidForCourse'];
+                value = hasUserPaidForCourse;
+                console.log(":asdasdasdasdasdasdasd", hasUserPaidForCourse);
+                currentThis.setState({
+                    hasUserPaidForCourse: hasUserPaidForCourse
                 });
             } else {
                 value = false;

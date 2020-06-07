@@ -71,6 +71,14 @@ class ModeratorUI extends Component {
                                 </div>
                             </div>
 
+                            <div className="col-md-6 col-lg-3 d-flex align-items-stretch mt-5">
+                                <div className="icon-box icon-box-pink card h-100 w-100">
+                                    <div className="icon"><i className="bx bxl-css3"></i></div>
+                                    <h4 className="title"><a href="/courses/confirm-payment">Потврди, че курсист е платил за курс</a></h4>
+                                    <p className="description">Натисни тук, ако искаш да потвърдиш, че курсист е запилатил даден курс"!</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </section>

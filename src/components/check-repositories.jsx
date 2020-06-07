@@ -72,7 +72,7 @@ class CheckRepositories extends Component {
                 const tdButton = document.createElement('td');
                 const checkRepositoryButton = document.createElement('a');
                 checkRepositoryButton.setAttribute('class', 'btn btn-warning btn-sm');
-                checkRepositoryButton.textContent = 'Check';
+                checkRepositoryButton.textContent = 'Виж';
                 checkRepositoryButton.href = '/github/single-repository/' + repository['name'];
                 tdButton.appendChild(checkRepositoryButton);
                 tr.appendChild(th);
