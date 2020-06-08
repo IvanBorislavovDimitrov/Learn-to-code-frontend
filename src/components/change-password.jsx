@@ -19,7 +19,7 @@ class ChangePassword extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="col-md-4 mt-4 container">
+                <div className="col-md-4 mt-4 container card">
                     <form className="text-center border border-light p-5" onSubmit={this.changePassword}>
                         <p className="h4 mb-4">Нова парола</p>
                         <div className="form-group">

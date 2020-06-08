@@ -39,7 +39,7 @@ class FirstEnter extends Component {
                                 <div class="carousel-item background3">
                                     <div class="carousel-container">
                                         <div class="carousel-content">
-                                            <h2 class="animated fadeInDown">Най-добрите проподаватели <span>на световно ниво</span></h2>
+                                            <h2 class="animated fadeInDown">Най-добрите прeподаватели <span>на световно ниво</span></h2>
                                             <p class="animated fadeInUp">Нов, иновативен и интерактивен начин да учиш.</p>
                                             <a href="/" class="btn-get-started animated fadeInUp">Продължете към платформата</a>
                                         </div>
