@@ -38,7 +38,7 @@ class UserRegister extends Component {
         return (
             <React.Fragment>
                 <div className="col-md-4 mt-4 container card">
-                    <form className="text-center border border-light p-5" encType="multipart/form-data"
+                    <form className="text-center border border-light p-5" encType="multipart/form-data" 
                         onSubmit={this.registerUser}>
                         <p className="h4 mb-4">Регистрация</p>
                         <div className="form-group">
@@ -152,7 +152,7 @@ class UserRegister extends Component {
                                 className="custom-file"
                                 id="profilePicture"
                                 aria-describedby="fileHelp"
-                                name="Профилна снимка"
+                                name="profilePicture"
                             />
                         </div>
                         <button type="submit" className="btn btn-info btn-block">
@@ -187,7 +187,7 @@ class UserRegister extends Component {
 
         async function doRegister() {
             const registerFormData = new FormData();
-            if (currentThis.state.profilePicture !== null) {
+            if (currentThis.state.profilePicture != null) {
                 registerFormData.append('profilePicture', currentThis.profilePictureRef.current.files[0]);
             }
             registerFormData.append('email', currentThis.state.email);
@@ -234,7 +234,7 @@ class UserRegister extends Component {
                     });
                     usernameInputField.setAttribute('class', 'form-control is-invalid');
                 } else if (responseMap['type'] === "PhoneNumberTakenException") {
-                    const phoneNumberInputField = document.getElementById('phoneNumberInputFieldnameInputField');
+                    const phoneNumberInputField = document.getElementById('phoneNumberInputField');
                     phoneNumberInputField.setAttribute('class', 'form-control');
                     this.setState({
                         phoneNumberNotEntered: false,

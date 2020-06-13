@@ -271,7 +271,7 @@ class ViewCourse extends Component {
                 const tableRow = document.createElement('tr');
                 const thRowElementd = document.createElement('th');
                 thRowElementd.setAttribute('scope', 'row');
-                thRowElementd.textContent = count;
+                thRowElementd.textContent = video['number'];
                 const tdName = document.createElement('td');
                 tdName.textContent = video['videoTitle'];
                 const tdLink = document.createElement('td');
@@ -291,7 +291,7 @@ class ViewCourse extends Component {
                 tableRow.appendChild(tdLink);
                 tableBodyAgenda.appendChild(tableRow);
 
-                count++;
+                count = count + 1;
                 button.onclick = () => {
                     const videoOuter = document.getElementById('video');
                     videoOuter.innerHTML = '';

@@ -23,7 +23,7 @@ class GithubUI extends Component {
                             <div className="col-md-6 col-lg-3 d-flex align-items-stretch">
                                 <div className="icon-box icon-box-pink card h-100 w-100">
                                     <div className="icon"><i className="bx bxl-github"></i></div>
-                                    <h4 className="title"><a href="/https://github.com/login/oauth/authorize?client_id=5b2f3c2f8bb2f09aa59d">Link GitHub Account</a></h4>
+                                    <h4 className="title"><a href="https://github.com/login/oauth/authorize?client_id=5b2f3c2f8bb2f09aa59d">Link GitHub Account</a></h4>
                                     <p className="description">Натисни тук, за да свържеш профила си с GitHub!</p>
                                 </div>
                             </div>

@@ -64,9 +64,9 @@ class UserProfile extends Component {
                             <div className="tab-content py-4">
                                 <div className="tab-pane active" id="profile">
                                     <h2 className="mb-3">Потребителски профил</h2>
-                                    <h3>Hello, {this.state.username}</h3>
+                                    <h3>Здравей, {this.state.username}!</h3>
                                     <div className="row">
-                                        <div className="col-md-6">
+                                        <div className="col-md-6"> <br/>
                                             <h5>Информация</h5>
                                             <p><h5>{this.state.description}</h5></p>
                                             <p>
