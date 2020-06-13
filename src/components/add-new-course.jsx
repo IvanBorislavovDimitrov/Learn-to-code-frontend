@@ -418,7 +418,7 @@ class AddNewCourse extends Component {
         this.setState({
             priceOfCourseInputFieldNotEntered: false
         });
-        if (this.state.price === null) {
+        if (this.state.price == null || this.state.price == undefined) {
             priceOfCourseInputField.setAttribute('class', 'form-control is-invalid');
             this.setState({
                 priceOfCourseInputFieldNotEntered: true

@@ -3,7 +3,11 @@ import React, { Component } from 'react';
 class AddCourseCategory extends Component {
     state = {
         courseCategoryName: null,
-        courseCategoryDescription: null
+        courseCategoryDescription: null,
+        isNameInvalid: false,
+        isDescInvalid: false,
+        isImageInvalid: false
+
     };
 
     constructor() {
@@ -23,18 +27,20 @@ class AddCourseCategory extends Component {
                                     name="courseCategoryName"
                                     type="text"
                                     className="form-control"
-                                    id="usernameInputField"
+                                    id="categoryNameId"
                                     placeholder="Име на категорията на курса"
                                     onChange={this.changeInputField}
                                 />
+                                <div hidden={!this.state.isNameInvalid} class="text-danger mb-3">Въведи име!</div>
                                 <textarea
                                     name="courseCategoryDescription"
                                     className="form-control"
-                                    id="usernameInputField"
+                                    id="categoryDescId"
                                     placeholder="Описане на категорията на курса"
                                     rows="10"
                                     onChange={this.changeInputField}
                                 />
+                                <div hidden={!this.state.isDescInvalid} class="text-danger mb-3">Въведи описание!</div>
                                 <div className="form-group mt-3">
                                     <small id="fileHelp" className="form-text text-muted">Изображение</small>
                                     <input
@@ -46,9 +52,10 @@ class AddCourseCategory extends Component {
                                         aria-describedby="fileHelp"
                                         name="thumbnail"
                                     />
+                                    <div hidden={!this.state.isImageInvalid} class="text-danger mb-3">Въведи изображение!</div>
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-dark">
+                            <button type="submit" className="btn btn-info">
                                 Добавия категория за курс
                         </button>
                         </form>
@@ -63,6 +70,51 @@ class AddCourseCategory extends Component {
         const currentThis = this;
 
         async function add() {
+            let isValid = true;
+            const categoryNameId = document.getElementById('categoryNameId');
+            categoryNameId.setAttribute('class', 'form-control');
+            currentThis.setState({
+                isNameInvalid: false
+            });
+            if (currentThis.state.courseCategoryName == null || currentThis.state.courseCategoryName == undefined) {
+                categoryNameId.setAttribute('class', 'form-control is-invalid');
+                currentThis.setState({
+                    isNameInvalid: true
+                });
+                isValid = false;
+            }
+
+            const categoryDescId = document.getElementById('categoryDescId');
+            categoryDescId.setAttribute('class', 'form-control');
+            currentThis.setState({
+                isDescInvalid: false
+            });
+            if (currentThis.state.courseCategoryDescription == null || currentThis.state.courseCategoryDescription == undefined) {
+                categoryDescId.setAttribute('class', 'form-control is-invalid');
+                currentThis.setState({
+                    isDescInvalid: true
+                });
+                isValid = false;
+            }
+
+            const thumbnailInput = document.getElementById('thumbnailInput');
+            thumbnailInput.setAttribute('class', 'form-control');
+            currentThis.setState({
+                isImageInvalid: false
+            });
+            if (currentThis.state.thumbnail == null || currentThis.state.thumbnail == undefined) {
+                console.log()
+                thumbnailInput.setAttribute('class', 'is-invalid');
+                currentThis.setState({
+                    isImageInvalid: true
+                });
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
             let formData = new FormData();
             formData.append('thumbnail', currentThis.thumbnailFileUpload.current.files[0], currentThis.thumbnailFileUpload.current.files[0].name);
             formData.append('name', currentThis.state.courseCategoryName);
@@ -76,9 +128,12 @@ class AddCourseCategory extends Component {
             });
         }
 
-        add().then(async respone => {
-            if (respone.status === 200) {
-                const responseJson = await respone.json();
+        add().then(async response => {
+            if (response == null || response == undefined) {
+                return;
+            }
+            if (response.status === 200) {
+                const responseJson = await response.json();
                 alert('Category added!');
                 this.props.history.push('/');
                 window.location.reload();

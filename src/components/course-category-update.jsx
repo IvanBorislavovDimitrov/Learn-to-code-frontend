@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 class UpdateCourseCategory extends Component {
     state = {
         courseCategoryName: null,
-        courseCategoryDescription: null
+        courseCategoryDescription: null,
+        isDescInvalid: false,
+        isImageInvalid: false
     };
 
     constructor() {
@@ -30,12 +32,13 @@ class UpdateCourseCategory extends Component {
                                 <textarea
                                     name="courseCategoryDescription"
                                     className="form-control"
-                                    id="usernameInputField"
+                                    id="categoryDescId"
                                     placeholder="Описание на категорията на курса"
                                     rows="10"
                                     onChange={this.changeInputField}
                                     value={this.courseCategoryDescription}
                                 />
+                                <div hidden={!this.state.isDescInvalid} class="text-danger mb-3">Въведи описание!</div>
                                 <div className="form-group mt-3">
                                     <small id="fileHelp" className="form-text text-muted">Изображение</small>
                                     <input
@@ -47,6 +50,7 @@ class UpdateCourseCategory extends Component {
                                         aria-describedby="fileHelp"
                                         name="thumbnail"
                                     />
+                                    <div hidden={!this.state.isImageInvalid} class="text-danger mb-3">Въведи описание!</div>
                                 </div>
                             </div>
                             <button type="submit" className="btn btn-dark">
@@ -68,6 +72,38 @@ class UpdateCourseCategory extends Component {
         const currentThis = this;
 
         async function update() {
+            let isValid = true;
+            const categoryDescId = document.getElementById('categoryDescId');
+            categoryDescId.setAttribute('class', 'form-control');
+            currentThis.setState({
+                isDescInvalid: false
+            });
+            if (currentThis.state.courseCategoryDescription == null || currentThis.state.courseCategoryDescription == undefined) {
+                categoryDescId.setAttribute('class', 'form-control is-invalid');
+                currentThis.setState({
+                    isDescInvalid: true
+                });
+                isValid = false;
+            }
+
+            const thumbnailInput = document.getElementById('thumbnailInput');
+            thumbnailInput.setAttribute('class', 'form-control');
+            currentThis.setState({
+                isImageInvalid: false
+            });
+            if (currentThis.state.thumbnail == null || currentThis.state.thumbnail == undefined) {
+                console.log()
+                thumbnailInput.setAttribute('class', 'is-invalid');
+                currentThis.setState({
+                    isImageInvalid: true
+                });
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
             let formData = new FormData();
             formData.append('thumbnail', currentThis.thumbnailFileUpload.current.files[0], currentThis.thumbnailFileUpload.current.files[0].name);
             formData.append('name', currentThis.state.courseCategoryName);
@@ -82,6 +118,9 @@ class UpdateCourseCategory extends Component {
         }
 
         update().then(async respone => {
+            if (respone == null || respone == undefined) {
+                return;
+            }
             if (respone.status === 200) {
                 await respone.json();
                 alert('Category updated!');
