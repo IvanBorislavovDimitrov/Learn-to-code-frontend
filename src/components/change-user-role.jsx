@@ -97,6 +97,14 @@ class ChangeUserRole extends Component {
         )
     }
 
+    componentDidMount() {
+        const userRoles = localStorage.getItem('userRoles');
+        if (userRoles == null || !userRoles.includes('ROLE_MODERATOR')) {
+            this.props.history.push('/not-found');
+            return;
+        }
+    }
+
     addRole = (role) => {
         const rolesField = document.getElementById('roles');
         const currentRoles = rolesField.value.split(' ');

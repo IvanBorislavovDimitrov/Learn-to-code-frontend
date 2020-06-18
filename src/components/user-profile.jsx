@@ -231,6 +231,11 @@ class UserProfile extends Component {
     }
 
     componentDidMount() {
+        const userRoles = localStorage.getItem('loggedUser');
+        if (userRoles == null) {
+            this.props.history.push('/users/login');
+            return;
+        }
         this.loadUser();
 
     };

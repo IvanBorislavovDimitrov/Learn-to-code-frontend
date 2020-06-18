@@ -36,6 +36,11 @@ class ConfirmUserHasPaid extends Component {
     };
 
     componentDidMount() {
+        const userRoles = localStorage.getItem('userRoles');
+        if (userRoles == null || !userRoles.includes('ROLE_MODERATOR')) {
+            this.props.history.push('/not-found');
+            return;
+        }
         this.loadContactUsForms();
     }
 

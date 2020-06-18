@@ -118,7 +118,7 @@ class ContactUs extends Component {
             message: currentThis.state.message
         }
 
-        fetch(process.env.REACT_APP_URL + '/contact-us', {
+        fetch(process.env.REACT_APP_URL + '/contact-us/add', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify(contactUsForm),

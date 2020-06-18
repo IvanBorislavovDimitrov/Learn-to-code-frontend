@@ -16,6 +16,11 @@ class UserAuthorize extends Component {
     }
 
     componentDidMount() {
+        const userRoles = localStorage.getItem('loggedUser');
+        if (userRoles == null) {
+            this.props.history.push('/users/login');
+            return;
+        }
         let loggedUser = localStorage.getItem('loggedUser');
         let isLoggedIn = loggedUser !== null;
         if (isLoggedIn) {

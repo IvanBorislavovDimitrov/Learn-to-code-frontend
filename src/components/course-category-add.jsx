@@ -119,7 +119,7 @@ class AddCourseCategory extends Component {
             formData.append('thumbnail', currentThis.thumbnailFileUpload.current.files[0], currentThis.thumbnailFileUpload.current.files[0].name);
             formData.append('name', currentThis.state.courseCategoryName);
             formData.append('description', currentThis.state.courseCategoryDescription);
-            return await fetch(process.env.REACT_APP_URL + '/course-categories', {
+            return await fetch(process.env.REACT_APP_URL + '/course-categories/add', {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',

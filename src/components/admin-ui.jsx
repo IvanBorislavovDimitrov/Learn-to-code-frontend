@@ -46,6 +46,14 @@ class AdminUI extends Component {
             </React.Fragment>
         )
     }
+
+    componentDidMount() {
+        const userRoles = localStorage.getItem('userRoles');
+        if (userRoles == null || !userRoles.includes('ROLE_ADMIN')) {
+            this.props.history.push('/not-found');
+            return;
+        }
+    }
 }
 
 export default AdminUI;

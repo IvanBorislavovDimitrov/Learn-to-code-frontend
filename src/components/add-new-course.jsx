@@ -159,6 +159,11 @@ class AddNewCourse extends Component {
     }
 
     componentDidMount() {
+        const userRoles = localStorage.getItem('userRoles');
+        if (userRoles == null || !userRoles.includes('ROLE_MODERATOR')) {
+            this.props.history.push('/not-found');
+            return;
+        }
         const categoryInputElement = document.getElementById('categoryInputField');
 
         async function getCourseCategories() {
@@ -305,7 +310,7 @@ class AddNewCourse extends Component {
             if (currentThis.state.categoryName != null) {
                 registerFormData.append('categoryName', currentThis.state.categoryName);
             }
-            const registerResponse = await fetch(process.env.REACT_APP_URL + '/courses', {
+            const registerResponse = await fetch(process.env.REACT_APP_URL + '/courses/add', {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',
