@@ -53,16 +53,16 @@ class UpdateCourse extends Component {
                         <button onClick={this.loadCourse} className="btn btn-primary btn-block mb-3" type="button">Зареди курс</button>
 
                         <div className="form-group">
-                            <label htmlFor="startDateDate">Дата на започване</label>
+                            <label htmlFor="startDateDate">Дата на издаване</label>
                             <input
                                 onChange={this.changeInputField}
                                 name="startDate"
                                 type="date"
                                 className="form-control"
                                 id="startDateInputField"
-                                placeholder="Дата на започване"
+                                placeholder="Дата на издаване"
                             />
-                            <div hidden={!this.state.startDateInputFieldNotEntered} class="text-danger mb-3">Въведи дата на започване!</div>
+                            <div hidden={!this.state.startDateInputFieldNotEntered} class="text-danger mb-3">Въведи дата на издаване!</div>
                         </div>
 
                         <div className="form-group">

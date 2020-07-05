@@ -51,16 +51,16 @@ class AddNewCourse extends Component {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="startDateDate">Дата на започване</label>
+                            <label htmlFor="startDateDate">Дата на издаване</label>
                             <input
                                 onChange={this.changeInputField}
                                 name="startDate"
                                 type="date"
                                 className="form-control"
                                 id="startDateInputField"
-                                placeholder="Избери дата на започване"
+                                placeholder="Избери дата на издаване"
                             />
-                            <div hidden={!this.state.startDateInputFieldNotEntered} class="text-danger mb-3">Въведи дата на започване!</div>
+                            <div hidden={!this.state.startDateInputFieldNotEntered} class="text-danger mb-3">Въведи дата на издаване!</div>
                         </div>
 
                         <div className="form-group">
