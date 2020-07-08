@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 class ViewCourse extends Component {
     state = {
@@ -43,28 +43,28 @@ class ViewCourse extends Component {
                                         </h2>
                                         <div className="entry-meta">
                                             <ul>
-                                                <li className="d-flex align-items-center"><i className="icofont-user"/>
+                                                <li className="d-flex align-items-center"><i className="icofont-user" />
                                                     <a href={'/users/' + this.state.teacherName + '/profile'}>{this.state.teacherName}</a>
                                                 </li>
                                                 <li className="d-flex align-items-center"><i
-                                                    className="icofont-wall-clock"/> <a href="#">
-                                                    <time>{this.state.startDate}</time>
-                                                </a></li>
+                                                    className="icofont-wall-clock" /> <a href="#">
+                                                        <time>{this.state.startDate}</time>
+                                                    </a></li>
                                                 <li className="d-flex align-items-center"><i
-                                                    className="icofont-comment"/> <a
-                                                    href="#">{this.state.commentsCount} Коментара</a></li>
+                                                    className="icofont-comment" /> <a
+                                                        href="#">{this.state.commentsCount} Коментара</a></li>
                                             </ul>
                                         </div>
                                         <div className="jumbotron-fluid">
                                             <button onClick={this.enrolledLoggedUserForCourse}
-                                                    hidden={this.state.isUserEnrolledForCourse} type="button"
-                                                    className="btn btn-warning mr-3">Запиши се за курса, за да разкриеш
+                                                hidden={this.state.isUserEnrolledForCourse} type="button"
+                                                className="btn btn-warning mr-3">Запиши се за курса, за да разкриеш
                                                 цялото съдържание
                                             </button>
                                             <button onClick={this.addToCourseToCart}
-                                                    hidden={this.state.isUserEnrolledForCourse || this.state.doesUserHaveCourseInCart}
-                                                    type="button"
-                                                    className="btn btn-success mr-3">Добави в количка
+                                                hidden={this.state.isUserEnrolledForCourse || this.state.doesUserHaveCourseInCart}
+                                                type="button"
+                                                className="btn btn-success mr-3">Добави в количка
                                             </button>
                                             <div hidden={this.state.isUserEnrolledForCourse} className="entry-content">
                                                 <h3>Цена - ${this.state.price}</h3>
@@ -81,31 +81,31 @@ class ViewCourse extends Component {
 
                                         <div className="entry-footer clearfix">
                                             <div className="float-left">
-                                                <i className="icofont-folder"/>
+                                                <i className="icofont-folder" />
                                                 <ul className="cats ml-2">
                                                     <li><a href="#">{this.state.category}</a></li>
                                                 </ul>
                                             </div>
                                             <div className="float-right share">
                                                 <a href="#" title="Share on Twitter"><i
-                                                    className="icofont-twitter"/></a>
+                                                    className="icofont-twitter" /></a>
                                                 <a href="#" title="Share on Facebook"><i
-                                                    className="icofont-facebook"/></a>
+                                                    className="icofont-facebook" /></a>
                                                 <a href="#" title="Share on Instagram"><i
-                                                    className="icofont-instagram"/></a>
+                                                    className="icofont-instagram" /></a>
                                             </div>
                                         </div>
                                     </article>
                                     <div className="blog-author clearfix custom-white">
                                         <img src={this.state.teacherProfilePictureName}
-                                             className="rounded-circle float-left" alt=""/>
+                                            className="rounded-circle float-left" alt="" />
                                         <h4><a
                                             href={'/users/' + this.state.teacherName + '/profile'}>{this.state.teacherName}</a>
                                         </h4>
                                         <div className="social-links">
-                                            <a href="https://twitters.com/#"><i className="icofont-twitter"/></a>
-                                            <a href="https://facebook.com/#"><i className="icofont-facebook"/></a>
-                                            <a href="https://instagram.com/#"><i className="icofont-instagram"/></a>
+                                            <a href="https://twitters.com/#"><i className="icofont-twitter" /></a>
+                                            <a href="https://facebook.com/#"><i className="icofont-facebook" /></a>
+                                            <a href="https://instagram.com/#"><i className="icofont-instagram" /></a>
                                         </div>
                                         <p>{this.state.teacherDescription}</p>
                                     </div>
@@ -121,8 +121,8 @@ class ViewCourse extends Component {
                                                 <div className="row">
                                                     <div className="col form-group">
                                                         <textarea id="commentContent" name="comment" rows="5"
-                                                                  className="form-control"
-                                                                  placeholder="Вашият коментар"/>
+                                                            className="form-control"
+                                                            placeholder="Вашият коментар" />
                                                     </div>
                                                 </div>
                                                 <button type="submit" className="btn btn-primary">Напиши коментар
@@ -132,16 +132,16 @@ class ViewCourse extends Component {
                                         <div id="rateDialog" className="reply-form custom-white">
                                             <h4>Ревю</h4>
                                             <span onClick={this.firstStartPressed} id="firstStar"
-                                                  class="fa fa-star checked"></span>
+                                                class="fa fa-star checked"></span>
                                             <span onClick={this.secondStartPressed} id="secondStar"
-                                                  class="fa fa-star checked"></span>
+                                                class="fa fa-star checked"></span>
                                             <span onClick={this.thirdStartPressed} id="thirdStar"
-                                                  class="fa fa-star checked"></span>
+                                                class="fa fa-star checked"></span>
                                             <span onClick={this.fourthStartPressed} id="fourthStar"
-                                                  class="fa fa-star checked"></span>
+                                                class="fa fa-star checked"></span>
                                             <span onClick={this.fifthStartPressed} id="fifthStar"
-                                                  class="fa fa-star checked"></span>
-                                            <br/>
+                                                class="fa fa-star checked"></span>
+                                            <br />
                                             <button onClick={this.rateCourse} className="mt-3 btn btn-primary">Оцени
                                             </button>
                                         </div>
@@ -164,11 +164,11 @@ class ViewCourse extends Component {
                                         <div id="agenda" className="sidebar-item h6 ">
                                             <table class="table table-hover table-dark">
                                                 <thead>
-                                                <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Име на лекцията</th>
-                                                    <th scope="col">Гледай</th>
-                                                </tr>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Име на лекцията</th>
+                                                        <th scope="col">Гледай</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody id="table-body">
 
@@ -488,7 +488,7 @@ class ViewCourse extends Component {
         });
     }
 
-    addToCourseToCart = () => {
+    addToCourseToCart = async () => {
         let loggedUser = localStorage.getItem('loggedUser');
         let isLoggedIn = loggedUser !== null;
         if (!isLoggedIn) {
@@ -508,7 +508,8 @@ class ViewCourse extends Component {
             });
         }
 
-        addToCart().then(async response => {
+        await addToCart().then(async response => {
+            await response.text();
             if (response.status === 200) {
                 window.location.reload();
             } else {
@@ -517,9 +518,9 @@ class ViewCourse extends Component {
         });
     }
 
-    checkIfUserHasCourseInCart = () => {
+    checkIfUserHasCourseInCart = async () => {
         const currentCourse = this.getCourseName();
-        fetch(process.env.REACT_APP_URL + '/courses/cart/all', {
+        await fetch(process.env.REACT_APP_URL + '/courses/cart/all', {
             method: 'GET',
             credentials: 'include'
         }).then(async response => {
@@ -549,7 +550,7 @@ class ViewCourse extends Component {
         thirdStart.setAttribute('class', 'fa fa-star');
         fourthStart.setAttribute('class', 'fa fa-star');
         fifthStart.setAttribute('class', 'fa fa-star');
-        this.setState({stars: 1});
+        this.setState({ stars: 1 });
     }
 
 
@@ -564,7 +565,7 @@ class ViewCourse extends Component {
         thirdStart.setAttribute('class', 'fa fa-star');
         fourthStart.setAttribute('class', 'fa fa-star');
         fifthStart.setAttribute('class', 'fa fa-star');
-        this.setState({stars: 2});
+        this.setState({ stars: 2 });
     }
 
 
@@ -579,7 +580,7 @@ class ViewCourse extends Component {
         thirdStart.setAttribute('class', 'fa fa-star checked');
         fourthStart.setAttribute('class', 'fa fa-star');
         fifthStart.setAttribute('class', 'fa fa-star');
-        this.setState({stars: 3});
+        this.setState({ stars: 3 });
     }
 
     fourthStartPressed = () => {
@@ -593,7 +594,7 @@ class ViewCourse extends Component {
         thirdStart.setAttribute('class', 'fa fa-star checked');
         fourthStart.setAttribute('class', 'fa fa-star checked');
         fifthStart.setAttribute('class', 'fa fa-star');
-        this.setState({stars: 4});
+        this.setState({ stars: 4 });
     }
 
     fifthStartPressed = () => {
@@ -607,7 +608,7 @@ class ViewCourse extends Component {
         thirdStart.setAttribute('class', 'fa fa-star checked');
         fourthStart.setAttribute('class', 'fa fa-star checked');
         fifthStart.setAttribute('class', 'fa fa-star checked');
-        this.setState({stars: 5});
+        this.setState({ stars: 5 });
     }
 
     rateCourse = async () => {

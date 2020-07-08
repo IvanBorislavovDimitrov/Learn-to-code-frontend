@@ -33,7 +33,7 @@ class Footer extends Component {
                             <div class="col-lg-3 col-md-6 footer-contact">
                                 <h4>Свържете се с нас</h4>
                                 <p>
-                                Булевар "Свети Климент Охридски" 8, 1756 Студентски Комплекс, София, България<br />
+                                Булевард "Свети Климент Охридски" 8, 1756 Студентски Комплекс, София, България<br />
             <br /><br />
                                     <strong>Телефон:</strong> +359 877 591 400<br />
                                     <strong>Имейл:</strong> starstrucks1997@gmail.com<br />
