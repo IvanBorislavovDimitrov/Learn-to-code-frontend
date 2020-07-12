@@ -106,10 +106,6 @@ class ContactUs extends Component {
     }
 
     sendContactUsForm = () => {
-        console.log('username', this.state.username);
-        console.log('email', this.state.email);
-        console.log('subject', this.state.subject);
-        console.log('message', this.state.message);
         const currentThis = this;
         const contactUsForm = {
             username: currentThis.state.username,

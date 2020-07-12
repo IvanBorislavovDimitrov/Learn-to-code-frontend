@@ -294,8 +294,6 @@ class UpdateCourse extends Component {
         async function addNewCourse() {
             const registerFormData = new FormData();
             const shouldUpdateContentInputField = document.getElementById('shouldUpdateContentInputField');
-            console.log('MARIANA CORDOBA', shouldUpdateContentInputField.checked);
-
             if (shouldUpdateContentInputField.checked === true) {
                 for (let i = 1; i < currentThis.state.coursePartsCount; i++) {
                     const partName = document.getElementById('coursePartName' + i);

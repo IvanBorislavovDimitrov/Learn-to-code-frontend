@@ -165,10 +165,8 @@ class Courses extends Component {
             }
         }
         const checkedCategory = document.querySelector('input[name="category-for-course-radio"]:checked');
-        console.log('kurvvii');
         if (checkedCategory != null)
             console.log(checkedCategory.textContent);
-        console.log('kurvvii');
         if (checkedCategory != null) {
             if (coursesResource.endsWith('?')) {
                 coursesResource += 'category=' + checkedCategory.textContent;

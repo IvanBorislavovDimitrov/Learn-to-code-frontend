@@ -258,6 +258,8 @@ class ViewCourse extends Component {
             let courseModel = JSON.parse(JSON.stringify(coursesResponseJson));
             const agenda = document.getElementById('agenda');
             let count = 1;
+            console.log(courseModel['videosNames']);
+            const isEnrolled = await currentThis.hasUserPaidForTheCourse();
             courseModel["videosNames"].forEach(async video => {
                 const firstDiv = document.createElement('div');
                 firstDiv.setAttribute('class', 'post-item clearfix');
@@ -275,7 +277,6 @@ class ViewCourse extends Component {
                 const tdName = document.createElement('td');
                 tdName.textContent = video['videoTitle'];
                 const tdLink = document.createElement('td');
-                const isEnrolled = await currentThis.hasUserPaidForTheCourse();
                 if (count === 1) {
                     tdLink.appendChild(button);
                 } else if (isEnrolled) {
@@ -446,7 +447,6 @@ class ViewCourse extends Component {
                 const jsonResponse = await response.json();
                 const hasUserPaidForCourse = JSON.parse(JSON.stringify(jsonResponse))['hasUserPaidForCourse'];
                 value = hasUserPaidForCourse;
-                console.log(":asdasdasdasdasdasdasd", hasUserPaidForCourse);
                 currentThis.setState({
                     hasUserPaidForCourse: hasUserPaidForCourse
                 });
@@ -471,7 +471,6 @@ class ViewCourse extends Component {
         if (courseName.endsWith('#')) {
             courseName = courseName.substring(0, courseName.length - 2);
         }
-        console.log('courssdsdsds', courseName);
         fetch(process.env.REACT_APP_URL + '/courses/enroll/' + courseName, {
             method: 'POST',
             credentials: 'include',
@@ -655,7 +654,6 @@ class ViewCourse extends Component {
         const fourthStart = document.getElementById('fourthStarRating');
         const fifthStart = document.getElementById('fifthStarRating');
         const rating = Number.parseFloat(this.state.rating);
-        console.log('malii', rating);
         if (rating > 4.5) {
             firstStart.setAttribute('class', 'fa fa-star checked');
             secondStart.setAttribute('class', 'fa fa-star checked');
@@ -712,7 +710,6 @@ class ViewCourse extends Component {
         }).catch(error => {
             console.log(error);
         });
-        console.log('Shte eba', value)
         return value;
     }
 }

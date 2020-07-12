@@ -97,7 +97,6 @@ class OtherUserProfile extends Component {
             credentials: 'include'
         }).then(async response => {
             if (response.status !== 200) {
-                console.log('pishki', response.status)
                 return;
             }
             const jsonResponse = await response.json();
