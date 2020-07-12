@@ -17,8 +17,8 @@ class ContactUs extends Component {
             <React.Fragment>
                 <main id="main">
 
-                    <section id="breadcrumbs" class="breadcrumbs">
-                        <div class="container">
+                    <section id="breadcrumbs" className="breadcrumbs">
+                        <div className="container">
 
                             <ol>
                                 <li><a href="index.html">Начало</a></li>
@@ -29,29 +29,29 @@ class ContactUs extends Component {
                         </div>
                     </section>
 
-                    <section id="contact" class="contact">
-                        <div class="container">
+                    <section id="contact" className="contact">
+                        <div className="container">
 
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="info-box mb-4 card">
-                                        <i class="bx bx-map"></i>
+                            <div className="row">
+                                <div className="col-lg-6">
+                                    <div className="info-box mb-4 card">
+                                        <i className="bx bx-map"></i>
                                         <h3>Нашият адрес</h3>
                                         <p>Булевар "Свети Климент Охридски" 8, 1756 Студентски Комплекс, София, България</p>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="info-box  mb-4 card">
-                                        <i class="bx bx-envelope"></i>
+                                <div className="col-lg-3 col-md-6">
+                                    <div className="info-box  mb-4 card">
+                                        <i className="bx bx-envelope"></i>
                                         <h3>Нашият имейл</h3>
                                         <p>starstrucks1997@gmail.com</p>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="info-box  mb-4 card">
-                                        <i class="bx bx-phone-call"></i>
+                                <div className="col-lg-3 col-md-6">
+                                    <div className="info-box  mb-4 card">
+                                        <i className="bx bx-phone-call"></i>
                                         <h3>Нашият телефонен номер</h3>
                                         <p>+359 877 591 400</p>
                                     </div>

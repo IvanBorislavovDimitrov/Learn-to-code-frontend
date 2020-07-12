@@ -63,8 +63,8 @@ class Index extends Component {
 
                         <div id="remove1" className="col-md-4 mb-5">
                             <div className="card h-100 justify-content-center align-items-center">
-                                <div class="spinner-border text-warning" role="status">
-                                    <span class="sr-only">Loading...</span>
+                                <div className="spinner-border text-warning" role="status">
+                                    <span className="sr-only">Loading...</span>
                                 </div>
                                 <div className="card-body">
                                     <h4 className="card-title"></h4>
@@ -75,8 +75,8 @@ class Index extends Component {
 
                         <div id="remove2" className="col-md-4 mb-5">
                             <div className="card h-100 justify-content-center align-items-center">
-                                <div class="spinner-border text-warning" role="status">
-                                    <span class="sr-only">Loading...</span>
+                                <div className="spinner-border text-warning" role="status">
+                                    <span className="sr-only">Loading...</span>
                                 </div>
                                 <div className="card-body">
                                     <h4 className="card-title"></h4>
@@ -87,8 +87,8 @@ class Index extends Component {
 
                         <div id="remove3" className="col-md-4 mb-5">
                             <div className="card h-100 justify-content-center align-items-center">
-                                <div class="spinner-border text-warning" role="status">
-                                    <span class="sr-only">Loading...</span>
+                                <div className="spinner-border text-warning" role="status">
+                                    <span className="sr-only">Loading...</span>
                                 </div>
                                 <div className="card-body">
                                     <h4 className="card-title"></h4>

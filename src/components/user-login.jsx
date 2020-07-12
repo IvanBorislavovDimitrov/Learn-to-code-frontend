@@ -43,7 +43,7 @@ class UserLogin extends Component {
                                 placeholder="Парола"
                             />
                         </div>
-                        <div hidden={this.state.hideInvalidUsernamePassword} class="text-danger mb-3">Невалидно потребителско име или парола
+                        <div hidden={this.state.hideInvalidUsernamePassword} className="text-danger mb-3">Невалидно потребителско име или парола
                         </div>
                         <button type="submit" className="btn btn-info btn-block">
                             Вход

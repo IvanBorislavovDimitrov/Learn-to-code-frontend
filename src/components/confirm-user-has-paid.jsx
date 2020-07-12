@@ -18,13 +18,13 @@ class ConfirmUserHasPaid extends Component {
                         <tbody id="contacts">
                         <tr id="loading">
                             <td>
-                                <div class="spinner-border text-warning" role="status"></div>
+                                <div className="spinner-border text-warning" role="status"></div>
                             </td>
                             <td>
-                                <div class="spinner-border text-warning" role="status"></div>
+                                <div className="spinner-border text-warning" role="status"></div>
                             </td>
                             <td>
-                                <div class="spinner-border text-warning" role="status"></div>
+                                <div className="spinner-border text-warning" role="status"></div>
                             </td>
                         </tr>
                         </tbody>

@@ -31,7 +31,7 @@ class AddCourseCategory extends Component {
                                     placeholder="Име на категорията на курса"
                                     onChange={this.changeInputField}
                                 />
-                                <div hidden={!this.state.isNameInvalid} class="text-danger mb-3">Въведи име!</div>
+                                <div hidden={!this.state.isNameInvalid} className="text-danger mb-3">Въведи име!</div>
                                 <textarea
                                     name="courseCategoryDescription"
                                     className="form-control"
@@ -40,7 +40,7 @@ class AddCourseCategory extends Component {
                                     rows="10"
                                     onChange={this.changeInputField}
                                 />
-                                <div hidden={!this.state.isDescInvalid} class="text-danger mb-3">Въведи описание!</div>
+                                <div hidden={!this.state.isDescInvalid} className="text-danger mb-3">Въведи описание!</div>
                                 <div className="form-group mt-3">
                                     <small id="fileHelp" className="form-text text-muted">Изображение</small>
                                     <input
@@ -52,7 +52,7 @@ class AddCourseCategory extends Component {
                                         aria-describedby="fileHelp"
                                         name="thumbnail"
                                     />
-                                    <div hidden={!this.state.isImageInvalid} class="text-danger mb-3">Въведи изображение!</div>
+                                    <div hidden={!this.state.isImageInvalid} className="text-danger mb-3">Въведи изображение!</div>
                                 </div>
                             </div>
                             <button type="submit" className="btn btn-info">

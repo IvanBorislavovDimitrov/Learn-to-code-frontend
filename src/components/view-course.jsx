@@ -132,37 +132,26 @@ class ViewCourse extends Component {
                                         <div id="rateDialog" className="reply-form custom-white">
                                             <h4>Ревю</h4>
                                             <span onClick={this.firstStartPressed} id="firstStar"
-                                                class="fa fa-star checked"></span>
+                                                className="fa fa-star checked"></span>
                                             <span onClick={this.secondStartPressed} id="secondStar"
-                                                class="fa fa-star checked"></span>
+                                                className="fa fa-star checked"></span>
                                             <span onClick={this.thirdStartPressed} id="thirdStar"
-                                                class="fa fa-star checked"></span>
+                                                className="fa fa-star checked"></span>
                                             <span onClick={this.fourthStartPressed} id="fourthStar"
-                                                class="fa fa-star checked"></span>
+                                                className="fa fa-star checked"></span>
                                             <span onClick={this.fifthStartPressed} id="fifthStar"
-                                                class="fa fa-star checked"></span>
+                                                className="fa fa-star checked"></span>
                                             <br />
                                             <button onClick={this.rateCourse} className="mt-3 btn btn-primary">Оцени
                                             </button>
                                         </div>
-                                        {/* 
-                                        <div className="reply-form card">
-                                            <h4>Rate this course</h4>
-                                            <select class="browser-default custom-select">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                            <button type="submit" className="btn btn-primary mt-3">Rate</button>
-                                        </div> */}
                                     </div>
                                 </div>
                                 <div className="col-lg-4">
                                     <div className="sidebar card">
                                         <h3 className="sidebar-title">Съдържание</h3>
                                         <div id="agenda" className="sidebar-item h6 ">
-                                            <table class="table table-hover table-dark">
+                                            <table className="table table-hover table-dark">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">#</th>
@@ -178,11 +167,11 @@ class ViewCourse extends Component {
                                     </div>
                                     <div className="sidebar custom-white">
                                         <h3 className="sidebar-title">Оценка</h3>
-                                        <span id="firstStarRating" class="fa fa-star checked"></span>
-                                        <span id="secondStarRating" class="fa fa-star checked"></span>
-                                        <span id="thirdStarRating" class="fa fa-star checked"></span>
-                                        <span id="fourthStarRating" class="fa fa-star checked"></span>
-                                        <span id="fifthStarRating" class="fa fa-star checked"></span>
+                                        <span id="firstStarRating" className="fa fa-star checked"></span>
+                                        <span id="secondStarRating" className="fa fa-star checked"></span>
+                                        <span id="thirdStarRating" className="fa fa-star checked"></span>
+                                        <span id="fourthStarRating" className="fa fa-star checked"></span>
+                                        <span id="fifthStarRating" className="fa fa-star checked"></span>
                                         <h3>{Number.parseFloat((this.state.rating)).toFixed(2)} / 5</h3>
                                     </div>
                                 </div>

@@ -38,7 +38,7 @@ class UpdateCourseCategory extends Component {
                                     onChange={this.changeInputField}
                                     value={this.courseCategoryDescription}
                                 />
-                                <div hidden={!this.state.isDescInvalid} class="text-danger mb-3">Въведи описание!</div>
+                                <div hidden={!this.state.isDescInvalid} className="text-danger mb-3">Въведи описание!</div>
                                 <div className="form-group mt-3">
                                     <small id="fileHelp" className="form-text text-muted">Изображение</small>
                                     <input
@@ -50,7 +50,7 @@ class UpdateCourseCategory extends Component {
                                         aria-describedby="fileHelp"
                                         name="thumbnail"
                                     />
-                                    <div hidden={!this.state.isImageInvalid} class="text-danger mb-3">Въведи описание!</div>
+                                    <div hidden={!this.state.isImageInvalid} className="text-danger mb-3">Въведи описание!</div>
                                 </div>
                             </div>
                             <button type="submit" className="btn btn-dark">

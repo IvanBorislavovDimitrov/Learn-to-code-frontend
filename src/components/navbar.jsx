@@ -32,25 +32,25 @@ class Navbar extends Component {
                         <ul className="navbar-nav nav ml-auto">
 
 
-                            <div class="dropdown show mr-3">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div className="dropdown show mr-3">
+                                <a className="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     За нас
   </a>
 
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="/information/about-us">За нас</a>
-                                    <a class="dropdown-item" href="/information/team">Нашите прeподаватели</a>
+                                <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a className="dropdown-item" href="/information/about-us">За нас</a>
+                                    <a className="dropdown-item" href="/information/team">Нашите прeподаватели</a>
                                 </div>
                             </div>
                             <li className="nav-item">
                                 <a className="nav-link mr-3" href="/contact-us">Свържете се с нас</a>
                             </li>
 
-                            <div class="dropdown">
-                                <a class="nav-link dropdown-toggle mr-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div className="dropdown">
+                                <a className="nav-link dropdown-toggle mr-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Категории
   </a>
-                                <div id="categories" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <div id="categories" className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 </div>
                             </div>
 

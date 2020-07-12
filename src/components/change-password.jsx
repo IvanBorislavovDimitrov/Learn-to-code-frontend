@@ -44,7 +44,7 @@ class ChangePassword extends Component {
                                 placeholder="Повтори новата парола"
                             />
                         </div>
-                        <div hidden={this.state.hideInvalidUsernamePassword} class="text-danger mb-3">Невалидно потребителско име или парола.</div>
+                        <div hidden={this.state.hideInvalidUsernamePassword} className="text-danger mb-3">Невалидно потребителско име или парола.</div>
                         <button type="submit" className="btn btn-info btn-block">
                             Промени парола
                         </button>

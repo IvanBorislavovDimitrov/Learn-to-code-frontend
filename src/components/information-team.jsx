@@ -6,8 +6,8 @@ class Team extends Component {
         return (
             <React.Fragment>
 
-                <section id="breadcrumbs" class="breadcrumbs">
-                    <div class="container">
+                <section id="breadcrumbs" className="breadcrumbs">
+                    <div className="container">
                         <ol>
                             <li><a href="index.html">Начало</a></li>
                             <li>Преподаватели</li>
@@ -16,9 +16,9 @@ class Team extends Component {
                     </div>
                 </section>
 
-                <section id="team" class="team">
-                    <div class="container">
-                        <div id="teachers" class="row">
+                <section id="team" className="team">
+                    <div className="container">
+                        <div id="teachers" className="row">
 
                         </div>
                     </div>

@@ -6,10 +6,10 @@ class Footer extends Component {
             <React.Fragment>
                 <footer className="mt-4 py-5 bg-dark text-light">
 
-                    <div class="container">
-                        <div class="row">
+                    <div className="container">
+                        <div className="row">
 
-                            <div class="col-lg-3 col-md-6 footer-links">
+                            <div className="col-lg-3 col-md-6 footer-links">
                                 <h4>Полезни препратки</h4>
                                 <ul>
                                     <li><a href="/">Начало</a></li>
@@ -19,7 +19,7 @@ class Footer extends Component {
                                 </ul>
                             </div>
 
-                            <div class="col-lg-3 col-md-6 footer-links">
+                            <div className="col-lg-3 col-md-6 footer-links">
                                 <h4>Външни препратки</h4>
                                 <ul>
                                     <li><a href="https://www.udemy.com/courses/design/web-design/?search-query=web+design">Уеб дизайн</a></li>
@@ -30,7 +30,7 @@ class Footer extends Component {
                                 </ul>
                             </div>
 
-                            <div class="col-lg-3 col-md-6 footer-contact">
+                            <div className="col-lg-3 col-md-6 footer-contact">
                                 <h4>Свържете се с нас</h4>
                                 <p>
                                 Булевард "Свети Климент Охридски" 8, 1756 Студентски Комплекс, София, България<br />
@@ -41,15 +41,15 @@ class Footer extends Component {
 
                             </div>
 
-                            <div class="col-lg-3 col-md-6 footer-info">
+                            <div className="col-lg-3 col-md-6 footer-info">
                                 <h3>За "Научи се да пишеш код"</h3>
                                 <p>Нова и иновативна технология за онлайн обучения.</p>
-                                <div class="social-links mt-3">
-                                    <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                                    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                                    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                                    <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                                    <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                                <div className="social-links mt-3">
+                                    <a href="#" className="twitter"><i className="bx bxl-twitter"></i></a>
+                                    <a href="#" className="facebook"><i className="bx bxl-facebook"></i></a>
+                                    <a href="#" className="instagram"><i className="bx bxl-instagram"></i></a>
+                                    <a href="#" className="google-plus"><i className="bx bxl-skype"></i></a>
+                                    <a href="#" className="linkedin"><i className="bx bxl-linkedin"></i></a>
                                 </div>
                             </div>
 

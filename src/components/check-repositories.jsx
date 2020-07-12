@@ -21,12 +21,12 @@ class CheckRepositories extends Component {
                         </thead>
                         <tbody id="repositories">
                             <tr id="loading">
-                                <td><div class="spinner-border text-warning" role="status"></div></td>
-                                <td><div class="spinner-border text-warning" role="status"></div></td>
-                                <td><div class="spinner-border text-warning" role="status"></div></td>
-                                <td><div class="spinner-border text-warning" role="status"></div></td>
-                                <td><div class="spinner-border text-warning" role="status"></div></td>
-                                <td><div class="spinner-border text-warning" role="status"></div></td>
+                                <td><div className="spinner-border text-warning" role="status"></div></td>
+                                <td><div className="spinner-border text-warning" role="status"></div></td>
+                                <td><div className="spinner-border text-warning" role="status"></div></td>
+                                <td><div className="spinner-border text-warning" role="status"></div></td>
+                                <td><div className="spinner-border text-warning" role="status"></div></td>
+                                <td><div className="spinner-border text-warning" role="status"></div></td>
                             </tr>
                         </tbody>
                     </table>

@@ -47,8 +47,8 @@ class UpdateCourse extends Component {
                                 id="nameInputField"
                                 placeholder="Име"
                             />
-                            <div hidden={!this.state.nameInputFieldNotEntered} class="text-danger mb-3">Въведи име!</div>
-                            <div hidden={!this.state.courseNameTaken} class="text-danger mb-3">Името е заето!</div>
+                            <div hidden={!this.state.nameInputFieldNotEntered} className="text-danger mb-3">Въведи име!</div>
+                            <div hidden={!this.state.courseNameTaken} className="text-danger mb-3">Името е заето!</div>
                         </div>
                         <button onClick={this.loadCourse} className="btn btn-primary btn-block mb-3" type="button">Зареди курс</button>
 
@@ -62,7 +62,7 @@ class UpdateCourse extends Component {
                                 id="startDateInputField"
                                 placeholder="Дата на издаване"
                             />
-                            <div hidden={!this.state.startDateInputFieldNotEntered} class="text-danger mb-3">Въведи дата на издаване!</div>
+                            <div hidden={!this.state.startDateInputFieldNotEntered} className="text-danger mb-3">Въведи дата на издаване!</div>
                         </div>
 
                         <div className="form-group">
@@ -75,14 +75,14 @@ class UpdateCourse extends Component {
                                 className="form-control"
                                 placeholder="Price"
                             />
-                            <div hidden={!this.state.priceOfCourseInputFieldNotEntered} class="text-danger mb-3">Въведи цена на курс!</div>
+                            <div hidden={!this.state.priceOfCourseInputFieldNotEntered} className="text-danger mb-3">Въведи цена на курс!</div>
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="descriptionTextArea">Описание</label>
                             <textarea onChange={this.changeInputField} name="description" className="form-control"
                                 id="descriptionTextAreaField" rows="3"></textarea>
-                            <div hidden={!this.state.descriptionOfCourseFieldNotEntered} class="text-danger mb-3">Въведи описание!</div>
+                            <div hidden={!this.state.descriptionOfCourseFieldNotEntered} className="text-danger mb-3">Въведи описание!</div>
                         </div>
 
                         <div className="form-group">
@@ -102,18 +102,18 @@ class UpdateCourse extends Component {
                                 id="teacherNameInputField"
                                 placeholder="Име на преподавател"
                             />
-                            <div hidden={!this.state.teacherNameInputFieldNotEntered} class="text-danger mb-3">Въведи име на преподавател!</div>
+                            <div hidden={!this.state.teacherNameInputFieldNotEntered} className="text-danger mb-3">Въведи име на преподавател!</div>
                             {this.checkUser()}
                         </form>
 
 
-                        <div class="form-check mt-5">
-                            <input name="shouldUpdateContent" type="checkbox" class="form-check-input" id="shouldUpdateContentInputField" />
-                            <label class="form-check-label" for="shouldUpdateContentInputField">Редактирай съдържание</label>
+                        <div className="form-check mt-5">
+                            <input name="shouldUpdateContent" type="checkbox" className="form-check-input" id="shouldUpdateContentInputField" />
+                            <label className="form-check-label" for="shouldUpdateContentInputField">Редактирай съдържание</label>
                         </div>
 
-                        <div id="parts" class="row mt-4">
-                            <div class="col-sm-8">
+                        <div id="parts" className="row mt-4">
+                            <div className="col-sm-8">
                                 <input
                                     id="coursePartName1"
                                     onChange={this.changeInputField}
@@ -121,9 +121,9 @@ class UpdateCourse extends Component {
                                     className="form-control"
                                     placeholder="Име на част"
                                 />
-                                <div hidden={!this.state.partInputFieldNotEntered} class="text-danger mb-3">Въведи поне една част (Начало)!</div>
+                                <div hidden={!this.state.partInputFieldNotEntered} className="text-danger mb-3">Въведи поне една част (Начало)!</div>
                             </div>
-                            <div class="col-sm-4">
+                            <div className="col-sm-4">
                                 <input
                                     onChange={this.changeInputField}
                                     ref={this.videoFileUpload}
@@ -152,12 +152,12 @@ class UpdateCourse extends Component {
                                 aria-describedby="fileHelp"
                                 name="thumbnail"
                             />
-                            <div hidden={!this.state.thumbnailInputFieldNotEntered} class="text-danger mb-3">Въведи изображение!</div>
+                            <div hidden={!this.state.thumbnailInputFieldNotEntered} className="text-danger mb-3">Въведи изображение!</div>
                         </div>
                         <br />
                         <div hidden={!this.state.loading} id="loading">
                             <div id="remove1" className="mb-3">
-                                <div class="spinner-border text-warning" role="status">
+                                <div className="spinner-border text-warning" role="status">
                                 </div>
                             </div>
                         </div>
