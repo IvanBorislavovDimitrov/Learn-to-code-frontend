@@ -60,7 +60,7 @@ class FinishCartPurchase extends Component {
                 const actions = document.createElement('td');
                 const removeButton = document.createElement('button');
                 removeButton.setAttribute('class', 'btn btn-danger btn-sm');
-                removeButton.textContent = 'Remove';
+                removeButton.textContent = 'Премахни';
                 removeButton.onclick = () => {
                     async function removeFromCart() {
                         return await fetch(process.env.REACT_APP_URL + '/courses/cart/remove/' + course['name'], {
@@ -96,7 +96,7 @@ class FinishCartPurchase extends Component {
             finalPrice.setAttribute('colSpan', '3');
             const finalAction = document.createElement('td');
             const finalizeButton = document.createElement('button');
-            finalizeButton.textContent = 'Finish';
+            finalizeButton.textContent = 'Завърши';
             finalizeButton.setAttribute('class', 'btn btn-danger btn');
             finalizeButton.onclick = () => {
                 async function enrollForCoursesFromCart() {
