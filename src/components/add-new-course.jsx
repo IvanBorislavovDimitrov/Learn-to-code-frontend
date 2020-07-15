@@ -192,6 +192,11 @@ class AddNewCourse extends Component {
 
     addCoursePart = () => {
 
+        if (this.state.coursePartsCount >= 20) {
+            alert("Не можете да добавяте повече курсове");
+            return;
+        }
+
         const firstDiv = document.createElement('div');
         firstDiv.setAttribute('class', 'col-sm-8');
         firstDiv.id = 'coursePartNameDiv' + this.state.coursePartsCount

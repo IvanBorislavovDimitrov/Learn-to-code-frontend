@@ -202,6 +202,11 @@ class UpdateCourse extends Component {
 
     addCoursePart = () => {
 
+        if (this.state.coursePartsCount >= 20) {
+            alert("Не можете да добавяте повече курсове");
+            return;
+        }
+
         const firstDiv = document.createElement('div');
         firstDiv.setAttribute('class', 'col-sm-8');
         firstDiv.id = 'coursePartNameDiv' + this.state.coursePartsCount
@@ -211,7 +216,7 @@ class UpdateCourse extends Component {
         filePartNameInput.id = 'coursePartName' + this.state.coursePartsCount;
         filePartNameInput.type = "text";
         filePartNameInput.setAttribute('class', 'form-control');
-        filePartNameInput.placeholder = 'Име на час';
+        filePartNameInput.placeholder = 'Име на част';
         firstDiv.appendChild(filePartNameInput);
 
         const secondDiv = document.createElement('div');
