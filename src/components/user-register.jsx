@@ -125,7 +125,7 @@ class UserRegister extends Component {
                             <input
                                 onChange={this.changeInputField}
                                 name="password"
-                                type="text"
+                                type="password"
                                 className="form-control"
                                 id="passwordInputField"
                                 placeholder="Парола"
@@ -136,7 +136,7 @@ class UserRegister extends Component {
                             <input
                                 onChange={this.changeInputField}
                                 name="confirmPassword"
-                                type="text"
+                                type="password"
                                 className="form-control"
                                 id="confirmPasswordInputField"
                                 placeholder="Потвърди въведената парола"
