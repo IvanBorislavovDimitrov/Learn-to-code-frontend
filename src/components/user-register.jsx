@@ -202,9 +202,6 @@ class UserRegister extends Component {
 
             const registerResponse = await fetch(process.env.REACT_APP_URL + '/users/register', {
                 method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
                 body: registerFormData
             });
             return registerResponse;

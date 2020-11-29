@@ -47,7 +47,9 @@ class ConfirmUserHasPaid extends Component {
     loadContactUsForms = () => {
         fetch(process.env.REACT_APP_URL + '/courses/unpaid', {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             if (response.status !== 200) {
                 alert('Please reload the page!');
@@ -74,7 +76,9 @@ class ConfirmUserHasPaid extends Component {
                 approve.onclick = () => {
                     fetch(process.env.REACT_APP_URL + '/courses/has-paid/' + contactUsForm['courseName'] + '/' + contactUsForm['username'], {
                         method: 'POST',
-                        credentials: 'include'
+                        headers: {
+                            'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        }
                     }).then(async response => {
                         if (response.status !== 200) {
                             alert('Please reload the page!');

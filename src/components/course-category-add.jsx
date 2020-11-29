@@ -121,9 +121,9 @@ class AddCourseCategory extends Component {
             formData.append('description', currentThis.state.courseCategoryDescription);
             return await fetch(process.env.REACT_APP_URL + '/course-categories/add', {
                 method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
                 body: formData
             });
         }

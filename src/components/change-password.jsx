@@ -67,10 +67,10 @@ class ChangePassword extends Component {
         }
         fetch(process.env.REACT_APP_URL + '/users/change-forgotten-password', {
             method: 'PATCH',
-            credentials: 'include',
             body: JSON.stringify(changePasswordBody),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             }
         }).then(async response => {
             await response.text();

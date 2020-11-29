@@ -94,7 +94,9 @@ class OtherUserProfile extends Component {
         const currentThis = this;
         fetch(process.env.REACT_APP_URL + '/users/' + currentThis.getUsername(), {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             if (response.status !== 200) {
                 return;
@@ -122,7 +124,9 @@ class OtherUserProfile extends Component {
         const currentThis = this;
         fetch(process.env.REACT_APP_URL + '/courses/user/teaches/' + currentThis.getUsername(), {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const coursesForUserJsonResponse = await response.json();
             let coursesMap = JSON.parse(JSON.stringify(coursesForUserJsonResponse));
@@ -167,7 +171,9 @@ class OtherUserProfile extends Component {
         coursesTable.innerHTML = '';
         fetch(process.env.REACT_APP_URL + '/courses/user/' + this.getUsername(), {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const coursesForUserJsonResponse = await response.json();
             let coursesMap = JSON.parse(JSON.stringify(coursesForUserJsonResponse));

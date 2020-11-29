@@ -40,7 +40,9 @@ class FinishCartPurchase extends Component {
         const currentThis = this;
         fetch(process.env.REACT_APP_URL + '/courses/cart/all', {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const jsonResponse = await response.json();
             const coursesInCart = JSON.parse(JSON.stringify(jsonResponse));
@@ -65,10 +67,9 @@ class FinishCartPurchase extends Component {
                     async function removeFromCart() {
                         return await fetch(process.env.REACT_APP_URL + '/courses/cart/remove/' + course['name'], {
                             method: 'POST',
-                            credentials: 'include',
-                            mode: 'cors',
                             headers: {
-                                'Content-Type': 'application/json'
+                                'Content-Type': 'application/json',
+                                'Authorization': 'Bearer ' + localStorage.getItem('token')
                             }
                         });
                     }
@@ -105,9 +106,9 @@ class FinishCartPurchase extends Component {
 
                     return await fetch(process.env.REACT_APP_URL + '/courses/cart/enroll-from-cart', {
                         method: 'POST',
-                        mode: 'cors',
-                        cache: 'no-cache',
-                        credentials: 'include',
+                        headers: {
+                            'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        }
                     });
                 }
 

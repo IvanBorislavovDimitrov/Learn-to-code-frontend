@@ -50,7 +50,9 @@ class DeleteCourse extends Component {
         });
         fetch(process.env.REACT_APP_URL + '/courses/delete/' + this.state.courseName, {
             method: 'DELETE',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const jsonResponse = await response.json();
             console.log(jsonResponse);

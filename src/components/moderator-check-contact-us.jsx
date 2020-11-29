@@ -43,7 +43,9 @@ class ContactUsForms extends Component {
     loadContactUsForms = () => {
         fetch(process.env.REACT_APP_URL + '/contact-us', {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             if (response.status !== 200) {
                 alert('Please reload the page!');

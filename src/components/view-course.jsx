@@ -213,11 +213,9 @@ class ViewCourse extends Component {
         async function sendComment() {
             return await fetch(process.env.REACT_APP_URL + '/comments/add', {
                 method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
                 },
                 body: JSON.stringify(commentRequest)
             });
@@ -241,7 +239,9 @@ class ViewCourse extends Component {
         const currentThis = this;
         await fetch(process.env.REACT_APP_URL + "/courses/" + courseName, {
             method: 'GET',
-            credentials: 'include',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async (response) => {
             const coursesResponseJson = await response.json();
             let courseModel = JSON.parse(JSON.stringify(coursesResponseJson));
@@ -331,7 +331,9 @@ class ViewCourse extends Component {
         const currentThis = this;
         fetch(process.env.REACT_APP_URL + "/comments/all?courseName=" + courseName, {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             if (response.status === 200) {
                 const jsonResponse = await response.json();
@@ -406,7 +408,9 @@ class ViewCourse extends Component {
         let value = false;
         await fetch(process.env.REACT_APP_URL + '/courses/is-enrolled/' + courseName, {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             if (response.status === 200) {
                 const jsonResponse = await response.json();
@@ -430,7 +434,9 @@ class ViewCourse extends Component {
         let value = false;
         await fetch(process.env.REACT_APP_URL + '/courses/has-paid/' + courseName, {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             if (response.status === 200) {
                 const jsonResponse = await response.json();
@@ -462,9 +468,9 @@ class ViewCourse extends Component {
         }
         fetch(process.env.REACT_APP_URL + '/courses/enroll/' + courseName, {
             method: 'POST',
-            credentials: 'include',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             },
             body: JSON.stringify({})
         }).then(async response => {
@@ -488,10 +494,9 @@ class ViewCourse extends Component {
         async function addToCart() {
             return await fetch(process.env.REACT_APP_URL + '/courses/cart/add/' + courseName, {
                 method: 'POST',
-                credentials: 'include',
-                mode: 'cors',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
                 }
             });
         }
@@ -510,7 +515,9 @@ class ViewCourse extends Component {
         const currentCourse = this.getCourseName();
         await fetch(process.env.REACT_APP_URL + '/courses/cart/all', {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const jsonResponse = await response.json();
             const coursesInCart = JSON.parse(JSON.stringify(jsonResponse));
@@ -620,9 +627,9 @@ class ViewCourse extends Component {
         };
         fetch(process.env.REACT_APP_URL + '/courses/rate', {
             method: 'POST',
-            credentials: 'include',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             },
             body: JSON.stringify(requestBody)
         }).then(async response => {
@@ -681,7 +688,9 @@ class ViewCourse extends Component {
         let value = false;
         await fetch(process.env.REACT_APP_URL + '/courses/is-rated?courseName=' + courseName, {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             if (response.status === 200) {
                 const jsonResponse = await response.json();

@@ -18,7 +18,9 @@ class ActivateAccount extends Component {
         const username = this.getUsername();
         fetch(process.env.REACT_APP_URL + '/users/activate/' + username, {
             method: 'POST',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             await response.json();
             if (response.status !== 200) {

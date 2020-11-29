@@ -151,12 +151,10 @@ class ChangeUserRole extends Component {
         async function getUsersByUsername() {
             const usersResponse = await fetch(process.env.REACT_APP_URL + '/users/filter/username?username=' + currentThis.state.username, {
                 method: 'GET',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
                 headers: {
-                    'Content-Type': 'application/json'
-                },
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
             });
             return usersResponse;
         }
@@ -188,9 +186,9 @@ class ChangeUserRole extends Component {
             const usersResponse = await fetch(process.env.REACT_APP_URL + '/users/change-roles/' + currentThis.state.usernameRoleChange
                 + '/?roles=' + roles, {
                 method: 'PUT',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
             });
             return usersResponse;
         }

@@ -1,6 +1,7 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import qs from 'qs'
-import {Button, Modal} from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
+import JwtDecoder from './jwt/jwt-decoder'
 
 class UserLogin extends Component {
     constructor(props) {
@@ -85,7 +86,7 @@ class UserLogin extends Component {
                         <div className="panel panel-default">
                             <div className="text-center">
                                 <div className="text-center">
-                                    <h3><i className="fa fa-lock fa-4x"/></h3>
+                                    <h3><i className="fa fa-lock fa-4x" /></h3>
                                     <h2 className="text-center">Забравена парола?</h2>
                                     <p>Можеш да промениеш паролата си тук.</p>
                                     <div className="panel-body">
@@ -95,21 +96,21 @@ class UserLogin extends Component {
                                             <div className="form-group">
                                                 <div className="input-group">
                                                     <span className="input-group-addon"><i
-                                                        className="glyphicon glyphicon-envelope color-blue"/></span>
+                                                        className="glyphicon glyphicon-envelope color-blue" /></span>
                                                     <input id="usernameInputFieldForRest" name="email"
-                                                           placeholder="Потребителско име"
-                                                           className="form-control" type="email"/>
+                                                        placeholder="Потребителско име"
+                                                        className="form-control" type="email" />
                                                 </div>
                                             </div>
                                             <div className="form-group">
                                                 <input onClick={this.requestResetPassword} name="recover-submit"
-                                                       className="btn btn-lg btn-primary btn-block"
-                                                       value="Нулирай парола"/>
+                                                    className="btn btn-lg btn-primary btn-block"
+                                                    value="Нулирай парола" />
                                             </div>
                                             <h3 hidden={!this.state.emailSent} className="text-danger">Имелй ви бе изпратен!</h3>
 
                                             <input type="hidden" className="hide" name="token" id="token"
-                                                   value=""/>
+                                                value="" />
                                         </div>
 
                                     </div>
@@ -130,7 +131,9 @@ class UserLogin extends Component {
         const username = document.getElementById('usernameInputFieldForRest').value;
         fetch(process.env.REACT_APP_URL + '/users/forgotten-password/' + username, {
             method: 'POST',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             await response.text();
             if (response.status !== 200) {
@@ -155,15 +158,12 @@ class UserLogin extends Component {
         const currentThis = this;
 
         async function doLogin() {
-            return await fetch(process.env.REACT_APP_URL + '/users/login', {
+            return await fetch(process.env.REACT_APP_URL + '/users/authenticate', {
                 method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/json'
                 },
-                body: qs.stringify({
+                body: JSON.stringify({
                     username: currentThis.state.username,
                     password: currentThis.state.password
                 })
@@ -174,14 +174,18 @@ class UserLogin extends Component {
             if (response.status === 200) {
                 localStorage.setItem('loggedUser', this.state.username);
                 const loginResponseBody = await response.json();
-                localStorage.setItem('userRoles', loginResponseBody['roles']);
-                this.props.history.push('/');
-                window.location.reload();
+                const token = loginResponseBody['token'];
+                const jwtDecoder = new JwtDecoder();
+                const decodedToken = jwtDecoder.decodeToken(token);
+                const roles = decodedToken['roles'];
+                localStorage.setItem('token', token);
+                localStorage.setItem('userRoles', roles);
+                window.location.href = '/';
             } else if (response.status === 401) {
                 const usernameInputField = document.getElementById('usernameInputField');
                 usernameInputField.setAttribute('class', 'form-control is-invalid');
-                const passowrdInputField = document.getElementById('passwordInputField');
-                passowrdInputField.setAttribute('class', 'form-control is-invalid');
+                const passwordInputField = document.getElementById('passwordInputField');
+                passwordInputField.setAttribute('class', 'form-control is-invalid');
                 this.setState({
                     hideInvalidUsernamePassword: false
                 });

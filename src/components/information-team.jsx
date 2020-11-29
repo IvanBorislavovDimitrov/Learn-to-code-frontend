@@ -35,7 +35,9 @@ class Team extends Component {
 
         fetch(process.env.REACT_APP_URL + '/users/teachers', {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const jsonResponse = await response.json();
             let teachers = JSON.parse(JSON.stringify(jsonResponse));

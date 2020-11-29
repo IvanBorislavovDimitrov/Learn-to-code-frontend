@@ -115,9 +115,9 @@ class UpdateCourseCategory extends Component {
             formData.append('description', currentThis.state.courseCategoryDescription);
             return await fetch(process.env.REACT_APP_URL + '/course-categories/update', {
                 method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
                 body: formData
             });
         }
@@ -146,7 +146,9 @@ class UpdateCourseCategory extends Component {
     getCourseCategories = () => {
         fetch(process.env.REACT_APP_URL + '/course-categories', {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const jsonResponse = await response.json();
             console.log(jsonResponse);

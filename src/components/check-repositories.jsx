@@ -48,7 +48,9 @@ class CheckRepositories extends Component {
         const currentThis = this;
         fetch(process.env.REACT_APP_URL + '/github/repositories', {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             if (response.status === 401) {
                 currentThis.props.history.push('/user/login');

@@ -244,7 +244,9 @@ class UserProfile extends Component {
         const currentThis = this;
         fetch(process.env.REACT_APP_URL + '/users/user', {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             if (response.status !== 200) {
                 this.props.history.push('/users/login');
@@ -293,7 +295,9 @@ class UserProfile extends Component {
         };
         fetch(process.env.REACT_APP_URL + '/users/update/basic/' + loggedUser, {
             method: 'PATCH',
-            credentials: 'include',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            },
             body: JSON.stringify(userUpdateForm),
             headers: {
                 'Content-Type': 'application/json'
@@ -319,7 +323,9 @@ class UserProfile extends Component {
         console.log(passwordModel);
         fetch(process.env.REACT_APP_URL + '/users/update/password', {
             method: 'PATCH',
-            credentials: 'include',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            },
             body: JSON.stringify(passwordModel),
             headers: {
                 'Content-type': 'application/json'
@@ -389,7 +395,9 @@ class UserProfile extends Component {
         const loggedUser = localStorage.getItem('loggedUser');
         fetch(process.env.REACT_APP_URL + '/courses/user/teaches/' + loggedUser, {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const coursesForUserJsonResponse = await response.json();
             let coursesMap = JSON.parse(JSON.stringify(coursesForUserJsonResponse));
@@ -435,7 +443,9 @@ class UserProfile extends Component {
         const loggedUser = localStorage.getItem('loggedUser');
         fetch(process.env.REACT_APP_URL + '/courses/user/' + loggedUser, {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const coursesForUserJsonResponse = await response.json();
             let coursesMap = JSON.parse(JSON.stringify(coursesForUserJsonResponse));
@@ -484,8 +494,10 @@ class UserProfile extends Component {
         let loggedUser = localStorage.getItem('loggedUser');
         fetch(process.env.REACT_APP_URL + '/users/change-profile-picture/' + loggedUser, {
             method: 'POST',
-            credentials: 'include',
-            body: registerFormData
+            body: registerFormData,
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             await response.text();
             if (response.status === 200) {
@@ -500,7 +512,9 @@ class UserProfile extends Component {
     deactivateUser = () => {
         fetch(process.env.REACT_APP_URL + '/users/update/deactivate', {
             method: 'POST',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             await response.text();
             if (response.status !== 200) {

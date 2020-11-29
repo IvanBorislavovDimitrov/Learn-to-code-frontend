@@ -270,7 +270,9 @@ class Index extends Component {
     checkUserGithubAccessAvailable = () => {
         fetch(process.env.REACT_APP_URL + "/github/user", {
             method: 'GET',
-            credentials: 'include',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async (res) => {
             const jsonResponse = await res.json();
             this.setState({
@@ -285,7 +287,9 @@ class Index extends Component {
     getCourses = async (endpoint) => {
         await fetch(process.env.REACT_APP_URL + endpoint, {
             method: 'GET',
-            credentials: 'include',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async (res) => {
             let coursesLatest = await res.json();
             let courses = JSON.parse(JSON.stringify(coursesLatest));
@@ -456,7 +460,9 @@ class Index extends Component {
     getCategoriesWithMostCourses = () => {
         fetch(process.env.REACT_APP_URL + '/course-categories/top?limit=6', {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const jsonResponse = await response.json();
             let categories = JSON.parse(JSON.stringify(jsonResponse));
@@ -491,7 +497,9 @@ class Index extends Component {
 
         fetch(process.env.REACT_APP_URL + '/course-categories/' + categoryName, {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const jsonResponse = await response.json();
             let category = JSON.parse(JSON.stringify(jsonResponse));

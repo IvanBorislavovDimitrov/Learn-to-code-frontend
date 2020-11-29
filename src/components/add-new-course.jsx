@@ -169,9 +169,9 @@ class AddNewCourse extends Component {
         async function getCourseCategories() {
             return await fetch(process.env.REACT_APP_URL + '/course-categories', {
                 method: 'GET',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
             });
         }
 
@@ -317,9 +317,9 @@ class AddNewCourse extends Component {
             }
             const registerResponse = await fetch(process.env.REACT_APP_URL + '/courses/add', {
                 method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
                 body: registerFormData
             });
             return registerResponse;
@@ -371,12 +371,10 @@ class AddNewCourse extends Component {
         async function getUsersByUsername() {
             return await fetch(process.env.REACT_APP_URL + '/users/filter/username?username=' + currentThis.state.teacherName, {
                 method: 'GET',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
                 headers: {
-                    'Content-Type': 'application/json'
-                },
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
             });
         }
 

@@ -48,7 +48,9 @@ class DeleteComment extends Component {
         const commentId = this.getCommentId();
         fetch(process.env.REACT_APP_URL + '/comments/' + commentId, {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const jsonResponse = await response.json();
             let commentMap = JSON.parse(JSON.stringify(jsonResponse));
@@ -71,9 +73,9 @@ class DeleteComment extends Component {
 
         fetch(process.env.REACT_APP_URL + '/comments/delete/' + commentId, {
             method: 'DELETE',
-            credentials: 'include',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             }
         }).then(async response => {
             await response.json();

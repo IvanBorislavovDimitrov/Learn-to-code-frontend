@@ -80,11 +80,9 @@ class DeleteUser extends Component {
         async function getUsersByUsername() {
             const usersResponse = await fetch(process.env.REACT_APP_URL + '/users/filter/username?username=' + currentThis.state.username, {
                 method: 'GET',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
                 },
             });
             return usersResponse;
@@ -109,7 +107,9 @@ class DeleteUser extends Component {
     deactivateUser = () => {
         fetch(process.env.REACT_APP_URL + '/users/update/deactivate/' + this.state.username, {
             method: 'POST',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             await response.text();
             if (response.status !== 200) {

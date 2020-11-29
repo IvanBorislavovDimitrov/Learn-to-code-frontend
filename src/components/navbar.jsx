@@ -102,11 +102,14 @@ class Navbar extends Component {
     }
 
     logout = function () {
+        localStorage.removeItem('token');
         localStorage.removeItem('loggedUser');
         localStorage.removeItem('userRoles');
         fetch(process.env.REACT_APP_URL + "/users/logout", {
             method: 'POST',
-            credentials: 'include',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async res => {
             await res.text();
             localStorage.setItem('firstEnterSeen', false);
@@ -171,7 +174,9 @@ class Navbar extends Component {
         const currentThis = this;
         fetch(process.env.REACT_APP_URL + '/courses/cart/all', {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const jsonResponse = await response.json();
             const coursesInCart = JSON.parse(JSON.stringify(jsonResponse));
@@ -190,10 +195,9 @@ class Navbar extends Component {
                     async function removeFromCart() {
                         return await fetch(process.env.REACT_APP_URL + '/courses/cart/remove/' + course['name'], {
                             method: 'POST',
-                            credentials: 'include',
-                            mode: 'cors',
                             headers: {
-                                'Content-Type': 'application/json'
+                                'Content-Type': 'application/json',
+                                'Authorization': 'Bearer ' + localStorage.getItem('token')
                             }
                         });
                     }
@@ -222,12 +226,13 @@ class Navbar extends Component {
         let loggedUser = localStorage.getItem('loggedUser');
         fetch(process.env.REACT_APP_URL + '/users/session', {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             if (response.status === 200) {
                 const jsonResponse = await response.json();
                 const userMap = JSON.parse(JSON.stringify(jsonResponse));
-                console.log(userMap['username']);
                 if (loggedUser !== userMap['username']) {
                     localStorage.removeItem('loggedUser');
                     localStorage.removeItem('userRoles');
@@ -244,7 +249,9 @@ class Navbar extends Component {
     loadCategories = () => {
         fetch(process.env.REACT_APP_URL + '/course-categories', {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const jsonResponse = await response.json();
             let categories = JSON.parse(JSON.stringify(jsonResponse));

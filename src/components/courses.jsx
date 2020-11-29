@@ -106,7 +106,9 @@ class Courses extends Component {
     loadCategories = () => {
         fetch(process.env.REACT_APP_URL + "/course-categories", {
             method: 'GET',
-            credentials: 'include',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async (res) => {
             const courseCategoriesjson = await res.json();
             const courseCategoriesUl = document.getElementById('course-categories-ul');
@@ -184,7 +186,9 @@ class Courses extends Component {
         const currentThis = this;
         fetch(process.env.REACT_APP_URL + coursesResource, {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async res => {
             const coursesJson = await res.json();
             const parsedCourses = JSON.parse(JSON.stringify(coursesJson));
@@ -339,7 +343,9 @@ class Courses extends Component {
         }
         fetch(process.env.REACT_APP_URL + "/courses/pages-count" + courseNameFilter, {
             method: 'GET',
-            credentials: 'include',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async (res) => {
             const pagesCountJson = await res.json();
             const pagesCount = JSON.parse(JSON.stringify(pagesCountJson));

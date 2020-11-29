@@ -179,9 +179,9 @@ class UpdateCourse extends Component {
         async function getCourseCategories() {
             return await fetch(process.env.REACT_APP_URL + '/course-categories', {
                 method: 'GET',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
             });
         }
 
@@ -332,9 +332,9 @@ class UpdateCourse extends Component {
             const update = shouldUpdateContentInputField.checked === true;
             const registerResponse = await fetch(process.env.REACT_APP_URL + '/courses/update?shouldUpdateContent=' + update, {
                 method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
                 body: registerFormData
             });
             return registerResponse;
@@ -387,11 +387,9 @@ class UpdateCourse extends Component {
         async function getUsersByUsername() {
             return await fetch(process.env.REACT_APP_URL + '/users/filter/username?username=' + currentThis.state.teacherName, {
                 method: 'GET',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
                 },
             });
         }
@@ -488,7 +486,9 @@ class UpdateCourse extends Component {
         const currentThis = this;
         fetch(process.env.REACT_APP_URL + "/courses/" + this.state.name, {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const jsonResponse = await response.json();
             let courseMap = JSON.parse(JSON.stringify(jsonResponse));

@@ -36,7 +36,9 @@ class SingleRepository extends Component {
         const repositoryName = this.getRepositoryName();
         fetch(process.env.REACT_APP_URL + '/github/repositories/' + repositoryName, {
             method: 'GET',
-            credentials: 'include'
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
         }).then(async response => {
             const jsonResponse = await response.json();
             let repositoryMap = JSON.parse(JSON.stringify(jsonResponse));
