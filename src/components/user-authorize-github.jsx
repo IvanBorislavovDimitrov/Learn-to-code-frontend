@@ -36,7 +36,7 @@ class UserAuthorize extends Component {
         console.log(authorizeGithubUser);
         console.log(this.props.location.search);
         authorizeGithubUserRequst.open("POST", authorizeGithubUser);
-        authorizeGithubUserRequst.withCredentials = true;
+        authorizeGithubUserRequst.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
         authorizeGithubUserRequst.onreadystatechange = function () {
             if (this.readyState === XMLHttpRequest.DONE) {
                 //currentThis.props.history.push('/');
