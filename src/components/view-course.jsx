@@ -11,7 +11,6 @@ class ViewCourse extends Component {
         videosFullNames: [],
         currentVideoTitle: null,
         currentVideoName: null,
-        teacherDescription: null,
         teacherProfilePictureName: null,
         commentsCount: 0,
         price: -1,
@@ -107,7 +106,6 @@ class ViewCourse extends Component {
                                             <a href="https://facebook.com/#"><i className="icofont-facebook" /></a>
                                             <a href="https://instagram.com/#"><i className="icofont-instagram" /></a>
                                         </div>
-                                        <p>{this.state.teacherDescription}</p>
                                     </div>
                                     <div id="blog-comments" className="blog-comments">
                                         <h4 className="comments-count">Коментари</h4>
@@ -319,7 +317,6 @@ class ViewCourse extends Component {
                 category: courseModel["category"]["name"],
                 currentVideoTitle: courseModel["videosNames"][0]["videoTitle"],
                 currentVideoName: courseModel["videosNames"][0]["videoFullName"],
-                teacherDescription: courseModel["teacher"]["description"],
                 teacherProfilePictureName: process.env.REACT_APP_URL + "/resource/images/" + courseModel["teacher"]["profilePictureName"],
                 price: courseModel["price"],
                 rating: courseModel['rating']

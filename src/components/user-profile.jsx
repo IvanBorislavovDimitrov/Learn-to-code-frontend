@@ -295,19 +295,19 @@ class UserProfile extends Component {
         };
         fetch(process.env.REACT_APP_URL + '/users/update/basic/' + loggedUser, {
             method: 'PATCH',
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('token')
-            },
             body: JSON.stringify(userUpdateForm),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             }
         }).then(async response => {
-            await response.text();
+            const text = await response.text();
             if (response.status === 200) {
                 this.props.history.push('/users/profile');
                 window.location.reload();
                 return;
+            } else {
+                alert(text);
             }
         }).catch(error => {
             console.log(error);
@@ -323,12 +323,10 @@ class UserProfile extends Component {
         console.log(passwordModel);
         fetch(process.env.REACT_APP_URL + '/users/update/password', {
             method: 'PATCH',
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('token')
-            },
             body: JSON.stringify(passwordModel),
             headers: {
-                'Content-type': 'application/json'
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             }
         }).then(async response => {
             if (response.status === 200) {
